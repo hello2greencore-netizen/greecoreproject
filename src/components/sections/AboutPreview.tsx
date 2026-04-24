@@ -46,7 +46,7 @@ export function AboutPreview() {
           <div className="order-1 lg:order-2">
             <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-subtle sm:aspect-[5/4] lg:aspect-[4/5]">
               <Image
-                src="/images/about-preview.jpg"
+                src="/images/hero/about.jpg"
                 alt="Green Core technician installing an HVAC system"
                 fill
                 sizes="(min-width: 1024px) 40vw, 100vw"

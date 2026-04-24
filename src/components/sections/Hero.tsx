@@ -1,13 +1,9 @@
-import { existsSync } from "node:fs";
-import { join } from "node:path";
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/data/site";
 import { cn } from "@/lib/utils";
-
-const DEFAULT_HERO_IMAGE = "/images/hero/herosectionimage.jpeg";
 
 type Props = {
   eyebrow?: string;
@@ -21,20 +17,6 @@ type Props = {
   priority?: boolean;
 };
 
-function resolveHeroImage(image: string) {
-  if (!image) {
-    return DEFAULT_HERO_IMAGE;
-  }
-
-  if (!image.startsWith("/")) {
-    return image;
-  }
-
-  const imagePath = join(process.cwd(), "public", image.replace(/^\//, ""));
-
-  return existsSync(imagePath) ? image : DEFAULT_HERO_IMAGE;
-}
-
 export function Hero({
   eyebrow,
   title,
@@ -46,51 +28,66 @@ export function Hero({
   size = "default",
   priority = true,
 }: Props) {
-  const resolvedImage = resolveHeroImage(image);
-
   return (
     <section
       className={cn(
-        "relative isolate overflow-hidden bg-brand-900 text-white",
-        size === "default" ? "min-h-[82vh] lg:min-h-[88vh]" : "min-h-[60vh]",
+        "relative isolate overflow-hidden bg-neutral-950 text-white",
+        size === "default" ? "min-h-[88vh]" : "min-h-[56vh]",
       )}
     >
+      {/* Photography */}
       <Image
-        src={resolvedImage}
+        src={image}
         alt={imageAlt}
         fill
         priority={priority}
         sizes="100vw"
-        className="absolute inset-0 -z-10 object-cover"
+        className="absolute inset-0 -z-10 object-cover object-center"
       />
+
+      {/* Bottom-up dark gradient — photo is vivid at top, readable at bottom */}
       <div
-        className="absolute inset-0 -z-10 bg-gradient-to-b from-brand-900/70 via-brand-900/55 to-brand-900/80"
+        className="absolute inset-0 -z-10 bg-gradient-to-t from-neutral-950/90 via-neutral-950/40 to-neutral-950/5"
         aria-hidden
       />
+
+      {/* Subtle left vignette for extra text legibility */}
+      <div
+        className="absolute inset-0 -z-10 bg-gradient-to-r from-neutral-950/40 via-neutral-950/10 to-transparent"
+        aria-hidden
+      />
+
       <Container
         size="xl"
         className={cn(
           "flex flex-col justify-end",
           size === "default"
-            ? "pt-28 pb-16 sm:pt-36 lg:pt-44 lg:pb-24"
-            : "pt-24 pb-12 sm:pt-32 lg:pt-36",
+            ? "pt-32 pb-20 sm:pt-40 lg:pt-52 lg:pb-28"
+            : "pt-24 pb-14 sm:pt-32 lg:pt-40 lg:pb-20",
         )}
       >
-        <div className="max-w-3xl">
+        <div className="max-w-2xl">
           {eyebrow && (
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-100">
+            <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/50">
               {eyebrow}
             </p>
           )}
-          <h1 className="heading-display mt-3 text-4xl text-white sm:text-5xl lg:text-6xl">
+          <h1
+            className={cn(
+              "font-display font-bold leading-[1.08] tracking-tight text-white",
+              size === "default"
+                ? "text-4xl sm:text-5xl lg:text-[3.75rem]"
+                : "text-3xl sm:text-4xl lg:text-5xl",
+            )}
+          >
             {title}
           </h1>
           {description && (
-            <p className="mt-5 max-w-2xl text-base text-white/90 sm:text-lg">
+            <p className="mt-5 max-w-xl text-base text-white/70 sm:text-lg sm:leading-relaxed">
               {description}
             </p>
           )}
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-8 flex flex-wrap gap-3">
             <Button href={primaryCta.href} size="lg" variant="white">
               {primaryCta.label}
             </Button>
@@ -98,7 +95,7 @@ export function Hero({
               <Button
                 href={secondaryCta.href}
                 size="lg"
-                className="border border-white/30 bg-white/10 text-white hover:bg-white/20"
+                className="border border-white/20 bg-white/10 text-white backdrop-blur-sm hover:bg-white/18"
               >
                 {secondaryCta.label}
               </Button>

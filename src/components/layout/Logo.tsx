@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { siteConfig } from "@/data/site";
 
@@ -7,21 +8,23 @@ type Props = {
 };
 
 export function Logo({ className, tone = "dark" }: Props) {
-  const colorBadge = tone === "dark" ? "bg-brand-600 text-white" : "bg-white text-brand-700";
-  const colorText = tone === "dark" ? "text-foreground" : "text-white";
-  const colorSub = tone === "dark" ? "text-muted" : "text-white/80";
+  const colorText = tone === "light" ? "text-white" : "text-foreground";
+  const colorSub = tone === "light" ? "text-white/80" : "text-muted";
+
   return (
     <Link
       href="/"
       aria-label={`${siteConfig.name} — Home`}
       className={`inline-flex items-center gap-2.5 ${className ?? ""}`}
     >
-      <span
-        aria-hidden
-        className={`grid h-9 w-9 place-items-center rounded-xl ${colorBadge} font-bold`}
-      >
-        GC
-      </span>
+      <Image
+        src="/images/header/greencorelogobg.png"
+        alt=""
+        width={44}
+        height={44}
+        className="rounded-xl"
+        priority
+      />
       <span className="leading-tight">
         <span className={`block font-display text-base font-bold tracking-tight sm:text-lg ${colorText}`}>
           Green Core

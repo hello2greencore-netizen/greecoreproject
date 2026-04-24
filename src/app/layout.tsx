@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { StickyMobileCTA } from "@/components/layout/StickyMobileCTA";
+import { ScrollToTop } from "@/components/layout/ScrollToTop";
 import { siteConfig } from "@/data/site";
 
 const inter = Inter({
@@ -70,6 +71,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <StickyMobileCTA />
+        <ScrollToTop />
       </body>
     </html>
   );

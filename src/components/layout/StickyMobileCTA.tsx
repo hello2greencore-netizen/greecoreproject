@@ -6,26 +6,18 @@ import { siteConfig } from "@/data/site";
 import { cn } from "@/lib/utils";
 
 export function StickyMobileCTA() {
-  const [visible, setVisible] = useState(false);
   const [hiddenByScroll, setHiddenByScroll] = useState(false);
+  const [nearBottom, setNearBottom] = useState(false);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY;
-      const threshold = Math.min(window.innerHeight * 0.5, 420);
       const doc = document.documentElement;
-      const nearBottom = y + window.innerHeight > doc.scrollHeight - 140;
 
-      if (y < threshold || nearBottom) {
-        setVisible(false);
-        lastScrollY.current = y;
-        return;
-      }
+      setNearBottom(y + window.innerHeight > doc.scrollHeight - 140);
 
-      setVisible(true);
-
-      if (y > lastScrollY.current + 8) {
+      if (y > lastScrollY.current + 8 && y > 40) {
         setHiddenByScroll(true);
       } else if (y < lastScrollY.current - 8) {
         setHiddenByScroll(false);
@@ -39,7 +31,7 @@ export function StickyMobileCTA() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const hidden = !visible || hiddenByScroll;
+  const hidden = hiddenByScroll || nearBottom;
 
   return (
     <div

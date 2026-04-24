@@ -3,56 +3,58 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
+const bullets = [
+  "Energy-efficient heating, cooling & water heating",
+  "Design-first approach — right-sized for your home",
+  "Vetted, trained technicians who respect your home",
+];
+
 export function AboutPreview() {
   return (
-    <section className="py-16 sm:py-20 lg:py-24">
+    <section className="py-14 sm:py-20 lg:py-24">
       <Container size="xl">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
-          <div className="order-2 lg:order-1">
+        <div className="grid gap-8 sm:gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
+          <div>
             <SectionHeading
               eyebrow="About Green Core"
               title="A better HVAC experience — start to finish."
               description="We were founded to change the way HVAC feels for homeowners. Clear communication, thoughtful design, and high-quality workmanship on every project."
             />
-            <ul className="mt-8 space-y-4 text-base text-muted">
-              <li className="flex gap-3">
-                <span
-                  aria-hidden
-                  className="mt-1 inline-block h-5 w-5 flex-shrink-0 rounded-full bg-brand-500"
-                />
-                Energy-efficient heating, cooling &amp; water heating
-              </li>
-              <li className="flex gap-3">
-                <span
-                  aria-hidden
-                  className="mt-1 inline-block h-5 w-5 flex-shrink-0 rounded-full bg-brand-500"
-                />
-                Design-first approach — right-sized for your home
-              </li>
-              <li className="flex gap-3">
-                <span
-                  aria-hidden
-                  className="mt-1 inline-block h-5 w-5 flex-shrink-0 rounded-full bg-brand-500"
-                />
-                Vetted, trained technicians who respect your home
-              </li>
+            <ul className="mt-7 space-y-3.5 text-base text-foreground sm:mt-8 sm:space-y-4">
+              {bullets.map((b) => (
+                <li key={b} className="flex items-start gap-3">
+                  <span
+                    aria-hidden
+                    className="mt-0.5 grid h-6 w-6 flex-shrink-0 place-items-center rounded-full bg-brand-50 text-brand-700"
+                  >
+                    <svg viewBox="0 0 24 24" fill="none" className="h-3.5 w-3.5">
+                      <path
+                        d="M5 13l4 4L19 7"
+                        stroke="currentColor"
+                        strokeWidth="2.25"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </span>
+                  <span className="leading-relaxed">{b}</span>
+                </li>
+              ))}
             </ul>
-            <div className="mt-8">
+            <div className="mt-7 sm:mt-8">
               <Button href="/about" variant="secondary" size="lg">
                 More about us
               </Button>
             </div>
           </div>
-          <div className="order-1 lg:order-2">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-subtle sm:aspect-[5/4] lg:aspect-[4/5]">
-              <Image
-                src="/images/hero/about.jpg"
-                alt="Green Core technician installing an HVAC system"
-                fill
-                sizes="(min-width: 1024px) 40vw, 100vw"
-                className="object-cover"
-              />
-            </div>
+          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-subtle sm:aspect-[16/10] lg:aspect-[4/5]">
+            <Image
+              src="/images/hero/about.jpg"
+              alt="Green Core technician installing an HVAC system"
+              fill
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              className="object-cover"
+            />
           </div>
         </div>
       </Container>

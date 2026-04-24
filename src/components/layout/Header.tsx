@@ -46,7 +46,7 @@ export function Header() {
       )}
     >
       <Container size="xl">
-        <div className="flex h-16 items-center justify-between gap-8 lg:h-[72px]">
+        <div className="flex h-16 items-center justify-between gap-3 sm:gap-6 lg:h-[72px] lg:gap-8">
           <Logo />
 
           <nav aria-label="Primary" className="hidden lg:flex flex-1 justify-center">
@@ -144,7 +144,7 @@ export function Header() {
             </ul>
           </nav>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-3 lg:gap-4">
             <a
               href={siteConfig.phoneHref}
               className="hidden text-sm font-medium text-foreground/50 transition-colors duration-200 hover:text-foreground md:inline"
@@ -154,16 +154,31 @@ export function Header() {
             <Button
               href={siteConfig.cta.primary.href}
               size="sm"
-              className="hidden sm:inline-flex"
+              className="hidden md:inline-flex"
             >
               {siteConfig.cta.primary.label}
             </Button>
+            <a
+              href={siteConfig.phoneHref}
+              aria-label={`Call ${siteConfig.phone}`}
+              className="grid h-11 w-11 place-items-center rounded-full text-foreground/60 transition-colors duration-200 hover:bg-black/[0.04] hover:text-foreground sm:hidden"
+            >
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden className="h-[18px] w-[18px]">
+                <path
+                  d="M4.5 5.5a2 2 0 0 1 2-2h1.6a1 1 0 0 1 .98.79l.72 3.38a1 1 0 0 1-.27.94l-1.4 1.4a14 14 0 0 0 6.18 6.18l1.4-1.4a1 1 0 0 1 .94-.27l3.38.72a1 1 0 0 1 .79.98v1.6a2 2 0 0 1-2 2h-.5C9.8 19.82 4.18 14.2 4.5 5.5Z"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </a>
             <button
               type="button"
               onClick={open}
               aria-label="Open menu"
               aria-expanded={isOpen}
-              className="grid h-9 w-9 place-items-center text-foreground/50 transition-colors duration-200 hover:text-foreground lg:hidden"
+              className="grid h-11 w-11 place-items-center rounded-full text-foreground/60 transition-colors duration-200 hover:bg-black/[0.04] hover:text-foreground lg:hidden"
             >
               <svg viewBox="0 0 24 24" fill="none" aria-hidden className="h-5 w-5">
                 <path

@@ -1,5 +1,5 @@
+import Link from "next/link";
 import type { ReactNode } from "react";
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/data/site";
 
@@ -17,25 +17,28 @@ export function CTASection({
   secondaryCta = { label: `Call ${siteConfig.phone}`, href: siteConfig.phoneHref },
 }: Props) {
   return (
-    <section className="px-5 py-16 sm:py-20">
+    <section className="py-14 sm:py-20">
       <Container size="lg">
-        <div className="overflow-hidden rounded-3xl bg-brand-700 px-6 py-12 text-white shadow-lg sm:px-12 sm:py-16">
+        <div className="overflow-hidden rounded-3xl bg-brand-700 px-6 py-10 text-white shadow-lg sm:px-12 sm:py-16">
           <div className="max-w-2xl">
-            <h2 className="heading-display text-3xl sm:text-4xl">{title}</h2>
+            <h2 className="heading-display text-2xl sm:text-4xl">{title}</h2>
             <p className="mt-4 text-base text-white/90 sm:text-lg">
               {description}
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button href={primaryCta.href} size="lg" variant="white">
-                {primaryCta.label}
-              </Button>
-              <Button
+            <div className="mt-6 flex flex-wrap items-center gap-2.5 sm:mt-8 sm:gap-3">
+              <Link
+                href={primaryCta.href}
+                className="inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-[13px] font-semibold text-brand-800 shadow-sm transition hover:bg-brand-50 sm:px-6 sm:py-3.5 sm:text-base"
+              >
+                <span className="sm:hidden">Get Estimate</span>
+                <span className="hidden sm:inline">{primaryCta.label}</span>
+              </Link>
+              <Link
                 href={secondaryCta.href}
-                size="lg"
-                className="border border-white/30 bg-white/10 text-white hover:bg-white/20"
+                className="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/10 px-4 py-2 text-[13px] font-semibold text-white transition hover:bg-white/20 sm:px-6 sm:py-3.5 sm:text-base"
               >
                 {secondaryCta.label}
-              </Button>
+              </Link>
             </div>
           </div>
         </div>

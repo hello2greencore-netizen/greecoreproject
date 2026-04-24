@@ -9,7 +9,7 @@ export function MapSection() {
   const src = `https://www.google.com/maps?q=${query}&output=embed`;
 
   return (
-    <section className="bg-subtle py-16 sm:py-20 lg:py-24">
+    <section className="bg-subtle py-14 sm:py-20 lg:py-24">
       <Container size="xl">
         <SectionHeading
           eyebrow="Service area"
@@ -18,7 +18,7 @@ export function MapSection() {
           align="center"
           className="mx-auto"
         />
-        <div className="mt-10 overflow-hidden rounded-3xl border border-border bg-white shadow-sm">
+        <div className="mt-8 overflow-hidden rounded-2xl border border-border bg-white shadow-sm sm:mt-10 sm:rounded-3xl">
           <div className="relative aspect-[4/3] sm:aspect-[16/9]">
             <iframe
               title="Green Core service area map"

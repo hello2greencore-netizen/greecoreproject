@@ -31,7 +31,7 @@ const points = [
 
 export function WhyDifferent() {
   return (
-    <section className="bg-subtle py-16 sm:py-20 lg:py-24">
+    <section className="bg-subtle py-14 sm:py-20 lg:py-24">
       <Container size="xl">
         <SectionHeading
           eyebrow="Why we're different"
@@ -40,10 +40,16 @@ export function WhyDifferent() {
           align="center"
           className="mx-auto"
         />
-        <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {points.map((p) => (
+        <ul className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-2 lg:grid-cols-3">
+          {points.map((p, i) => (
             <Card as="li" key={p.title}>
-              <h3 className="font-display text-lg font-bold text-foreground">
+              <span
+                aria-hidden
+                className="font-display text-xs font-semibold tracking-[0.2em] text-brand-600"
+              >
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <h3 className="mt-2 font-display text-lg font-bold text-foreground">
                 {p.title}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">

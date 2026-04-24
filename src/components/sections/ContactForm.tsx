@@ -46,7 +46,7 @@ export function ContactForm() {
             type="tel"
             autoComplete="tel"
             className={inputClass}
-            placeholder="(707) 555-1234"
+            placeholder="(707) 988-5858"
           />
         </label>
       </div>
@@ -94,6 +94,43 @@ export function ContactForm() {
           </select>
         </label>
       </div>
+
+      <fieldset className="rounded-2xl border border-border bg-subtle/40 p-4 sm:p-5">
+        <legend className="px-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-brand-700">
+          Preferred appointment
+        </legend>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <label className="block">
+            <span className="mb-1.5 block text-sm font-medium text-foreground">
+              Date
+            </span>
+            <input
+              type="date"
+              name="preferred-date"
+              min={new Date().toISOString().split("T")[0]}
+              suppressHydrationWarning
+              className={inputClass}
+            />
+          </label>
+          <label className="block">
+            <span className="mb-1.5 block text-sm font-medium text-foreground">
+              Time
+            </span>
+            <input
+              type="time"
+              name="preferred-time"
+              min="08:00"
+              max="18:00"
+              step="300"
+              className={inputClass}
+            />
+          </label>
+        </div>
+        <p className="mt-3 text-xs text-muted">
+          Pick any hour and minute that works for you — we&apos;ll confirm
+          availability and follow up. Typical service hours 8am–6pm, closed Sundays.
+        </p>
+      </fieldset>
 
       <label className="block">
         <span className="mb-1.5 block text-sm font-medium text-foreground">

@@ -1,20 +1,75 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import { siteConfig } from "@/data/site";
+import { cn } from "@/lib/utils";
 
 export function StickyMobileCTA() {
+  const [visible, setVisible] = useState(false);
+  const [hiddenByScroll, setHiddenByScroll] = useState(false);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY;
+      const threshold = Math.min(window.innerHeight * 0.5, 420);
+      const doc = document.documentElement;
+      const nearBottom = y + window.innerHeight > doc.scrollHeight - 140;
+
+      if (y < threshold || nearBottom) {
+        setVisible(false);
+        lastScrollY.current = y;
+        return;
+      }
+
+      setVisible(true);
+
+      if (y > lastScrollY.current + 8) {
+        setHiddenByScroll(true);
+      } else if (y < lastScrollY.current - 8) {
+        setHiddenByScroll(false);
+      }
+
+      lastScrollY.current = y;
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const hidden = !visible || hiddenByScroll;
+
   return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-0 z-20 lg:hidden">
-      <div className="pointer-events-auto mx-auto flex max-w-2xl items-stretch gap-2 border-t border-border bg-white/95 px-3 py-2 shadow-[0_-4px_16px_rgba(15,27,20,0.06)] backdrop-blur">
+    <div
+      className={cn(
+        "pointer-events-none fixed inset-x-0 z-20 flex justify-center px-4 lg:hidden",
+        "transition-all duration-300 ease-out",
+        hidden ? "translate-y-32 opacity-0" : "translate-y-0 opacity-100",
+      )}
+      style={{
+        bottom: "calc(16px + env(safe-area-inset-bottom))",
+      }}
+      aria-hidden={hidden}
+    >
+      <div
+        className={cn(
+          "pointer-events-auto flex items-stretch gap-1 rounded-full p-1",
+          "border border-black/[0.06] bg-white/90 backdrop-blur-xl",
+          "shadow-[0_10px_28px_-8px_rgba(15,27,20,0.22),0_3px_10px_-4px_rgba(15,27,20,0.1)]",
+        )}
+      >
         <Link
           href={siteConfig.phoneHref}
-          className="flex flex-1 items-center justify-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-4 py-3 text-sm font-semibold text-brand-800 active:bg-brand-100"
+          aria-label={`Call ${siteConfig.phone}`}
+          className={cn(
+            "flex items-center justify-center gap-1.5 rounded-full px-3.5 py-2 text-[13px] font-semibold",
+            "text-foreground/75 transition-colors duration-150",
+            "hover:bg-black/[0.04] hover:text-foreground active:bg-black/[0.06]",
+          )}
         >
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            aria-hidden
-            className="h-4 w-4"
-          >
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden className="h-4 w-4">
             <path
               d="M4.5 5.5a2 2 0 0 1 2-2h1.6a1 1 0 0 1 .98.79l.72 3.38a1 1 0 0 1-.27.94l-1.4 1.4a14 14 0 0 0 6.18 6.18l1.4-1.4a1 1 0 0 1 .94-.27l3.38.72a1 1 0 0 1 .79.98v1.6a2 2 0 0 1-2 2h-.5C9.8 19.82 4.18 14.2 4.5 5.5Z"
               stroke="currentColor"
@@ -25,14 +80,27 @@ export function StickyMobileCTA() {
           </svg>
           Call
         </Link>
+
         <Link
           href={siteConfig.cta.primary.href}
-          className="flex flex-[1.4] items-center justify-center rounded-full bg-brand-600 px-4 py-3 text-sm font-semibold text-white active:bg-brand-700"
+          className={cn(
+            "flex items-center justify-center gap-1.5 whitespace-nowrap rounded-full px-4 py-2 text-[13px] font-semibold",
+            "bg-brand-600 text-white transition-colors duration-150",
+            "hover:bg-brand-700 active:bg-brand-800",
+          )}
         >
-          {siteConfig.cta.primary.label}
+          Get Estimate
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden className="h-3 w-3">
+            <path
+              d="M5 12h14M13 5l7 7-7 7"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </Link>
       </div>
-      <div className="h-[env(safe-area-inset-bottom)] bg-white/95" />
     </div>
   );
 }

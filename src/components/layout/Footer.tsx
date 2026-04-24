@@ -33,10 +33,10 @@ function FooterLinkGroup({ title, links }: FooterLinkGroupProps) {
 
 export function Footer() {
   return (
-    <footer className="mt-16 bg-brand-900 text-white">
-      <Container size="xl" className="py-12 lg:py-16">
-        <div className="grid gap-10 lg:grid-cols-5">
-          <div className="lg:col-span-2">
+    <footer className="mt-12 bg-brand-900 text-white lg:mt-16">
+      <Container size="xl" className="py-10 sm:py-12 lg:py-16">
+        <div className="grid gap-10 md:grid-cols-3 lg:grid-cols-5">
+          <div className="md:col-span-3 lg:col-span-2">
             <Logo tone="light" />
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/80">
               {siteConfig.description}
@@ -65,7 +65,7 @@ export function Footer() {
           <FooterLinkGroup title="Service Areas" links={footerNav.areas} />
         </div>
 
-        <div className="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/60 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/60 sm:mt-12 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} {siteConfig.name}. All rights
             reserved. {siteConfig.license}.

@@ -14,8 +14,8 @@ export function TrustedTeam() {
   return (
     <section className="py-16 sm:py-20 lg:py-24">
       <Container size="xl">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-subtle sm:aspect-[4/3] lg:sticky lg:top-24 lg:aspect-[4/5]">
+        <div className="grid gap-10 sm:gap-12 lg:grid-cols-2 lg:items-start">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-subtle lg:sticky lg:top-24 lg:aspect-[4/5]">
             <Image
               src="/images/about/team.jpg"
               alt="The Green Core Heating & Air team"

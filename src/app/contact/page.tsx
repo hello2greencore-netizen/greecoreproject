@@ -41,7 +41,7 @@ export default function ContactPage() {
             </div>
 
             <aside className="lg:col-span-2">
-              <div className="rounded-3xl border border-border bg-subtle p-6 sm:p-8">
+              <div className="rounded-3xl border border-border bg-subtle p-5 sm:p-8">
                 <h3 className="font-display text-xl font-bold text-foreground">
                   Reach us directly
                 </h3>

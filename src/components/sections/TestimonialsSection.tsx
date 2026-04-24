@@ -47,7 +47,7 @@ type Props = {
 export function TestimonialsSection({ limit = 3 }: Props) {
   const items = testimonials.slice(0, limit);
   return (
-    <section className="py-16 sm:py-20 lg:py-24">
+    <section className="py-14 sm:py-20 lg:py-24">
       <Container size="xl">
         <SectionHeading
           eyebrow="Customer reviews"
@@ -55,7 +55,7 @@ export function TestimonialsSection({ limit = 3 }: Props) {
           align="center"
           className="mx-auto"
         />
-        <ul className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-10 grid gap-4 sm:gap-5 md:grid-cols-2 lg:grid-cols-3">
           {items.map((t) => (
             <li key={t.id}>
               <TestimonialCard t={t} />

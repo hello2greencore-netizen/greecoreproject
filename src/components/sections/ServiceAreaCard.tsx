@@ -10,7 +10,7 @@ export function ServiceAreaCard({ area }: Props) {
   return (
     <Link
       href={`/service-areas/${area.slug}`}
-      className="group relative block overflow-hidden rounded-2xl border border-border bg-subtle shadow-sm"
+      className="group relative block overflow-hidden rounded-2xl border border-border bg-subtle shadow-sm transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-0.5 hover:shadow-md active:scale-[0.99]"
     >
       <div className="relative aspect-[4/3]">
         <Image
@@ -18,7 +18,7 @@ export function ServiceAreaCard({ area }: Props) {
           alt={`${area.city}, California`}
           fill
           sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-          className="object-cover transition duration-500 group-hover:scale-[1.03]"
+          className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
         />
         <div
           aria-hidden

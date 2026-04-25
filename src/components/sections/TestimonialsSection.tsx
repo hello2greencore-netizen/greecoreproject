@@ -1,6 +1,7 @@
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
+import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { testimonials } from "@/data/testimonials";
 import type { Testimonial } from "@/types";
 
@@ -49,19 +50,24 @@ export function TestimonialsSection({ limit = 3 }: Props) {
   return (
     <section className="py-14 sm:py-20 lg:py-24">
       <Container size="xl">
-        <SectionHeading
-          eyebrow="Customer reviews"
-          title="Trusted by neighbors across the North Bay."
-          align="center"
-          className="mx-auto"
-        />
-        <ul className="mt-10 grid gap-4 sm:gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <Reveal>
+          <SectionHeading
+            eyebrow="Customer reviews"
+            title="Trusted by neighbors across the North Bay."
+            align="center"
+            className="mx-auto"
+          />
+        </Reveal>
+        <RevealGroup
+          as="ul"
+          className="mt-10 grid gap-4 sm:gap-5 md:grid-cols-2 lg:grid-cols-3"
+        >
           {items.map((t) => (
-            <li key={t.id}>
+            <RevealItem as="li" key={t.id}>
               <TestimonialCard t={t} />
-            </li>
+            </RevealItem>
           ))}
-        </ul>
+        </RevealGroup>
       </Container>
     </section>
   );

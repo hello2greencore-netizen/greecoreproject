@@ -30,4 +30,5 @@ export const siteConfig = {
     secondary: { label: "Call Us", href: "tel:+17079885858" },
   },
   license: "CSLB #1234567",
+  ogImage: "/images/og-default.jpg",
 } as const;

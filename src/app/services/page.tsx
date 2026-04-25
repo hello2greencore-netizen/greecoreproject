@@ -4,14 +4,15 @@ import { ServiceCard } from "@/components/sections/ServiceCard";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { FAQSection } from "@/components/sections/FAQSection";
+import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { services } from "@/data/services";
 import { generalFaqs } from "@/data/faqs";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "HVAC Services — Heat Pumps, AC, Furnaces & More",
+  title: "HVAC Services — Sonoma & Marin Counties",
   description:
-    "Explore Green Core's full HVAC services: heat pump installation, AC, furnaces, mini splits, duct design, and Harvest Thermal systems across Sonoma and Marin.",
+    "Green Core installs and repairs heat pumps, AC systems, furnaces, mini splits, and ductwork across Sonoma & Marin. Design-first HVAC — done right.",
   path: "/services",
 });
 
@@ -29,18 +30,23 @@ export default function ServicesPage() {
 
       <section className="py-16 sm:py-20 lg:py-24">
         <Container size="xl">
-          <SectionHeading
-            eyebrow="What we do"
-            title="All the comfort services, under one trusted crew."
-            description="Pick a service to learn more."
-          />
-          <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <Reveal>
+            <SectionHeading
+              eyebrow="What we do"
+              title="All the comfort services, under one trusted crew."
+              description="Pick a service to learn more."
+            />
+          </Reveal>
+          <RevealGroup
+            as="ul"
+            className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          >
             {services.map((service) => (
-              <li key={service.slug}>
+              <RevealItem as="li" key={service.slug}>
                 <ServiceCard service={service} />
-              </li>
+              </RevealItem>
             ))}
-          </ul>
+          </RevealGroup>
         </Container>
       </section>
 

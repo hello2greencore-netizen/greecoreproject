@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { Container } from "@/components/ui/Container";
+import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { siteConfig } from "@/data/site";
 
 type Props = {
@@ -19,29 +20,33 @@ export function CTASection({
   return (
     <section className="py-14 sm:py-20">
       <Container size="lg">
-        <div className="overflow-hidden rounded-3xl bg-brand-700 px-6 py-10 text-white shadow-lg sm:px-12 sm:py-16">
-          <div className="max-w-2xl">
-            <h2 className="heading-display text-2xl sm:text-4xl">{title}</h2>
-            <p className="mt-4 text-base text-white/90 sm:text-lg">
-              {description}
-            </p>
-            <div className="mt-6 flex flex-wrap items-center gap-2.5 sm:mt-8 sm:gap-3">
+        <Reveal className="overflow-hidden rounded-3xl bg-brand-700 px-6 py-10 text-white shadow-lg sm:px-12 sm:py-16">
+          <RevealGroup className="max-w-2xl">
+            <RevealItem>
+              <h2 className="heading-display text-2xl sm:text-4xl">{title}</h2>
+            </RevealItem>
+            <RevealItem>
+              <p className="mt-4 text-base text-white/90 sm:text-lg">
+                {description}
+              </p>
+            </RevealItem>
+            <RevealItem className="mt-6 flex flex-wrap items-center gap-2.5 sm:mt-8 sm:gap-3">
               <Link
                 href={primaryCta.href}
-                className="inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-[13px] font-semibold text-brand-800 shadow-sm transition hover:bg-brand-50 sm:px-6 sm:py-3.5 sm:text-base"
+                className="inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-[13px] font-semibold text-brand-800 shadow-sm transition-[transform,background-color,box-shadow] duration-200 hover:bg-brand-50 hover:shadow-md active:scale-[0.97] sm:px-6 sm:py-3.5 sm:text-base"
               >
                 <span className="sm:hidden">Get Estimate</span>
                 <span className="hidden sm:inline">{primaryCta.label}</span>
               </Link>
               <Link
                 href={secondaryCta.href}
-                className="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/10 px-4 py-2 text-[13px] font-semibold text-white transition hover:bg-white/20 sm:px-6 sm:py-3.5 sm:text-base"
+                className="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/10 px-4 py-2 text-[13px] font-semibold text-white transition-[transform,background-color] duration-200 hover:bg-white/20 active:scale-[0.97] sm:px-6 sm:py-3.5 sm:text-base"
               >
                 {secondaryCta.label}
               </Link>
-            </div>
-          </div>
-        </div>
+            </RevealItem>
+          </RevealGroup>
+        </Reveal>
       </Container>
     </section>
   );

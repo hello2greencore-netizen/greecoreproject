@@ -9,10 +9,11 @@ import { siteConfig } from "@/data/site";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "HVAC in Sonoma & Marin — Heat Pumps, AC, Furnaces",
+  title: "Green Core Heating & Air | Trusted HVAC — Sonoma & Marin",
   description:
-    "Green Core Heating & Air is a locally owned HVAC company serving Sonoma and Marin counties with heat pump, AC, furnace, and mini split installation and service.",
+    "Locally owned HVAC contractor in Petaluma, CA. Expert heat pump, AC, furnace & mini split installation and repair across Sonoma & Marin counties. Get a free estimate.",
   path: "/",
+  absolute: true,
 });
 
 export default function HomePage() {

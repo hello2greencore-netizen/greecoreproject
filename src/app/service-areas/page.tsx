@@ -4,13 +4,14 @@ import { CTASection } from "@/components/sections/CTASection";
 import { ServiceAreaCard } from "@/components/sections/ServiceAreaCard";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { serviceAreas } from "@/data/serviceAreas";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Service Areas — Sonoma & Marin Counties",
+  title: "HVAC Service Areas — Sonoma & Marin Counties",
   description:
-    "Green Core Heating & Air serves homeowners across Sonoma and Marin counties, including Petaluma, Rohnert Park, Santa Rosa, Novato, San Rafael, Mill Valley, Tiburon, and Sebastopol.",
+    "Green Core serves Petaluma, Santa Rosa, Novato, San Rafael, Mill Valley, Tiburon & Sebastopol. Local HVAC experts in Sonoma & Marin counties.",
   path: "/service-areas",
 });
 
@@ -28,17 +29,22 @@ export default function ServiceAreasPage() {
 
       <section className="py-16 sm:py-20 lg:py-24">
         <Container size="xl">
-          <SectionHeading
-            eyebrow="Cities we serve"
-            title="Find your city."
-          />
-          <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Cities we serve"
+              title="Find your city."
+            />
+          </Reveal>
+          <RevealGroup
+            as="ul"
+            className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
+          >
             {serviceAreas.map((area) => (
-              <li key={area.slug}>
+              <RevealItem as="li" key={area.slug}>
                 <ServiceAreaCard area={area} />
-              </li>
+              </RevealItem>
             ))}
-          </ul>
+          </RevealGroup>
         </Container>
       </section>
 

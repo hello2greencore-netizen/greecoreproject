@@ -6,6 +6,8 @@ import { CTASection } from "@/components/sections/CTASection";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
+import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
+import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 import { services } from "@/data/services";
 import {
   serviceAreas,
@@ -24,8 +26,8 @@ export async function generateMetadata(
   const area = getServiceAreaBySlug(city);
   if (!area) return buildMetadata({ title: "Service Area", description: "" });
   return buildMetadata({
-    title: `${area.city} Heating & Air Conditioning Services`,
-    description: `Trusted HVAC experts in ${area.city}, CA — heat pump installation, air conditioning, furnace service, mini splits, and ductwork from Green Core Heating & Air.`,
+    title: `HVAC Contractor in ${area.city}, CA`,
+    description: `Green Core Heating & Air provides heat pump, AC, furnace & mini split services in ${area.city}, CA. Local HVAC contractor — free estimates available.`,
     path: `/service-areas/${area.slug}`,
     image: area.heroImage,
   });
@@ -40,6 +42,14 @@ export default async function ServiceAreaPage(
 
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Service Areas", path: "/service-areas" },
+          { name: area.city },
+        ]}
+      />
+
       <Hero
         eyebrow={area.county}
         title={`${area.city} Heating & Air Conditioning Services`}
@@ -52,27 +62,38 @@ export default async function ServiceAreaPage(
 
       <section className="py-16 sm:py-20 lg:py-24">
         <Container size="md">
-          <p className="text-base leading-relaxed text-foreground sm:text-lg">
-            {area.intro}
-          </p>
-          <p className="mt-5 text-base leading-relaxed text-muted sm:text-lg">
-            {area.lifestyleLine}
-          </p>
+          <Reveal>
+            <p className="text-base leading-relaxed text-foreground sm:text-lg">
+              {area.intro}
+            </p>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <p className="mt-5 text-base leading-relaxed text-muted sm:text-lg">
+              {area.lifestyleLine}
+            </p>
+          </Reveal>
 
           <div className="mt-10">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-brand-700">
-              Landmarks &amp; neighborhoods we serve
-            </h3>
-            <ul className="mt-4 flex flex-wrap gap-2">
+            <Reveal>
+              <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-brand-700">
+                Landmarks &amp; neighborhoods we serve
+              </h3>
+            </Reveal>
+            <RevealGroup
+              as="ul"
+              className="mt-4 flex flex-wrap gap-2"
+              stagger={0.03}
+            >
               {area.landmarks.map((lm) => (
-                <li
+                <RevealItem
+                  as="li"
                   key={lm}
                   className="rounded-full border border-border bg-white px-3.5 py-1.5 text-sm text-foreground"
                 >
                   {lm}
-                </li>
+                </RevealItem>
               ))}
-            </ul>
+            </RevealGroup>
           </div>
         </Container>
       </section>
@@ -83,54 +104,73 @@ export default async function ServiceAreaPage(
           className={i % 2 === 0 ? "bg-subtle py-16 sm:py-20 lg:py-24" : "py-16 sm:py-20 lg:py-24"}
         >
           <Container size="md">
-            <SectionHeading
-              eyebrow={`Serving ${area.city}`}
-              title={section.heading}
-            />
-            <div className="mt-8 space-y-5 text-base leading-relaxed text-muted sm:text-lg">
+            <Reveal>
+              <SectionHeading
+                eyebrow={`Serving ${area.city}`}
+                title={section.heading}
+              />
+            </Reveal>
+            <RevealGroup
+              className="mt-8 space-y-5 text-base leading-relaxed text-muted sm:text-lg"
+              stagger={0.05}
+            >
               {section.body.map((p, idx) => (
-                <p key={idx}>{p}</p>
+                <RevealItem key={idx}>
+                  <p>{p}</p>
+                </RevealItem>
               ))}
-            </div>
+            </RevealGroup>
           </Container>
         </section>
       ))}
 
       <section className="py-16 sm:py-20 lg:py-24">
         <Container size="xl">
-          <SectionHeading
-            eyebrow="Services"
-            title={`Our HVAC services in ${area.city}`}
-            description="We proudly offer:"
-          />
-          <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Our services"
+              title={`HVAC services in ${area.city}`}
+              description={`Green Core provides the following services throughout ${area.city} and surrounding ${area.county} areas:`}
+            />
+          </Reveal>
+          <RevealGroup
+            as="ul"
+            className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+          >
             {services.map((s) => (
-              <Card as="li" key={s.slug}>
-                <h3 className="font-display text-lg font-bold">
-                  {s.shortName ?? s.name}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">
-                  {s.summary}
-                </p>
-                <Link
-                  href={`/services/${s.slug}`}
-                  className="mt-4 inline-block text-sm font-semibold text-brand-700 hover:underline"
-                >
-                  Learn more →
-                </Link>
-              </Card>
+              <RevealItem as="li" key={s.slug}>
+                <Card>
+                  <h3 className="font-display text-lg font-bold">
+                    {s.shortName ?? s.name}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">
+                    {s.summary}
+                  </p>
+                  <Link
+                    href={`/services/${s.slug}`}
+                    className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-700 hover:underline"
+                  >
+                    Learn more
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5" aria-hidden>
+                      <path d="M5 12h14M13 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </Link>
+                </Card>
+              </RevealItem>
             ))}
-          </ul>
-          <p className="mt-10 text-sm text-muted sm:text-base">
-            If you&apos;re searching for <em>HVAC near me</em>, <em>AC repair {area.city}</em>, <em>heat pump installation</em>, or <em>furnace service</em>, Green Core Heating &amp; Air is your trusted local team.
-          </p>
+          </RevealGroup>
+          <Reveal>
+            <p className="mt-10 text-sm text-muted sm:text-base">
+              Searching for <em>HVAC near me in {area.city}</em>, <em>AC repair {area.city} CA</em>, or <em>heat pump installation {area.county}</em>? Green Core Heating &amp; Air is your trusted local team.
+            </p>
+          </Reveal>
         </Container>
       </section>
 
       <CTASection
-        title={`Schedule your HVAC service in ${area.city}.`}
-        description="Local crews, quick response, honest pricing."
-        primaryCta={{ label: `Schedule service in ${area.city}`, href: "/contact" }}
+        title={`Schedule HVAC service in ${area.city}.`}
+        description="Local crews, fast response, honest pricing. Usually same-day callbacks."
+        primaryCta={{ label: `Get a free estimate in ${area.city}`, href: "/contact" }}
       />
     </>
   );

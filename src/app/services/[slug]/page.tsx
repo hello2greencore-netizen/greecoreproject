@@ -6,8 +6,36 @@ import { CTASection } from "@/components/sections/CTASection";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
+import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
+import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 import { services, getServiceBySlug } from "@/data/services";
 import { buildMetadata } from "@/lib/seo";
+
+/** Concise, keyword-focused meta titles per service (≤36 chars so template keeps total ≤54). */
+const seoTitles: Record<string, string> = {
+  "heat-pumps": "Heat Pump Installation & Service",
+  "air-conditioning": "AC Installation & Repair",
+  furnaces: "Furnace Installation & Repair",
+  "mini-splits": "Mini Split Installation",
+  "duct-work": "Ductwork Design & Installation",
+  "harvest-thermal": "Harvest Thermal Water Heating",
+};
+
+/** Location-rich meta descriptions per service (≤155 chars). */
+const seoDescriptions: Record<string, string> = {
+  "heat-pumps":
+    "Expert heat pump installation & repair in Sonoma & Marin counties. Energy-efficient, all-electric heating and cooling — properly sized for your home.",
+  "air-conditioning":
+    "Professional AC installation, repair & replacement in Sonoma & Marin. Properly sized systems for consistent cooling and lower energy bills.",
+  furnaces:
+    "Expert furnace installation, repair & replacement in Sonoma & Marin. Dependable heating, proper sizing, and honest recommendations.",
+  "mini-splits":
+    "Ductless mini split installation & repair in Sonoma & Marin. Flexible zoned comfort for additions, garages, and older homes — no ductwork needed.",
+  "duct-work":
+    "Ductwork installation, repair & replacement in Sonoma & Marin. Improve airflow, reduce energy bills, and fix uneven temperatures in your home.",
+  "harvest-thermal":
+    "Harvest Thermal installation in Sonoma & Marin. Smart heat pump water heating with energy management — lower operating costs and better efficiency.",
+};
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
@@ -20,8 +48,8 @@ export async function generateMetadata(
   const service = getServiceBySlug(slug);
   if (!service) return buildMetadata({ title: "Service", description: "" });
   return buildMetadata({
-    title: service.name,
-    description: service.summary,
+    title: seoTitles[slug] ?? service.shortName ?? service.name,
+    description: seoDescriptions[slug] ?? service.summary,
     path: `/services/${service.slug}`,
     image: service.heroImage,
   });
@@ -36,6 +64,14 @@ export default async function ServicePage(
 
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+          { name: service.shortName ?? service.name },
+        ]}
+      />
+
       <Hero
         eyebrow={service.shortName ?? "Service"}
         title={service.name}
@@ -47,37 +83,48 @@ export default async function ServicePage(
 
       <section className="py-16 sm:py-20 lg:py-24">
         <Container size="md">
-          <SectionHeading
-            eyebrow="Overview"
-            title="What to expect."
-          />
-          <div className="mt-8 space-y-5 text-base leading-relaxed text-muted sm:text-lg">
+          <Reveal>
+            <SectionHeading eyebrow="Overview" title="What to expect." />
+          </Reveal>
+          <RevealGroup
+            className="mt-8 space-y-5 text-base leading-relaxed text-muted sm:text-lg"
+            stagger={0.06}
+          >
             {service.overview.map((p, i) => (
-              <p key={i}>{p}</p>
+              <RevealItem key={i}>
+                <p>{p}</p>
+              </RevealItem>
             ))}
-          </div>
+          </RevealGroup>
         </Container>
       </section>
 
       {service.benefits && service.benefits.length > 0 && (
         <section className="bg-subtle py-16 sm:py-20 lg:py-24">
           <Container size="xl">
-            <SectionHeading
-              eyebrow="Benefits"
-              title="Why homeowners choose this."
-              align="center"
-              className="mx-auto"
-            />
-            <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            <Reveal>
+              <SectionHeading
+                eyebrow="Benefits"
+                title="Why homeowners choose this."
+                align="center"
+                className="mx-auto"
+              />
+            </Reveal>
+            <RevealGroup
+              as="ul"
+              className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
+            >
               {service.benefits.map((b) => (
-                <Card as="li" key={b.title}>
-                  <h3 className="font-display text-lg font-bold">{b.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">
-                    {b.description}
-                  </p>
-                </Card>
+                <RevealItem as="li" key={b.title}>
+                  <Card>
+                    <h3 className="font-display text-lg font-bold">{b.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted">
+                      {b.description}
+                    </p>
+                  </Card>
+                </RevealItem>
               ))}
-            </ul>
+            </RevealGroup>
           </Container>
         </section>
       )}

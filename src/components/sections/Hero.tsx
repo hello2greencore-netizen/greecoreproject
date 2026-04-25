@@ -1,7 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 import type { ReactNode } from "react";
 import { Container } from "@/components/ui/Container";
+import { HeroContent } from "@/components/sections/HeroContent";
 import { siteConfig } from "@/data/site";
 import { cn } from "@/lib/utils";
 
@@ -68,45 +68,14 @@ export function Hero({
             : "pt-20 pb-12 sm:pt-28 sm:pb-16 lg:pt-40 lg:pb-20",
         )}
       >
-        <div className="max-w-2xl">
-          {eyebrow && (
-            <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/50">
-              {eyebrow}
-            </p>
-          )}
-          <h1
-            className={cn(
-              "font-display font-bold leading-[1.08] tracking-tight text-white",
-              size === "default"
-                ? "text-4xl sm:text-5xl lg:text-[3.75rem]"
-                : "text-3xl sm:text-4xl lg:text-5xl",
-            )}
-          >
-            {title}
-          </h1>
-          {description && (
-            <p className="mt-5 max-w-xl text-base text-white/70 sm:text-lg sm:leading-relaxed">
-              {description}
-            </p>
-          )}
-          <div className="mt-6 flex flex-wrap items-center gap-2.5 sm:mt-8 sm:gap-3">
-            <Link
-              href={primaryCta.href}
-              className="inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-[13px] font-semibold text-brand-800 shadow-sm transition hover:bg-brand-50 sm:px-6 sm:py-3.5 sm:text-base"
-            >
-              <span className="sm:hidden">Get Estimate</span>
-              <span className="hidden sm:inline">{primaryCta.label}</span>
-            </Link>
-            {secondaryCta && (
-              <Link
-                href={secondaryCta.href}
-                className="inline-flex items-center justify-center rounded-full border border-white/25 bg-white/10 px-4 py-2 text-[13px] font-semibold text-white backdrop-blur-sm transition hover:bg-white/20 sm:px-6 sm:py-3.5 sm:text-base"
-              >
-                {secondaryCta.label}
-              </Link>
-            )}
-          </div>
-        </div>
+        <HeroContent
+          eyebrow={eyebrow}
+          title={title}
+          description={description}
+          primaryCta={primaryCta}
+          secondaryCta={secondaryCta}
+          size={size}
+        />
       </Container>
     </section>
   );

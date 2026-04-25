@@ -128,6 +128,7 @@ export function Header() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
+                      aria-current={isActive ? "page" : undefined}
                       className={cn(
                         "relative text-sm font-medium transition-colors duration-200",
                         "after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-full after:origin-left after:bg-brand-600 after:transition-transform after:duration-200",

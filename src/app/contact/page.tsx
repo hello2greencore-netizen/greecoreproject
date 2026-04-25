@@ -4,13 +4,14 @@ import { CTASection } from "@/components/sections/CTASection";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Reveal } from "@/components/motion/Reveal";
 import { siteConfig } from "@/data/site";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Contact Us",
+  title: "Contact Us — Free HVAC Estimate",
   description:
-    "Contact Green Core Heating & Air for HVAC service, installation, or a free in-home estimate in Sonoma and Marin counties.",
+    "Request a free estimate or call (707) 988-5858. Green Core Heating & Air serves Sonoma & Marin — fast response, no pressure.",
   path: "/contact",
 });
 
@@ -30,17 +31,19 @@ export default function ContactPage() {
         <Container size="lg">
           <div className="grid gap-10 lg:grid-cols-5 lg:gap-16">
             <div className="lg:col-span-3">
-              <SectionHeading
-                eyebrow="Get in touch"
-                title="Send us a message"
-                description="Tell us a little about your home and what you're looking for. No hard sell — ever."
-              />
-              <div className="mt-8">
+              <Reveal>
+                <SectionHeading
+                  eyebrow="Get in touch"
+                  title="Send us a message"
+                  description="Tell us a little about your home and what you're looking for. No hard sell — ever."
+                />
+              </Reveal>
+              <Reveal className="mt-8" delay={0.08}>
                 <ContactForm />
-              </div>
+              </Reveal>
             </div>
 
-            <aside className="lg:col-span-2">
+            <Reveal as="section" className="lg:col-span-2" delay={0.05}>
               <div className="rounded-3xl border border-border bg-subtle p-5 sm:p-8">
                 <h3 className="font-display text-xl font-bold text-foreground">
                   Reach us directly
@@ -103,7 +106,7 @@ export default function ContactPage() {
                   </div>
                 </dl>
               </div>
-            </aside>
+            </Reveal>
           </div>
         </Container>
       </section>

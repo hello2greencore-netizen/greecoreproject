@@ -38,10 +38,10 @@ export default function TestimonialsPage() {
           </Reveal>
           <RevealGroup
             as="ul"
-            className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3"
+            className="mt-12 grid auto-rows-fr gap-5 md:grid-cols-2 lg:grid-cols-3"
           >
             {testimonials.map((t) => (
-              <RevealItem as="li" key={t.id}>
+              <RevealItem as="li" key={t.id} className="h-full">
                 <TestimonialCard t={t} />
               </RevealItem>
             ))}

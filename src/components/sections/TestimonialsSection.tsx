@@ -25,12 +25,12 @@ function Stars({ count }: { count: number }) {
 
 export function TestimonialCard({ t }: { t: Testimonial }) {
   return (
-    <Card as="article">
+    <Card as="article" className="flex h-full min-h-[260px] flex-col">
       <Stars count={t.rating} />
       <blockquote className="mt-4 text-base leading-relaxed text-foreground">
         &ldquo;{t.quote}&rdquo;
       </blockquote>
-      <footer className="mt-5 text-sm">
+      <footer className="mt-auto pt-5 text-sm">
         <p className="font-semibold text-foreground">{t.name}</p>
         <p className="text-muted">
           {t.location}
@@ -60,10 +60,10 @@ export function TestimonialsSection({ limit = 3 }: Props) {
         </Reveal>
         <RevealGroup
           as="ul"
-          className="mt-10 grid gap-4 sm:gap-5 md:grid-cols-2 lg:grid-cols-3"
+          className="mt-10 grid auto-rows-fr gap-4 sm:gap-5 md:grid-cols-2 lg:grid-cols-3"
         >
           {items.map((t) => (
-            <RevealItem as="li" key={t.id}>
+            <RevealItem as="li" key={t.id} className="h-full">
               <TestimonialCard t={t} />
             </RevealItem>
           ))}

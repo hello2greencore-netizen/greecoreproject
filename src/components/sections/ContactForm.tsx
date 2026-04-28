@@ -9,16 +9,59 @@ type Status = "idle" | "submitting" | "success" | "error";
 const inputClass =
   "w-full rounded-xl border border-border bg-white px-4 py-3 text-base text-foreground placeholder:text-muted/70 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/30";
 
+const serviceAreaCities = [
+  "Petaluma",
+  "Rohnert Park",
+  "Santa Rosa",
+  "Novato",
+  "San Rafael",
+  "Mill Valley",
+  "Tiburon",
+  "Sebastopol",
+];
+
 export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const form = e.currentTarget;
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
     setStatus("submitting");
-    // Placeholder: wire to real endpoint in Phase 2.
-    await new Promise((r) => setTimeout(r, 600));
-    setStatus("success");
-    (e.target as HTMLFormElement).reset();
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          phoneCountryCode: formData.get("phone-country-code"),
+          phone: formData.get("phone"),
+          email: formData.get("email"),
+          city: formData.get("city"),
+          service: formData.get("service"),
+          preferredDate: formData.get("preferred-date"),
+          preferredTime: formData.get("preferred-time"),
+          message: formData.get("message"),
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Contact request failed");
+      }
+
+      setStatus("success");
+      form.reset();
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
@@ -40,14 +83,26 @@ export function ContactForm() {
           <span className="mb-1.5 block text-sm font-medium text-foreground">
             Phone
           </span>
-          <input
-            required
-            name="phone"
-            type="tel"
-            autoComplete="tel"
-            className={inputClass}
-            placeholder="(707) 988-5858"
-          />
+          <div className="flex">
+            <select
+              name="phone-country-code"
+              defaultValue="+1"
+              aria-label="Phone country code"
+              autoComplete="tel-country-code"
+              className="w-[6.5rem] rounded-l-xl border border-r-0 border-border bg-subtle px-3 py-3 text-base font-semibold text-foreground focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/30"
+            >
+              <option value="+1">US +1</option>
+            </select>
+            <input
+              required
+              name="phone"
+              type="tel"
+              inputMode="tel"
+              autoComplete="tel-national"
+              className="w-full rounded-r-xl border border-border bg-white px-4 py-3 text-base text-foreground placeholder:text-muted/70 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/30"
+              placeholder="(707) 988-5858"
+            />
+          </div>
         </label>
       </div>
 
@@ -70,12 +125,21 @@ export function ContactForm() {
           <span className="mb-1.5 block text-sm font-medium text-foreground">
             City
           </span>
-          <input
+          <select
             name="city"
-            autoComplete="address-level2"
+            defaultValue=""
+            required
             className={inputClass}
-            placeholder="Petaluma"
-          />
+          >
+            <option value="" disabled>
+              Select your city
+            </option>
+            {serviceAreaCities.map((city) => (
+              <option key={city} value={city}>
+                {city}
+              </option>
+            ))}
+          </select>
         </label>
         <label className="block">
           <span className="mb-1.5 block text-sm font-medium text-foreground">
@@ -145,7 +209,11 @@ export function ContactForm() {
       </label>
 
       <div className="pt-2">
-        <Button size="lg" className="w-full sm:w-auto">
+        <Button
+          size="lg"
+          className="w-full sm:w-auto"
+          disabled={status === "submitting"}
+        >
           {status === "submitting" ? "Sending..." : "Send message"}
         </Button>
       </div>

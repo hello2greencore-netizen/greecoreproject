@@ -43,7 +43,7 @@ export default function ContactPage() {
               </Reveal>
             </div>
 
-            <Reveal as="section" className="lg:col-span-2" delay={0.05}>
+            <Reveal as="section" className="lg:col-span-2 lg:pt-[11rem]" delay={0.05}>
               <div className="rounded-3xl border border-border bg-subtle p-5 sm:p-8">
                 <h3 className="font-display text-xl font-bold text-foreground">
                   Reach us directly

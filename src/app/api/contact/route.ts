@@ -57,7 +57,9 @@ function makeTextEmail(fields: {
   message: string;
 }) {
   return [
-    "New website estimate request",
+    "New website estimate request - Green Core Heating & Air",
+    "",
+    "Reply directly to this email to respond to the customer.",
     "",
     `Name: ${fields.name}`,
     `Phone: ${fields.phone}`,
@@ -82,36 +84,105 @@ function makeHtmlEmail(fields: {
   preferredTime: string;
   message: string;
 }) {
-  const rows = [
+  const detailRows = [
     ["Name", fields.name],
     ["Phone", fields.phone],
     ["Email", fields.email],
     ["City", fields.city],
     ["Service interest", fields.service],
+  ];
+  const appointmentRows = [
     ["Preferred date", fields.preferredDate],
     ["Preferred time", fields.preferredTime],
   ];
+  const replyHref = `mailto:${encodeURIComponent(
+    fields.email,
+  )}?subject=${encodeURIComponent(`Re: Estimate request for ${fields.city}`)}`;
+  const tableRows = (rows: string[][]) =>
+    rows
+      .map(
+        ([label, value]) => `
+          <tr>
+            <td style="padding: 12px 0; color: #5b6b62; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; border-bottom: 1px solid #e3e8e4;">${escapeHtml(label)}</td>
+            <td style="padding: 12px 0 12px 18px; color: #0f1b14; font-size: 15px; font-weight: 700; text-align: right; border-bottom: 1px solid #e3e8e4;">${escapeHtml(value)}</td>
+          </tr>
+        `,
+      )
+      .join("");
 
   return `
-    <div style="font-family: Arial, sans-serif; color: #0f1b14; line-height: 1.5;">
-      <h1 style="font-size: 22px; margin: 0 0 16px;">New website estimate request</h1>
-      <table style="width: 100%; border-collapse: collapse;">
-        <tbody>
-          ${rows
-            .map(
-              ([label, value]) => `
-                <tr>
-                  <td style="padding: 8px 12px; border: 1px solid #e3e8e4; font-weight: 700; width: 170px;">${escapeHtml(label)}</td>
-                  <td style="padding: 8px 12px; border: 1px solid #e3e8e4;">${escapeHtml(value)}</td>
-                </tr>
-              `,
-            )
-            .join("")}
-        </tbody>
-      </table>
-      <h2 style="font-size: 16px; margin: 20px 0 8px;">Message</h2>
-      <p style="white-space: pre-wrap; margin: 0;">${escapeHtml(fields.message)}</p>
-    </div>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin: 0; padding: 0; background: #f4f7f4;">
+      <tr>
+        <td align="center" style="padding: 28px 12px;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width: 680px; overflow: hidden; border-radius: 24px; background: #ffffff; border: 1px solid #e3e8e4; box-shadow: 0 12px 32px rgba(15, 27, 20, 0.08);">
+            <tr>
+              <td style="padding: 28px; background: #123f25;">
+                <div style="color: #d7f2dd; font-family: Arial, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;">
+                  Green Core Heating & Air
+                </div>
+                <h1 style="margin: 8px 0 0; color: #ffffff; font-family: Arial, sans-serif; font-size: 26px; line-height: 1.2;">
+                  New estimate request
+                </h1>
+                <p style="margin: 10px 0 0; color: #d7f2dd; font-family: Arial, sans-serif; font-size: 15px; line-height: 1.5;">
+                  ${escapeHtml(fields.name)} submitted the website contact form.
+                </p>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="padding: 24px 28px 8px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td style="padding: 16px; background: #effaf1; border: 1px solid #d7f2dd; border-radius: 18px;">
+                      <div style="font-family: Arial, sans-serif; color: #1a6335; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;">
+                        Quick action
+                      </div>
+                      <p style="margin: 6px 0 14px; font-family: Arial, sans-serif; color: #0f1b14; font-size: 15px; line-height: 1.5;">
+                        Reply directly to this email to respond to the customer.
+                      </p>
+                      <a href="${escapeHtml(replyHref)}" style="display: inline-block; padding: 11px 18px; border-radius: 999px; background: #1f7c40; color: #ffffff; font-family: Arial, sans-serif; font-size: 14px; font-weight: 700; text-decoration: none;">
+                        Reply to customer
+                      </a>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="padding: 18px 28px 4px;">
+                <h2 style="margin: 0 0 8px; color: #0f1b14; font-family: Arial, sans-serif; font-size: 18px;">
+                  Customer details
+                </h2>
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-family: Arial, sans-serif;">
+                  <tbody>${tableRows(detailRows)}</tbody>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="padding: 18px 28px 4px;">
+                <h2 style="margin: 0 0 8px; color: #0f1b14; font-family: Arial, sans-serif; font-size: 18px;">
+                  Preferred appointment
+                </h2>
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-family: Arial, sans-serif;">
+                  <tbody>${tableRows(appointmentRows)}</tbody>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="padding: 18px 28px 28px;">
+                <h2 style="margin: 0 0 10px; color: #0f1b14; font-family: Arial, sans-serif; font-size: 18px;">
+                  Message
+                </h2>
+                <div style="padding: 16px; border-radius: 18px; background: #f4f7f4; border: 1px solid #e3e8e4; color: #0f1b14; font-family: Arial, sans-serif; font-size: 15px; line-height: 1.6; white-space: pre-wrap;">${escapeHtml(fields.message)}</div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
   `;
 }
 

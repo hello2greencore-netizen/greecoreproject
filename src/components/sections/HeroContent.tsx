@@ -23,7 +23,7 @@ type Props = {
   description?: ReactNode;
   primaryCta: { label: string; href: string };
   secondaryCta?: { label: string; href: string };
-  size: "default" | "compact";
+  size: "default" | "spacious" | "compact";
 };
 
 export function HeroContent({

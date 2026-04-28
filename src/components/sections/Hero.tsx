@@ -13,7 +13,7 @@ type Props = {
   imageAlt: string;
   primaryCta?: { label: string; href: string };
   secondaryCta?: { label: string; href: string };
-  size?: "default" | "compact";
+  size?: "default" | "spacious" | "compact";
   priority?: boolean;
 };
 
@@ -32,9 +32,9 @@ export function Hero({
     <section
       className={cn(
         "relative isolate overflow-hidden bg-neutral-950 text-white",
-        size === "default"
-          ? "min-h-[72dvh] sm:min-h-[82vh] lg:min-h-[88vh]"
-          : "min-h-[50dvh] sm:min-h-[56vh]",
+        size === "default" && "min-h-[72dvh] sm:min-h-[82vh] lg:min-h-[88vh]",
+        size === "spacious" && "min-h-[58dvh] sm:min-h-[66vh] lg:min-h-[72vh]",
+        size === "compact" && "min-h-[50dvh] sm:min-h-[56vh]",
       )}
     >
       {/* Photography */}
@@ -63,9 +63,9 @@ export function Hero({
         size="xl"
         className={cn(
           "flex flex-col justify-end",
-          size === "default"
-            ? "pt-24 pb-14 sm:pt-36 sm:pb-20 lg:pt-52 lg:pb-28"
-            : "pt-20 pb-12 sm:pt-28 sm:pb-16 lg:pt-40 lg:pb-20",
+          size === "default" && "pt-24 pb-14 sm:pt-36 sm:pb-20 lg:pt-52 lg:pb-28",
+          size === "spacious" && "pt-24 pb-14 sm:pt-32 sm:pb-18 lg:pt-44 lg:pb-24",
+          size === "compact" && "pt-20 pb-12 sm:pt-28 sm:pb-16 lg:pt-40 lg:pb-20",
         )}
       >
         <HeroContent

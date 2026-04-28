@@ -56,7 +56,7 @@ export default async function ServiceAreaPage(
         description={`Trusted HVAC experts in ${area.city}, CA.`}
         image={area.heroImage}
         imageAlt={`${area.city}, California`}
-        size="compact"
+        size="spacious"
         primaryCta={{ label: `Schedule service in ${area.city}`, href: "/contact" }}
       />
 

@@ -5,7 +5,7 @@ export const serviceAreas: ServiceArea[] = [
     slug: "petaluma",
     city: "Petaluma",
     county: "Sonoma County",
-    heroImage: "/images/service-areas/petaluma.jpg",
+    heroImage: "/images/service-areas/PetalumaPhoto.webp",
     intro:
       "At Green Core Heating & Air, we provide dependable heating and cooling services designed specifically for homes and businesses in Petaluma. The climate here isn't extreme, but it's unique — cool marine air pushes in through the Petaluma Gap, mornings can be damp and foggy, and summer afternoons can still bring heat spikes. That combination means your HVAC system needs to be properly sized, efficient, and built to handle both temperature swings and moisture.",
     lifestyleLine:
@@ -45,7 +45,7 @@ export const serviceAreas: ServiceArea[] = [
     slug: "rohnert-park",
     city: "Rohnert Park",
     county: "Sonoma County",
-    heroImage: "/images/service-areas/rohnert-park.jpg",
+    heroImage: "/images/service-areas/RohnertPark.png",
     intro:
       "At Green Core Heating & Air, we're proud to serve the growing community of Rohnert Park with dependable, high-efficiency heating and cooling solutions. Known for its open neighborhoods, parks, and proximity to Sonoma State University, Rohnert Park offers a comfortable, easygoing lifestyle — and your home should feel the same way. Our goal is to make sure your HVAC system supports that comfort every day, without inconsistency or high energy costs.",
     lifestyleLine:
@@ -85,7 +85,7 @@ export const serviceAreas: ServiceArea[] = [
     slug: "santa-rosa",
     city: "Santa Rosa",
     county: "Sonoma County",
-    heroImage: "/images/service-areas/santa-rosa.jpg",
+    heroImage: "/images/service-areas/SantaRosa.avif",
     intro:
       "At Green Core Heating & Air, we provide trusted heating and cooling services for homes throughout Santa Rosa. As Sonoma County's largest city, Santa Rosa has a wide mix of neighborhoods, climates, and home styles — and your HVAC system needs to be designed around your specific home, not a generic template.",
     lifestyleLine:
@@ -125,7 +125,7 @@ export const serviceAreas: ServiceArea[] = [
     slug: "novato",
     city: "Novato",
     county: "Marin County",
-    heroImage: "/images/service-areas/novato.jpg",
+    heroImage: "/images/service-areas/downtown-Novato.jpg",
     intro:
       "At Green Core Heating & Air, we're proud to serve homeowners throughout Novato with thoughtfully designed heating and cooling solutions. Novato offers a unique blend of suburban comfort and open space, but that also means homes here experience a wide range of conditions — from warm afternoons to cool evenings. Your HVAC system needs to keep up with those shifts without overworking or driving up energy costs.",
     lifestyleLine:
@@ -165,7 +165,7 @@ export const serviceAreas: ServiceArea[] = [
     slug: "san-rafael",
     city: "San Rafael",
     county: "Marin County",
-    heroImage: "/images/service-areas/san-rafael.jpg",
+    heroImage: "/images/service-areas/SanRafael.avif",
     intro:
       "At Green Core Heating & Air, we provide dependable heating and cooling services designed for homes throughout San Rafael. The climate here sits right in between coastal and inland conditions, which means your HVAC system needs to handle both cooler marine air and warmer inland temperatures — often in the same day. Getting that balance right is what makes the difference between a system that works and one that actually feels comfortable.",
     lifestyleLine:
@@ -206,7 +206,7 @@ export const serviceAreas: ServiceArea[] = [
     slug: "mill-valley",
     city: "Mill Valley",
     county: "Marin County",
-    heroImage: "/images/service-areas/mill-valley.jpg",
+    heroImage: "/images/service-areas/millvalley.jpg",
     intro:
       "At Green Core Heating & Air, we provide heating and cooling solutions designed specifically for homes in Mill Valley. Unlike inland areas, the climate here is heavily influenced by coastal fog, cooler temperatures, and dense tree coverage. That means HVAC systems aren't about extreme heating or cooling — they're about consistency, moisture control, and quiet, efficient operation.",
     lifestyleLine:
@@ -246,7 +246,7 @@ export const serviceAreas: ServiceArea[] = [
     slug: "tiburon",
     city: "Tiburon",
     county: "Marin County",
-    heroImage: "/images/service-areas/tiburon.jpg",
+    heroImage: "/images/service-areas/Tiburon_.webp",
     intro:
       "At Green Core Heating & Air, we provide heating and cooling solutions designed specifically for homes in Tiburon. With its coastal location, mild temperatures, and bay-facing properties, comfort here isn't about extreme heating or cooling — it's about consistency, efficiency, and systems that operate quietly in the background.",
     lifestyleLine:

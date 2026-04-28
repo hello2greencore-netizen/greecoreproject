@@ -25,7 +25,7 @@ export function MapSection() {
           <SectionHeading
             eyebrow="Service area"
             title="Proudly serving Sonoma & Marin."
-            description="Based in Petaluma and serving homeowners across the North Bay. Click any pin to see the area."
+            description="Based in Petaluma and serving homeowners across the North Bay. Click any pin to open location details."
             align="center"
             className="mx-auto"
           />

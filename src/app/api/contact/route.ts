@@ -1,5 +1,4 @@
 import { services } from "@/data/services";
-import { siteConfig } from "@/data/site";
 
 const serviceAreaCities = [
   "Petaluma",
@@ -85,7 +84,6 @@ function makeHtmlEmail(fields: {
   preferredTime: string;
   message: string;
 }) {
-  const logoUrl = `${siteConfig.url}/images/header/greencorelogobg.png`;
   const detailRows = [
     ["Name", fields.name],
     ["Phone", fields.phone],
@@ -122,10 +120,7 @@ function makeHtmlEmail(fields: {
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
                   <tr>
                     <td style="padding: 28px; vertical-align: middle;">
-                      <div style="display: inline-block; padding: 8px; border-radius: 18px; background: #ffffff;">
-                        <img src="${escapeHtml(logoUrl)}" width="58" height="58" alt="Green Core Heating & Air" style="display: block; border: 0; outline: none; text-decoration: none; border-radius: 14px;" />
-                      </div>
-                      <div style="margin-top: 18px; color: #d7f2dd; font-family: Arial, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;">
+                      <div style="color: #d7f2dd; font-family: Arial, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;">
                         Green Core Heating & Air
                       </div>
                       <h1 style="margin: 8px 0 0; color: #ffffff; font-family: Arial, sans-serif; font-size: 28px; line-height: 1.15;">

@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
 import { Logo } from "@/components/layout/Logo";
 import { MobileNav } from "@/components/layout/MobileNav";
 import { useMobileNav } from "@/hooks/useMobileNav";
@@ -152,13 +151,6 @@ export function Header() {
             >
               {siteConfig.phone}
             </a>
-            <Button
-              href={siteConfig.cta.primary.href}
-              size="sm"
-              className="hidden md:inline-flex"
-            >
-              {siteConfig.cta.primary.label}
-            </Button>
             <a
               href={siteConfig.phoneHref}
               aria-label={`Call ${siteConfig.phone}`}

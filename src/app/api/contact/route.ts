@@ -1,4 +1,5 @@
 import { services } from "@/data/services";
+import { siteConfig } from "@/data/site";
 
 const serviceAreaCities = [
   "Petaluma",
@@ -84,6 +85,7 @@ function makeHtmlEmail(fields: {
   preferredTime: string;
   message: string;
 }) {
+  const logoUrl = `${siteConfig.url}/images/header/greencorelogobg.png`;
   const detailRows = [
     ["Name", fields.name],
     ["Phone", fields.phone],
@@ -116,16 +118,25 @@ function makeHtmlEmail(fields: {
         <td align="center" style="padding: 28px 12px;">
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width: 680px; overflow: hidden; border-radius: 24px; background: #ffffff; border: 1px solid #e3e8e4; box-shadow: 0 12px 32px rgba(15, 27, 20, 0.08);">
             <tr>
-              <td style="padding: 28px; background: #123f25;">
-                <div style="color: #d7f2dd; font-family: Arial, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;">
-                  Green Core Heating & Air
-                </div>
-                <h1 style="margin: 8px 0 0; color: #ffffff; font-family: Arial, sans-serif; font-size: 26px; line-height: 1.2;">
-                  New estimate request
-                </h1>
-                <p style="margin: 10px 0 0; color: #d7f2dd; font-family: Arial, sans-serif; font-size: 15px; line-height: 1.5;">
-                  ${escapeHtml(fields.name)} submitted the website contact form.
-                </p>
+              <td style="padding: 0; background: #123f25;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td style="padding: 28px; vertical-align: middle;">
+                      <div style="display: inline-block; padding: 8px; border-radius: 18px; background: #ffffff;">
+                        <img src="${escapeHtml(logoUrl)}" width="58" height="58" alt="Green Core Heating & Air" style="display: block; border: 0; outline: none; text-decoration: none; border-radius: 14px;" />
+                      </div>
+                      <div style="margin-top: 18px; color: #d7f2dd; font-family: Arial, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;">
+                        Green Core Heating & Air
+                      </div>
+                      <h1 style="margin: 8px 0 0; color: #ffffff; font-family: Arial, sans-serif; font-size: 28px; line-height: 1.15;">
+                        New estimate request
+                      </h1>
+                      <p style="margin: 10px 0 0; color: #d7f2dd; font-family: Arial, sans-serif; font-size: 15px; line-height: 1.5;">
+                        ${escapeHtml(fields.name)} submitted the website contact form.
+                      </p>
+                    </td>
+                  </tr>
+                </table>
               </td>
             </tr>
 

@@ -259,7 +259,7 @@ function LocationPanel({
       aria-hidden={!location}
       aria-label={location ? `${location.name} service area details` : undefined}
       className={cn(
-        "absolute inset-x-3 bottom-3 z-[1000] overflow-hidden rounded-2xl bg-white/95 shadow-2xl ring-1 ring-black/10 backdrop-blur transition-[opacity,transform] duration-300 ease-out sm:inset-x-auto sm:bottom-4 sm:right-4 sm:top-4 sm:w-[360px] sm:rounded-3xl",
+        "absolute inset-x-3 bottom-3 z-20 overflow-hidden rounded-2xl bg-white/95 shadow-2xl ring-1 ring-black/10 backdrop-blur transition-[opacity,transform] duration-300 ease-out sm:inset-x-auto sm:bottom-4 sm:right-4 sm:top-4 sm:w-[360px] sm:rounded-3xl",
         location
           ? "translate-y-0 opacity-100 sm:translate-x-0"
           : "pointer-events-none translate-y-[calc(100%+1rem)] opacity-0 sm:translate-x-[calc(100%+1rem)] sm:translate-y-0",
@@ -367,12 +367,12 @@ export function LeafletMap() {
   );
 
   return (
-    <div className="relative h-full w-full">
+    <div className="relative isolate h-full w-full">
       <MapContainer
         center={[38.28, -122.67]}
         zoom={10}
         scrollWheelZoom={false}
-        className="h-full w-full"
+        className="relative z-0 h-full w-full"
         style={{ background: "#e8f0eb" }}
       >
         <AttributionFix />

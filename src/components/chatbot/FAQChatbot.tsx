@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import {
   useEffect,
   useMemo,
@@ -30,7 +31,7 @@ type ChatMessage = {
 const welcomeMessage: ChatMessage = {
   id: "welcome",
   role: "assistant",
-  text: "Hi, I can answer quick questions about Green Core services, service areas, estimates, rebates, and booking.",
+  text: "Hi, I'm Corey. I can help with quick questions about Green Core services, service areas, estimates, rebates, and booking.",
 };
 
 const stopWords = new Set([
@@ -279,22 +280,22 @@ export function FAQChatbot() {
         >
           <div className="flex items-center justify-between gap-3 border-b border-border bg-subtle/60 px-4 py-3">
             <div className="flex min-w-0 items-center gap-3">
-              <span className="grid h-9 w-9 flex-shrink-0 place-items-center rounded-full bg-brand-600 text-white">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden className="h-5 w-5">
-                  <path
-                    d="M6.75 8.25h10.5M6.75 12h6.5M5.5 4.75h13a2.25 2.25 0 0 1 2.25 2.25v7.5a2.25 2.25 0 0 1-2.25 2.25h-7.25L7 20.25v-3.5H5.5a2.25 2.25 0 0 1-2.25-2.25V7A2.25 2.25 0 0 1 5.5 4.75Z"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="1.6"
-                  />
-                </svg>
+              <span className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-full bg-brand-50 ring-1 ring-brand-100">
+                <Image
+                  src="/images/chatbot/chatbot-icon.png"
+                  alt=""
+                  fill
+                  sizes="48px"
+                  className="object-contain"
+                />
               </span>
               <div className="min-w-0">
                 <h2 className="truncate font-display text-base font-bold text-foreground">
-                  Green Core FAQ
+                  Corey
                 </h2>
-                <p className="truncate text-xs text-muted">Quick answers for visitors</p>
+                <p className="truncate text-xs text-muted">
+                  The Comfort Hero
+                </p>
               </div>
             </div>
             <div className="flex items-center gap-1">
@@ -352,6 +353,17 @@ export function FAQChatbot() {
                   message.role === "user" ? "justify-end" : "justify-start",
                 )}
               >
+                {message.role === "assistant" && (
+                  <span className="relative mr-2 mt-1 h-8 w-8 flex-shrink-0 overflow-hidden rounded-full bg-brand-50 ring-1 ring-brand-100">
+                    <Image
+                      src="/images/chatbot/chatbot-icon.png"
+                      alt=""
+                      fill
+                      sizes="32px"
+                      className="object-contain"
+                    />
+                  </span>
+                )}
                 <div
                   className={cn(
                     "max-w-[84%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed",
@@ -483,23 +495,21 @@ export function FAQChatbot() {
           aria-controls="faq-chatbot-panel"
           aria-expanded={open}
           className={cn(
-            "fixed right-4 z-40 grid h-14 w-14 place-items-center rounded-full bg-brand-600 text-white",
-            "shadow-[0_14px_34px_-12px_rgba(15,27,20,0.4),0_6px_16px_-10px_rgba(15,27,20,0.3)]",
-            "transition-[background-color,transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-lg active:scale-[0.96]",
+            "fixed right-3 z-40 grid h-20 w-20 place-items-center rounded-full bg-transparent p-0",
+            "drop-shadow-[0_14px_18px_rgba(15,27,20,0.28)]",
+            "transition-[transform,filter] duration-200 hover:-translate-y-0.5 hover:drop-shadow-[0_18px_24px_rgba(15,27,20,0.32)] active:scale-[0.96]",
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2",
-            "bottom-[calc(128px+env(safe-area-inset-bottom))] sm:right-6 sm:bottom-6",
+            "bottom-[calc(122px+env(safe-area-inset-bottom))] sm:right-5 sm:bottom-5",
           )}
         >
           <span className="sr-only">Open FAQ chat</span>
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden className="h-6 w-6">
-            <path
-              d="M6.75 8.25h10.5M6.75 12h6.5M5.5 4.75h13a2.25 2.25 0 0 1 2.25 2.25v7.5a2.25 2.25 0 0 1-2.25 2.25h-7.25L7 20.25v-3.5H5.5a2.25 2.25 0 0 1-2.25-2.25V7A2.25 2.25 0 0 1 5.5 4.75Z"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="1.7"
-            />
-          </svg>
+          <Image
+            src="/images/chatbot/chatbot-icon.png"
+            alt=""
+            fill
+            sizes="80px"
+            className="object-contain"
+          />
         </button>
       )}
     </>

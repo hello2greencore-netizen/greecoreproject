@@ -4,7 +4,6 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { StickyMobileCTA } from "@/components/layout/StickyMobileCTA";
-import { ScrollToTop } from "@/components/layout/ScrollToTop";
 import { FAQChatbot } from "@/components/chatbot/FAQChatbot";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 import { LocalBusinessSchema } from "@/components/seo/LocalBusinessSchema";
@@ -76,7 +75,6 @@ export default function RootLayout({
           </main>
           <Footer />
           <StickyMobileCTA />
-          <ScrollToTop />
           <FAQChatbot />
         </MotionProvider>
       </body>

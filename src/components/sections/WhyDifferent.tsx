@@ -18,11 +18,11 @@ const points = [
   },
   {
     title: "Clean, respectful installs",
-    body: "Shoe covers, drop cloths, tidy linesets, and daily cleanup. Your home deserves it.",
+    body: "Shoe covers, drop cloths, and daily cleanup. Your home deserves it.",
   },
   {
     title: "Straightforward pricing",
-    body: "No surprise add-ons. Clear options, clear pricing, clear timelines.",
+    body: "No surprise. Clear options, clear pricing, clear timelines.",
   },
   {
     title: "Long-term relationships",

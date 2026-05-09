@@ -6,13 +6,13 @@ export const siteConfig = {
     "Green Core Heating & Air is a locally owned HVAC company serving Sonoma and Marin counties with expert heat pump, AC, furnace, and mini split installation and service.",
   phone: "(707) 988-5858",
   phoneHref: "tel:+17079885858",
-  email: "hello@greencoreheatingair.com",
-  emailHref: "mailto:hello@greencoreheatingair.com",
+  email: "hello@greencorehvac.com",
+  emailHref: "mailto:hello@greencorehvac.com",
   address: {
-    street: "1234 Example Ave",
+    street: "1600 Corporate Circle",
     city: "Petaluma",
     state: "CA",
-    zip: "94952",
+    zip: "94954",
   },
   hours: [
     { day: "Mon – Fri", hours: "7:00 AM – 6:00 PM" },
@@ -29,6 +29,6 @@ export const siteConfig = {
     primary: { label: "Get a 60-Second Estimate", href: "/contact" },
     secondary: { label: "Call Us", href: "tel:+17079885858" },
   },
-  license: "CSLB #1234567",
+  license: "CSLB #1131183",
   ogImage: "/images/og-default.jpg",
 } as const;

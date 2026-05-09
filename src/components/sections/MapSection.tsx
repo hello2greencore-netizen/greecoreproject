@@ -39,7 +39,7 @@ export function MapSection() {
           </div>
         </Reveal>
         <p className="mt-4 text-center text-xs text-muted">
-          Serving Petaluma, Santa Rosa, Rohnert Park, Sebastopol, Windsor, Healdsburg, Novato, San Rafael, Mill Valley, Fairfax, and surrounding areas.
+          Serving Petaluma, Santa Rosa, Rohnert Park, Cotati, Sebastopol, Windsor, Healdsburg, Novato, San Rafael, Mill Valley, Fairfax, and surrounding areas.
         </p>
       </Container>
     </section>

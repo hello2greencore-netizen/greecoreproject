@@ -27,6 +27,7 @@ export const primaryNav: NavLink[] = [
       { label: "Mill Valley", href: "/service-areas/mill-valley" },
       { label: "Tiburon", href: "/service-areas/tiburon" },
       { label: "Sebastopol", href: "/service-areas/sebastopol" },
+      { label: "Cotati", href: "/service-areas/cotati" },
     ],
   },
   { label: "Reviews", href: "/testimonials" },
@@ -56,5 +57,6 @@ export const footerNav = {
     { label: "Mill Valley", href: "/service-areas/mill-valley" },
     { label: "Tiburon", href: "/service-areas/tiburon" },
     { label: "Sebastopol", href: "/service-areas/sebastopol" },
+    { label: "Cotati", href: "/service-areas/cotati" },
   ],
 };

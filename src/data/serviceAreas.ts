@@ -323,6 +323,46 @@ export const serviceAreas: ServiceArea[] = [
       },
     ],
   },
+  {
+    slug: "cotati",
+    city: "Cotati",
+    county: "Sonoma County",
+    heroImage: "/images/service-areas/Cotati.jpg",
+    intro:
+      "At Green Core Heating & Air, we provide heating and cooling solutions designed specifically for homes in Cotati. While Cotati shares some of the same coastal influence as nearby areas, it has its own microclimate — cool mornings, occasional fog, and warm afternoons that can catch homeowners off guard. That combination means your HVAC system needs to be efficient, responsive, and properly designed to handle daily temperature swings.",
+    lifestyleLine:
+      "Whether you're spending time at La Plaza Park, enjoying local restaurants and music in downtown Cotati, or heading out toward nearby trails and open space, you want to come home to a space that feels consistently comfortable. If your system struggles to keep up, leaves certain rooms warmer than others, or runs longer than it should, it's often a sign the system wasn't designed for your home's actual conditions.",
+    landmarks: [
+      "La Plaza Park",
+      "Downtown Cotati",
+      "Cotati Accordion Festival",
+      "Helen Putnam Regional Park",
+    ],
+    sections: [
+      {
+        heading: "Designed for Cotati Homes",
+        body: [
+          "Cotati homes range from established neighborhoods with older construction to newer developments that require properly balanced high-efficiency systems. Many older homes deal with ductwork that was never optimized for airflow, while newer homes can still suffer from poor system sizing or installation shortcuts.",
+          "At Green Core Heating & Air, we provide heat pump installation, air conditioning services, furnace repair, mini split systems, and ductwork upgrades tailored specifically to Cotati homes. Instead of simply replacing equipment, we take a design-first approach — evaluating airflow, insulation, and layout to ensure your system works as a complete system.",
+          "Whether it's improving ductwork, installing a mini split for a problem area, or upgrading to a high-efficiency heat pump, we focus on solutions that actually solve comfort issues — not just temporarily improve them.",
+        ],
+      },
+      {
+        heading: "Built for Comfort, Efficiency, and Everyday Living",
+        body: [
+          "Cotati's climate may seem mild, but that's exactly why system efficiency matters. Your HVAC system should be able to handle cooler mornings and warmer afternoons without constantly running or driving up energy costs.",
+          "After a day spent enjoying local events like the Cotati Accordion Festival or relaxing in the park, your home should feel balanced and comfortable without needing constant adjustments. Whether you need AC repair, furnace service, heat pump installation, or airflow improvements, we design systems that deliver reliable comfort while keeping energy use in check.",
+        ],
+      },
+      {
+        heading: "Why We Love Cotati",
+        body: [
+          "Cotati has a personality all its own. With its walkable downtown, strong sense of community, and unique local events, it's one of those places that feels both connected and independent at the same time.",
+          "We enjoy working in a city where homeowners value practical comfort and long-term solutions. The variety of homes and the tight-knit feel of the community make it rewarding to help people improve their living spaces. Whether it's solving a long-standing comfort issue or upgrading to a more efficient system, we're proud to serve homeowners in Cotati.",
+        ],
+      },
+    ],
+  },
 ];
 
 export const getServiceAreaBySlug = (

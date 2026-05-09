@@ -11,7 +11,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "HVAC Service Areas — Sonoma & Marin Counties",
   description:
-    "Green Core serves Petaluma, Santa Rosa, Novato, San Rafael, Mill Valley, Tiburon & Sebastopol. Local HVAC experts in Sonoma & Marin counties.",
+    "Green Core serves Petaluma, Santa Rosa, Novato, San Rafael, Mill Valley, Tiburon, Sebastopol & Cotati. Local HVAC experts in Sonoma & Marin counties.",
   path: "/service-areas",
 });
 

@@ -75,6 +75,22 @@ const serviceLocations: ServiceLocation[] = [
     ],
   },
   {
+    name: "Cotati",
+    county: "Sonoma County",
+    note: "Full service area",
+    description:
+      "Serving Cotati homes with HVAC systems designed for cool mornings, warm afternoons, and consistent everyday comfort.",
+    lat: 38.3266,
+    lng: -122.7094,
+    slug: "cotati",
+    landmarks: [
+      "La Plaza Park",
+      "Downtown Cotati",
+      "Cotati Accordion Festival",
+      "Helen Putnam Regional Park",
+    ],
+  },
+  {
     name: "Sebastopol",
     county: "Sonoma County",
     note: "Full service area",

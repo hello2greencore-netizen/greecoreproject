@@ -18,6 +18,7 @@ const serviceAreaCities = [
   "Mill Valley",
   "Tiburon",
   "Sebastopol",
+  "Cotati",
 ];
 
 export function ContactForm() {

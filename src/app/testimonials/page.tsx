@@ -2,7 +2,7 @@ import { Hero } from "@/components/sections/Hero";
 import { CTASection } from "@/components/sections/CTASection";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { TestimonialCard } from "@/components/sections/TestimonialsSection";
+import { TestimonialsPaginated } from "@/components/sections/TestimonialsPaginated";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { testimonials } from "@/data/testimonials";
 import { buildMetadata } from "@/lib/seo";
@@ -36,16 +36,9 @@ export default function TestimonialsPage() {
               className="mx-auto"
             />
           </Reveal>
-          <RevealGroup
-            as="ul"
-            className="mt-12 grid auto-rows-fr gap-5 md:grid-cols-2 lg:grid-cols-3"
-          >
-            {testimonials.map((t) => (
-              <RevealItem as="li" key={t.id} className="h-full">
-                <TestimonialCard t={t} />
-              </RevealItem>
-            ))}
-          </RevealGroup>
+          <div className="mt-12">
+            <TestimonialsPaginated items={testimonials} />
+          </div>
         </Container>
       </section>
 

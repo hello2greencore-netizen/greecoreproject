@@ -9,6 +9,7 @@ const serviceAreaCities = [
   "Mill Valley",
   "Tiburon",
   "Sebastopol",
+  "Cotati",
 ];
 
 type ContactPayload = {

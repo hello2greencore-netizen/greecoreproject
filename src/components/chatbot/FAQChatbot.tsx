@@ -157,6 +157,7 @@ export function FAQChatbot() {
   const [draft, setDraft] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([welcomeMessage]);
   const [suggestionsOpen, setSuggestionsOpen] = useState(true);
+  const [bubbleVisible, setBubbleVisible] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const messageEndRef = useRef<HTMLDivElement>(null);
   const messageIdRef = useRef(0);
@@ -179,6 +180,16 @@ export function FAQChatbot() {
 
     return () => window.clearTimeout(timer);
   }, [open]);
+
+  useEffect(() => {
+    const showTimer = window.setTimeout(() => setBubbleVisible(true), 800);
+    const hideTimer = window.setTimeout(() => setBubbleVisible(false), 6000);
+
+    return () => {
+      window.clearTimeout(showTimer);
+      window.clearTimeout(hideTimer);
+    };
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -583,6 +594,19 @@ export function FAQChatbot() {
           )}
         >
           <span className="sr-only">Open FAQ chat</span>
+          <span
+            aria-hidden
+            className={cn(
+              "absolute right-[calc(100%-0.75rem)] top-1/2 whitespace-nowrap rounded-full bg-white px-2.5 py-1 text-[11px] font-semibold text-brand-800 shadow-[0_4px_12px_-4px_rgba(15,27,20,0.3)] ring-1 ring-black/6",
+              "after:absolute after:-right-1 after:top-1/2 after:h-2 after:w-2 after:-translate-y-1/2 after:rotate-45 after:bg-white after:ring-1 after:ring-black/6",
+              "transition-all duration-500 ease-out",
+              bubbleVisible
+                ? "-translate-y-1/2 translate-x-0 opacity-100"
+                : "pointer-events-none -translate-y-1/2 translate-x-2 opacity-0",
+            )}
+          >
+            Chat with me!
+          </span>
           <Image
             src="/images/corey-removebg.png"
             alt=""

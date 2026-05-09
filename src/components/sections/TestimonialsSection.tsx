@@ -2,6 +2,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
+import { TestimonialsPaginated } from "@/components/sections/TestimonialsPaginated";
 import { testimonials } from "@/data/testimonials";
 import type { Testimonial } from "@/types";
 
@@ -45,8 +46,8 @@ type Props = {
   limit?: number;
 };
 
-export function TestimonialsSection({ limit = 3 }: Props) {
-  const items = testimonials.slice(0, limit);
+export function TestimonialsSection({ limit }: Props) {
+  const items = limit ? testimonials.slice(0, limit) : testimonials;
   return (
     <section className="py-14 sm:py-20 lg:py-24">
       <Container size="xl">
@@ -58,16 +59,9 @@ export function TestimonialsSection({ limit = 3 }: Props) {
             className="mx-auto"
           />
         </Reveal>
-        <RevealGroup
-          as="ul"
-          className="mt-10 grid auto-rows-fr gap-4 sm:gap-5 md:grid-cols-2 lg:grid-cols-3"
-        >
-          {items.map((t) => (
-            <RevealItem as="li" key={t.id} className="h-full">
-              <TestimonialCard t={t} />
-            </RevealItem>
-          ))}
-        </RevealGroup>
+        <div className="mt-10">
+          <TestimonialsPaginated items={items} />
+        </div>
       </Container>
     </section>
   );

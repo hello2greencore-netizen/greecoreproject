@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { TestimonialCard } from "@/components/sections/TestimonialsSection";
 import type { Testimonial } from "@/types";
 
-const PAGE_SIZE = 9;
+const PAGE_SIZE = 6;
 
 export function TestimonialsPaginated({ items }: { items: Testimonial[] }) {
   const [page, setPage] = useState(1);

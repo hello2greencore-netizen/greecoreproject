@@ -31,7 +31,7 @@ export default function HomePage() {
       <AboutPreview />
       <WhyDifferent />
       <GallerySection />
-      <TestimonialsSection limit={3} />
+      <TestimonialsSection />
       <MapSection />
       <CTASection />
     </>

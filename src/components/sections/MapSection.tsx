@@ -3,7 +3,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/motion/Reveal";
 
 const MY_MAPS_SRC =
-  "https://www.google.com/maps/d/embed?mid=1yFA_MdCNcWA--VoFezweyWheamCFauI&ehbc=2E312F";
+  "https://www.google.com/maps/d/embed?mid=1YEGEGRpIUxGyx_gqF_XS8JM2z4IWAt8&ehbc=2E312F";
 
 export function MapSection() {
   return (

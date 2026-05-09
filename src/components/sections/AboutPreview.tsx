@@ -56,7 +56,7 @@ export function AboutPreview() {
           </div>
           <Reveal className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-subtle sm:aspect-[16/10] lg:aspect-[4/5]">
             <Image
-              src="/images/about/zach-tony.jpg"
+              src="/images/about/zach-tony.png"
               alt="Zach and Tony, owners of Green Core Heating & Air"
               fill
               sizes="(min-width: 1024px) 40vw, 100vw"

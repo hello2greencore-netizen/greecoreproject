@@ -31,7 +31,7 @@ type ChatMessage = {
 const welcomeMessage: ChatMessage = {
   id: "welcome",
   role: "assistant",
-  text: "Hi, I'm Corey. I can help with quick questions about Green Core services, service areas, estimates, rebates, and booking.",
+  text: "Hi, I'm Corey. I can help with quick questions about Green Core services, service areas, estimates, rebates, and booking. Ready for a quote? Tap the 60-second form above for the fastest reply.",
 };
 
 const stopWords = new Set([
@@ -341,6 +341,47 @@ export function FAQChatbot() {
             </div>
           </div>
 
+          <Link
+            href="/contact"
+            onClick={() => setOpen(false)}
+            className={cn(
+              "group relative flex items-center justify-between gap-3 overflow-hidden border-b border-brand-700/30 px-4 py-3",
+              "bg-gradient-to-r from-brand-600 via-brand-600 to-brand-700 text-white",
+              "transition-[filter] duration-200 hover:brightness-110",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-inset",
+            )}
+          >
+            <span className="pointer-events-none absolute -right-6 -top-6 h-20 w-20 rounded-full bg-white/10 blur-xl" />
+            <span className="relative flex items-center gap-3">
+              <span className="grid h-9 w-9 flex-shrink-0 place-items-center rounded-full bg-white/15 ring-1 ring-white/30">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden className="h-5 w-5">
+                  <circle cx="12" cy="13" r="8" stroke="currentColor" strokeWidth="1.8" />
+                  <path d="M12 9v4l2.5 2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M9 2h6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                </svg>
+              </span>
+              <span className="min-w-0">
+                <span className="block text-[10px] font-bold uppercase tracking-[0.16em] text-amber-300">
+                  Fastest way to get started
+                </span>
+                <span className="block text-sm font-bold leading-tight">
+                  Get a free estimate in 60 seconds
+                </span>
+              </span>
+            </span>
+            <span className="relative grid h-8 w-8 flex-shrink-0 place-items-center rounded-full bg-white text-brand-700 shadow-sm transition-transform duration-200 group-hover:translate-x-0.5">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden className="h-4 w-4">
+                <path
+                  d="M5 12h14M13 5l7 7-7 7"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
+              </svg>
+            </span>
+          </Link>
+
           <div
             className="min-h-0 flex-1 space-y-3 overflow-y-auto px-4 py-4"
             aria-live="polite"
@@ -383,9 +424,9 @@ export function FAQChatbot() {
                       </a>
                       <Link
                         href="/contact"
-                        className="rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-brand-800 ring-1 ring-border transition-colors hover:bg-brand-50"
+                        className="rounded-full bg-brand-600 px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-brand-700"
                       >
-                        Contact form
+                        60-second form →
                       </Link>
                     </div>
                   )}
@@ -495,19 +536,19 @@ export function FAQChatbot() {
           aria-controls="faq-chatbot-panel"
           aria-expanded={open}
           className={cn(
-            "fixed right-3 z-40 grid h-20 w-20 place-items-center rounded-full bg-transparent p-0",
+            "fixed right-3 z-40 grid h-28 w-28 place-items-center rounded-full bg-transparent p-0 sm:h-32 sm:w-32",
             "drop-shadow-[0_14px_18px_rgba(15,27,20,0.28)]",
             "transition-[transform,filter] duration-200 hover:-translate-y-0.5 hover:drop-shadow-[0_18px_24px_rgba(15,27,20,0.32)] active:scale-[0.96]",
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2",
-            "bottom-[calc(122px+env(safe-area-inset-bottom))] sm:right-5 sm:bottom-5",
+            "bottom-[calc(150px+env(safe-area-inset-bottom))] sm:right-5 sm:bottom-10",
           )}
         >
           <span className="sr-only">Open FAQ chat</span>
           <Image
-            src="/images/chatbot/chatbot-icon.png"
+            src="/images/corey-removebg.png"
             alt=""
             fill
-            sizes="80px"
+            sizes="(min-width: 640px) 128px, 112px"
             className="object-contain"
           />
         </button>

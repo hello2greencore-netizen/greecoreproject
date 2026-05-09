@@ -26,7 +26,7 @@ export const siteConfig = {
     google: "#",
   },
   cta: {
-    primary: { label: "Get a 60-Second Estimate", href: "/contact" },
+    primary: { label: "60 second form", href: "/contact" },
     secondary: { label: "Call Us", href: "tel:+17079885858" },
   },
   license: "CSLB #1131183",

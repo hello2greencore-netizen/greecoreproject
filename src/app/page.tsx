@@ -2,6 +2,7 @@ import { Hero } from "@/components/sections/Hero";
 import { AboutPreview } from "@/components/sections/AboutPreview";
 import { WhyDifferent } from "@/components/sections/WhyDifferent";
 import { GallerySection } from "@/components/sections/GallerySection";
+import { AwardSection } from "@/components/sections/AwardSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { MapSection } from "@/components/sections/MapSection";
 import { CTASection } from "@/components/sections/CTASection";
@@ -31,6 +32,7 @@ export default function HomePage() {
       <AboutPreview />
       <WhyDifferent />
       <GallerySection />
+      <AwardSection />
       <TestimonialsSection />
       <MapSection />
       <CTASection />

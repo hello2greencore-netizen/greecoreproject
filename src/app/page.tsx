@@ -1,7 +1,6 @@
 import { Hero } from "@/components/sections/Hero";
 import { AboutPreview } from "@/components/sections/AboutPreview";
 import { WhyDifferent } from "@/components/sections/WhyDifferent";
-import { GallerySection } from "@/components/sections/GallerySection";
 import { AwardSection } from "@/components/sections/AwardSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { MapSection } from "@/components/sections/MapSection";
@@ -22,7 +21,7 @@ export default function HomePage() {
     <>
       <Hero
         eyebrow="Sonoma & Marin HVAC"
-        title="Comfort that just works — and built to last."
+        title="Efficient Comfort starts here."
         description="Clean, efficient heating and cooling for the North Bay. Expert heat pumps, AC, furnaces, mini splits, and more."
         image="/images/hero/home.jpg"
         imageAlt="Modern home at sunset in Sonoma County"
@@ -31,7 +30,6 @@ export default function HomePage() {
       />
       <AboutPreview />
       <WhyDifferent />
-      <GallerySection />
       <AwardSection />
       <TestimonialsSection />
       <MapSection />

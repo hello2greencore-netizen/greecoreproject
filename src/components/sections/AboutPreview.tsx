@@ -6,8 +6,8 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 
 const bullets = [
   "Energy-efficient heating, cooling & water heating",
-  "Design-first approach — right-sized for your home",
-  "Vetted, trained technicians who respect your home",
+  "Design-first approach — sized right for your home",
+  "Vetted and trained technicians who respect your home",
 ];
 
 export function AboutPreview() {
@@ -56,8 +56,8 @@ export function AboutPreview() {
           </div>
           <Reveal className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-subtle sm:aspect-[16/10] lg:aspect-[4/5]">
             <Image
-              src="/images/hero/about.jpg"
-              alt="Green Core technician installing an HVAC system"
+              src="/images/about/zach-tony.jpg"
+              alt="Zach and Tony, owners of Green Core Heating & Air"
               fill
               sizes="(min-width: 1024px) 40vw, 100vw"
               className="object-cover"

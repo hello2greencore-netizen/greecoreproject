@@ -156,6 +156,7 @@ export function FAQChatbot() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [draft, setDraft] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([welcomeMessage]);
+  const [suggestionsOpen, setSuggestionsOpen] = useState(true);
   const inputRef = useRef<HTMLInputElement>(null);
   const messageEndRef = useRef<HTMLDivElement>(null);
   const messageIdRef = useRef(0);
@@ -206,6 +207,7 @@ export function FAQChatbot() {
   function answerFaq(faq: SearchableFAQ) {
     setSelectedCategory(faq.categoryId);
     setDraft("");
+    setSuggestionsOpen(false);
     setMessages((current) => [
       ...current,
       {
@@ -255,12 +257,14 @@ export function FAQChatbot() {
     }
 
     setDraft("");
+    setSuggestionsOpen(false);
   }
 
   function resetChat() {
     setMessages([welcomeMessage]);
     setSelectedCategory(null);
     setDraft("");
+    setSuggestionsOpen(true);
     inputRef.current?.focus();
   }
 
@@ -272,10 +276,10 @@ export function FAQChatbot() {
           role="dialog"
           aria-label="Green Core FAQ chat"
           className={cn(
-            "fixed inset-x-4 z-40 flex max-h-[70dvh] flex-col overflow-hidden rounded-3xl",
+            "fixed inset-x-3 z-40 flex h-[85dvh] max-h-[85dvh] flex-col overflow-hidden rounded-3xl",
             "border border-black/[0.06] bg-white shadow-[0_18px_52px_-18px_rgba(15,27,20,0.35),0_8px_24px_-16px_rgba(15,27,20,0.22)] ring-1 ring-black/[0.04]",
-            "bottom-[calc(92px+env(safe-area-inset-bottom))]",
-            "sm:inset-x-auto sm:right-6 sm:bottom-6 sm:w-[380px] sm:max-h-[34rem]",
+            "bottom-[calc(80px+env(safe-area-inset-bottom))]",
+            "sm:inset-x-auto sm:right-6 sm:bottom-6 sm:h-[min(640px,85dvh)] sm:w-[440px] sm:max-h-[85dvh]",
           )}
         >
           <div className="flex items-center justify-between gap-3 border-b border-border bg-subtle/60 px-4 py-3">
@@ -436,62 +440,97 @@ export function FAQChatbot() {
             <div ref={messageEndRef} />
           </div>
 
-          <div className="border-t border-border bg-subtle/50 px-4 py-3">
-            <div className="flex gap-2 overflow-x-auto pb-1">
-              <button
-                type="button"
-                onClick={() => setSelectedCategory(null)}
+          <div className="border-t border-border bg-subtle/50">
+            <button
+              type="button"
+              onClick={() => setSuggestionsOpen((v) => !v)}
+              aria-expanded={suggestionsOpen}
+              aria-controls="faq-suggestions"
+              className="flex w-full items-center justify-between px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.12em] text-muted transition-colors hover:bg-black/[0.03]"
+            >
+              <span>
+                {suggestionsOpen
+                  ? selectedCategoryDetails?.prompt ?? "Quick questions"
+                  : "Show quick questions"}
+              </span>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden
                 className={cn(
-                  "flex-shrink-0 rounded-full px-3 py-1.5 text-xs font-semibold transition-colors",
-                  selectedCategory === null
-                    ? "bg-brand-600 text-white"
-                    : "bg-white text-foreground/70 ring-1 ring-border hover:bg-brand-50 hover:text-brand-800",
+                  "h-4 w-4 transition-transform duration-200",
+                  suggestionsOpen ? "rotate-180" : "rotate-0",
                 )}
               >
-                All
-              </button>
-              {chatbotFaqCategories.map((category) => (
-                <button
-                  key={category.id}
-                  type="button"
-                  onClick={() => setSelectedCategory(category.id)}
-                  className={cn(
-                    "flex-shrink-0 rounded-full px-3 py-1.5 text-xs font-semibold transition-colors",
-                    selectedCategory === category.id
-                      ? "bg-brand-600 text-white"
-                      : "bg-white text-foreground/70 ring-1 ring-border hover:bg-brand-50 hover:text-brand-800",
-                  )}
-                >
-                  {category.label}
-                </button>
-              ))}
-            </div>
+                <path
+                  d="M6 9l6 6 6-6"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
 
-            <p className="mt-2 text-xs font-semibold uppercase tracking-[0.12em] text-muted">
-              {selectedCategoryDetails?.prompt ?? "Top questions"}
-            </p>
-            <div className="mt-2 grid gap-2">
-              {visibleFaqs.length > 0 ? (
-                visibleFaqs.map((faq) => (
+            {suggestionsOpen && (
+              <div
+                id="faq-suggestions"
+                className="max-h-64 overflow-y-auto px-4 pb-3"
+              >
+                <div className="flex gap-2 overflow-x-auto pb-2">
                   <button
-                    key={faq.id}
                     type="button"
-                    onClick={() => answerFaq(faq)}
+                    onClick={() => setSelectedCategory(null)}
                     className={cn(
-                      "rounded-xl bg-white px-3 py-2 text-left text-sm font-medium text-foreground/80 ring-1 ring-border",
-                      "transition-colors duration-150 hover:bg-brand-50 hover:text-brand-800",
-                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500",
+                      "flex-shrink-0 rounded-full px-3 py-1.5 text-xs font-semibold transition-colors",
+                      selectedCategory === null
+                        ? "bg-brand-600 text-white"
+                        : "bg-white text-foreground/70 ring-1 ring-border hover:bg-brand-50 hover:text-brand-800",
                     )}
                   >
-                    {faq.question}
+                    All
                   </button>
-                ))
-              ) : (
-                <p className="rounded-xl bg-white px-3 py-2 text-sm text-muted ring-1 ring-border">
-                  No quick match yet.
-                </p>
-              )}
-            </div>
+                  {chatbotFaqCategories.map((category) => (
+                    <button
+                      key={category.id}
+                      type="button"
+                      onClick={() => setSelectedCategory(category.id)}
+                      className={cn(
+                        "flex-shrink-0 rounded-full px-3 py-1.5 text-xs font-semibold transition-colors",
+                        selectedCategory === category.id
+                          ? "bg-brand-600 text-white"
+                          : "bg-white text-foreground/70 ring-1 ring-border hover:bg-brand-50 hover:text-brand-800",
+                      )}
+                    >
+                      {category.label}
+                    </button>
+                  ))}
+                </div>
+
+                <div className="mt-2 grid gap-2">
+                  {visibleFaqs.length > 0 ? (
+                    visibleFaqs.map((faq) => (
+                      <button
+                        key={faq.id}
+                        type="button"
+                        onClick={() => answerFaq(faq)}
+                        className={cn(
+                          "rounded-xl bg-white px-3 py-2 text-left text-sm font-medium text-foreground/80 ring-1 ring-border",
+                          "transition-colors duration-150 hover:bg-brand-50 hover:text-brand-800",
+                          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500",
+                        )}
+                      >
+                        {faq.question}
+                      </button>
+                    ))
+                  ) : (
+                    <p className="rounded-xl bg-white px-3 py-2 text-sm text-muted ring-1 ring-border">
+                      No quick match yet.
+                    </p>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
 
           <form onSubmit={submitQuestion} className="border-t border-border bg-white p-3">

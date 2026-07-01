@@ -9,6 +9,7 @@ import { Logo } from "@/components/layout/Logo";
 import { primaryNav } from "@/data/navigation";
 import { siteConfig } from "@/data/site";
 import { cn } from "@/lib/utils";
+import { HCPBookingButton } from "@/components/ui/HCPBookingButton";
 
 type Props = {
   isOpen: boolean;
@@ -266,8 +267,7 @@ export function MobileNav({ isOpen, onClose }: Props) {
               transition={{ delay: 0.22, duration: 0.28, ease: EASE }}
               className="space-y-2.5 px-5 pb-5 pt-4"
             >
-              <Link
-                href={siteConfig.cta.primary.href}
+              <HCPBookingButton
                 className={cn(
                   "flex min-h-11 items-center justify-center gap-1.5 rounded-full bg-brand-600 px-5 text-sm font-semibold text-white shadow-sm",
                   "transition-[background-color,transform] duration-150 hover:bg-brand-700 active:bg-brand-800 active:scale-[0.98]",
@@ -283,7 +283,7 @@ export function MobileNav({ isOpen, onClose }: Props) {
                     strokeLinejoin="round"
                   />
                 </svg>
-              </Link>
+              </HCPBookingButton>
               <a
                 href={siteConfig.phoneHref}
                 className={cn(

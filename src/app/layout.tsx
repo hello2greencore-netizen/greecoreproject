@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Manrope } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -76,6 +77,10 @@ export default function RootLayout({
           <Footer />
           <StickyMobileCTA />
           <FAQChatbot />
+          <Script
+            src="https://online-booking.housecallpro.com/script.js?token=d68ef1da956043458b2e0244b795dd66&orgName=Green-Core-Heating--Air-Inc"
+            strategy="lazyOnload"
+          />
         </MotionProvider>
       </body>
     </html>

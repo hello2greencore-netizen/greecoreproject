@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { siteConfig } from "@/data/site";
 import { cn } from "@/lib/utils";
+import { HCPBookingButton } from "@/components/ui/HCPBookingButton";
 
 export function StickyMobileCTA() {
   const [hiddenByScroll, setHiddenByScroll] = useState(false);
@@ -73,8 +74,7 @@ export function StickyMobileCTA() {
           Call
         </Link>
 
-        <Link
-          href={siteConfig.cta.primary.href}
+        <HCPBookingButton
           className={cn(
             "flex items-center justify-center gap-1.5 whitespace-nowrap rounded-full px-4 py-2 text-[13px] font-semibold",
             "bg-brand-600 text-white transition-colors duration-150",
@@ -91,7 +91,7 @@ export function StickyMobileCTA() {
               strokeLinejoin="round"
             />
           </svg>
-        </Link>
+        </HCPBookingButton>
       </div>
     </div>
   );

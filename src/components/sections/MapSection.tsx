@@ -3,7 +3,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/motion/Reveal";
 
 const MY_MAPS_SRC =
-  "https://www.google.com/maps/d/embed?mid=1YEGEGRpIUxGyx_gqF_XS8JM2z4IWAt8&ehbc=2E312F";
+  "https://trusty.app/embed/project-map/b015f689-d324-4e2a-aba7-59ea92b3e6c8";
 
 export function MapSection() {
   return (
@@ -27,7 +27,7 @@ export function MapSection() {
               src={MY_MAPS_SRC}
               title="Green Core Heating & Air service area map"
               loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
+              allow="fullscreen"
               className="absolute inset-0 h-full w-full border-0"
             />
           </div>

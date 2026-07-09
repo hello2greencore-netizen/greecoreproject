@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Manrope } from "next/font/google";
 import Script from "next/script";
+import { GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -61,6 +62,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${manrope.variable} h-full antialiased`}
     >
+      <GoogleTagManager gtmId="GTM-MG27BV4L" />
       <body className="flex min-h-full flex-col bg-background text-foreground">
         <LocalBusinessSchema />
         <MotionProvider>

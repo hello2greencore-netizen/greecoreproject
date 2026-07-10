@@ -59,6 +59,16 @@ export function ContactForm() {
       }
 
       setStatus("success");
+
+      const dataLayer = (window.dataLayer = window.dataLayer || []);
+      dataLayer.push({
+        event: "contact_form_submit",
+        form_name: "main_contact",
+        form_location: window.location.pathname,
+        service: (formData.get("service") as string) || "not_provided",
+        city: (formData.get("city") as string) || "not_provided",
+      });
+
       form.reset();
     } catch {
       setStatus("error");

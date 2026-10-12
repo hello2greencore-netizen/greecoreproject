@@ -11,14 +11,14 @@ import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 import { services, getServiceBySlug } from "@/data/services";
 import { buildMetadata } from "@/lib/seo";
 
-/** Concise, keyword-focused meta titles per service (≤36 chars so template keeps total ≤54). */
+/** Keyword-first meta titles per service; the layout template appends the brand name. */
 const seoTitles: Record<string, string> = {
-  "heat-pumps": "Heat Pump Installation & Service",
-  "air-conditioning": "AC Installation & Repair",
-  furnaces: "Furnace Installation & Repair",
-  "mini-splits": "Mini Split Installation",
-  "duct-work": "Ductwork Design & Installation",
-  "harvest-thermal": "Harvest Thermal Water Heating",
+  "heat-pumps": "Heat Pump Installation in Sonoma & Marin",
+  "air-conditioning": "AC Installation & Repair in Sonoma & Marin",
+  furnaces: "Furnace Installation & Repair in Sonoma & Marin",
+  "mini-splits": "Ductless Mini Split Installation, Sonoma & Marin",
+  "duct-work": "Ductwork Repair & Replacement, Sonoma & Marin",
+  "harvest-thermal": "Harvest Thermal Installer, Sonoma & Marin",
 };
 
 /** Location-rich meta descriptions per service (≤155 chars). */

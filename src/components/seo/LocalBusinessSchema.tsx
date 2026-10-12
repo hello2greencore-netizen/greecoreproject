@@ -1,13 +1,8 @@
 import { siteConfig } from "@/data/site";
 import { serviceAreas } from "@/data/serviceAreas";
 import { services } from "@/data/services";
-import { testimonials } from "@/data/testimonials";
 
 export function LocalBusinessSchema() {
-  const totalReviews = testimonials.length;
-  const avgRating =
-    testimonials.reduce((sum, t) => sum + t.rating, 0) / totalReviews;
-
   const validSocial = Object.values(siteConfig.social).filter(
     (v) => v && v !== "#",
   );
@@ -52,13 +47,6 @@ export function LocalBusinessSchema() {
         closes: "16:00",
       },
     ],
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: avgRating.toFixed(1),
-      reviewCount: String(totalReviews),
-      bestRating: "5",
-      worstRating: "1",
-    },
     hasCredential: {
       "@type": "EducationalOccupationalCredential",
       name: siteConfig.license,

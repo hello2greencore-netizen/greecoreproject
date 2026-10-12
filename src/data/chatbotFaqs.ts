@@ -92,7 +92,7 @@ export const chatbotFaqCategories: ChatbotFAQCategory[] = [
         id: "rebates",
         question: "Do you help with rebates?",
         answer:
-          "Yes. Green Core helps homeowners identify and claim BayREN, TECH Clean California, federal tax credit, and utility incentives that may apply to a project.",
+          "Yes. Green Core helps homeowners find and claim the rebates a project qualifies for, including TECH Clean California, BayREN, Sonoma Clean Power, and MCE programs. The federal 25C tax credit ended for systems installed after December 31, 2025.",
         keywords: ["rebate", "rebates", "incentive", "tax credit", "bayren", "tech"],
       },
       {

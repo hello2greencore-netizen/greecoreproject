@@ -10,7 +10,7 @@ import { generalFaqs } from "@/data/faqs";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "HVAC Services — Sonoma & Marin Counties",
+  title: "HVAC Services in Sonoma & Marin Counties",
   description:
     "Green Core installs and repairs heat pumps, AC systems, furnaces, mini splits, and ductwork across Sonoma & Marin. Design-first HVAC — done right.",
   path: "/services",
@@ -21,7 +21,7 @@ export default function ServicesPage() {
     <>
       <Hero
         eyebrow="Our services"
-        title="Comfort solutions designed for your home."
+        title="Heating, cooling & hot water services in Sonoma & Marin."
         description="From quick service calls to whole-home electrification, our team handles every job with the same craftsmanship."
         image="/images/hero/services.jpg"
         imageAlt="Technician installing a modern HVAC system"

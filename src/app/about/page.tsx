@@ -8,7 +8,7 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "About Us — Local HVAC Experts in Petaluma, CA",
+  title: "About Us — Petaluma HVAC Contractor",
   description:
     "Green Core Heating & Air was founded to deliver a better HVAC experience in Sonoma & Marin. Licensed, locally owned, and design-first on every job.",
   path: "/about",
@@ -19,7 +19,7 @@ export default function AboutPage() {
     <>
       <Hero
         eyebrow="About us"
-        title="A better HVAC experience, start to finish."
+        title="A Petaluma HVAC company built to do it right."
         description="Thoughtful design, energy-efficient solutions, and high-quality workmanship — on every project."
         image="/images/hero/about.jpg"
         imageAlt="Green Core Heating & Air team standing in front of a service van"

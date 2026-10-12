@@ -26,7 +26,7 @@ export async function generateMetadata(
   const area = getServiceAreaBySlug(city);
   if (!area) return buildMetadata({ title: "Service Area", description: "" });
   return buildMetadata({
-    title: `HVAC Contractor in ${area.city}, CA`,
+    title: `HVAC & Heat Pumps in ${area.city}, CA`,
     description: `Green Core Heating & Air provides heat pump, AC, furnace & mini split services in ${area.city}, CA. Local HVAC contractor — free estimates available.`,
     path: `/service-areas/${area.slug}`,
     image: area.heroImage,
@@ -52,7 +52,7 @@ export default async function ServiceAreaPage(
 
       <Hero
         eyebrow={area.county}
-        title={`${area.city} Heating & Air Conditioning Services`}
+        title={`Heat Pump & HVAC Services in ${area.city}, CA`}
         description={`Trusted HVAC experts in ${area.city}, CA.`}
         image={area.heroImage}
         imageAlt={`${area.city}, California`}
@@ -75,9 +75,9 @@ export default async function ServiceAreaPage(
 
           <div className="mt-10">
             <Reveal>
-              <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-brand-700">
+              <h2 className="text-sm font-semibold uppercase tracking-[0.14em] text-brand-700">
                 Landmarks &amp; neighborhoods we serve
-              </h3>
+              </h2>
             </Reveal>
             <RevealGroup
               as="ul"
@@ -159,11 +159,6 @@ export default async function ServiceAreaPage(
               </RevealItem>
             ))}
           </RevealGroup>
-          <Reveal>
-            <p className="mt-10 text-sm text-muted sm:text-base">
-              Searching for <em>HVAC near me in {area.city}</em>, <em>AC repair {area.city} CA</em>, or <em>heat pump installation {area.county}</em>? Green Core Heating &amp; Air is your trusted local team.
-            </p>
-          </Reveal>
         </Container>
       </section>
 

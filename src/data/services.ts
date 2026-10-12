@@ -428,7 +428,7 @@ export const services: Service[] = [
     shortName: "Heat Pump Water Heaters",
     tagline: "The most efficient way to heat water, with rebates that help cover the cost.",
     summary: "SANCO2 and GE GeoSpring heat pump water heaters installed across Sonoma and Marin. Lower bills, cleaner hot water, and help with rebates.",
-    heroImage: "/images/services/harvest-thermal.jpg",
+    heroImage: "/images/services/heat-pump-water-heaters.jpg",
     overview: [
       "A heat pump water heater pulls heat from the air and moves it into your water instead of burning gas or running a heating element. That makes it up to three to four times more efficient than a standard electric tank, and a clean, all-electric replacement for a gas water heater.",
       "Green Core installs two kinds. SANCO2 is a split system: a quiet outdoor heat pump uses CO2, a natural refrigerant, to heat water stored in an indoor tank, and it keeps working well on cold mornings. GE GeoSpring is a hybrid, all-in-one tank that sits where your current water heater does, often in a garage, and pulls heat from the surrounding air.",

@@ -357,7 +357,7 @@ export const services: Service[] = [
     shortName: "Water Heaters",
     tagline: "Heat pump, tankless, gas, and electric water heaters, installed right.",
     summary: "Heat pump, tankless, gas, and electric water heater installation, repair, and replacement across Sonoma and Marin. Gas and electric tank installs start at $2,850.",
-    heroImage: "/images/services/heat-pumps.jpg",
+    heroImage: "/images/services/water-heaters.jpg",
     overview: [
       "No hot water, a leaking tank, or a water heater that's simply getting old? Green Core Heating & Air installs, repairs, and replaces water heaters for homes in Petaluma, Santa Rosa, Rohnert Park, Novato, San Rafael, and across Sonoma and Marin counties.",
       "We work with every common type: heat pump water heaters, tankless water heaters, gas tank water heaters, and electric tank water heaters. The brands we install include SANCO2, GE GeoSpring, Navien, Bradford White, and American Standard.",

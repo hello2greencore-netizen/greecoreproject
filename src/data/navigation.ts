@@ -1,7 +1,6 @@
 import type { NavLink } from "@/types";
 
 export const primaryNav: NavLink[] = [
-  { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   {
     label: "Services",
@@ -42,6 +41,7 @@ export const primaryNav: NavLink[] = [
     ],
   },
   { label: "Reviews", href: "/testimonials" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -49,6 +49,7 @@ export const footerNav = {
   company: [
     { label: "About", href: "/about" },
     { label: "Reviews", href: "/testimonials" },
+    { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },
   ],
   services: [

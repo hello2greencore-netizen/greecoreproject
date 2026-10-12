@@ -42,7 +42,7 @@ const seoDescriptions: Record<string, string> = {
   "harvest-thermal":
     "Harvest Thermal installation in Sonoma & Marin. Smart heat pump water heating with energy management — lower operating costs and better efficiency.",
   "water-heaters":
-    "Heat pump, tankless, gas & electric water heater installation in Sonoma & Marin. Installs from $2,850. Same-day replacement when our schedule allows.",
+    "Heat pump, tankless, gas & electric water heaters in Sonoma & Marin. Tank installs from $2,850. Same-day replacement when our schedule allows.",
   "heat-pump-water-heaters":
     "SANCO2 & GE GeoSpring heat pump water heater installation in Sonoma & Marin. Lower bills, rebates handled for you. Call (707) 988-5858.",
   "tankless-water-heaters":
@@ -50,7 +50,7 @@ const seoDescriptions: Record<string, string> = {
   "gas-water-heaters":
     "Gas water heater replacement & repair in Sonoma & Marin. Bradford White & American Standard. Same-day replacement when our schedule allows.",
   "electric-water-heaters":
-    "Electric water heater replacement & repair in Sonoma & Marin, plus heat pump upgrades that cut water heating costs. Installs from $2,850.",
+    "Electric water heater replacement & repair in Sonoma & Marin, plus heat pump upgrades that cut water heating costs. Tank installs from $2,850.",
 };
 
 export function generateStaticParams() {

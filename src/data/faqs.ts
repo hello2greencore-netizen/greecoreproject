@@ -24,7 +24,7 @@ export const generalFaqs: FAQ[] = [
   {
     question: "Do you install and replace water heaters?",
     answer:
-      "Yes. We install heat pump, tankless, gas, and electric water heaters, starting at $2,850, and offer same-day replacement when our schedule allows.",
+      "Yes. We install heat pump, tankless, gas, and electric water heaters. Gas and electric tank installs start at $2,850, and we offer same-day replacement when our schedule allows.",
   },
   {
     question: "How quickly can you come out?",

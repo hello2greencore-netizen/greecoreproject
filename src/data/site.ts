@@ -3,7 +3,7 @@ export const siteConfig = {
   shortName: "Green Core",
   url: "https://www.greencorehvac.com",
   description:
-    "Green Core Heating & Air is a locally owned HVAC company serving Sonoma and Marin counties with expert heat pump, AC, furnace, and mini split installation and service.",
+    "Green Core Heating & Air is a locally owned HVAC company serving Sonoma and Marin counties with expert heat pump, water heater, AC, furnace, and mini split installation and service.",
   phone: "(707) 988-5858",
   phoneHref: "tel:+17079885858",
   email: "hello@greencorehvac.com",

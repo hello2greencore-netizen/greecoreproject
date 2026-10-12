@@ -49,12 +49,15 @@ export function Header() {
           <Logo />
 
           <nav aria-label="Primary" className="hidden lg:flex flex-1 justify-center">
-            <ul className="flex items-center gap-7">
+            <ul className="flex items-center gap-5 xl:gap-7">
               {primaryNav.map((link) => {
                 const isActive =
                   link.href === "/"
                     ? pathname === "/"
-                    : pathname?.startsWith(link.href);
+                    : link.children
+                      ? pathname === link.href ||
+                        link.children.some((c) => pathname === c.href)
+                      : pathname?.startsWith(link.href);
 
                 if (link.children) {
                   return (
@@ -62,7 +65,7 @@ export function Header() {
                       {/* Trigger */}
                       <button
                         className={cn(
-                          "flex items-center gap-1 text-sm font-medium transition-colors duration-200",
+                          "flex items-center gap-1 whitespace-nowrap text-sm font-medium transition-colors duration-200",
                           isActive
                             ? "text-brand-700"
                             : "text-foreground/55 group-hover:text-foreground",
@@ -99,7 +102,7 @@ export function Header() {
                           <div
                             className={cn(
                               "grid gap-x-1 gap-y-0.5 p-2",
-                              link.children.length >= 6 ? "grid-cols-2 min-w-[320px]" : "min-w-[200px]",
+                              link.children.length >= 6 ? "grid-cols-2 min-w-[320px]" : "min-w-[240px]",
                             )}
                           >
                             {link.children.map((child) => (
@@ -107,7 +110,7 @@ export function Header() {
                                 key={child.href}
                                 href={child.href}
                                 className={cn(
-                                  "flex items-center rounded-xl px-4 py-2.5 text-sm transition-colors duration-150",
+                                  "flex items-center whitespace-nowrap rounded-xl px-4 py-2.5 text-sm transition-colors duration-150",
                                   pathname === child.href
                                     ? "bg-brand-50/70 font-medium text-brand-700"
                                     : "text-foreground/65 hover:bg-black/[0.03] hover:text-foreground",
@@ -129,7 +132,7 @@ export function Header() {
                       href={link.href}
                       aria-current={isActive ? "page" : undefined}
                       className={cn(
-                        "relative text-sm font-medium transition-colors duration-200",
+                        "relative whitespace-nowrap text-sm font-medium transition-colors duration-200",
                         "after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-full after:origin-left after:bg-brand-600 after:transition-transform after:duration-200",
                         isActive
                           ? "text-brand-700 after:scale-x-100"

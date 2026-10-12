@@ -8,7 +8,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
-import { services } from "@/data/services";
+import { serviceCategories, getServicesByCategory } from "@/data/services";
 import {
   serviceAreas,
   getServiceAreaBySlug,
@@ -27,7 +27,7 @@ export async function generateMetadata(
   if (!area) return buildMetadata({ title: "Service Area", description: "" });
   return buildMetadata({
     title: `HVAC & Heat Pumps in ${area.city}, CA`,
-    description: `Green Core Heating & Air provides heat pump, AC, furnace & mini split services in ${area.city}, CA. Local HVAC contractor — free estimates available.`,
+    description: `Green Core Heating & Air installs heat pumps, water heaters, AC, furnaces & mini splits in ${area.city}, CA. Local HVAC contractor — free estimates.`,
     path: `/service-areas/${area.slug}`,
     image: area.heroImage,
   });
@@ -133,32 +133,39 @@ export default async function ServiceAreaPage(
               description={`Green Core provides the following services throughout ${area.city} and surrounding ${area.county} areas:`}
             />
           </Reveal>
-          <RevealGroup
-            as="ul"
-            className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
-          >
-            {services.map((s) => (
-              <RevealItem as="li" key={s.slug}>
-                <Card>
-                  <h3 className="font-display text-lg font-bold">
-                    {s.shortName ?? s.name}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">
-                    {s.summary}
-                  </p>
-                  <Link
-                    href={`/services/${s.slug}`}
-                    className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-700 hover:underline"
-                  >
-                    Learn more
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5" aria-hidden>
-                      <path d="M5 12h14M13 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </Link>
-                </Card>
-              </RevealItem>
-            ))}
-          </RevealGroup>
+          {serviceCategories.map((cat) => (
+            <div key={cat.id} className="mt-10">
+              <h3 className="font-display text-xl font-bold text-foreground">
+                {cat.label} in {area.city}
+              </h3>
+              <RevealGroup
+                as="ul"
+                className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+              >
+                {getServicesByCategory(cat.id).map((s) => (
+                  <RevealItem as="li" key={s.slug}>
+                    <Card>
+                      <h4 className="font-display text-lg font-bold">
+                        {s.shortName ?? s.name}
+                      </h4>
+                      <p className="mt-2 text-sm leading-relaxed text-muted">
+                        {s.summary}
+                      </p>
+                      <Link
+                        href={`/services/${s.slug}`}
+                        className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-700 hover:underline"
+                      >
+                        Learn more
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5" aria-hidden>
+                          <path d="M5 12h14M13 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </Link>
+                    </Card>
+                  </RevealItem>
+                ))}
+              </RevealGroup>
+            </div>
+          ))}
         </Container>
       </section>
 

@@ -96,6 +96,13 @@ export const chatbotFaqCategories: ChatbotFAQCategory[] = [
         keywords: ["rebate", "rebates", "incentive", "tax credit", "bayren", "tech"],
       },
       {
+        id: "water-heaters",
+        question: "Do you install water heaters?",
+        answer:
+          "Yes. Green Core installs and replaces heat pump, tankless, gas, and electric water heaters across Sonoma and Marin. Installs start at $2,850, and same-day replacement is available when the schedule allows.",
+        keywords: ["water heater", "hot water", "tankless", "tank", "heat pump water heater", "no hot water"],
+      },
+      {
         id: "contact",
         question: "How do I contact Green Core?",
         answer:

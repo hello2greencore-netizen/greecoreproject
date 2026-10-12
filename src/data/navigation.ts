@@ -16,6 +16,17 @@ export const primaryNav: NavLink[] = [
     ],
   },
   {
+    label: "Water Heaters",
+    href: "/services/water-heaters",
+    children: [
+      { label: "All Water Heaters", href: "/services/water-heaters" },
+      { label: "Heat Pump Water Heaters", href: "/services/heat-pump-water-heaters" },
+      { label: "Tankless Water Heaters", href: "/services/tankless-water-heaters" },
+      { label: "Gas Water Heaters", href: "/services/gas-water-heaters" },
+      { label: "Electric Water Heaters", href: "/services/electric-water-heaters" },
+    ],
+  },
+  {
     label: "Service Areas",
     href: "/service-areas",
     children: [
@@ -47,6 +58,13 @@ export const footerNav = {
     { label: "Mini Splits", href: "/services/mini-splits" },
     { label: "Duct Work", href: "/services/duct-work" },
     { label: "Harvest Thermal", href: "/services/harvest-thermal" },
+  ],
+  waterHeaters: [
+    { label: "Water Heaters", href: "/services/water-heaters" },
+    { label: "Heat Pump Water Heaters", href: "/services/heat-pump-water-heaters" },
+    { label: "Tankless Water Heaters", href: "/services/tankless-water-heaters" },
+    { label: "Gas Water Heaters", href: "/services/gas-water-heaters" },
+    { label: "Electric Water Heaters", href: "/services/electric-water-heaters" },
   ],
   areas: [
     { label: "Petaluma", href: "/service-areas/petaluma" },

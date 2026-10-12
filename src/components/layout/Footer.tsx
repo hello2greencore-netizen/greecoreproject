@@ -35,8 +35,8 @@ export function Footer() {
   return (
     <footer className="mt-12 bg-brand-900 text-white lg:mt-16">
       <Container size="xl" className="py-10 sm:py-12 lg:py-16">
-        <div className="grid gap-10 md:grid-cols-3 lg:grid-cols-5">
-          <div className="md:col-span-3 lg:col-span-2">
+        <div className="grid gap-10 md:grid-cols-4 lg:grid-cols-6">
+          <div className="md:col-span-4 lg:col-span-2">
             <Logo tone="light" />
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/80">
               {siteConfig.description}
@@ -62,6 +62,7 @@ export function Footer() {
 
           <FooterLinkGroup title="Company" links={footerNav.company} />
           <FooterLinkGroup title="Services" links={footerNav.services} />
+          <FooterLinkGroup title="Water Heaters" links={footerNav.waterHeaters} />
           <FooterLinkGroup title="Service Areas" links={footerNav.areas} />
         </div>
 

@@ -22,6 +22,11 @@ export const generalFaqs: FAQ[] = [
       "Yes — we help you find and claim the rebates your project qualifies for, including TECH Clean California, BayREN, Sonoma Clean Power, and MCE programs, and we handle the paperwork. (The federal 25C tax credit ended for systems installed after December 31, 2025.)",
   },
   {
+    question: "Do you install and replace water heaters?",
+    answer:
+      "Yes. We install heat pump, tankless, gas, and electric water heaters, starting at $2,850, and offer same-day replacement when our schedule allows.",
+  },
+  {
     question: "How quickly can you come out?",
     answer:
       "For urgent service calls we aim to respond same-day or next-day depending on season. We'll give you an honest timeline when you book.",

@@ -14,7 +14,13 @@ export type Service = {
   overview: string[];
   benefits?: { title: string; description: string }[];
   faqs: FAQ[];
+  /** Groups services in menus and lists. */
+  category: ServiceCategory;
+  /** Slugs of related services to cross-link at the bottom of the page. */
+  related?: string[];
 };
+
+export type ServiceCategory = "heating-cooling" | "water-heating";
 
 export type ServiceAreaSection = {
   heading: string;

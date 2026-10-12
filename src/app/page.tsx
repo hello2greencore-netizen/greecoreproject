@@ -22,7 +22,7 @@ export default function HomePage() {
       <Hero
         eyebrow="Sonoma & Marin HVAC"
         title="Heat pump & HVAC experts for Sonoma and Marin homes."
-        description="Clean, efficient heating and cooling for the North Bay. Expert heat pumps, AC, furnaces, mini splits, and more."
+        description="Clean, efficient heating, cooling, and hot water for the North Bay. Expert heat pumps, water heaters, AC, furnaces, mini splits, and more."
         image="/images/hero/home.jpg"
         imageAlt="Modern home at sunset in Sonoma County"
         primaryCta={siteConfig.cta.primary}

@@ -1,6 +1,6 @@
 # Green Core Heating & Air
 
-> Locally owned residential HVAC contractor based in Petaluma, California, serving homeowners in Sonoma and Marin counties. Specialists in heat pumps, water heating, and Harvest Thermal whole-home systems, with a design-first approach and help claiming rebates.
+> Locally owned residential HVAC and water heater contractor based in Petaluma, California, serving homeowners in Sonoma and Marin counties. Specialists in heat pumps, heat pump water heaters, and Harvest Thermal whole-home systems, with a design-first approach and help claiming rebates.
 
 - Business name: Green Core Heating & Air (Green Core)
 - Phone: (707) 988-5858
@@ -19,7 +19,11 @@
 - [Air conditioning](https://www.greencorehvac.com/services/air-conditioning): installation, repair, and replacement
 - [Furnaces](https://www.greencorehvac.com/services/furnaces): installation, repair, and replacement
 - [Ductwork](https://www.greencorehvac.com/services/duct-work): design, repair, and replacement
-- Water heaters: heat pump water heaters, tankless, and gas water heaters
+- [Water heaters](https://www.greencorehvac.com/services/water-heaters): installation, repair, and replacement; installs start at $2,850; same-day replacement when the schedule allows
+  - [Heat pump water heaters](https://www.greencorehvac.com/services/heat-pump-water-heaters): SANCO2 and GE GeoSpring
+  - [Tankless water heaters](https://www.greencorehvac.com/services/tankless-water-heaters): Navien
+  - [Gas water heaters](https://www.greencorehvac.com/services/gas-water-heaters): Bradford White and American Standard
+  - [Electric water heaters](https://www.greencorehvac.com/services/electric-water-heaters): Bradford White and American Standard
 - Not offered: in-floor radiant or hydronic systems
 
 ## Rebates

@@ -17,6 +17,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/services`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/service-areas`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
 
+    // Repair / installation / maintenance hubs
+    ...["hvac-repair", "hvac-installation", "hvac-maintenance"].map((slug) => ({
+      url: `${base}/${slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+    })),
+
     // Tier 3 — individual service pages
     ...services.map((s) => ({
       url: `${base}/services/${s.slug}`,

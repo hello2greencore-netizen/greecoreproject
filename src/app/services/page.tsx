@@ -5,7 +5,9 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
+import Link from "next/link";
 import { serviceCategories, getServicesByCategory } from "@/data/services";
+import { serviceTypes } from "@/data/serviceTypes";
 import { generalFaqs } from "@/data/faqs";
 import { buildMetadata } from "@/lib/seo";
 
@@ -37,6 +39,20 @@ export default function ServicesPage() {
               description="Pick a service to learn more."
             />
           </Reveal>
+          <ul className="mt-10 grid gap-4 sm:grid-cols-3">
+            {serviceTypes.map((t) => (
+              <li key={t.slug}>
+                <Link
+                  href={`/${t.slug}`}
+                  className="flex h-full flex-col rounded-2xl border border-border bg-white p-6 shadow-sm transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-md"
+                >
+                  <span className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-700">{t.eyebrow}</span>
+                  <span className="mt-2 font-display text-lg font-bold text-foreground">{t.navLabel}</span>
+                  <span className="mt-2 text-sm leading-relaxed text-muted">{t.tagline}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
           {serviceCategories.map((cat) => (
             <div key={cat.id} className="mt-12">
               <h3 className="font-display text-xl font-bold text-foreground sm:text-2xl">

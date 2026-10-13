@@ -12,9 +12,13 @@ type Props = {
   projects?: ShowcaseProject[];
   /** CompanyCam gallery filter value, e.g. "Sonoma, CA". */
   showcaseCity?: string;
+  /** Override the heading, e.g. on service pages. */
+  title?: string;
+  description?: string;
+  eyebrow?: string;
 };
 
-export function ProjectShowcase({ city, projects = [], showcaseCity }: Props) {
+export function ProjectShowcase({ city, projects = [], showcaseCity, title, description, eyebrow = "Our work" }: Props) {
   if (projects.length === 0 && !showcaseCity) return null;
   const gallerySrc = showcaseCity
     ? `${siteConfig.projectGalleryUrl}?city_states=${encodeURIComponent(showcaseCity)}`
@@ -25,9 +29,9 @@ export function ProjectShowcase({ city, projects = [], showcaseCity }: Props) {
       <Container size="xl">
         <Reveal>
           <SectionHeading
-            eyebrow="Our work"
-            title={`Recent projects in ${city}`}
-            description={`Real Green Core jobs for homeowners in ${city}, with photos from the job site.`}
+            eyebrow={eyebrow}
+            title={title ?? `Recent projects in ${city}`}
+            description={description ?? `Real Green Core jobs for homeowners in ${city}, with photos from the job site.`}
           />
         </Reveal>
 

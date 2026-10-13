@@ -6,6 +6,15 @@ export const primaryNav: NavLink[] = [
     label: "Services",
     href: "/services",
     children: [
+      { label: "Repair", href: "/hvac-repair" },
+      { label: "Installation", href: "/hvac-installation" },
+      { label: "Maintenance", href: "/hvac-maintenance" },
+    ],
+  },
+  {
+    label: "HVAC",
+    href: "/services#heating-cooling",
+    children: [
       { label: "Heat Pumps", href: "/services/heat-pumps" },
       { label: "Air Conditioning", href: "/services/air-conditioning" },
       { label: "Furnaces", href: "/services/furnaces" },
@@ -58,6 +67,9 @@ export const footerNav = {
     { label: "Contact", href: "/contact" },
   ],
   services: [
+    { label: "Repair", href: "/hvac-repair" },
+    { label: "Installation", href: "/hvac-installation" },
+    { label: "Maintenance", href: "/hvac-maintenance" },
     { label: "Heat Pumps", href: "/services/heat-pumps" },
     { label: "Air Conditioning", href: "/services/air-conditioning" },
     { label: "Furnaces", href: "/services/furnaces" },

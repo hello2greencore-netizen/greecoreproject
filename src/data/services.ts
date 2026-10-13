@@ -12,9 +12,8 @@ export const services: Service[] = [
       "Heat pumps are one of the most energy-efficient ways to heat and cool your home — reliable year-round comfort in a single, all-electric system.",
     heroImage: "/images/services/heat-pumps.jpg",
     overview: [
-      "Heat pumps are one of the most energy-efficient ways to heat and cool your home. At Green Core Heating & Air, we provide expert heat pump installation, repair, and replacement, designing systems that deliver reliable, year-round comfort while lowering energy use. Unlike traditional systems, heat pumps handle both heating and cooling in one unit, making them a smart, all-electric solution for modern homes.",
-      "Proper design is what makes a heat pump perform. We evaluate your home's layout, insulation, and airflow to ensure the system is sized correctly and runs efficiently and quietly. Many performance issues come from poor installation — not the equipment itself — so we focus on getting the details right from the start.",
-      "Whether you're upgrading an existing system or installing a heat pump for the first time, we provide solutions built for long-term comfort, efficiency, and reliability.",
+      "A heat pump heats and cools your home with one all-electric system. The North Bay's mild winters are ideal for heat pumps, and inland summer afternoons that climb into the 90s are no problem for one sized correctly, which makes it one of the most efficient ways to stay comfortable year-round.",
+      "Green Core Heating & Air installs, repairs, and maintains heat pumps in Petaluma, Santa Rosa, Novato, San Rafael, and across Sonoma and Marin counties. Most of our installs replace an aging gas furnace and AC, and we design each one around your home's layout, insulation, and ducts, because a well-designed system matters more than the brand on the box.",
     ],
     benefits: [
       {
@@ -71,9 +70,8 @@ export const services: Service[] = [
       "A properly designed AC system keeps your home cool and efficient — professional installation, repair, and replacement tailored to your home.",
     heroImage: "/images/services/air-conditioning.jpg",
     overview: [
-      "A properly designed air conditioning system keeps your home cool, comfortable, and efficient when temperatures rise. Green Core Heating & Air provides professional air conditioning installation, repair, and replacement tailored to your home's needs.",
-      "We take a design-first approach, ensuring your system is properly sized and installed to eliminate common issues like uneven cooling and high energy bills. Many AC problems stem from airflow or ductwork issues, which we address as part of the overall system.",
-      "Whether you need a repair or a full system upgrade, we deliver reliable cooling solutions built for performance and long-term efficiency.",
+      "Summers in the North Bay can swing from foggy mornings to hot afternoons, especially inland in Santa Rosa, Windsor, and the Sonoma Valley. Green Core Heating & Air installs, repairs, and maintains central air conditioning for homes across Sonoma and Marin counties, from adding cooling to an existing furnace to replacing a worn-out rooftop unit.",
+      "Many AC problems come from airflow and ductwork, not the equipment, so we look at the whole system. That's how we fix hot upstairs rooms and high summer bills instead of just swapping parts.",
     ],
     benefits: [
       {
@@ -130,9 +128,8 @@ export const services: Service[] = [
       "Expert furnace installation, repair, and replacement — consistent comfort, improved efficiency, and long-term reliability.",
     heroImage: "/images/services/furnaces.jpg",
     overview: [
-      "When your heating system needs attention, you want dependable results. Green Core Heating & Air provides expert furnace installation, repair, and replacement to keep your home warm and comfortable.",
-      "If your furnace is struggling to maintain temperature, short cycling, or becoming inefficient, it may be time for a repair or replacement. We evaluate your home and system to ensure proper sizing and airflow — two key factors that impact performance.",
-      "Our goal is to provide heating solutions that deliver consistent comfort, improved efficiency, and long-term reliability.",
+      "Green Core Heating & Air repairs, maintains, and replaces gas furnaces for homes in Petaluma, Santa Rosa, Novato, San Rafael, and across Sonoma and Marin counties. Whether your furnace won't light on a cold morning or it has simply reached the end of its life, we'll find the real problem and give you honest options.",
+      "When it's time to replace, we'll show you a high-efficiency furnace and an all-electric heat pump side by side, with written pricing for each, so you can choose what's right for your home and budget.",
     ],
     benefits: [
       {
@@ -187,9 +184,8 @@ export const services: Service[] = [
       "Ductless mini splits deliver targeted comfort with zoned control — ideal for additions, garages, older homes, and uneven-temperature spaces.",
     heroImage: "/images/services/mini-splits.jpg",
     overview: [
-      "Mini split systems provide flexible, energy-efficient heating and cooling without ductwork. Green Core Heating & Air offers expert mini split installation, repair, and replacement for homeowners looking for targeted comfort solutions.",
-      "These systems are ideal for additions, garages, older homes, or areas with uneven temperatures. With zoned control, they allow you to heat or cool specific areas, improving both comfort and efficiency.",
-      "We design each system based on your home's layout and needs, ensuring proper placement and long-term performance.",
+      "Ductless mini splits heat and cool individual rooms without any ductwork. Green Core Heating & Air installs, repairs, and maintains mini splits for homes across Sonoma and Marin counties, and they're especially popular in the area's older homes, additions, ADUs, and converted garages.",
+      "Each indoor unit has its own temperature control, so you only heat or cool the rooms you're using. We plan the indoor and outdoor unit locations, line set routes, and electrical work up front so the finished install looks clean and runs quietly.",
     ],
     benefits: [
       {
@@ -245,9 +241,8 @@ export const services: Service[] = [
       "Improve airflow, eliminate inefficiencies, and enhance comfort with ductwork installation, repair, and replacement done properly.",
     heroImage: "/images/services/duct-work.jpg",
     overview: [
-      "Your ductwork plays a critical role in your HVAC system's performance. Green Core Heating & Air provides ductwork installation, repair, and replacement to improve airflow, eliminate inefficiencies, and enhance comfort.",
-      "Many issues like uneven temperatures and high energy bills are caused by duct problems — not the equipment. We take a detailed approach to evaluating your system and improving airflow where it matters most.",
-      "Whether you need new ductwork or upgrades to an existing system, we provide solutions that improve performance and efficiency.",
+      "Your ducts carry every bit of heated and cooled air through your home. In many North Bay homes they run through hot attics and damp crawlspaces, where leaks, crushed runs, and missing insulation waste energy and leave some rooms uncomfortable.",
+      "Green Core Heating & Air inspects, repairs, seals, and replaces ductwork across Sonoma and Marin counties, often as part of a new heat pump or furnace install. Better ducts can make an existing system feel like a new one.",
     ],
     benefits: [
       {
@@ -301,12 +296,11 @@ export const services: Service[] = [
     shortName: "Harvest Thermal",
     tagline: "Smart water heating and energy management for the modern home.",
     summary:
-      "Harvest Thermal combines heat pump water heating with smart controls to optimize energy usage — lower operating costs and improved efficiency.",
+      "Harvest Thermal uses one all-electric heat pump for heating, hot water, and cooling, with smart controls that shift energy use to cheaper hours.",
     heroImage: "/images/services/harvest-thermal.jpg",
     overview: [
-      "Harvest Thermal systems provide an advanced, energy-efficient approach to water heating and energy management. Green Core Heating & Air offers professional Harvest Thermal installation for homeowners looking to improve efficiency and reduce energy costs.",
-      "These systems combine heat pump water heating with smart controls to optimize energy usage throughout the day. This allows for lower operating costs and improved overall efficiency.",
-      "We evaluate each home to determine if Harvest Thermal is the right fit and design systems that integrate seamlessly with other energy-efficient solutions.",
+      "Harvest Thermal combines your home's heating, hot water, and cooling into one all-electric heat pump system. Green Core Heating & Air installs Harvest Thermal systems in Sonoma and Marin counties, with completed projects in Petaluma and San Rafael.",
+      "It's a smart choice when both your gas furnace and gas water heater are getting old. Instead of replacing two gas appliances, you replace them with one system that stores heat when electricity is cheapest and uses it when you need it.",
     ],
     benefits: [
       {

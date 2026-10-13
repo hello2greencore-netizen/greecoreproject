@@ -27,6 +27,20 @@ export type ServiceAreaSection = {
   body: string[];
 };
 
+/** A titled block of page copy with optional bullet points. */
+export type ContentSection = {
+  heading: string;
+  body: string[];
+  bullets?: string[];
+};
+
+/** A simple comparison table; the first column is the row label. */
+export type ComparisonTable = {
+  caption: string;
+  columns: string[];
+  rows: string[][];
+};
+
 export type ShowcaseProject = {
   title: string;
   date: string;

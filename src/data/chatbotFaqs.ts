@@ -106,7 +106,7 @@ export const chatbotFaqCategories: ChatbotFAQCategory[] = [
         id: "contact",
         question: "How do I contact Green Core?",
         answer:
-          "You can call Green Core at (707) 988-5858 or send a message through the contact form. The team usually follows up the same business day.",
+          "You can call Green Core at (707) 988-5858, book a free estimate online with the Book Now button, or send a message through the contact form. The team usually follows up the same business day.",
         keywords: ["contact", "phone", "call", "email", "message", "form"],
       },
     ],

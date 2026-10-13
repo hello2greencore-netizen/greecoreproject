@@ -45,6 +45,8 @@ export type ServiceArea = {
   landmarks: string[];
   sections: ServiceAreaSection[];
   scheduleLabel?: string;
+  /** One town-specific line for the "Water heaters in {city}" section. */
+  waterHeaterNote?: string;
   /** Local FAQs, rendered with FAQ schema. */
   faqs?: FAQ[];
   /** City name exactly as it appears in the CompanyCam gallery's City & State filter, e.g. "Sonoma, CA". */

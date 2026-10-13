@@ -155,6 +155,11 @@ export default async function ServiceAreaPage(
                 For the lowest running cost, a SANCO2 or GE GeoSpring heat pump water heater is hard to beat, and {area.city} homes served by {utilityForCounty(area.county)} may qualify for rebates on top of TECH Clean California and BayREN programs, depending on current funding. Want endless hot water instead? We install Navien tankless units, sized to your household.
               </p>
             </RevealItem>
+            {area.waterHeaterNote && (
+              <RevealItem>
+                <p>{area.waterHeaterNote}</p>
+              </RevealItem>
+            )}
           </RevealGroup>
         </Container>
       </section>

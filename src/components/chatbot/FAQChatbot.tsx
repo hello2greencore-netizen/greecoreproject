@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import {
   useEffect,
@@ -14,6 +13,7 @@ import {
   type ChatbotFAQ,
 } from "@/data/chatbotFaqs";
 import { siteConfig } from "@/data/site";
+import { HCPBookingButton } from "@/components/ui/HCPBookingButton";
 import { cn } from "@/lib/utils";
 
 type SearchableFAQ = ChatbotFAQ & {
@@ -31,7 +31,7 @@ type ChatMessage = {
 const welcomeMessage: ChatMessage = {
   id: "welcome",
   role: "assistant",
-  text: "Hi, I'm Corey. I can help with quick questions about Green Core services, service areas, estimates, rebates, and booking. Ready for a quote? Tap the 60-second form above for the fastest reply.",
+  text: "Hi, I'm Corey. I can help with quick questions about Green Core services, service areas, estimates, rebates, and booking. Ready for a quote? Tap “Get a free estimate” above to book online.",
 };
 
 const stopWords = new Set([
@@ -258,7 +258,7 @@ export function FAQChatbot() {
         : {
             id: nextMessageId("assistant"),
             role: "assistant",
-            text: "I could not find an exact FAQ match. Please call Green Core or send a message through the contact form so the team can help directly.",
+            text: "I could not find an exact FAQ match. Please call Green Core or book a free estimate online so the team can help directly.",
             fallback: true,
           },
     ]);
@@ -356,11 +356,10 @@ export function FAQChatbot() {
             </div>
           </div>
 
-          <Link
-            href="/contact"
+          <HCPBookingButton
             onClick={() => setOpen(false)}
             className={cn(
-              "group relative flex items-center justify-between gap-3 overflow-hidden border-b border-brand-700/30 px-4 py-3",
+              "group relative flex w-full items-center text-left justify-between gap-3 overflow-hidden border-b border-brand-700/30 px-4 py-3",
               "bg-gradient-to-r from-brand-600 via-brand-600 to-brand-700 text-white",
               "transition-[filter] duration-200 hover:brightness-110",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-inset",
@@ -380,7 +379,7 @@ export function FAQChatbot() {
                   Fastest way to get started
                 </span>
                 <span className="block text-sm font-bold leading-tight">
-                  Get a free estimate in 60 seconds
+                  Get a free estimate
                 </span>
               </span>
             </span>
@@ -395,7 +394,7 @@ export function FAQChatbot() {
                 />
               </svg>
             </span>
-          </Link>
+          </HCPBookingButton>
 
           <div
             className="min-h-0 flex-1 space-y-3 overflow-y-auto px-4 py-4"
@@ -437,12 +436,11 @@ export function FAQChatbot() {
                       >
                         Call {siteConfig.phone}
                       </a>
-                      <Link
-                        href="/contact"
+                      <HCPBookingButton
                         className="rounded-full bg-brand-600 px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-brand-700"
                       >
-                        60-second form →
-                      </Link>
+                        Book a free estimate →
+                      </HCPBookingButton>
                     </div>
                   )}
                 </div>

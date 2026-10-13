@@ -1,12 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { siteConfig } from "@/data/site";
 import { cn } from "@/lib/utils";
 import { HCPBookingButton } from "@/components/ui/HCPBookingButton";
 
 export function StickyMobileCTA() {
+  const pathname = usePathname();
   const [hiddenByScroll, setHiddenByScroll] = useState(false);
   const [nearBottom, setNearBottom] = useState(false);
   const lastScrollY = useRef(0);
@@ -33,6 +35,9 @@ export function StickyMobileCTA() {
   }, []);
 
   const hidden = hiddenByScroll || nearBottom;
+
+  // Someone who just booked shouldn't be nudged to book again.
+  if (pathname === "/thank-you") return null;
 
   return (
     <div

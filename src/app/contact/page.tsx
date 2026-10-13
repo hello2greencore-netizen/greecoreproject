@@ -9,7 +9,7 @@ import { siteConfig } from "@/data/site";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Contact Us — Free HVAC Estimate",
+  title: "Free HVAC Estimate in Petaluma & the North Bay",
   description:
     "Request a free estimate or call (707) 988-5858. Green Core Heating & Air serves Sonoma & Marin — fast response, no pressure.",
   path: "/contact",

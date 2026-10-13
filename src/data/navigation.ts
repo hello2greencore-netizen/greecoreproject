@@ -1,7 +1,6 @@
 import type { NavLink } from "@/types";
 
 export const primaryNav: NavLink[] = [
-  { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   {
     label: "Services",
@@ -13,6 +12,17 @@ export const primaryNav: NavLink[] = [
       { label: "Mini Splits", href: "/services/mini-splits" },
       { label: "Duct Work", href: "/services/duct-work" },
       { label: "Harvest Thermal", href: "/services/harvest-thermal" },
+    ],
+  },
+  {
+    label: "Water Heaters",
+    href: "/services/water-heaters",
+    children: [
+      { label: "All Water Heaters", href: "/services/water-heaters" },
+      { label: "Heat Pump Water Heaters", href: "/services/heat-pump-water-heaters" },
+      { label: "Tankless Water Heaters", href: "/services/tankless-water-heaters" },
+      { label: "Gas Water Heaters", href: "/services/gas-water-heaters" },
+      { label: "Electric Water Heaters", href: "/services/electric-water-heaters" },
     ],
   },
   {
@@ -28,9 +38,14 @@ export const primaryNav: NavLink[] = [
       { label: "Tiburon", href: "/service-areas/tiburon" },
       { label: "Sebastopol", href: "/service-areas/sebastopol" },
       { label: "Cotati", href: "/service-areas/cotati" },
+      { label: "Windsor", href: "/service-areas/windsor" },
+      { label: "Sonoma", href: "/service-areas/sonoma" },
+      { label: "San Anselmo", href: "/service-areas/san-anselmo" },
+      { label: "Fairfax", href: "/service-areas/fairfax" },
     ],
   },
   { label: "Reviews", href: "/testimonials" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -38,6 +53,8 @@ export const footerNav = {
   company: [
     { label: "About", href: "/about" },
     { label: "Reviews", href: "/testimonials" },
+    { label: "Our Work", href: "/our-work" },
+    { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },
   ],
   services: [
@@ -47,6 +64,13 @@ export const footerNav = {
     { label: "Mini Splits", href: "/services/mini-splits" },
     { label: "Duct Work", href: "/services/duct-work" },
     { label: "Harvest Thermal", href: "/services/harvest-thermal" },
+  ],
+  waterHeaters: [
+    { label: "Water Heaters", href: "/services/water-heaters" },
+    { label: "Heat Pump Water Heaters", href: "/services/heat-pump-water-heaters" },
+    { label: "Tankless Water Heaters", href: "/services/tankless-water-heaters" },
+    { label: "Gas Water Heaters", href: "/services/gas-water-heaters" },
+    { label: "Electric Water Heaters", href: "/services/electric-water-heaters" },
   ],
   areas: [
     { label: "Petaluma", href: "/service-areas/petaluma" },
@@ -58,5 +82,9 @@ export const footerNav = {
     { label: "Tiburon", href: "/service-areas/tiburon" },
     { label: "Sebastopol", href: "/service-areas/sebastopol" },
     { label: "Cotati", href: "/service-areas/cotati" },
+    { label: "Windsor", href: "/service-areas/windsor" },
+    { label: "Sonoma", href: "/service-areas/sonoma" },
+    { label: "San Anselmo", href: "/service-areas/san-anselmo" },
+    { label: "Fairfax", href: "/service-areas/fairfax" },
   ],
 };

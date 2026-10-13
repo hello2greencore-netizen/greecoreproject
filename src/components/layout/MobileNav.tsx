@@ -273,7 +273,7 @@ export function MobileNav({ isOpen, onClose }: Props) {
                   "transition-[background-color,transform] duration-150 hover:bg-brand-700 active:bg-brand-800 active:scale-[0.98]",
                 )}
               >
-                Get Estimate
+                Book Now
                 <svg viewBox="0 0 24 24" fill="none" aria-hidden className="h-3.5 w-3.5">
                   <path
                     d="M5 12h14M13 5l7 7-7 7"

@@ -8,7 +8,7 @@ import { testimonials } from "@/data/testimonials";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Customer Reviews — Sonoma & Marin HVAC",
+  title: "Customer Reviews — Petaluma & North Bay HVAC",
   description:
     "5-star reviews from homeowners in Petaluma, Santa Rosa, Novato, San Rafael & across Sonoma and Marin who trust Green Core Heating & Air.",
   path: "/testimonials",

@@ -85,15 +85,22 @@ export const chatbotFaqCategories: ChatbotFAQCategory[] = [
         id: "service-areas",
         question: "What areas do you serve?",
         answer:
-          "Green Core serves homeowners throughout Sonoma and Marin counties, including Petaluma, Rohnert Park, Santa Rosa, Novato, San Rafael, Mill Valley, Tiburon, and Sebastopol.",
+          "Green Core serves homeowners throughout Sonoma and Marin counties, including Petaluma, Rohnert Park, Cotati, Santa Rosa, Windsor, Sebastopol, Sonoma, Novato, San Rafael, San Anselmo, Fairfax, Mill Valley, and Tiburon.",
         keywords: ["area", "areas", "serve", "city", "location", "sonoma", "marin"],
       },
       {
         id: "rebates",
         question: "Do you help with rebates?",
         answer:
-          "Yes. Green Core helps homeowners identify and claim BayREN, TECH Clean California, federal tax credit, and utility incentives that may apply to a project.",
+          "Yes. Green Core helps homeowners find and claim the rebates a project qualifies for, including TECH Clean California, BayREN, Sonoma Clean Power, and MCE programs. The federal 25C tax credit ended for systems installed after December 31, 2025.",
         keywords: ["rebate", "rebates", "incentive", "tax credit", "bayren", "tech"],
+      },
+      {
+        id: "water-heaters",
+        question: "Do you install water heaters?",
+        answer:
+          "Yes. Green Core installs and replaces heat pump, tankless, gas, and electric water heaters across Sonoma and Marin. Gas and electric tank installs start at $2,850, and same-day replacement is available when the schedule allows. Heat pump and tankless water heaters are priced to each home.",
+        keywords: ["water heater", "hot water", "tankless", "tank", "heat pump water heater", "no hot water"],
       },
       {
         id: "contact",

@@ -4,7 +4,7 @@ export const generalFaqs: FAQ[] = [
   {
     question: "What areas do you serve?",
     answer:
-      "We serve homeowners throughout Sonoma and Marin counties, including Petaluma, Rohnert Park, Santa Rosa, Novato, San Rafael, Mill Valley, Tiburon, and Sebastopol.",
+      "We serve homeowners throughout Sonoma and Marin counties, including Petaluma, Rohnert Park, Cotati, Santa Rosa, Windsor, Sebastopol, Sonoma, Novato, San Rafael, San Anselmo, Fairfax, Mill Valley, and Tiburon.",
   },
   {
     question: "Do you offer free estimates?",
@@ -19,7 +19,12 @@ export const generalFaqs: FAQ[] = [
   {
     question: "Do you help with rebates?",
     answer:
-      "Yes — we help you identify and claim BayREN, TECH Clean California, federal tax credit, and utility incentives that apply to your project.",
+      "Yes — we help you find and claim the rebates your project qualifies for, including TECH Clean California, BayREN, Sonoma Clean Power, and MCE programs, and we handle the paperwork. (The federal 25C tax credit ended for systems installed after December 31, 2025.)",
+  },
+  {
+    question: "Do you install and replace water heaters?",
+    answer:
+      "Yes. We install heat pump, tankless, gas, and electric water heaters. Gas and electric tank installs start at $2,850, and we offer same-day replacement when our schedule allows.",
   },
   {
     question: "How quickly can you come out?",

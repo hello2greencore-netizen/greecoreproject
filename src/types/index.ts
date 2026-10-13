@@ -14,11 +14,25 @@ export type Service = {
   overview: string[];
   benefits?: { title: string; description: string }[];
   faqs: FAQ[];
+  /** Groups services in menus and lists. */
+  category: ServiceCategory;
+  /** Slugs of related services to cross-link at the bottom of the page. */
+  related?: string[];
 };
+
+export type ServiceCategory = "heating-cooling" | "water-heating";
 
 export type ServiceAreaSection = {
   heading: string;
   body: string[];
+};
+
+export type ShowcaseProject = {
+  title: string;
+  date: string;
+  summary: string;
+  /** Public CompanyCam (Trusty) showcase page with the job photos. */
+  url: string;
 };
 
 export type ServiceArea = {
@@ -31,6 +45,14 @@ export type ServiceArea = {
   landmarks: string[];
   sections: ServiceAreaSection[];
   scheduleLabel?: string;
+  /** One town-specific line for the "Water heaters in {city}" section. */
+  waterHeaterNote?: string;
+  /** Local FAQs, rendered with FAQ schema. */
+  faqs?: FAQ[];
+  /** City name exactly as it appears in the CompanyCam gallery's City & State filter, e.g. "Sonoma, CA". */
+  showcaseCity?: string;
+  /** Written summaries of CompanyCam showcase jobs in this town (indexable text). */
+  projects?: ShowcaseProject[];
 };
 
 export type Testimonial = {

@@ -8,17 +8,23 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
+import Link from "next/link";
 import { services, getServiceBySlug } from "@/data/services";
 import { buildMetadata } from "@/lib/seo";
 
-/** Concise, keyword-focused meta titles per service (≤36 chars so template keeps total ≤54). */
+/** Keyword-first meta titles per service; the layout template appends the brand name. */
 const seoTitles: Record<string, string> = {
-  "heat-pumps": "Heat Pump Installation & Service",
-  "air-conditioning": "AC Installation & Repair",
-  furnaces: "Furnace Installation & Repair",
-  "mini-splits": "Mini Split Installation",
-  "duct-work": "Ductwork Design & Installation",
-  "harvest-thermal": "Harvest Thermal Water Heating",
+  "heat-pumps": "Heat Pump Installation in Sonoma & Marin",
+  "air-conditioning": "AC Installation & Repair in Sonoma & Marin",
+  furnaces: "Furnace Installation & Repair in Sonoma & Marin",
+  "mini-splits": "Ductless Mini Split Installation, Sonoma & Marin",
+  "duct-work": "Ductwork Repair & Replacement, Sonoma & Marin",
+  "harvest-thermal": "Harvest Thermal Installer, Sonoma & Marin",
+  "water-heaters": "Water Heater Installation & Replacement, Sonoma & Marin",
+  "heat-pump-water-heaters": "Heat Pump Water Heater Installation, Sonoma & Marin",
+  "tankless-water-heaters": "Tankless Water Heater Installation, Sonoma & Marin",
+  "gas-water-heaters": "Gas Water Heater Replacement, Sonoma & Marin",
+  "electric-water-heaters": "Electric Water Heater Replacement, Sonoma & Marin",
 };
 
 /** Location-rich meta descriptions per service (≤155 chars). */
@@ -35,6 +41,16 @@ const seoDescriptions: Record<string, string> = {
     "Ductwork installation, repair & replacement in Sonoma & Marin. Improve airflow, reduce energy bills, and fix uneven temperatures in your home.",
   "harvest-thermal":
     "Harvest Thermal installation in Sonoma & Marin. Smart heat pump water heating with energy management — lower operating costs and better efficiency.",
+  "water-heaters":
+    "Heat pump, tankless, gas & electric water heaters in Sonoma & Marin. Tank installs from $2,850. Same-day replacement when our schedule allows.",
+  "heat-pump-water-heaters":
+    "SANCO2 & GE GeoSpring heat pump water heater installation in Sonoma & Marin. Lower bills, rebates handled for you. Call (707) 988-5858.",
+  "tankless-water-heaters":
+    "Navien tankless water heater installation, repair & maintenance in Sonoma & Marin. Endless hot water, sized right for your home.",
+  "gas-water-heaters":
+    "Gas water heater replacement & repair in Sonoma & Marin. Bradford White & American Standard. Same-day replacement when our schedule allows.",
+  "electric-water-heaters":
+    "Electric water heater replacement & repair in Sonoma & Marin, plus heat pump upgrades that cut water heating costs. Tank installs from $2,850.",
 };
 
 export function generateStaticParams() {
@@ -124,6 +140,37 @@ export default async function ServicePage(
                   </Card>
                 </RevealItem>
               ))}
+            </RevealGroup>
+          </Container>
+        </section>
+      )}
+
+      {service.related && service.related.length > 0 && (
+        <section className="bg-subtle py-16 sm:py-20 lg:py-24">
+          <Container size="xl">
+            <Reveal>
+              <SectionHeading eyebrow="Related services" title="You might also be looking for." />
+            </Reveal>
+            <RevealGroup as="ul" className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {service.related
+                .map((s) => getServiceBySlug(s))
+                .filter((s): s is NonNullable<typeof s> => Boolean(s))
+                .map((s) => (
+                  <RevealItem as="li" key={s.slug}>
+                    <Card>
+                      <h3 className="font-display text-lg font-bold">
+                        {s.shortName ?? s.name}
+                      </h3>
+                      <p className="mt-2 text-sm leading-relaxed text-muted">{s.summary}</p>
+                      <Link
+                        href={`/services/${s.slug}`}
+                        className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-700 hover:underline"
+                      >
+                        Learn more
+                      </Link>
+                    </Card>
+                  </RevealItem>
+                ))}
             </RevealGroup>
           </Container>
         </section>

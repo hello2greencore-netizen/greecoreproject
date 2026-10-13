@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { services } from "@/data/services";
 import { serviceAreas } from "@/data/serviceAreas";
 import { siteConfig } from "@/data/site";
+import { getAllPosts } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.url;
@@ -31,6 +32,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),
+
+    // Blog
+    { url: `${base}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
+    ...getAllPosts().map((p) => ({
+      url: `${base}/blog/${p.slug}`,
+      lastModified: new Date(`${p.updated ?? p.date}T12:00:00`),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    })),
+
+    { url: `${base}/our-work`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
 
     // Tier 5 — trust & brand pages
     { url: `${base}/testimonials`, lastModified: now, changeFrequency: "monthly", priority: 0.65 },

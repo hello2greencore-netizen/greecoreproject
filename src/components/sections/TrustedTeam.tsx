@@ -16,13 +16,13 @@ export function TrustedTeam() {
     <section className="py-16 sm:py-20 lg:py-24">
       <Container size="xl">
         <div className="grid gap-10 sm:gap-12 lg:grid-cols-2 lg:items-start">
-          <Reveal className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-subtle lg:sticky lg:top-24 lg:aspect-[4/5]">
+          <Reveal className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-subtle lg:sticky lg:top-24 lg:aspect-[3/4]">
             <Image
-              src="/images/about/team.jpg"
-              alt="The Green Core Heating & Air team"
+              src="/images/about/team-flag.jpg"
+              alt="The Green Core Heating & Air team in front of an American flag"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover"
+              className="object-cover object-[50%_60%]"
             />
           </Reveal>
           <div>

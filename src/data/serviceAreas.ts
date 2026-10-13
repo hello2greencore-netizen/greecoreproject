@@ -28,7 +28,7 @@ export const serviceAreas: ServiceArea[] = [
     county: "Sonoma County",
     heroImage: "/images/service-areas/PetalumaPhoto.webp",
     intro:
-      "At Green Core Heating & Air, we provide dependable heating and cooling services designed specifically for homes and businesses in Petaluma. The climate here isn't extreme, but it's unique — cool marine air pushes in through the Petaluma Gap, mornings can be damp and foggy, and summer afternoons can still bring heat spikes. That combination means your HVAC system needs to be properly sized, efficient, and built to handle both temperature swings and moisture.",
+      "Green Core Heating & Air installs and services heat pumps, water heaters, air conditioning, furnaces, and ductless mini splits for homes in Petaluma, CA. The climate here isn't extreme, but it's unique — cool marine air pushes in through the Petaluma Gap, mornings can be damp and foggy, and summer afternoons can still bring heat spikes. That combination means your HVAC system needs to be properly sized, efficient, and built to handle both temperature swings and moisture.",
     lifestyleLine:
       "Whether you're spending the day walking through Downtown Petaluma, grabbing food along the riverfront, or heading out to Helen Putnam Regional Park, you should be able to come home to a space that feels comfortable and balanced. If your system struggles with humidity, uneven temperatures, or constantly running, it's often a sign the system wasn't designed for Petaluma's specific conditions — and that's where we come in.",
     landmarks: [
@@ -77,7 +77,7 @@ export const serviceAreas: ServiceArea[] = [
     county: "Sonoma County",
     heroImage: "/images/service-areas/RohnertPark.png",
     intro:
-      "At Green Core Heating & Air, we're proud to serve the growing community of Rohnert Park with dependable, high-efficiency heating and cooling solutions. Known for its open neighborhoods, parks, and proximity to Sonoma State University, Rohnert Park offers a comfortable, easygoing lifestyle — and your home should feel the same way. Our goal is to make sure your HVAC system supports that comfort every day, without inconsistency or high energy costs.",
+      "Green Core Heating & Air installs and services heat pumps, water heaters, air conditioning, furnaces, and ductless mini splits for homes in Rohnert Park, CA. Known for its open neighborhoods, parks, and proximity to Sonoma State University, Rohnert Park offers a comfortable, easygoing lifestyle — and your home should feel the same way. Our goal is to make sure your HVAC system supports that comfort every day, without inconsistency or high energy costs.",
     lifestyleLine:
       "Whether you're spending the afternoon at Foxtail Golf Club, catching a performance at the Green Music Center, or enjoying time around Sonoma State, coming home should feel effortless. If your system struggles to keep up, runs constantly, or leaves certain rooms uncomfortable, it's usually not just the equipment — it's how the system was designed. That's where we make the difference.",
     landmarks: [
@@ -132,7 +132,7 @@ export const serviceAreas: ServiceArea[] = [
     county: "Sonoma County",
     heroImage: "/images/service-areas/SantaRosa.avif",
     intro:
-      "At Green Core Heating & Air, we provide trusted heating and cooling services for homes throughout Santa Rosa. As Sonoma County's largest city, Santa Rosa has a wide mix of neighborhoods, climates, and home styles — and your HVAC system needs to be designed around your specific home, not a generic template.",
+      "Green Core Heating & Air installs and services heat pumps, water heaters, air conditioning, furnaces, and ductless mini splits for homes in Santa Rosa, CA. As Sonoma County's largest city, Santa Rosa has a wide mix of neighborhoods, climates, and home styles — and your HVAC system needs to be designed around your specific home, not a generic template.",
     lifestyleLine:
       "Whether you're spending the day in Railroad Square, hiking Annadel State Park, or enjoying time around Howarth Park, you should be able to come home to a space that feels balanced and comfortable. If your system runs constantly, leaves rooms uneven, or drives up your energy bills, it's usually a sign the system wasn't designed for your home's real conditions.",
     landmarks: [
@@ -187,7 +187,7 @@ export const serviceAreas: ServiceArea[] = [
     county: "Marin County",
     heroImage: "/images/service-areas/downtown-Novato.jpg",
     intro:
-      "At Green Core Heating & Air, we're proud to serve homeowners throughout Novato with thoughtfully designed heating and cooling solutions. Novato offers a unique blend of suburban comfort and open space, but that also means homes here experience a wide range of conditions — from warm afternoons to cool evenings. Your HVAC system needs to keep up with those shifts without overworking or driving up energy costs.",
+      "Green Core Heating & Air installs and services heat pumps, water heaters, air conditioning, furnaces, and ductless mini splits for homes in Novato, CA. Novato offers a unique blend of suburban comfort and open space, but that also means homes here experience a wide range of conditions — from warm afternoons to cool evenings. Your HVAC system needs to keep up with those shifts without overworking or driving up energy costs.",
     lifestyleLine:
       "Whether you're spending the day hiking around Stafford Lake Park, exploring Indian Valley Preserve, or enjoying time near Downtown Novato, you should be able to come home to a space that feels consistently comfortable. If your system struggles with hot and cold spots or never quite feels right, it's often a design issue — not just the equipment. That's where we focus our work.",
     landmarks: [
@@ -236,7 +236,7 @@ export const serviceAreas: ServiceArea[] = [
     county: "Marin County",
     heroImage: "/images/service-areas/SanRafael.avif",
     intro:
-      "At Green Core Heating & Air, we provide dependable heating and cooling services designed for homes throughout San Rafael. The climate here sits right in between coastal and inland conditions, which means your HVAC system needs to handle both cooler marine air and warmer inland temperatures — often in the same day. Getting that balance right is what makes the difference between a system that works and one that actually feels comfortable.",
+      "Green Core Heating & Air installs and services heat pumps, water heaters, air conditioning, furnaces, and ductless mini splits for homes in San Rafael, CA. The climate here sits right in between coastal and inland conditions, which means your HVAC system needs to handle both cooler marine air and warmer inland temperatures — often in the same day. Getting that balance right is what makes the difference between a system that works and one that actually feels comfortable.",
     lifestyleLine:
       "Whether you're spending the afternoon exploring China Camp State Park, walking through Downtown San Rafael, or enjoying the local shops and restaurants, coming home should feel consistent and comfortable. If your system struggles with uneven temperatures, hot upstairs rooms, or constant cycling, it's usually not just the equipment — it's how the system was designed.",
     landmarks: [
@@ -277,7 +277,7 @@ export const serviceAreas: ServiceArea[] = [
     county: "Marin County",
     heroImage: "/images/service-areas/millvalley.jpg",
     intro:
-      "At Green Core Heating & Air, we provide heating and cooling solutions designed specifically for homes in Mill Valley. Unlike inland areas, the climate here is heavily influenced by coastal fog, cooler temperatures, and dense tree coverage. That means HVAC systems aren't about extreme heating or cooling — they're about consistency, moisture control, and quiet, efficient operation.",
+      "Green Core Heating & Air installs and services heat pumps, water heaters, air conditioning, furnaces, and ductless mini splits for homes in Mill Valley, CA. Unlike inland areas, the climate here is heavily influenced by coastal fog, cooler temperatures, and dense tree coverage. That means HVAC systems aren't about extreme heating or cooling — they're about consistency, moisture control, and quiet, efficient operation.",
     lifestyleLine:
       "Whether you're spending the morning hiking Mount Tamalpais, walking through Downtown Mill Valley, or enjoying the surrounding redwoods, you want to come home to a space that feels warm, dry, and comfortable. If your home feels damp, uneven, or difficult to regulate, it's often a sign your system wasn't designed for these conditions.",
     landmarks: [
@@ -317,7 +317,7 @@ export const serviceAreas: ServiceArea[] = [
     county: "Marin County",
     heroImage: "/images/service-areas/Tiburon_.webp",
     intro:
-      "At Green Core Heating & Air, we provide heating and cooling solutions designed specifically for homes in Tiburon. With its coastal location, mild temperatures, and bay-facing properties, comfort here isn't about extreme heating or cooling — it's about consistency, efficiency, and systems that operate quietly in the background.",
+      "Green Core Heating & Air installs and services heat pumps, water heaters, air conditioning, furnaces, and ductless mini splits for homes in Tiburon, CA. With its coastal location, mild temperatures, and bay-facing properties, comfort here isn't about extreme heating or cooling — it's about consistency, efficiency, and systems that operate quietly in the background.",
     lifestyleLine:
       "Whether you're spending time along the waterfront, walking through Downtown Tiburon, or enjoying the views near Shoreline Park, you should be able to come home to a space that feels balanced and comfortable. If your system is noisy, uneven, or constantly adjusting, it's often a sign that it wasn't properly designed for the home.",
     landmarks: [
@@ -358,7 +358,7 @@ export const serviceAreas: ServiceArea[] = [
     county: "Sonoma County",
     heroImage: "/images/service-areas/sebastopol.jpg",
     intro:
-      "At Green Core Heating & Air, we provide heating and cooling solutions designed specifically for homes in Sebastopol. The climate here is shaped by coastal influence, morning fog, and warm afternoons, which creates a unique balance of temperature and moisture. That means your HVAC system needs to do more than just heat and cool — it needs to manage airflow, humidity, and efficiency all at once.",
+      "Green Core Heating & Air installs and services heat pumps, water heaters, air conditioning, furnaces, and ductless mini splits for homes in Sebastopol, CA. The climate here is shaped by coastal influence, morning fog, and warm afternoons, which creates a unique balance of temperature and moisture. That means your HVAC system needs to do more than just heat and cool — it needs to manage airflow, humidity, and efficiency all at once.",
     lifestyleLine:
       "Whether you're spending the day at the Sebastopol Farmers Market, exploring The Barlow, or enjoying the surrounding orchards and open space, you want to come home to a space that feels comfortable and balanced. If your home feels damp in the mornings, uneven throughout the day, or struggles to maintain temperature, it's often a sign the system wasn't designed for Sebastopol's conditions.",
     landmarks: [
@@ -398,7 +398,7 @@ export const serviceAreas: ServiceArea[] = [
     county: "Sonoma County",
     heroImage: "/images/service-areas/Cotati.jpg",
     intro:
-      "At Green Core Heating & Air, we provide heating and cooling solutions designed specifically for homes in Cotati. While Cotati shares some of the same coastal influence as nearby areas, it has its own microclimate — cool mornings, occasional fog, and warm afternoons that can catch homeowners off guard. That combination means your HVAC system needs to be efficient, responsive, and properly designed to handle daily temperature swings.",
+      "Green Core Heating & Air installs and services heat pumps, water heaters, air conditioning, furnaces, and ductless mini splits for homes in Cotati, CA. While Cotati shares some of the same coastal influence as nearby areas, it has its own microclimate — cool mornings, occasional fog, and warm afternoons that can catch homeowners off guard. That combination means your HVAC system needs to be efficient, responsive, and properly designed to handle daily temperature swings.",
     lifestyleLine:
       "Whether you're spending time at La Plaza Park, enjoying local restaurants and music in downtown Cotati, or heading out toward nearby trails and open space, you want to come home to a space that feels consistently comfortable. If your system struggles to keep up, leaves certain rooms warmer than others, or runs longer than it should, it's often a sign the system wasn't designed for your home's actual conditions.",
     landmarks: [
@@ -668,6 +668,10 @@ export const serviceAreas: ServiceArea[] = [
     ],
   },
 ];
+
+/** Community choice electricity provider for most homes in the county (PG&E delivers). */
+export const utilityForCounty = (county: string): string =>
+  county === "Marin County" ? "MCE" : "Sonoma Clean Power";
 
 export const getServiceAreaBySlug = (
   slug: string,

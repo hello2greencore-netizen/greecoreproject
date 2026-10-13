@@ -14,7 +14,9 @@ import { serviceCategories, getServicesByCategory } from "@/data/services";
 import {
   serviceAreas,
   getServiceAreaBySlug,
+  utilityForCounty,
 } from "@/data/serviceAreas";
+import { cityFaqs } from "@/lib/cityContent";
 import { buildMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
@@ -28,7 +30,7 @@ export async function generateMetadata(
   const area = getServiceAreaBySlug(city);
   if (!area) return buildMetadata({ title: "Service Area", description: "" });
   return buildMetadata({
-    title: `HVAC & Heat Pumps in ${area.city}, CA`,
+    title: `HVAC, Heat Pumps & Water Heaters in ${area.city}, CA`,
     description: `Green Core Heating & Air installs heat pumps, water heaters, AC, furnaces & mini splits in ${area.city}, CA. Local HVAC contractor — free estimates.`,
     path: `/service-areas/${area.slug}`,
     image: area.heroImage,
@@ -54,8 +56,8 @@ export default async function ServiceAreaPage(
 
       <Hero
         eyebrow={area.county}
-        title={`Heat Pump & HVAC Services in ${area.city}, CA`}
-        description={`Trusted HVAC experts in ${area.city}, CA.`}
+        title={`Heat Pump, HVAC & Water Heater Services in ${area.city}, CA`}
+        description={`Heat pumps, water heaters, AC, furnaces, and mini splits for ${area.city} homes. Same-day water heater replacement when our schedule allows.`}
         image={area.heroImage}
         imageAlt={`${area.city}, California`}
         size="spacious"
@@ -127,6 +129,37 @@ export default async function ServiceAreaPage(
       ))}
 
       <section className="py-16 sm:py-20 lg:py-24">
+        <Container size="md">
+          <Reveal>
+            <SectionHeading
+              eyebrow={`Serving ${area.city}`}
+              title={`Water heaters in ${area.city}`}
+            />
+          </Reveal>
+          <RevealGroup
+            className="mt-8 space-y-5 text-base leading-relaxed text-muted sm:text-lg"
+            stagger={0.05}
+          >
+            <RevealItem>
+              <p>
+                Need a new water heater in {area.city}? Green Core installs and replaces{" "}
+                <Link href="/services/heat-pump-water-heaters" className="font-semibold text-brand-700 hover:underline">heat pump</Link>,{" "}
+                <Link href="/services/tankless-water-heaters" className="font-semibold text-brand-700 hover:underline">tankless</Link>,{" "}
+                <Link href="/services/gas-water-heaters" className="font-semibold text-brand-700 hover:underline">gas</Link>, and{" "}
+                <Link href="/services/electric-water-heaters" className="font-semibold text-brand-700 hover:underline">electric</Link>{" "}
+                water heaters, with same-day replacement when our schedule allows. Gas and electric tank installs start at $2,850.
+              </p>
+            </RevealItem>
+            <RevealItem>
+              <p>
+                For the lowest running cost, a SANCO2 or GE GeoSpring heat pump water heater is hard to beat, and {area.city} homes served by {utilityForCounty(area.county)} may qualify for rebates on top of TECH Clean California and BayREN programs, depending on current funding. Want endless hot water instead? We install Navien tankless units, sized to your household.
+              </p>
+            </RevealItem>
+          </RevealGroup>
+        </Container>
+      </section>
+
+      <section className="py-16 sm:py-20 lg:py-24">
         <Container size="xl">
           <Reveal>
             <SectionHeading
@@ -177,13 +210,11 @@ export default async function ServiceAreaPage(
         showcaseCity={area.showcaseCity}
       />
 
-      {area.faqs && area.faqs.length > 0 && (
-        <FAQSection
-          eyebrow={`${area.city} FAQ`}
-          title={`Questions from ${area.city} homeowners`}
-          faqs={area.faqs}
-        />
-      )}
+      <FAQSection
+        eyebrow={`${area.city} FAQ`}
+        title={`Questions from ${area.city} homeowners`}
+        faqs={cityFaqs(area)}
+      />
 
       <CTASection
         title={`Schedule HVAC service in ${area.city}.`}

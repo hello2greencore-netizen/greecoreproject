@@ -150,7 +150,7 @@ export function Header() {
           <div className="flex items-center gap-2 sm:gap-3 lg:gap-4">
             <a
               href={siteConfig.phoneHref}
-              className="hidden text-sm font-medium text-foreground/50 transition-colors duration-200 hover:text-foreground md:inline"
+              className="hidden whitespace-nowrap text-sm font-medium text-foreground/50 transition-colors duration-200 hover:text-foreground md:inline lg:hidden xl:inline"
             >
               {siteConfig.phone}
             </a>

@@ -54,7 +54,7 @@ export default function ServicesPage() {
             ))}
           </ul>
           {serviceCategories.map((cat) => (
-            <div key={cat.id} className="mt-12">
+            <div key={cat.id} id={cat.id} className="mt-12 scroll-mt-28">
               <h3 className="font-display text-xl font-bold text-foreground sm:text-2xl">
                 {cat.label}
               </h3>

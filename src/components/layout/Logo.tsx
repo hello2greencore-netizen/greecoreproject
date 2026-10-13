@@ -30,7 +30,7 @@ export function Logo({ className, tone = "dark" }: Props) {
         priority
         className="h-10 w-10 flex-shrink-0 rounded-xl transition-transform duration-200 group-hover:scale-[1.04] sm:h-11 sm:w-11"
       />
-      <span className="flex flex-col leading-[1.05]">
+      <span className="flex flex-col whitespace-nowrap leading-[1.05]">
         <span
           className={cn(
             "font-display text-[13px] font-bold tracking-tight sm:text-[15px]",

@@ -3,6 +3,8 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { Hero } from "@/components/sections/Hero";
 import { CTASection } from "@/components/sections/CTASection";
+import { FAQSection } from "@/components/sections/FAQSection";
+import { ProjectShowcase } from "@/components/sections/ProjectShowcase";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
@@ -168,6 +170,20 @@ export default async function ServiceAreaPage(
           ))}
         </Container>
       </section>
+
+      <ProjectShowcase
+        city={area.city}
+        projects={area.projects}
+        showcaseCity={area.showcaseCity}
+      />
+
+      {area.faqs && area.faqs.length > 0 && (
+        <FAQSection
+          eyebrow={`${area.city} FAQ`}
+          title={`Questions from ${area.city} homeowners`}
+          faqs={area.faqs}
+        />
+      )}
 
       <CTASection
         title={`Schedule HVAC service in ${area.city}.`}

@@ -85,7 +85,7 @@ export const chatbotFaqCategories: ChatbotFAQCategory[] = [
         id: "service-areas",
         question: "What areas do you serve?",
         answer:
-          "Green Core serves homeowners throughout Sonoma and Marin counties, including Petaluma, Rohnert Park, Santa Rosa, Novato, San Rafael, Mill Valley, Tiburon, and Sebastopol.",
+          "Green Core serves homeowners throughout Sonoma and Marin counties, including Petaluma, Rohnert Park, Cotati, Santa Rosa, Windsor, Sebastopol, Sonoma, Novato, San Rafael, San Anselmo, Fairfax, Mill Valley, and Tiburon.",
         keywords: ["area", "areas", "serve", "city", "location", "sonoma", "marin"],
       },
       {

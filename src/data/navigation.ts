@@ -38,6 +38,10 @@ export const primaryNav: NavLink[] = [
       { label: "Tiburon", href: "/service-areas/tiburon" },
       { label: "Sebastopol", href: "/service-areas/sebastopol" },
       { label: "Cotati", href: "/service-areas/cotati" },
+      { label: "Windsor", href: "/service-areas/windsor" },
+      { label: "Sonoma", href: "/service-areas/sonoma" },
+      { label: "San Anselmo", href: "/service-areas/san-anselmo" },
+      { label: "Fairfax", href: "/service-areas/fairfax" },
     ],
   },
   { label: "Reviews", href: "/testimonials" },
@@ -49,6 +53,7 @@ export const footerNav = {
   company: [
     { label: "About", href: "/about" },
     { label: "Reviews", href: "/testimonials" },
+    { label: "Our Work", href: "/our-work" },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },
   ],
@@ -77,5 +82,9 @@ export const footerNav = {
     { label: "Tiburon", href: "/service-areas/tiburon" },
     { label: "Sebastopol", href: "/service-areas/sebastopol" },
     { label: "Cotati", href: "/service-areas/cotati" },
+    { label: "Windsor", href: "/service-areas/windsor" },
+    { label: "Sonoma", href: "/service-areas/sonoma" },
+    { label: "San Anselmo", href: "/service-areas/san-anselmo" },
+    { label: "Fairfax", href: "/service-areas/fairfax" },
   ],
 };

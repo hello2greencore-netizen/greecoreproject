@@ -42,6 +42,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     })),
 
+    { url: `${base}/our-work`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
+
     // Tier 5 — trust & brand pages
     { url: `${base}/testimonials`, lastModified: now, changeFrequency: "monthly", priority: 0.65 },
     { url: `${base}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },

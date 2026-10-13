@@ -11,7 +11,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "HVAC Service Areas — Sonoma & Marin Counties",
   description:
-    "Green Core serves Petaluma, Rohnert Park, Santa Rosa, Cotati, Sebastopol, Novato, San Rafael, Mill Valley & Tiburon. Local HVAC experts in Sonoma & Marin.",
+    "Green Core serves Petaluma, Santa Rosa, Windsor, Sonoma, Rohnert Park, Novato, San Rafael, San Anselmo, Fairfax, Mill Valley & more across Sonoma & Marin.",
   path: "/service-areas",
 });
 
@@ -35,16 +35,23 @@ export default function ServiceAreasPage() {
               title="Find your city."
             />
           </Reveal>
-          <RevealGroup
-            as="ul"
-            className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
-          >
-            {serviceAreas.map((area) => (
-              <RevealItem as="li" key={area.slug}>
-                <ServiceAreaCard area={area} />
-              </RevealItem>
-            ))}
-          </RevealGroup>
+          {["Sonoma County", "Marin County"].map((county) => (
+            <div key={county} className="mt-12">
+              <h3 className="font-display text-xl font-bold text-foreground sm:text-2xl">{county}</h3>
+              <RevealGroup
+                as="ul"
+                className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
+              >
+                {serviceAreas
+                  .filter((area) => area.county === county)
+                  .map((area) => (
+                    <RevealItem as="li" key={area.slug}>
+                      <ServiceAreaCard area={area} />
+                    </RevealItem>
+                  ))}
+              </RevealGroup>
+            </div>
+          ))}
         </Container>
       </section>
 

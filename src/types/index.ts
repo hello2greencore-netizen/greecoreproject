@@ -27,6 +27,14 @@ export type ServiceAreaSection = {
   body: string[];
 };
 
+export type ShowcaseProject = {
+  title: string;
+  date: string;
+  summary: string;
+  /** Public CompanyCam (Trusty) showcase page with the job photos. */
+  url: string;
+};
+
 export type ServiceArea = {
   slug: string;
   city: string;
@@ -37,6 +45,12 @@ export type ServiceArea = {
   landmarks: string[];
   sections: ServiceAreaSection[];
   scheduleLabel?: string;
+  /** Local FAQs, rendered with FAQ schema. */
+  faqs?: FAQ[];
+  /** City name exactly as it appears in the CompanyCam gallery's City & State filter, e.g. "Sonoma, CA". */
+  showcaseCity?: string;
+  /** Written summaries of CompanyCam showcase jobs in this town (indexable text). */
+  projects?: ShowcaseProject[];
 };
 
 export type Testimonial = {

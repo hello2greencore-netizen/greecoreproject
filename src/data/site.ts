@@ -31,5 +31,8 @@ export const siteConfig = {
     secondary: { label: "Call Us", href: "tel:+17079885858" },
   },
   license: "CSLB #1131183",
+  /** CompanyCam (Trusty) portfolio gallery embed. Add ?city_states=City%2C+CA to filter by town. */
+  projectGalleryUrl:
+    "https://trusty.app/embed/website-gallery/2f2e35f2-246a-417b-a2c1-77e260843f49",
   ogImage: "/images/hero/home.jpg",
 } as const;

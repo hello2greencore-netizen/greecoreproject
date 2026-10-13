@@ -4,7 +4,7 @@ export const generalFaqs: FAQ[] = [
   {
     question: "What areas do you serve?",
     answer:
-      "We serve homeowners throughout Sonoma and Marin counties, including Petaluma, Rohnert Park, Santa Rosa, Cotati, Sebastopol, Novato, San Rafael, Mill Valley, and Tiburon.",
+      "We serve homeowners throughout Sonoma and Marin counties, including Petaluma, Rohnert Park, Cotati, Santa Rosa, Windsor, Sebastopol, Sonoma, Novato, San Rafael, San Anselmo, Fairfax, Mill Valley, and Tiburon.",
   },
   {
     question: "Do you offer free estimates?",

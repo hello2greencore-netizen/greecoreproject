@@ -3,6 +3,27 @@ import type { ServiceArea } from "@/types";
 export const serviceAreas: ServiceArea[] = [
   {
     slug: "petaluma",
+    showcaseCity: "Petaluma, CA",
+    projects: [
+      {
+        "title": "Heat pump replaces an attic gas furnace in Petaluma",
+        "date": "July 2026",
+        "summary": "We removed an aging gas furnace from the attic and installed a high-efficiency Carrier heat pump, sized for the home, so it now heats and cools on one all-electric system.",
+        "url": "https://trusty.app/projects/318467"
+      },
+      {
+        "title": "Harvest Thermal installation in Petaluma",
+        "date": "July 2026",
+        "summary": "We replaced an aging furnace and water heater with a Harvest Thermal system that handles heating, hot water, and cooling from one high-efficiency heat pump.",
+        "url": "https://trusty.app/projects/318485"
+      },
+      {
+        "title": "Carrier system and crawlspace duct upgrade in Petaluma",
+        "date": "April 2026",
+        "summary": "We replaced an outdated system with a Carrier fan coil and outdoor unit, added dedicated electrical and surge protection, and rebuilt the crawlspace ducts with new insulated duct sealed with mastic.",
+        "url": "https://trusty.app/projects/321572"
+      }
+    ],
     city: "Petaluma",
     county: "Sonoma County",
     heroImage: "/images/service-areas/PetalumaPhoto.webp",
@@ -43,6 +64,15 @@ export const serviceAreas: ServiceArea[] = [
   },
   {
     slug: "rohnert-park",
+    showcaseCity: "Rohnert Park, CA",
+    projects: [
+      {
+        "title": "HVAC maintenance and electrical diagnostics in Rohnert Park",
+        "date": "July 2026",
+        "summary": "We inspected the outdoor unit, attic air handler, and furnace, tested capacitors, contactors, and controls, checked refrigerant pressures, and cleared the condensate drain to keep the system running reliably.",
+        "url": "https://trusty.app/projects/326283"
+      }
+    ],
     city: "Rohnert Park",
     county: "Sonoma County",
     heroImage: "/images/service-areas/RohnertPark.png",
@@ -83,6 +113,21 @@ export const serviceAreas: ServiceArea[] = [
   },
   {
     slug: "santa-rosa",
+    showcaseCity: "Santa Rosa, CA",
+    projects: [
+      {
+        "title": "Carrier heat pump and air handler installation in Santa Rosa",
+        "date": "August 2026",
+        "summary": "We replaced dated equipment with a high-efficiency Carrier heat pump and a new air handler, with new refrigerant lines, condensate drainage, and an upgraded electrical disconnect with surge protection.",
+        "url": "https://trusty.app/projects/337703"
+      },
+      {
+        "title": "Air conditioning added to an existing furnace in Santa Rosa",
+        "date": "April 2026",
+        "summary": "We added central air conditioning to the home's existing furnace so the homeowners can stay cool through Santa Rosa's hot summers.",
+        "url": "https://trusty.app/projects/321571"
+      }
+    ],
     city: "Santa Rosa",
     county: "Sonoma County",
     heroImage: "/images/service-areas/SantaRosa.avif",
@@ -123,6 +168,21 @@ export const serviceAreas: ServiceArea[] = [
   },
   {
     slug: "novato",
+    showcaseCity: "Novato, CA",
+    projects: [
+      {
+        "title": "Mitsubishi ductless mini split installation in Novato",
+        "date": "September 2026",
+        "summary": "We installed a Mitsubishi ductless mini split with new line sets, a dedicated electrical disconnect, and a precisely weighed refrigerant charge for efficient zoned heating and cooling.",
+        "url": "https://trusty.app/projects/349319"
+      },
+      {
+        "title": "Duct replacement in Novato",
+        "date": "July 2026",
+        "summary": "We replaced the home's duct system with new R-8 insulated duct for better airflow and efficiency.",
+        "url": "https://trusty.app/projects/320370"
+      }
+    ],
     city: "Novato",
     county: "Marin County",
     heroImage: "/images/service-areas/downtown-Novato.jpg",
@@ -163,6 +223,15 @@ export const serviceAreas: ServiceArea[] = [
   },
   {
     slug: "san-rafael",
+    showcaseCity: "San Rafael, CA",
+    projects: [
+      {
+        "title": "Harvest Thermal installation in San Rafael",
+        "date": "April 2026",
+        "summary": "We replaced an old Rheem water heater and York furnace with a Harvest Thermal system and a Carrier air handler, giving the home efficient heating, cooling, and hot water from one system.",
+        "url": "https://trusty.app/projects/318463"
+      }
+    ],
     city: "San Rafael",
     county: "Marin County",
     heroImage: "/images/service-areas/SanRafael.avif",
@@ -361,6 +430,241 @@ export const serviceAreas: ServiceArea[] = [
           "We enjoy working in a city where homeowners value practical comfort and long-term solutions. The variety of homes and the tight-knit feel of the community make it rewarding to help people improve their living spaces. Whether it's solving a long-standing comfort issue or upgrading to a more efficient system, we're proud to serve homeowners in Cotati.",
         ],
       },
+    ],
+  },
+  {
+    slug: "windsor",
+    city: "Windsor",
+    county: "Sonoma County",
+    heroImage: "/images/hero/service-areas.jpg",
+    intro: "Green Core Heating & Air installs and services heat pumps, water heaters, air conditioning, furnaces, and ductless mini splits for homes in Windsor, CA. Windsor sits at the north end of the Santa Rosa Plain, where summer afternoons regularly climb into the 90s and winter nights dip into the 30s, so your system has to handle real heat and real cold.",
+    lifestyleLine: "Whether you're catching a summer concert on the Windsor Town Green or heading out for a hike at Shiloh Ranch Regional Park, you should come home to a house that feels comfortable. If upstairs rooms bake in July or your system runs nonstop, that's usually a design problem we can fix.",
+    landmarks: [
+      "Windsor Town Green",
+      "Shiloh Ranch Regional Park",
+      "Keiser Park",
+      "Esposti Park",
+      "Old Redwood Highway"
+    ],
+    sections: [
+      {
+        "heading": "Designed for Windsor Homes",
+        "body": [
+          "A lot of Windsor's neighborhoods were built from the 1980s through the 2000s, and many of those homes still have their original builder-grade furnace and AC. After 20 to 30 years, that equipment is near the end of its life, and the attic ductwork that came with it often leaks cool air straight into the hottest part of the house.",
+          "When we replace a system in Windsor, we start with a load calculation and a duct check, not just the size of the old unit. Right-sizing the equipment and sealing the ducts is what fixes hot upstairs bedrooms and high summer bills. After recent wildfire seasons, many Windsor homeowners also ask for better filtration for smoky days, and we can build that in."
+        ]
+      },
+      {
+        "heading": "Heat Pumps and Water Heaters in Windsor",
+        "body": [
+          "Windsor's hot summers make a heat pump an easy upgrade: one all-electric system gives you efficient cooling in July and heating in January, and it replaces both an old furnace and an old AC. For hot water, a heat pump water heater is the lowest-cost option to run, and gas and electric tank replacements start at $2,850, with same-day replacement when our schedule allows.",
+          "We pull permits through the Town of Windsor and handle the inspections, so you don't have to coordinate any of it."
+        ]
+      },
+      {
+        "heading": "Why We Love Windsor",
+        "body": [
+          "Windsor has the feel of a small town with a real community center, from the Town Green to the farmers market, and it's a short drive from wine country and the Russian River. Homeowners here care about doing things right, and that's the kind of work we like to do."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        "question": "Do you install heat pumps in Windsor, CA?",
+        "answer": "Yes. Green Core designs and installs heat pump systems for Windsor homes, including ducted heat pumps, ductless mini splits, and Harvest Thermal systems. Every install starts with a load calculation so the system is sized for Windsor's hot summers and cold winter nights."
+      },
+      {
+        "question": "Are there rebates for heat pumps in Windsor?",
+        "answer": "Most Windsor homes get their electricity through Sonoma Clean Power, with PG&E handling delivery. Depending on current funding, you may qualify for rebates through TECH Clean California, Sonoma Clean Power, or BayREN. We check what's available and file the paperwork for you. The federal 25C tax credit ended for systems installed after December 31, 2025."
+      },
+      {
+        "question": "Do I need a permit to replace my HVAC system or water heater in Windsor?",
+        "answer": "Yes. HVAC and water heater replacements need a permit from the Town of Windsor. We pull the permit and schedule the inspection as part of the job."
+      },
+      {
+        "question": "Can you replace a water heater the same day in Windsor?",
+        "answer": "Often, yes. We offer same-day water heater replacement when our schedule allows, and gas and electric tank installs start at $2,850. Call (707) 988-5858 to check today's availability."
+      },
+      {
+        "question": "Will a heat pump keep my Windsor home cool in the summer?",
+        "answer": "Yes, when it's sized correctly. Modern heat pumps cool just as well as a central air conditioner. The key is a proper load calculation and tight ductwork, which is how we design every system."
+      }
+    ],
+  },
+  {
+    slug: "sonoma",
+    city: "Sonoma",
+    county: "Sonoma County",
+    heroImage: "/images/hero/service-areas.jpg",
+    intro: "Green Core Heating & Air installs and services heat pumps, ductless mini splits, water heaters, air conditioning, and furnaces for homes in Sonoma, CA, and the surrounding Sonoma Valley. Valley summers get hot, nights cool off fast, and many homes here are older, so comfort comes down to a system designed for the house you actually have.",
+    lifestyleLine: "Whether you're spending a Saturday around the Sonoma Plaza or walking the Overlook Trail above town, your home should be a comfortable place to come back to. Rooms that never cool down, drafty older floors, or a furnace that struggles on cold mornings are all things we fix every week.",
+    landmarks: [
+      "Sonoma Plaza",
+      "Mission San Francisco Solano",
+      "Sonoma Overlook Trail",
+      "Montini Preserve",
+      "Maxwell Farms Regional Park",
+      "Boyes Hot Springs"
+    ],
+    sections: [
+      {
+        "heading": "Designed for Sonoma Homes",
+        "body": [
+          "Sonoma has everything from historic homes near the Plaza to ranch houses and newer builds out toward the Springs. Older homes often have little or no ductwork, cramped crawlspaces, or a single wall furnace doing all the work. For those houses, a ductless mini split system can add efficient heating and cooling room by room without tearing into walls.",
+          "Homes with existing ducts usually do best with a ducted heat pump, sized with a proper load calculation and paired with duct repairs where needed. That's how you get even temperatures through hot valley afternoons without oversized equipment."
+        ]
+      },
+      {
+        "heading": "Rebates and Permits in Sonoma",
+        "body": [
+          "Most homes in Sonoma get their electricity through Sonoma Clean Power, which can mean rebates for heat pumps and heat pump water heaters on top of TECH Clean California and BayREN programs, depending on current funding. We check what you qualify for and file the paperwork.",
+          "Inside city limits, permits go through the City of Sonoma. In unincorporated areas like Boyes Hot Springs, El Verano, and Glen Ellen, they go through Permit Sonoma. We handle either one."
+        ]
+      },
+      {
+        "heading": "Why We Love Sonoma",
+        "body": [
+          "Sonoma blends history, small-town character, and some of the best views in wine country. A lot of homes here have been cared for over generations, and we take the same care when we upgrade them."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        "question": "Can you install a heat pump in an older Sonoma home without ductwork?",
+        "answer": "Yes. Ductless mini splits are a heat pump designed for homes without ducts. We mount compact indoor units in the rooms that need them and run small refrigerant lines to an outdoor unit, so there's no need to open up walls for ductwork."
+      },
+      {
+        "question": "Are there heat pump rebates in Sonoma?",
+        "answer": "Most Sonoma homes are Sonoma Clean Power customers, and depending on current funding, rebates may be available through Sonoma Clean Power, TECH Clean California, or BayREN. We check what applies to your home and handle the paperwork."
+      },
+      {
+        "question": "Do you serve Glen Ellen, Boyes Hot Springs, and El Verano?",
+        "answer": "Yes. We work throughout the Sonoma Valley, including the unincorporated areas around the City of Sonoma. Permits there go through Permit Sonoma, and we take care of them."
+      },
+      {
+        "question": "Do you replace water heaters in Sonoma?",
+        "answer": "Yes. We install heat pump, tankless, gas, and electric water heaters. Gas and electric tank installs start at $2,850, with same-day replacement when our schedule allows."
+      }
+    ],
+    showcaseCity: "Sonoma, CA",
+    projects: [
+      {
+        "title": "Furnace and AC tune-up with duct repair in Sonoma",
+        "date": "July 2026",
+        "summary": "We serviced an American Standard furnace and outdoor condenser, tested the electrical components, deep-cleaned the condenser coil, and replaced damaged duct sections with new 12-inch duct to restore airflow.",
+        "url": "https://trusty.app/projects/324623"
+      }
+    ],
+  },
+  {
+    slug: "san-anselmo",
+    city: "San Anselmo",
+    county: "Marin County",
+    heroImage: "/images/hero/service-areas.jpg",
+    intro: "Green Core Heating & Air installs and services heat pumps, ductless mini splits, water heaters, furnaces, and air conditioning for homes in San Anselmo, CA. Many homes in the Ross Valley were built long before central air, so upgrades here are about adding efficient heating and cooling in a way that fits an older house.",
+    lifestyleLine: "Whether you're browsing the shops on San Anselmo Avenue, relaxing in Creek Park, or walking up toward Red Hill, your home should feel as comfortable as the town itself. Cold, drafty rooms in winter and stuffy bedrooms on summer afternoons are the most common things we hear about here.",
+    landmarks: [
+      "Downtown San Anselmo",
+      "San Anselmo Avenue",
+      "Creek Park",
+      "Robson-Harrington Park",
+      "Sleepy Hollow",
+      "Red Hill"
+    ],
+    sections: [
+      {
+        "heading": "Designed for San Anselmo Homes",
+        "body": [
+          "San Anselmo is full of homes from the early and mid-1900s: craftsman bungalows, brown-shingle houses, and hillside homes with small attics and tight crawlspaces. Many still have an aging gas furnace and no cooling at all. Replacing that furnace with a heat pump adds cooling in the same project, and the whole system runs on electricity.",
+          "Where ductwork is limited or worn out, we either rebuild the ducts properly or use ductless mini splits so we don't have to open up original walls and ceilings. We also check the electrical panel early, since some older homes need a panel upgrade before going all-electric."
+        ]
+      },
+      {
+        "heading": "Rebates and Permits in San Anselmo",
+        "body": [
+          "Most San Anselmo homes get their electricity through MCE, with PG&E handling delivery. Depending on current funding, heat pumps and heat pump water heaters may qualify for MCE, TECH Clean California, or BayREN rebates. We check what's available and file the paperwork for you.",
+          "Permits for HVAC and water heater work go through the Town of San Anselmo, and we handle the permit and inspection."
+        ]
+      },
+      {
+        "heading": "Why We Love San Anselmo",
+        "body": [
+          "San Anselmo has a walkable downtown, a strong sense of community, and some of the most charming older homes in Marin. Upgrading them carefully, without losing what makes them special, is work we really enjoy."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        "question": "Can you add air conditioning to an older San Anselmo home?",
+        "answer": "Yes. The most common way is to replace the old furnace with a heat pump, which heats and cools from one system. For homes without good ductwork, ductless mini splits add cooling room by room without major construction."
+      },
+      {
+        "question": "Are there heat pump rebates in San Anselmo?",
+        "answer": "Most San Anselmo homes are MCE customers. Depending on current funding, you may qualify for rebates through MCE, TECH Clean California, or BayREN. We check what applies and handle the paperwork. The federal 25C tax credit ended for systems installed after December 31, 2025."
+      },
+      {
+        "question": "Will I need an electrical panel upgrade for a heat pump?",
+        "answer": "Sometimes. Many older Ross Valley homes have smaller electrical panels. We check your panel during the estimate and tell you up front if any electrical work is needed."
+      },
+      {
+        "question": "Do I need a permit for HVAC work in San Anselmo?",
+        "answer": "Yes. HVAC and water heater replacements need a permit from the Town of San Anselmo. We pull the permit and schedule the inspection."
+      }
+    ],
+  },
+  {
+    slug: "fairfax",
+    city: "Fairfax",
+    county: "Marin County",
+    heroImage: "/images/hero/service-areas.jpg",
+    intro: "Green Core Heating & Air installs and services heat pumps, ductless mini splits, heat pump water heaters, furnaces, and air conditioning for homes in Fairfax, CA. Fairfax homes tend to be smaller, older, and tucked into shaded canyons, which makes efficient, all-electric heating and cooling a natural fit.",
+    lifestyleLine: "Whether you're grabbing coffee on Bolinas Road, heading to a show at the Fairfax Pavilion, or starting a ride into Cascade Canyon, your home should feel warm on damp winter mornings and comfortable on warm afternoons. Cold, shaded rooms and old wall heaters are the issues we see most often here.",
+    landmarks: [
+      "Downtown Fairfax",
+      "Bolinas Road",
+      "Fairfax Pavilion",
+      "Deer Park",
+      "Cascade Canyon Open Space"
+    ],
+    sections: [
+      {
+        "heading": "Designed for Fairfax Homes",
+        "body": [
+          "Many Fairfax homes are cottages, cabins, and mid-century houses under redwoods and oaks, along with a growing number of ADUs. Shade and creek-side moisture keep homes cool and damp in winter, and older heating like wall furnaces or baseboard heaters can't keep up efficiently.",
+          "Ductless mini splits work especially well here. They heat and cool individual rooms or an ADU quietly and efficiently, with no ductwork needed. For homes with existing ducts, a right-sized ducted heat pump is usually the better fit. Either way, we check your electrical panel first, since smaller older panels are common."
+        ]
+      },
+      {
+        "heading": "Going All-Electric in Fairfax",
+        "body": [
+          "Fairfax has a strong sustainability community, and many homeowners here want to move off gas completely. A heat pump for heating and cooling, plus a heat pump water heater, covers the biggest gas uses in most homes. Harvest Thermal can combine both into one system.",
+          "Most Fairfax homes get electricity through MCE, and depending on current funding, rebates may be available through MCE, TECH Clean California, or BayREN. We check what you qualify for, handle the paperwork, and pull permits through the Town of Fairfax."
+        ]
+      },
+      {
+        "heading": "Why We Love Fairfax",
+        "body": [
+          "Fairfax is creative, outdoorsy, and proud of its small-town character, with trails starting right from downtown. Helping homeowners here make thoughtful, efficient upgrades is a great fit for how we like to work."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        "question": "What's the best heating and cooling option for a small Fairfax home or ADU?",
+        "answer": "Usually a ductless mini split. It heats and cools efficiently without ductwork, runs quietly, and lets you control each room separately. For larger homes with existing ducts, a ducted heat pump is often the better choice."
+      },
+      {
+        "question": "Can you help us move our Fairfax home off gas?",
+        "answer": "Yes. Most homes can replace their gas furnace with a heat pump and their gas water heater with a heat pump water heater. Harvest Thermal can handle heating, cooling, and hot water in one system. We check your electrical panel first and plan any upgrades."
+      },
+      {
+        "question": "Are there heat pump rebates in Fairfax?",
+        "answer": "Most Fairfax homes are MCE customers. Depending on current funding, rebates may be available through MCE, TECH Clean California, or BayREN. We check what applies and handle the paperwork."
+      },
+      {
+        "question": "Do I need a permit for a heat pump in Fairfax?",
+        "answer": "Yes. HVAC and water heater work needs a permit from the Town of Fairfax. We pull the permit and schedule the inspection."
+      }
     ],
   },
 ];

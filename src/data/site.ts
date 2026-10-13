@@ -26,7 +26,8 @@ export const siteConfig = {
     google: "#",
   },
   cta: {
-    primary: { label: "60 second form", href: "/contact" },
+    /** href "#book" opens the Housecall Pro online booking window. */
+    primary: { label: "Book Now", href: "#book" },
     secondary: { label: "Call Us", href: "tel:+17079885858" },
   },
   license: "CSLB #1131183",

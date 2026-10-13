@@ -19,7 +19,12 @@ export function HCPBookingButton({ className, children }: Props) {
     <button
       type="button"
       className={cn(className)}
-      onClick={() => window.HCPWidget?.openModal()}
+      onClick={() => {
+        // The Housecall Pro script loads lazily; if someone clicks before it's
+        // ready, send them to the contact page instead of doing nothing.
+        if (window.HCPWidget?.openModal) window.HCPWidget.openModal();
+        else window.location.href = "/contact";
+      }}
     >
       {children}
     </button>

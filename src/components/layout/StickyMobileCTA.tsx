@@ -86,7 +86,7 @@ export function StickyMobileCTA() {
             "hover:bg-brand-700 active:bg-brand-800",
           )}
         >
-          Get Estimate
+          Book Now
           <svg viewBox="0 0 24 24" fill="none" aria-hidden className="h-3 w-3">
             <path
               d="M5 12h14M13 5l7 7-7 7"

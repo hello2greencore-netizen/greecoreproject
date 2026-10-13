@@ -57,7 +57,7 @@ export default async function ServiceAreaPage(
         image={area.heroImage}
         imageAlt={`${area.city}, California`}
         size="spacious"
-        primaryCta={{ label: `Schedule service in ${area.city}`, href: "/contact" }}
+        primaryCta={{ label: "Book Now", href: "#book" }}
       />
 
       <section className="py-16 sm:py-20 lg:py-24">
@@ -172,7 +172,7 @@ export default async function ServiceAreaPage(
       <CTASection
         title={`Schedule HVAC service in ${area.city}.`}
         description="Local crews, fast response, honest pricing. Usually same-day callbacks."
-        primaryCta={{ label: `Get a free estimate in ${area.city}`, href: "/contact" }}
+        primaryCta={{ label: "Book Now", href: "#book" }}
       />
     </>
   );

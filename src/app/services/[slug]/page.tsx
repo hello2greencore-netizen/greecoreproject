@@ -10,6 +10,11 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 import Link from "next/link";
 import { services, getServiceBySlug } from "@/data/services";
+import { serviceDetails } from "@/data/serviceDetails";
+import { serviceAreas } from "@/data/serviceAreas";
+import { siteConfig } from "@/data/site";
+import { ProjectShowcase } from "@/components/sections/ProjectShowcase";
+import { AnswerBox, ComparisonTableSection, ContentSections, TownLinks } from "@/components/sections/ServiceDepth";
 import { buildMetadata } from "@/lib/seo";
 
 /** Keyword-first meta titles per service; the layout template appends the brand name. */
@@ -77,9 +82,28 @@ export default async function ServicePage(
   const { slug } = await props.params;
   const service = getServiceBySlug(slug);
   if (!service) notFound();
+  const details = serviceDetails[service.slug];
+  const label = service.shortName ?? service.name;
+  const faqs = details?.faqs ?? service.faqs;
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.name,
+    serviceType: label,
+    description: details?.answer ?? service.summary,
+    url: `${siteConfig.url}/services/${service.slug}`,
+    image: `${siteConfig.url}${service.heroImage}`,
+    provider: { "@type": "HVACBusiness", name: siteConfig.name, url: siteConfig.url, telephone: siteConfig.phone },
+    areaServed: [
+      { "@type": "AdministrativeArea", name: "Sonoma County" },
+      { "@type": "AdministrativeArea", name: "Marin County" },
+      ...serviceAreas.map((a) => ({ "@type": "City", name: a.city })),
+    ],
+  };
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <BreadcrumbSchema
         items={[
           { name: "Home", path: "/" },
@@ -97,10 +121,12 @@ export default async function ServicePage(
         size="compact"
       />
 
+      {details && <AnswerBox answer={details.answer} />}
+
       <section className="py-16 sm:py-20 lg:py-24">
         <Container size="md">
           <Reveal>
-            <SectionHeading eyebrow="Overview" title="What to expect." />
+            <SectionHeading eyebrow="Overview" title={`${label} in Sonoma and Marin`} />
           </Reveal>
           <RevealGroup
             className="mt-8 space-y-5 text-base leading-relaxed text-muted sm:text-lg"
@@ -145,6 +171,24 @@ export default async function ServicePage(
         </section>
       )}
 
+      {details && <ContentSections sections={details.sections} />}
+
+      {details?.table && <ComparisonTableSection table={details.table} />}
+
+      {details?.projects && details.projects.length > 0 && (
+        <ProjectShowcase
+          city="Sonoma and Marin"
+          projects={details.projects}
+        />
+      )}
+
+      {details && (
+        <TownLinks
+          heading="Towns we serve"
+          className="border-t border-border py-14 sm:py-16"
+        />
+      )}
+
       {service.related && service.related.length > 0 && (
         <section className="bg-subtle py-16 sm:py-20 lg:py-24">
           <Container size="xl">
@@ -176,10 +220,10 @@ export default async function ServicePage(
         </section>
       )}
 
-      <FAQSection faqs={service.faqs} />
+      <FAQSection faqs={faqs} title={`${label} questions, answered`} />
 
       <CTASection
-        title={`Ready to talk ${service.shortName?.toLowerCase() ?? "comfort"}?`}
+        title={`Ready to talk ${service.slug === "harvest-thermal" ? "Harvest Thermal" : service.shortName?.toLowerCase() ?? "comfort"}?`}
         description="Share a few details about your home and we'll reach out with clear, honest options."
       />
     </>

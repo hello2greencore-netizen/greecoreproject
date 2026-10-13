@@ -12,6 +12,9 @@ import { serviceCategories, getServicesByCategory } from "@/data/services";
 import { serviceAreas } from "@/data/serviceAreas";
 import { serviceTypes, type ServiceType } from "@/data/serviceTypes";
 import { siteConfig } from "@/data/site";
+import { serviceTypeDetails, showcaseProjects } from "@/data/serviceDetails";
+import { ProjectShowcase } from "@/components/sections/ProjectShowcase";
+import { AnswerBox, ComparisonTableSection, ContentSections } from "@/components/sections/ServiceDepth";
 import { buildMetadata } from "@/lib/seo";
 
 export function serviceTypeMetadata(t: ServiceType): Metadata {
@@ -25,12 +28,15 @@ export function serviceTypeMetadata(t: ServiceType): Metadata {
 
 export function ServiceTypePage({ type: t }: { type: ServiceType }) {
   const others = serviceTypes.filter((o) => o.slug !== t.slug);
+  const d = serviceTypeDetails[t.slug];
+  const projects = (d?.projects ?? []).map((k) => showcaseProjects[k]).filter(Boolean);
+  const faqs = [...t.faqs, ...(d?.faqs ?? [])];
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
     name: t.name,
     serviceType: t.navLabel,
-    description: t.intro[0],
+    description: d?.answer ?? t.intro[0],
     url: `${siteConfig.url}/${t.slug}`,
     provider: { "@type": "HVACBusiness", name: siteConfig.name, url: siteConfig.url, telephone: siteConfig.phone },
     areaServed: [
@@ -54,12 +60,14 @@ export function ServiceTypePage({ type: t }: { type: ServiceType }) {
         size="compact"
       />
 
+      {d && <AnswerBox answer={d.answer} />}
+
       <section className="py-16 sm:py-20 lg:py-24">
         <Container size="md">
           <RevealGroup className="space-y-5 text-base leading-relaxed text-muted sm:text-lg" stagger={0.06}>
-            {t.intro.map((p, i) => (
+            {(d ? t.intro.slice(1) : t.intro).map((p, i) => (
               <RevealItem key={i}>
-                <p className={i === 0 ? "text-foreground" : undefined}>{p}</p>
+                <p className={i === 0 && !d ? "text-foreground" : undefined}>{p}</p>
               </RevealItem>
             ))}
           </RevealGroup>
@@ -118,6 +126,14 @@ export function ServiceTypePage({ type: t }: { type: ServiceType }) {
         </Container>
       </section>
 
+      {d && <ContentSections sections={d.sections} className="border-t border-border py-16 sm:py-20 lg:py-24" />}
+
+      {d?.table && <ComparisonTableSection table={d.table} />}
+
+      {projects.length > 0 && (
+        <ProjectShowcase city="Sonoma and Marin" projects={projects} />
+      )}
+
       <section className="bg-subtle py-14 sm:py-16">
         <Container size="xl">
           <h2 className="font-display text-xl font-bold text-foreground sm:text-2xl">
@@ -149,7 +165,7 @@ export function ServiceTypePage({ type: t }: { type: ServiceType }) {
         </Container>
       </section>
 
-      <FAQSection faqs={t.faqs} />
+      <FAQSection faqs={faqs} />
       <CTASection />
     </>
   );

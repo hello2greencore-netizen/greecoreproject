@@ -1,6 +1,7 @@
 import { Hero } from "@/components/sections/Hero";
 import { AboutPreview } from "@/components/sections/AboutPreview";
 import { WhyDifferent } from "@/components/sections/WhyDifferent";
+import { PainPoints } from "@/components/sections/PainPoints";
 import { AwardSection } from "@/components/sections/AwardSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { MapSection } from "@/components/sections/MapSection";
@@ -29,6 +30,7 @@ export default function HomePage() {
         secondaryCta={{ label: "Our services", href: "/services" }}
       />
       <AboutPreview />
+      <PainPoints />
       <WhyDifferent />
       <AwardSection />
       <TestimonialsSection />

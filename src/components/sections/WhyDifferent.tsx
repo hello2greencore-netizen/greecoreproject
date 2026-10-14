@@ -3,18 +3,23 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 
+// The first three answer the three problems in the PainPoints section above, in the same order.
 const points = [
   {
-    title: "Design-first approach",
-    body: "We don't swap boxes. Every project starts with a proper load calculation, duct assessment, and design.",
-  },
-  {
-    title: "Electrification experts",
-    body: "Heat pumps, Harvest Thermal, and whole-home electric retrofits — it's what we do.",
+    title: "Upgrade before it fails",
+    body: "We'll give you an honest read on how much life your equipment has left and plan the upgrade before it quits. Same-day water heater replacement when our schedule allows.",
   },
   {
     title: "Rebates handled for you",
     body: "We know the BayREN, TECH, and utility programs and handle the paperwork so you don't have to.",
+  },
+  {
+    title: "Design-first, not box-swapping",
+    body: "Every project starts with a load calculation, duct assessment, and real design. And we still pick up the phone long after the install.",
+  },
+  {
+    title: "Electrification experts",
+    body: "Heat pumps, Harvest Thermal, and whole-home electric retrofits — it's what we do.",
   },
   {
     title: "Clean, respectful installs",
@@ -22,11 +27,7 @@ const points = [
   },
   {
     title: "Straightforward pricing",
-    body: "No surprise. Clear options, clear pricing, clear timelines.",
-  },
-  {
-    title: "Long-term relationships",
-    body: "Most of our business comes from referrals. We're in this for the long haul.",
+    body: "No surprises. Clear options, clear pricing, clear timelines.",
   },
 ];
 
@@ -37,7 +38,7 @@ export function WhyDifferent() {
         <Reveal>
           <SectionHeading
             eyebrow="Why we're different"
-            title="HVAC done the way it should be done."
+            title="Here's how Green Core does it differently."
             description="The details other contractors skip are the details that make your system quieter, more efficient, and longer-lasting."
             align="center"
             className="mx-auto"
@@ -48,8 +49,8 @@ export function WhyDifferent() {
           className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-2 lg:grid-cols-3"
         >
           {points.map((p, i) => (
-            <RevealItem as="li" key={p.title}>
-              <Card>
+            <RevealItem as="li" key={p.title} className="h-full">
+              <Card className="h-full">
                 <span
                   aria-hidden
                   className="font-display text-xs font-semibold tracking-[0.2em] text-brand-600"

@@ -5,9 +5,9 @@ import { Reveal } from "@/components/motion/Reveal";
 const MY_MAPS_SRC =
   "https://trusty.app/embed/project-map/b015f689-d324-4e2a-aba7-59ea92b3e6c8";
 
-export function MapSection() {
+export function MapSection({ background = "subtle" }: { background?: "subtle" | "white" }) {
   return (
-    <section className="bg-subtle py-14 sm:py-20 lg:py-24">
+    <section className={background === "white" ? "py-14 sm:py-20 lg:py-24" : "bg-subtle py-14 sm:py-20 lg:py-24"}>
       <Container size="xl">
         <Reveal>
           <SectionHeading

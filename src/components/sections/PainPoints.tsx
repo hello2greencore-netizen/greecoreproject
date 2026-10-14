@@ -19,7 +19,7 @@ const pains = [
 /** The problems homeowners bring to us. Answered by the WhyDifferent section right below it. */
 export function PainPoints() {
   return (
-    <section className="border-t border-border py-14 sm:py-20 lg:py-24">
+    <section className="bg-brand-50 py-14 sm:py-20 lg:py-24">
       <Container size="xl">
         <Reveal className="max-w-2xl">
           <p className="text-sm font-semibold uppercase tracking-[0.14em] text-brand-700">Sound familiar?</p>
@@ -30,7 +30,7 @@ export function PainPoints() {
         <RevealGroup as="ul" className="mt-10 grid gap-4 sm:mt-12 md:grid-cols-3 md:gap-6">
           {pains.map((p) => (
             <RevealItem as="li" key={p.title}>
-              <div className="h-full rounded-2xl border border-border bg-subtle p-6 sm:p-7">
+              <div className="h-full rounded-2xl border border-brand-100 bg-white p-6 shadow-[0_1px_2px_rgba(15,27,20,0.04)] sm:p-7">
                 <h3 className="font-display text-lg font-bold text-foreground sm:text-xl">{p.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted sm:text-base">{p.body}</p>
               </div>

@@ -56,7 +56,7 @@ type Props = {
 export function TestimonialsSection({ limit }: Props) {
   const items = limit ? testimonials.slice(0, limit) : testimonials;
   return (
-    <section className="py-14 sm:py-20 lg:py-24">
+    <section className="bg-brand-50 py-14 sm:py-20 lg:py-24">
       <Container size="xl">
         <Reveal>
           <SectionHeading

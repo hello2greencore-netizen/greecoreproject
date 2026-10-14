@@ -1,9 +1,11 @@
 import type { Testimonial } from "@/types";
 
-/** Google reviews, newest first. Only reviews with written text; quotes are as posted on Google, lightly trimmed for length. */
+/** Google reviews, newest first. Only reviews with written text; quotes are as posted on Google, lightly trimmed for length.
+ * `date` is estimated from Google's "x weeks/months ago" label (Google doesn't publish exact dates). */
 export const testimonials: Testimonial[] = [
   {
     id: "n1",
+    date: "2026-10-13",
     name: "Sheri C.",
     location: "Google Review",
     rating: 5,
@@ -12,6 +14,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n2",
+    date: "2026-10-10",
     name: "Connor Johnson",
     location: "Google Review",
     rating: 5,
@@ -20,6 +23,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n3",
+    date: "2026-10-10",
     name: "Melissa Blaylock",
     location: "Google Review",
     rating: 5,
@@ -28,6 +32,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n4",
+    date: "2026-10-09",
     name: "Younie Chang",
     location: "Google Review",
     rating: 5,
@@ -36,6 +41,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n5",
+    date: "2026-10-04",
     name: "Andrew Wynkoop",
     location: "Google Review",
     rating: 5,
@@ -44,6 +50,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n6",
+    date: "2026-10-04",
     name: "Christopher Wynkoop",
     location: "Google Review",
     rating: 5,
@@ -52,6 +59,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n7",
+    date: "2026-09-27",
     name: "Adonis Segrove",
     location: "Google Review",
     rating: 5,
@@ -60,6 +68,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n8",
+    date: "2026-09-27",
     name: "Reece Clay",
     location: "Google Review",
     rating: 5,
@@ -68,6 +77,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n9",
+    date: "2026-09-27",
     name: "Rolf Schumann",
     location: "Google Review",
     rating: 5,
@@ -76,6 +86,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n10",
+    date: "2026-09-27",
     name: "Kayla Shock",
     location: "Google Review",
     rating: 5,
@@ -84,6 +95,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n11",
+    date: "2026-09-27",
     name: "Richard",
     location: "Google Review",
     rating: 5,
@@ -92,6 +104,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n12",
+    date: "2026-09-27",
     name: "Cianna Berry",
     location: "Google Review",
     rating: 5,
@@ -100,6 +113,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n13",
+    date: "2026-09-27",
     name: "Kevin Johnson",
     location: "Google Review",
     rating: 5,
@@ -108,6 +122,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n14",
+    date: "2026-09-27",
     name: "Erick Arenal-Lopez",
     location: "Google Review",
     rating: 5,
@@ -116,6 +131,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n15",
+    date: "2026-09-27",
     name: "Nick Giambattista",
     location: "Google Review",
     rating: 5,
@@ -124,6 +140,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n16",
+    date: "2026-09-27",
     name: "Kyle Brazil",
     location: "Google Review",
     rating: 5,
@@ -132,6 +149,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n17",
+    date: "2026-09-27",
     name: "Philip Mandelstamm",
     location: "Google Review",
     rating: 5,
@@ -140,6 +158,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n18",
+    date: "2026-09-27",
     name: "Thomas",
     location: "Google Review",
     rating: 5,
@@ -148,6 +167,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n19",
+    date: "2026-09-27",
     name: "Samantha",
     location: "Google Review",
     rating: 5,
@@ -156,6 +176,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "g10",
+    date: "2026-09-27",
     name: "Travis Tidd",
     location: "Google Review",
     rating: 5,
@@ -165,6 +186,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n20",
+    date: "2026-09-20",
     name: "David Fox",
     location: "Google Review",
     rating: 5,
@@ -173,6 +195,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "g1",
+    date: "2026-08-30",
     name: "Patricia Andrews",
     location: "Google Review",
     rating: 5,
@@ -182,6 +205,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n21",
+    date: "2026-08-30",
     name: "Louis Voccia",
     location: "Google Review",
     rating: 5,
@@ -190,6 +214,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n22",
+    date: "2026-08-30",
     name: "Timothy Daw",
     location: "Google Review",
     rating: 5,
@@ -198,6 +223,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n23",
+    date: "2026-08-30",
     name: "Jesse Kreider",
     location: "Google Review",
     rating: 5,
@@ -206,6 +232,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n24",
+    date: "2026-08-30",
     name: "Carl Tjerandsen",
     location: "Google Review",
     rating: 5,
@@ -214,6 +241,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n25",
+    date: "2026-08-30",
     name: "Chad Lewis",
     location: "Google Review",
     rating: 5,
@@ -222,6 +250,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n26",
+    date: "2026-08-30",
     name: "David Brent",
     location: "Google Review",
     rating: 5,
@@ -230,6 +259,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n27",
+    date: "2026-08-30",
     name: "Maureen Kelly",
     location: "Google Review",
     rating: 5,
@@ -238,6 +268,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n28",
+    date: "2026-08-30",
     name: "Christine Bensen",
     location: "Google Review",
     rating: 5,
@@ -246,6 +277,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n29",
+    date: "2026-08-30",
     name: "Joseph Schliffer",
     location: "Google Review",
     rating: 5,
@@ -254,6 +286,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n30",
+    date: "2026-08-30",
     name: "Laurie Mackenzie",
     location: "Google Review",
     rating: 5,
@@ -262,6 +295,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n31",
+    date: "2026-08-30",
     name: "Barbara Olson",
     location: "Google Review",
     rating: 5,
@@ -270,6 +304,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n32",
+    date: "2026-08-30",
     name: "Chris Manning",
     location: "Google Review",
     rating: 5,
@@ -278,6 +313,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n33",
+    date: "2026-08-30",
     name: "Jay Monahan",
     location: "Google Review",
     rating: 5,
@@ -286,6 +322,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n34",
+    date: "2026-07-31",
     name: "Gene",
     location: "Google Review",
     rating: 5,
@@ -294,6 +331,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "g11",
+    date: "2026-07-31",
     name: "Paul",
     location: "Petaluma",
     rating: 5,
@@ -303,6 +341,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "g20",
+    date: "2026-07-31",
     name: "Meg",
     location: "Google Review",
     rating: 5,
@@ -312,6 +351,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n35",
+    date: "2026-07-01",
     name: "Dakota Ledbetter",
     location: "Google Review",
     rating: 5,
@@ -320,6 +360,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n36",
+    date: "2026-07-01",
     name: "Rooster Electric",
     location: "Google Review",
     rating: 5,
@@ -328,6 +369,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n37",
+    date: "2026-06-01",
     name: "Lauren Peters",
     location: "Google Review",
     rating: 5,
@@ -336,6 +378,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n38",
+    date: "2026-06-01",
     name: "Janet Gelatti",
     location: "Google Review",
     rating: 5,
@@ -344,6 +387,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n39",
+    date: "2026-06-01",
     name: "Chris Vomvolakis",
     location: "Google Review",
     rating: 5,
@@ -352,6 +396,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "n40",
+    date: "2026-06-01",
     name: "Shelly Fitzsimmons",
     location: "Google Review",
     rating: 5,
@@ -360,6 +405,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "g28",
+    date: "2026-04-02",
     name: "Scott Mueller",
     location: "Google Review",
     rating: 5,
@@ -369,6 +415,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "g13",
+    date: "2026-03-03",
     name: "Aimee G.",
     location: "Google Review",
     rating: 5,
@@ -378,6 +425,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "g27",
+    date: "2026-02-01",
     name: "Michael Cureton",
     location: "Google Review",
     rating: 5,
@@ -387,6 +435,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "g14",
+    date: "2026-02-01",
     name: "Gogetta Baag",
     location: "Google Review",
     rating: 5,
@@ -396,6 +445,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "g23",
+    date: "2026-02-01",
     name: "Elizabeth Cureton",
     location: "Google Review",
     rating: 5,
@@ -405,6 +455,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "g5",
+    date: "2026-02-01",
     name: "Richard Cureton",
     location: "Google Review",
     rating: 5,
@@ -414,6 +465,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "g3",
+    date: "2026-02-01",
     name: "Richard Cureton",
     location: "Google Review",
     rating: 5,
@@ -423,6 +475,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "g2",
+    date: "2026-02-01",
     name: "Ken Cureton",
     location: "Google Review",
     rating: 5,
@@ -432,6 +485,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "g4",
+    date: "2026-02-01",
     name: "Arik Geilfuss",
     location: "Google Review",
     rating: 5,
@@ -441,6 +495,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "g12",
+    date: "2026-02-01",
     name: "Richard Cureton",
     location: "Google Review",
     rating: 5,
@@ -450,6 +505,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "g25",
+    date: "2026-01-02",
     name: "Carlos Cornejo",
     location: "Google Review",
     rating: 5,
@@ -459,6 +515,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "g8",
+    date: "2026-01-02",
     name: "Rachael Spongberg",
     location: "Google Review",
     rating: 5,
@@ -468,6 +525,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "g16",
+    date: "2026-01-02",
     name: "Barbara Miller",
     location: "Google Review",
     rating: 5,
@@ -477,6 +535,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "g24",
+    date: "2026-01-02",
     name: "Travis Nesbit",
     location: "Google Review",
     rating: 5,
@@ -485,6 +544,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "g15",
+    date: "2026-01-02",
     name: "Andy Price",
     location: "Google Review",
     rating: 5,
@@ -494,6 +554,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "g9",
+    date: "2026-01-02",
     name: "Tyler Althuizen",
     location: "Google Review",
     rating: 5,
@@ -503,6 +564,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "g18",
+    date: "2026-01-02",
     name: "Mike Aughney",
     location: "Google Review",
     rating: 5,
@@ -512,6 +574,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "g21",
+    date: "2026-01-02",
     name: "Tyler Aughney",
     location: "Google Review",
     rating: 5,
@@ -521,6 +584,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "g17",
+    date: "2026-01-02",
     name: "Jake Aughney",
     location: "Google Review",
     rating: 5,
@@ -530,6 +594,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "g19",
+    date: "2026-01-02",
     name: "Cathleen Andreucci",
     location: "Google Review",
     rating: 5,
@@ -539,6 +604,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "g6",
+    date: "2026-01-02",
     name: "Wendy Lear",
     location: "Google Review",
     rating: 5,
@@ -548,6 +614,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "g7",
+    date: "2026-01-02",
     name: "Jackie Barker",
     location: "Google Review",
     rating: 5,
@@ -557,6 +624,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "g26",
+    date: "2026-01-02",
     name: "Brian Leonard",
     location: "Google Review",
     rating: 5,
@@ -566,6 +634,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "g22",
+    date: "2026-01-02",
     name: "Danielle Sturla",
     location: "Google Review",
     rating: 5,

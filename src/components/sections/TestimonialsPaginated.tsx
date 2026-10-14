@@ -53,7 +53,7 @@ export function TestimonialsPaginated({ items }: { items: Testimonial[] }) {
 const GOOGLE_REVIEWS_URL =
   "https://www.google.com/search?sca_esv=827c5b7b45126b9a&sxsrf=ANbL-n5f8-_8TkP87an98izeSwjh-QA6rQ:1778336030666&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOUBUgBhVIEpknicrp7h87jSTR7MFDQufTQ6hZq7QNX6Xe3PL3CPzW_v2akHUH84Y9x-b3I9xpgdzqeAJpUmw_7bHoaLZi7XS2FW_k3dmt77uStVNww%3D%3D&q=Green+Core+Heating+%26+Air+Reviews&sa=X&ved=2ahUKEwiRsZj7sayUAxWQ3TgGHTKjI1QQ0bkNegQIMxAH";
 
-function GoogleReviewsLink() {
+export function GoogleReviewsLink() {
   return (
     <div className="mt-10 flex justify-center">
       <a

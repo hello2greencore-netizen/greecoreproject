@@ -1,8 +1,8 @@
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
-import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
-import { TestimonialsPaginated } from "@/components/sections/TestimonialsPaginated";
+import { Reveal } from "@/components/motion/Reveal";
+import { TestimonialsCarousel } from "@/components/sections/TestimonialsCarousel";
 import { testimonials } from "@/data/testimonials";
 import type { Testimonial } from "@/types";
 
@@ -60,7 +60,7 @@ export function TestimonialsSection({ limit }: Props) {
           />
         </Reveal>
         <div className="mt-10">
-          <TestimonialsPaginated items={items} />
+          <TestimonialsCarousel items={items} />
         </div>
       </Container>
     </section>

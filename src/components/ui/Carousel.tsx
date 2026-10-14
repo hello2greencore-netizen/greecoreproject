@@ -36,6 +36,8 @@ type CarouselProps = {
   showDots?: boolean;
   className?: string;
   trackClassName?: string;
+  /** Auto-advance one slide every N milliseconds. Pauses on hover, focus, touch, and when off-screen. */
+  autoPlay?: number;
 };
 
 const SPRING = { type: "spring", stiffness: 400, damping: 28 } as const;
@@ -50,6 +52,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
       showDots = true,
       className,
       trackClassName,
+      autoPlay,
     },
     ref,
   ) => {
@@ -59,6 +62,17 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
     const [canScrollRight, setCanScrollRight] = useState(true);
     const shouldReduceMotion = useReducedMotion();
     const drag = useRef({ active: false, startX: 0, startScroll: 0, moved: false });
+    const regionRef = useRef<HTMLDivElement>(null);
+    // null = follow the visitor's reduced-motion setting; true/false = they pressed pause/play.
+    const [userPaused, setUserPaused] = useState<boolean | null>(null);
+    const [hovering, setHovering] = useState(false);
+    const [focused, setFocused] = useState(false);
+    const [onScreen, setOnScreen] = useState(false);
+    const lastInteraction = useRef(0);
+    const paused = userPaused ?? Boolean(shouldReduceMotion);
+    const markInteraction = () => {
+      lastInteraction.current = Date.now();
+    };
 
     const count = Children.count(children);
     const scrollBehavior: ScrollBehavior = shouldReduceMotion ? "instant" : "smooth";
@@ -140,7 +154,33 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
       scrollToIndex(closestIdx);
     }, [scrollToIndex]);
 
+    // Auto-advance: one slide at a time, rewinding to the start at the end.
+    useEffect(() => {
+      const region = regionRef.current;
+      if (!autoPlay || !region) return;
+      const io = new IntersectionObserver(([entry]) => setOnScreen(entry.isIntersecting), { threshold: 0.25 });
+      io.observe(region);
+      return () => io.disconnect();
+    }, [autoPlay]);
+
+    useEffect(() => {
+      if (!autoPlay || paused || hovering || focused || !onScreen) return;
+      const id = window.setInterval(() => {
+        const el = scrollerRef.current;
+        if (!el || document.hidden || drag.current.active) return;
+        // Give visitors who just swiped or clicked a moment before moving again.
+        if (Date.now() - lastInteraction.current < autoPlay * 1.5) return;
+        if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 8) {
+          el.scrollTo({ left: 0, behavior: scrollBehavior });
+        } else {
+          scrollByDirection(1);
+        }
+      }, autoPlay);
+      return () => window.clearInterval(id);
+    }, [autoPlay, paused, hovering, focused, onScreen, scrollBehavior, scrollByDirection]);
+
     const onPointerDown = (e: PointerEvent<HTMLUListElement>) => {
+      markInteraction();
       const el = scrollerRef.current;
       if (!el || e.pointerType === "touch") return;
       drag.current = { active: true, startX: e.clientX, startScroll: el.scrollLeft, moved: false };
@@ -167,6 +207,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
     };
 
     const onKeyDown = (e: KeyboardEvent<HTMLUListElement>) => {
+      markInteraction();
       if (e.key === "ArrowRight") {
         e.preventDefault();
         scrollByDirection(1);
@@ -190,7 +231,23 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
     };
 
     return (
-      <div ref={ref} role="region" aria-label={ariaLabel} className={className}>
+      <div
+        ref={(node) => {
+          regionRef.current = node;
+          if (typeof ref === "function") ref(node);
+          else if (ref) ref.current = node;
+        }}
+        role="region"
+        aria-roledescription="carousel"
+        aria-label={ariaLabel}
+        className={className}
+        onMouseEnter={() => setHovering(true)}
+        onMouseLeave={() => setHovering(false)}
+        onFocus={() => setFocused(true)}
+        onBlur={(e) => {
+          if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setFocused(false);
+        }}
+      >
         {/* Track + floating arrows */}
         <div className="relative">
           <ul
@@ -202,6 +259,9 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
             onPointerUp={onPointerUp}
             onPointerCancel={onPointerUp}
             onClickCapture={onClickCapture}
+            onWheel={markInteraction}
+            onTouchStart={markInteraction}
+            aria-live={autoPlay && !paused ? "off" : "polite"}
             className={cn(
               "flex snap-x snap-mandatory gap-4 overflow-x-auto pb-1 sm:gap-5",
               "cursor-grab active:cursor-grabbing",
@@ -217,14 +277,17 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
             <>
               <motion.button
                 type="button"
-                onClick={() => scrollByDirection(-1)}
+                onClick={() => {
+                  markInteraction();
+                  scrollByDirection(-1);
+                }}
                 disabled={!canScrollLeft}
                 aria-label="Previous slide"
                 whileHover={canScrollLeft ? { scale: 1.08 } : undefined}
                 whileTap={canScrollLeft ? { scale: 0.92 } : undefined}
                 transition={SPRING}
                 className={cn(
-                  "absolute left-3 top-1/2 -translate-y-1/2 hidden sm:grid",
+                  "absolute left-3 top-1/2 -translate-y-1/2 hidden sm:grid lg:-left-5",
                   "h-11 w-11 place-items-center rounded-full",
                   "bg-white/90 shadow-md ring-1 ring-black/[0.06] backdrop-blur-sm",
                   "text-foreground/70 transition-[background-color,color] duration-200",
@@ -246,14 +309,17 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
 
               <motion.button
                 type="button"
-                onClick={() => scrollByDirection(1)}
+                onClick={() => {
+                  markInteraction();
+                  scrollByDirection(1);
+                }}
                 disabled={!canScrollRight}
                 aria-label="Next slide"
                 whileHover={canScrollRight ? { scale: 1.08 } : undefined}
                 whileTap={canScrollRight ? { scale: 0.92 } : undefined}
                 transition={SPRING}
                 className={cn(
-                  "absolute right-3 top-1/2 -translate-y-1/2 hidden sm:grid",
+                  "absolute right-3 top-1/2 -translate-y-1/2 hidden sm:grid lg:-right-5",
                   "h-11 w-11 place-items-center rounded-full",
                   "bg-white/90 shadow-md ring-1 ring-black/[0.06] backdrop-blur-sm",
                   "text-foreground/70 transition-[background-color,color] duration-200",
@@ -275,6 +341,28 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
             </>
           )}
         </div>
+
+        {autoPlay && (
+          <div className="mt-4 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setUserPaused(!paused)}
+              aria-label={paused ? "Play reviews slideshow" : "Pause reviews slideshow"}
+              className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold text-muted transition-colors hover:bg-subtle hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+            >
+              {paused ? (
+                <svg viewBox="0 0 24 24" aria-hidden className="h-3.5 w-3.5" fill="currentColor">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              ) : (
+                <svg viewBox="0 0 24 24" aria-hidden className="h-3.5 w-3.5" fill="currentColor">
+                  <path d="M7 5h4v14H7zM13 5h4v14h-4z" />
+                </svg>
+              )}
+              {paused ? "Play" : "Pause"}
+            </button>
+          </div>
+        )}
 
         {/* Pagination dots */}
         {showDots && count > 1 && (

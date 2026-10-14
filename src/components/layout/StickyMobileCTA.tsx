@@ -80,6 +80,17 @@ export function StickyMobileCTA() {
         </Link>
 
         <HCPBookingButton
+          ctaLabel="free_estimate"
+          className={cn(
+            "flex items-center justify-center whitespace-nowrap rounded-full px-3.5 py-2 text-[13px] font-semibold",
+            "bg-brand-50 text-brand-800 transition-colors duration-150 hover:bg-brand-100",
+          )}
+        >
+          Free Estimate
+        </HCPBookingButton>
+
+        <HCPBookingButton
+          ctaLabel="book_now"
           className={cn(
             "flex items-center justify-center gap-1.5 whitespace-nowrap rounded-full px-4 py-2 text-[13px] font-semibold",
             "bg-brand-600 text-white transition-colors duration-150",

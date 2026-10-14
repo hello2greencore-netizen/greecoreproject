@@ -1,9 +1,10 @@
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
-import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
-import { TestimonialsPaginated } from "@/components/sections/TestimonialsPaginated";
+import { Reveal } from "@/components/motion/Reveal";
+import { TestimonialsCarousel } from "@/components/sections/TestimonialsCarousel";
 import { testimonials } from "@/data/testimonials";
+import { ReviewDate } from "@/components/ui/ReviewDate";
 import type { Testimonial } from "@/types";
 
 function Stars({ count }: { count: number }) {
@@ -24,11 +25,17 @@ function Stars({ count }: { count: number }) {
   );
 }
 
-export function TestimonialCard({ t }: { t: Testimonial }) {
+export function TestimonialCard({ t, clamp = false }: { t: Testimonial; clamp?: boolean }) {
   return (
     <Card as="article" className="flex h-full min-h-[260px] flex-col">
-      <Stars count={t.rating} />
-      <blockquote className="mt-4 text-base leading-relaxed text-foreground">
+      <div className="flex items-center justify-between gap-3">
+        <Stars count={t.rating} />
+        {t.date && <ReviewDate date={t.date} className="text-xs text-muted" />}
+      </div>
+      <blockquote
+        className={clamp ? "mt-4 line-clamp-7 text-base leading-relaxed text-foreground" : "mt-4 text-base leading-relaxed text-foreground"}
+        title={clamp ? t.quote : undefined}
+      >
         &ldquo;{t.quote}&rdquo;
       </blockquote>
       <footer className="mt-auto pt-5 text-sm">
@@ -60,7 +67,7 @@ export function TestimonialsSection({ limit }: Props) {
           />
         </Reveal>
         <div className="mt-10">
-          <TestimonialsPaginated items={items} />
+          <TestimonialsCarousel items={items} />
         </div>
       </Container>
     </section>

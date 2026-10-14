@@ -76,6 +76,8 @@ export type Testimonial = {
   rating: 1 | 2 | 3 | 4 | 5;
   quote: string;
   service?: string;
+  /** Approximate review date (YYYY-MM-DD), shown as "2 weeks ago" like Google. */
+  date?: string;
 };
 
 export type FAQ = {

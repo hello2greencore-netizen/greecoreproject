@@ -33,7 +33,7 @@ const points = [
 
 export function WhyDifferent() {
   return (
-    <section className="bg-subtle py-14 sm:py-20 lg:py-24">
+    <section className="bg-brand-900 py-14 sm:py-20 lg:py-24">
       <Container size="xl">
         <Reveal>
           <SectionHeading
@@ -42,6 +42,7 @@ export function WhyDifferent() {
             description="The details other contractors skip are the details that make your system quieter, more efficient, and longer-lasting."
             align="center"
             className="mx-auto"
+            tone="dark"
           />
         </Reveal>
         <RevealGroup
@@ -50,7 +51,7 @@ export function WhyDifferent() {
         >
           {points.map((p, i) => (
             <RevealItem as="li" key={p.title} className="h-full">
-              <Card className="h-full">
+              <Card className="h-full border-transparent">
                 <span
                   aria-hidden
                   className="font-display text-xs font-semibold tracking-[0.2em] text-brand-600"

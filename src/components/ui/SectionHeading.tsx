@@ -8,6 +8,8 @@ type Props = {
   align?: "left" | "center";
   className?: string;
   as?: "h1" | "h2" | "h3";
+  /** Use "dark" on dark green backgrounds. */
+  tone?: "light" | "dark";
 };
 
 export function SectionHeading({
@@ -17,7 +19,9 @@ export function SectionHeading({
   align = "left",
   className,
   as: Tag = "h2",
+  tone = "light",
 }: Props) {
+  const dark = tone === "dark";
   return (
     <div
       className={cn(
@@ -27,15 +31,15 @@ export function SectionHeading({
       )}
     >
       {eyebrow && (
-        <p className="text-sm font-semibold uppercase tracking-[0.14em] text-brand-700">
+        <p className={cn("text-sm font-semibold uppercase tracking-[0.14em]", dark ? "text-brand-300" : "text-brand-700")}>
           {eyebrow}
         </p>
       )}
-      <Tag className="heading-display mt-3 text-3xl text-foreground sm:text-4xl lg:text-5xl">
+      <Tag className={cn("heading-display mt-3 text-3xl sm:text-4xl lg:text-5xl", dark ? "text-white" : "text-foreground")}>
         {title}
       </Tag>
       {description && (
-        <p className="mt-4 text-base text-muted sm:text-lg">{description}</p>
+        <p className={cn("mt-4 text-base sm:text-lg", dark ? "text-white/75" : "text-muted")}>{description}</p>
       )}
     </div>
   );

@@ -5,10 +5,10 @@ import { Reveal } from "@/components/motion/Reveal";
 
 export function AwardSection() {
   return (
-    <section className="bg-subtle py-14 sm:py-20 lg:py-24">
+    <section className="py-14 sm:py-20 lg:py-24">
       <Container size="xl">
         <div className="grid gap-8 sm:gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
-          <Reveal className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-white shadow-sm sm:aspect-[16/10] lg:aspect-[4/5]">
+          <Reveal className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-border bg-white shadow-sm sm:aspect-[16/10] lg:aspect-[4/5]">
             <Image
               src="/images/award/awardsectionpic.jpeg"
               alt="Green Core Heating & Air — Best of the North Bay award"

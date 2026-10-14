@@ -34,7 +34,7 @@ export default function HomePage() {
       <WhyDifferent />
       <AwardSection />
       <TestimonialsSection />
-      <MapSection />
+      <MapSection background="white" />
       <CTASection />
     </>
   );

@@ -268,8 +268,9 @@ export function MobileNav({ isOpen, onClose }: Props) {
               className="space-y-2.5 px-5 pb-5 pt-4"
             >
               <HCPBookingButton
+                ctaLabel="book_now"
                 className={cn(
-                  "flex min-h-11 items-center justify-center gap-1.5 rounded-full bg-brand-600 px-5 text-sm font-semibold text-white shadow-sm",
+                  "flex min-h-11 w-full items-center justify-center gap-1.5 rounded-full bg-brand-600 px-5 text-sm font-semibold text-white shadow-sm",
                   "transition-[background-color,transform] duration-150 hover:bg-brand-700 active:bg-brand-800 active:scale-[0.98]",
                 )}
               >
@@ -283,6 +284,15 @@ export function MobileNav({ isOpen, onClose }: Props) {
                     strokeLinejoin="round"
                   />
                 </svg>
+              </HCPBookingButton>
+              <HCPBookingButton
+                ctaLabel="free_estimate"
+                className={cn(
+                  "flex min-h-11 w-full items-center justify-center rounded-full bg-brand-50 px-5 text-sm font-semibold text-brand-800 ring-1 ring-brand-200",
+                  "transition-[background-color,transform] duration-150 hover:bg-brand-100 active:scale-[0.98]",
+                )}
+              >
+                Free Estimate
               </HCPBookingButton>
               <a
                 href={siteConfig.phoneHref}

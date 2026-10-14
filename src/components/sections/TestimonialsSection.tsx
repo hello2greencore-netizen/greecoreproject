@@ -24,11 +24,14 @@ function Stars({ count }: { count: number }) {
   );
 }
 
-export function TestimonialCard({ t }: { t: Testimonial }) {
+export function TestimonialCard({ t, clamp = false }: { t: Testimonial; clamp?: boolean }) {
   return (
     <Card as="article" className="flex h-full min-h-[260px] flex-col">
       <Stars count={t.rating} />
-      <blockquote className="mt-4 text-base leading-relaxed text-foreground">
+      <blockquote
+        className={clamp ? "mt-4 line-clamp-7 text-base leading-relaxed text-foreground" : "mt-4 text-base leading-relaxed text-foreground"}
+        title={clamp ? t.quote : undefined}
+      >
         &ldquo;{t.quote}&rdquo;
       </blockquote>
       <footer className="mt-auto pt-5 text-sm">

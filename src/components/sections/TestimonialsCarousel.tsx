@@ -16,7 +16,7 @@ export function TestimonialsCarousel({ items, interval = 6000 }: { items: Testim
             aria-label={`Review ${i + 1} of ${items.length}`}
             className="w-[85%] sm:w-[calc((100%-20px)/2)] lg:w-[calc((100%-40px)/3)]"
           >
-            <TestimonialCard t={t} />
+            <TestimonialCard t={t} clamp />
           </CarouselItem>
         ))}
       </Carousel>

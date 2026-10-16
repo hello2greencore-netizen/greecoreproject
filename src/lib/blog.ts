@@ -30,7 +30,49 @@ export type PostMeta = {
   readingMinutes: number;
 };
 
-export type Post = PostMeta & { html: string };
+export type PostFaq = { question: string; answer: string };
+
+export type Post = PostMeta & { html: string; faqs: PostFaq[] };
+
+/** Strip Markdown link/emphasis syntax so FAQ answers read as plain text in schema. */
+function plainText(s: string): string {
+  return s
+    .replace(/\[([^\]]+)\]\([^)\s]+\)/g, "$1")
+    .replace(/\*\*([^*]+)\*\*/g, "$1")
+    .replace(/(^|[^*])\*([^*]+)\*/g, "$1$2")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/**
+ * Pull question/answer pairs from a "## Common questions" (or "## FAQ") section:
+ * each "### Question" heading followed by its answer paragraph(s).
+ * Used for FAQPage structured data so Google and AI search can quote the answers.
+ */
+export function extractFaqs(md: string): PostFaq[] {
+  const text = md.replace(/\r\n/g, "\n");
+  const start = text.search(/^##\s+(common questions|frequently asked questions|faqs?)\b.*$/im);
+  if (start === -1) return [];
+  const rest = text.slice(start).split("\n").slice(1).join("\n");
+  const end = rest.search(/^##\s/m);
+  const section = end === -1 ? rest : rest.slice(0, end);
+  const faqs: PostFaq[] = [];
+  const parts = section.split(/^###\s+/m).slice(1);
+  for (const part of parts) {
+    const [qLine, ...body] = part.split("\n");
+    const answer = plainText(
+      body
+        .join("\n")
+        .split(/\n\s*\n/)
+        .map((b) => b.trim())
+        .filter((b) => b && !/^#/.test(b))
+        .join(" "),
+    );
+    const question = plainText(qLine);
+    if (question && answer) faqs.push({ question, answer });
+  }
+  return faqs;
+}
 
 const POSTS_DIR = path.join(process.cwd(), "src", "content", "blog");
 
@@ -123,6 +165,7 @@ function readPost(file: string): Post {
       .filter(Boolean),
     readingMinutes: Math.max(1, Math.round(words / 220)),
     html: renderMarkdown(body),
+    faqs: extractFaqs(body),
   };
 }
 

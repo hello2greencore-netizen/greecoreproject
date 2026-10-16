@@ -22,7 +22,7 @@ Local keyword posts (city + service)
 - [ ] Same-day water heater replacement in Sonoma and Marin
 
 Customer questions
-- [ ] How long does a heat pump installation take?
+- [x] How long does a heat pump installation take?
 - [ ] What size heat pump does my house need?
 - [ ] Do heat pumps work in a power outage? (and what to plan for)
 - [ ] Heat pump vs. furnace: running costs in the North Bay

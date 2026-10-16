@@ -61,12 +61,28 @@ export default async function BlogPostPage(props: PageProps<"/blog/[slug]">) {
     },
   };
 
+  const faqSchema =
+    post.faqs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: post.faqs.map((f) => ({
+            "@type": "Question",
+            name: f.question,
+            acceptedAnswer: { "@type": "Answer", text: f.answer },
+          })),
+        }
+      : null;
+
   return (
     <>
       <BreadcrumbSchema
         items={[{ name: "Home", path: "/" }, { name: "Blog", path: "/blog" }, { name: post.title }]}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      {faqSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      )}
 
       <Hero
         eyebrow={post.category}

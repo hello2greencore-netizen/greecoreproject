@@ -39,7 +39,7 @@ export function Footer() {
           <div className="md:col-span-4 lg:col-span-2">
             <Logo tone="light" />
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/80">
-              {siteConfig.description}
+              {siteConfig.metaDescription}
             </p>
             <div className="mt-6 space-y-2 text-sm text-white/90">
               <p>

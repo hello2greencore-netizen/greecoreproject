@@ -12,7 +12,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "Petaluma HVAC & Heat Pump Experts | Green Core Heating & Air",
   description:
-    "Locally owned HVAC contractor in Petaluma, CA. Expert heat pump, AC, furnace & mini split installation and repair across Sonoma & Marin counties. Get a free estimate.",
+    "Family-owned HVAC and water heater company in Petaluma. Furnace, AC, heat pump, mini split, and water heater installation and repair across Sonoma & Marin.",
   path: "/",
   absolute: true,
 });

@@ -40,7 +40,7 @@ const welcomeMessage: ChatMessage = {
 /** Quick picks on Corey's greeting card. Each one opens the chat and asks Corey. */
 const greetingPicks = [
   { label: "Heating", question: "My home needs heating help. What can Green Core do?" },
-  { label: "Cooling / AC", question: "I need help with cooling or AC. What can Green Core do?" },
+  { label: "Cooling", question: "I need help with cooling or AC. What can Green Core do?" },
   { label: "Water heater", question: "I need help with my water heater. What are my options?" },
 ];
 
@@ -220,6 +220,9 @@ export function FAQChatbot() {
   const [messages, setMessages] = useState<ChatMessage[]>([welcomeMessage]);
   const [suggestionsOpen, setSuggestionsOpen] = useState(true);
   const [greetingVisible, setGreetingVisible] = useState(false);
+  /** On phones, the greeting waits until it won't cover a button, link, or headline. */
+  const [greetingBlocked, setGreetingBlocked] = useState(true);
+  const greetingRef = useRef<HTMLDivElement>(null);
   const [thinking, setThinking] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const messageEndRef = useRef<HTMLDivElement>(null);
@@ -262,6 +265,43 @@ export function FAQChatbot() {
     }, GREETING_DELAY_MS);
     return () => window.clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    if (!greetingVisible || open) return;
+
+    let frame = 0;
+    const check = () => {
+      frame = 0;
+      const card = greetingRef.current;
+      if (!card) return;
+      if (window.innerWidth >= 640) {
+        setGreetingBlocked(false);
+        return;
+      }
+      const box = card.getBoundingClientRect();
+      const covered = Array.from(
+        document.querySelectorAll<HTMLElement>("a, button, input, h1, h2"),
+      ).some((el) => {
+        if (el.closest("[data-corey]")) return false;
+        const r = el.getBoundingClientRect();
+        if (r.width === 0 || r.height === 0) return false;
+        return r.left < box.right && r.right > box.left && r.top < box.bottom && r.bottom > box.top;
+      });
+      setGreetingBlocked(covered);
+    };
+    const schedule = () => {
+      if (!frame) frame = window.requestAnimationFrame(check);
+    };
+
+    schedule();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+    };
+  }, [greetingVisible, open]);
 
   function dismissGreeting() {
     setGreetingVisible(false);
@@ -708,14 +748,26 @@ export function FAQChatbot() {
 
       {!open && greetingVisible && (
         <div
+          ref={greetingRef}
+          data-corey=""
           role="dialog"
           aria-label="Corey, the Green Core chat assistant"
+          aria-hidden={greetingBlocked || undefined}
+          inert={greetingBlocked || undefined}
           className={cn(
-            "fixed right-3 z-40 w-[min(300px,calc(100vw-24px))] rounded-2xl bg-white p-4",
+            "fixed z-40 rounded-2xl bg-white",
             "shadow-[0_18px_44px_-14px_rgba(15,27,20,0.4)] ring-1 ring-black/[0.06]",
-            "bottom-[calc(272px+env(safe-area-inset-bottom))] sm:right-6 sm:bottom-[184px]",
-            "motion-safe:animate-[corey-greet_420ms_cubic-bezier(0.2,0.9,0.3,1.2)_both]",
-            "after:absolute after:-bottom-1.5 after:right-12 after:h-3 after:w-3 after:rotate-45 after:bg-white after:ring-0",
+            "transition-[opacity,transform] duration-300 ease-out",
+            greetingBlocked
+              ? "pointer-events-none translate-y-2 opacity-0"
+              : "translate-y-0 opacity-100 sm:motion-safe:animate-[corey-greet_420ms_cubic-bezier(0.2,0.9,0.3,1.2)_both]",
+            "after:absolute after:h-3 after:w-3 after:rotate-45 after:bg-white",
+            // Phones: a compact bubble beside Corey, below the hero buttons.
+            "right-[128px] bottom-[calc(170px+env(safe-area-inset-bottom))] w-[min(250px,calc(100vw-140px))] p-3",
+            "after:-right-1.5 after:bottom-8",
+            // Larger screens: the full card above Corey.
+            "sm:right-6 sm:bottom-[184px] sm:w-[300px] sm:p-4",
+            "sm:after:right-12 sm:after:-bottom-1.5",
           )}
         >
           <button
@@ -724,7 +776,7 @@ export function FAQChatbot() {
               trackCorey("dismissed");
               dismissGreeting();
             }}
-            className="absolute right-2 top-2 grid h-8 w-8 place-items-center rounded-full text-foreground/40 transition-colors hover:bg-black/[0.04] hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+            className="absolute right-1 top-1 grid h-8 w-8 place-items-center sm:right-2 sm:top-2 rounded-full text-foreground/40 transition-colors hover:bg-black/[0.04] hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
             aria-label="Close Corey's message"
           >
             <svg viewBox="0 0 24 24" fill="none" aria-hidden className="h-4 w-4">
@@ -732,14 +784,22 @@ export function FAQChatbot() {
             </svg>
           </button>
 
-          <p className="pr-6 font-display text-base font-bold text-foreground">
-            Hey there, I&apos;m Corey!
-          </p>
-          <p className="mt-1 text-sm leading-relaxed text-foreground/75">
+          <button
+            type="button"
+            onClick={() => {
+              trackCorey("ask");
+              openChat();
+            }}
+            className="block pr-6 text-left font-display text-sm font-bold text-foreground sm:text-base"
+          >
+            <span className="sm:hidden">Hey, I&apos;m Corey! Need a hand?</span>
+            <span className="hidden sm:inline">Hey there, I&apos;m Corey!</span>
+          </button>
+          <p className="mt-1 hidden text-sm leading-relaxed text-foreground/75 sm:block">
             Got a question or need a hand? What are you looking for today?
           </p>
 
-          <div className="mt-3 flex flex-wrap gap-2">
+          <div className="mt-2 flex flex-wrap gap-1.5 sm:mt-3 sm:gap-2">
             {greetingPicks.map((pick) => (
               <button
                 key={pick.label}
@@ -749,7 +809,7 @@ export function FAQChatbot() {
                   openChat();
                   void sendQuestion(pick.question);
                 }}
-                className="rounded-full bg-brand-50 px-3 py-1.5 text-xs font-semibold text-brand-800 ring-1 ring-brand-100 transition-colors hover:bg-brand-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+                className="rounded-full bg-brand-50 px-2.5 py-1 text-[11px] font-semibold sm:px-3 sm:py-1.5 sm:text-xs text-brand-800 ring-1 ring-brand-100 transition-colors hover:bg-brand-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
               >
                 {pick.label}
               </button>
@@ -757,7 +817,7 @@ export function FAQChatbot() {
             <HCPBookingButton
               ctaLabel="corey_greeting"
               onClick={dismissGreeting}
-              className="rounded-full bg-brand-600 px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+              className="hidden rounded-full bg-brand-600 px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 sm:inline-block"
             >
               Free estimate →
             </HCPBookingButton>
@@ -769,7 +829,7 @@ export function FAQChatbot() {
               trackCorey("ask");
               openChat();
             }}
-            className="mt-3 w-full rounded-full border border-border px-3 py-2 text-left text-sm text-muted transition-colors hover:border-brand-500 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+            className="mt-3 hidden w-full rounded-full border border-border px-3 py-2 sm:block text-left text-sm text-muted transition-colors hover:border-brand-500 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
           >
             Ask me anything…
           </button>
@@ -779,6 +839,7 @@ export function FAQChatbot() {
       {!open && (
         <button
           type="button"
+          data-corey=""
           onClick={() => {
             if (greetingVisible) trackCorey("opened_from_avatar");
             openChat();

@@ -37,6 +37,41 @@ const welcomeMessage: ChatMessage = {
   text: "Hi, I'm Corey. Ask me anything about Green Core's heating, cooling, and water heating services, service areas, rebates, or booking. Ready for a quote? Tap “Get a free estimate” above to book online.",
 };
 
+/** Quick picks on Corey's greeting card. Each one opens the chat and asks Corey. */
+const greetingPicks = [
+  { label: "Heating", question: "My home needs heating help. What can Green Core do?" },
+  { label: "Cooling", question: "I need help with cooling or AC. What can Green Core do?" },
+  { label: "Water heater", question: "I need help with my water heater. What are my options?" },
+];
+
+/** Animations for the greeting card and Corey's wave. */
+const greetingKeyframes = `
+@keyframes corey-greet {
+  from { opacity: 0; transform: translateY(12px) scale(0.92); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes corey-wave {
+  0%, 100% { transform: scale(1.1) rotate(0deg); }
+  20% { transform: scale(1.1) rotate(-6deg); }
+  40% { transform: scale(1.1) rotate(5deg); }
+  60% { transform: scale(1.1) rotate(-3deg); }
+}`;
+
+const GREETING_DISMISSED_KEY = "corey-greeting-dismissed";
+const GREETING_DELAY_MS = 2500;
+
+function trackCorey(action: string, label?: string) {
+  try {
+    (window.dataLayer = window.dataLayer || []).push({
+      event: "corey_greeting",
+      corey_action: action,
+      corey_label: label,
+    });
+  } catch {
+    // Analytics is optional.
+  }
+}
+
 const stopWords = new Set([
   "about",
   "after",
@@ -184,7 +219,10 @@ export function FAQChatbot() {
   const [draft, setDraft] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([welcomeMessage]);
   const [suggestionsOpen, setSuggestionsOpen] = useState(true);
-  const [bubbleVisible, setBubbleVisible] = useState(false);
+  const [greetingVisible, setGreetingVisible] = useState(false);
+  /** On phones, the greeting waits until it won't cover a button, link, or headline. */
+  const [greetingBlocked, setGreetingBlocked] = useState(true);
+  const greetingRef = useRef<HTMLDivElement>(null);
   const [thinking, setThinking] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const messageEndRef = useRef<HTMLDivElement>(null);
@@ -211,15 +249,73 @@ export function FAQChatbot() {
     return () => window.clearTimeout(timer);
   }, [open]);
 
+  // Greet new visitors once per visit, a moment after the page loads.
   useEffect(() => {
-    const showTimer = window.setTimeout(() => setBubbleVisible(true), 800);
-    const hideTimer = window.setTimeout(() => setBubbleVisible(false), 6000);
+    let dismissed = false;
+    try {
+      dismissed = window.sessionStorage.getItem(GREETING_DISMISSED_KEY) === "1";
+    } catch {
+      // Storage blocked: just show the greeting.
+    }
+    if (dismissed) return;
 
-    return () => {
-      window.clearTimeout(showTimer);
-      window.clearTimeout(hideTimer);
-    };
+    const timer = window.setTimeout(() => {
+      setGreetingVisible(true);
+      trackCorey("shown");
+    }, GREETING_DELAY_MS);
+    return () => window.clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    if (!greetingVisible || open) return;
+
+    let frame = 0;
+    const check = () => {
+      frame = 0;
+      const card = greetingRef.current;
+      if (!card) return;
+      if (window.innerWidth >= 640) {
+        setGreetingBlocked(false);
+        return;
+      }
+      const box = card.getBoundingClientRect();
+      const covered = Array.from(
+        document.querySelectorAll<HTMLElement>("a, button, input, h1, h2"),
+      ).some((el) => {
+        if (el.closest("[data-corey]")) return false;
+        const r = el.getBoundingClientRect();
+        if (r.width === 0 || r.height === 0) return false;
+        return r.left < box.right && r.right > box.left && r.top < box.bottom && r.bottom > box.top;
+      });
+      setGreetingBlocked(covered);
+    };
+    const schedule = () => {
+      if (!frame) frame = window.requestAnimationFrame(check);
+    };
+
+    schedule();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+    };
+  }, [greetingVisible, open]);
+
+  function dismissGreeting() {
+    setGreetingVisible(false);
+    try {
+      window.sessionStorage.setItem(GREETING_DISMISSED_KEY, "1");
+    } catch {
+      // Ignore.
+    }
+  }
+
+  function openChat() {
+    dismissGreeting();
+    setOpen(true);
+  }
 
   useEffect(() => {
     if (!open) return;
@@ -264,10 +360,12 @@ export function FAQChatbot() {
     ]);
   }
 
-  async function submitQuestion(event: FormEvent<HTMLFormElement>) {
+  function submitQuestion(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    void sendQuestion(draft.trim());
+  }
 
-    const question = draft.trim();
+  async function sendQuestion(question: string) {
     if (!question || thinking) return;
 
     const userMessage: ChatMessage = {
@@ -323,6 +421,9 @@ export function FAQChatbot() {
 
   return (
     <>
+      <style href="corey-greeting" precedence="default">
+        {greetingKeyframes}
+      </style>
       {open && (
         <section
           id="faq-chatbot-panel"
@@ -645,39 +746,121 @@ export function FAQChatbot() {
         </section>
       )}
 
+      {!open && greetingVisible && (
+        <div
+          ref={greetingRef}
+          data-corey=""
+          role="dialog"
+          aria-label="Corey, the Green Core chat assistant"
+          aria-hidden={greetingBlocked || undefined}
+          inert={greetingBlocked || undefined}
+          className={cn(
+            "fixed z-40 rounded-2xl bg-white",
+            "shadow-[0_18px_44px_-14px_rgba(15,27,20,0.4)] ring-1 ring-black/[0.06]",
+            "transition-[opacity,transform] duration-300 ease-out",
+            greetingBlocked
+              ? "pointer-events-none translate-y-2 opacity-0"
+              : "translate-y-0 opacity-100 sm:motion-safe:animate-[corey-greet_420ms_cubic-bezier(0.2,0.9,0.3,1.2)_both]",
+            "after:absolute after:h-3 after:w-3 after:rotate-45 after:bg-white",
+            // Phones: a compact bubble beside Corey, below the hero buttons.
+            "right-[128px] bottom-[calc(170px+env(safe-area-inset-bottom))] w-[min(250px,calc(100vw-140px))] p-3",
+            "after:-right-1.5 after:bottom-8",
+            // Larger screens: the full card above Corey.
+            "sm:right-6 sm:bottom-[184px] sm:w-[300px] sm:p-4",
+            "sm:after:right-12 sm:after:-bottom-1.5",
+          )}
+        >
+          <button
+            type="button"
+            onClick={() => {
+              trackCorey("dismissed");
+              dismissGreeting();
+            }}
+            className="absolute right-1 top-1 grid h-8 w-8 place-items-center sm:right-2 sm:top-2 rounded-full text-foreground/40 transition-colors hover:bg-black/[0.04] hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+            aria-label="Close Corey's message"
+          >
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden className="h-4 w-4">
+              <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" strokeLinecap="round" strokeWidth="1.8" />
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => {
+              trackCorey("ask");
+              openChat();
+            }}
+            className="block pr-6 text-left font-display text-sm font-bold text-foreground sm:text-base"
+          >
+            <span className="sm:hidden">Hey, I&apos;m Corey! Need a hand?</span>
+            <span className="hidden sm:inline">Hey there, I&apos;m Corey!</span>
+          </button>
+          <p className="mt-1 hidden text-sm leading-relaxed text-foreground/75 sm:block">
+            Got a question or need a hand? What are you looking for today?
+          </p>
+
+          <div className="mt-2 flex flex-wrap gap-1.5 sm:mt-3 sm:gap-2">
+            {greetingPicks.map((pick) => (
+              <button
+                key={pick.label}
+                type="button"
+                onClick={() => {
+                  trackCorey("pick", pick.label);
+                  openChat();
+                  void sendQuestion(pick.question);
+                }}
+                className="rounded-full bg-brand-50 px-2.5 py-1 text-[11px] font-semibold sm:px-3 sm:py-1.5 sm:text-xs text-brand-800 ring-1 ring-brand-100 transition-colors hover:bg-brand-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+              >
+                {pick.label}
+              </button>
+            ))}
+            <HCPBookingButton
+              ctaLabel="corey_greeting"
+              onClick={dismissGreeting}
+              className="hidden rounded-full bg-brand-600 px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 sm:inline-block"
+            >
+              Free estimate →
+            </HCPBookingButton>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => {
+              trackCorey("ask");
+              openChat();
+            }}
+            className="mt-3 hidden w-full rounded-full border border-border px-3 py-2 sm:block text-left text-sm text-muted transition-colors hover:border-brand-500 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+          >
+            Ask me anything…
+          </button>
+        </div>
+      )}
+
       {!open && (
         <button
           type="button"
-          onClick={() => setOpen(true)}
+          data-corey=""
+          onClick={() => {
+            if (greetingVisible) trackCorey("opened_from_avatar");
+            openChat();
+          }}
           aria-controls="faq-chatbot-panel"
           aria-expanded={open}
           className={cn(
             "fixed right-3 z-40 grid h-28 w-28 place-items-center rounded-full bg-transparent p-0 sm:h-32 sm:w-32",
             "drop-shadow-[0_14px_18px_rgba(15,27,20,0.28)]",
-            "transition-[transform,filter] duration-200 hover:-translate-y-0.5 hover:drop-shadow-[0_18px_24px_rgba(15,27,20,0.32)] active:scale-[0.96]",
+            "transition-[transform,filter] duration-300 hover:-translate-y-0.5 hover:drop-shadow-[0_18px_24px_rgba(15,27,20,0.32)] active:scale-[0.96]",
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2",
             "bottom-[calc(150px+env(safe-area-inset-bottom))] sm:right-5 sm:bottom-10",
+            greetingVisible && "origin-bottom-right scale-110 motion-safe:animate-[corey-wave_1.6s_ease-in-out_2]",
           )}
         >
           <span className="sr-only">Open FAQ chat</span>
-          <span
-            aria-hidden
-            className={cn(
-              "absolute right-[calc(100%-0.75rem)] top-1/2 whitespace-nowrap rounded-full bg-white px-2.5 py-1 text-[11px] font-semibold text-brand-800 shadow-[0_4px_12px_-4px_rgba(15,27,20,0.3)] ring-1 ring-black/6",
-              "after:absolute after:-right-1 after:top-1/2 after:h-2 after:w-2 after:-translate-y-1/2 after:rotate-45 after:bg-white after:ring-1 after:ring-black/6",
-              "transition-all duration-500 ease-out",
-              bubbleVisible
-                ? "-translate-y-1/2 translate-x-0 opacity-100"
-                : "pointer-events-none -translate-y-1/2 translate-x-2 opacity-0",
-            )}
-          >
-            Chat with me!
-          </span>
           <Image
             src="/images/corey-removebg.png"
             alt=""
             fill
-            sizes="(min-width: 640px) 128px, 112px"
+            sizes="(min-width: 640px) 144px, 128px"
             className="object-contain"
           />
         </button>

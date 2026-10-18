@@ -1,0 +1,63 @@
+# Tells Bing (and other IndexNow search engines) about new and changed pages
+# right after each deploy, so new blog posts and pages get crawled fast.
+# Bing powers ChatGPT search and Microsoft Copilot results.
+name: IndexNow ping
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Wait for Vercel to finish deploying
+        run: sleep 150
+
+      - name: Build the URL list
+        id: urls
+        env:
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+          EVENT: ${{ github.event_name }}
+        run: |
+          SITE="https://www.greencorehvac.com"
+          CHANGED=""
+          if [ "$EVENT" = "push" ] && git cat-file -e "$BEFORE" 2>/dev/null; then
+            CHANGED=$(git diff --name-only "$BEFORE" "$AFTER")
+          fi
+          NON_BLOG=$(echo "$CHANGED" | grep -v '^src/content/blog/' | grep -v '^$' || true)
+          if [ -n "$CHANGED" ] && [ -z "$NON_BLOG" ]; then
+            # Only blog posts changed: send just those posts plus the blog index and homepage.
+            echo "$CHANGED" | grep -E '^src/content/blog/[^_][^/]*\.md$' | sed -E 's#^src/content/blog/(.*)\.md$#\1#' | sed "s#^#$SITE/blog/#" > urls.txt || true
+            printf "%s\n" "$SITE/blog" "$SITE/" >> urls.txt
+          else
+            # Site changes (or a manual run): send every page in the sitemap.
+            curl -fsSL "$SITE/sitemap.xml" | grep -oE '<loc>[^<]+</loc>' | sed -E 's#</?loc>##g' > urls.txt
+          fi
+          sort -u urls.txt -o urls.txt
+          echo "Sending $(wc -l < urls.txt) URLs:"; cat urls.txt
+
+      - name: Ping IndexNow
+        run: |
+          KEY="ae1f67e264de9406261296da586036df"
+          python3 - "$KEY" <<'PY'
+          import json, sys, urllib.request
+          key = sys.argv[1]
+          urls = [u.strip() for u in open("urls.txt") if u.strip()]
+          body = json.dumps({
+              "host": "www.greencorehvac.com",
+              "key": key,
+              "keyLocation": f"https://www.greencorehvac.com/{key}.txt",
+              "urlList": urls,
+          }).encode()
+          req = urllib.request.Request("https://api.indexnow.org/indexnow", data=body,
+                                       headers={"Content-Type": "application/json; charset=utf-8"})
+          with urllib.request.urlopen(req) as r:
+              print("IndexNow response:", r.status)
+          PY

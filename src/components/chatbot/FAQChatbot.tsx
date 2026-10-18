@@ -25,13 +25,16 @@ type ChatMessage = {
   id: string;
   role: "assistant" | "user";
   text: string;
+  /** Show the call/book buttons under this message. */
   fallback?: boolean;
+  /** AI answer: show call/book buttons while it's the latest message. */
+  cta?: boolean;
 };
 
 const welcomeMessage: ChatMessage = {
   id: "welcome",
   role: "assistant",
-  text: "Hi, I'm Corey. I can help with quick questions about Green Core services, service areas, estimates, rebates, and booking. Ready for a quote? Tap “Get a free estimate” above to book online.",
+  text: "Hi, I'm Corey. Ask me anything about Green Core's heating, cooling, and water heating services, service areas, rebates, or booking. Ready for a quote? Tap “Get a free estimate” above to book online.",
 };
 
 const stopWords = new Set([
@@ -135,6 +138,30 @@ function findBestMatch(query: string) {
   return bestScore >= 3 ? bestMatch : null;
 }
 
+const noMatchMessage =
+  "I could not find an exact FAQ match. Please call Green Core or book a free estimate online so the team can help directly.";
+
+/** Ask the AI route. Returns null on any failure so the caller can fall back to FAQ matching. */
+async function askCorey(history: ChatMessage[]): Promise<string | null> {
+  try {
+    const response = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        messages: history
+          .filter((message) => message.id !== welcomeMessage.id)
+          .map(({ role, text }) => ({ role, text })),
+      }),
+      signal: AbortSignal.timeout(20_000),
+    });
+    if (!response.ok) return null;
+    const data = (await response.json()) as { reply?: unknown };
+    return typeof data.reply === "string" && data.reply.trim() ? data.reply : null;
+  } catch {
+    return null;
+  }
+}
+
 function filterFaqs(categoryId: string | null, query: string) {
   const baseFaqs = categoryId
     ? searchableFaqs.filter((faq) => faq.categoryId === categoryId)
@@ -158,9 +185,12 @@ export function FAQChatbot() {
   const [messages, setMessages] = useState<ChatMessage[]>([welcomeMessage]);
   const [suggestionsOpen, setSuggestionsOpen] = useState(true);
   const [bubbleVisible, setBubbleVisible] = useState(false);
+  const [thinking, setThinking] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const messageEndRef = useRef<HTMLDivElement>(null);
   const messageIdRef = useRef(0);
+  /** Bumped on reset so a late AI reply doesn't land in a fresh chat. */
+  const conversationRef = useRef(0);
 
   const visibleFaqs = useMemo(
     () => filterFaqs(selectedCategory, draft).slice(0, 5),
@@ -195,7 +225,7 @@ export function FAQChatbot() {
     if (!open) return;
 
     messageEndRef.current?.scrollIntoView({ block: "end" });
-  }, [messages, open]);
+  }, [messages, open, thinking]);
 
   useEffect(() => {
     if (!open) return;
@@ -234,44 +264,56 @@ export function FAQChatbot() {
     ]);
   }
 
-  function submitQuestion(event: FormEvent<HTMLFormElement>) {
+  async function submitQuestion(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const question = draft.trim();
-    if (!question) return;
+    if (!question || thinking) return;
 
+    const userMessage: ChatMessage = {
+      id: nextMessageId("user"),
+      role: "user",
+      text: question,
+    };
+    const history = [...messages, userMessage];
+    const conversation = conversationRef.current;
+
+    setMessages(history);
+    setDraft("");
+    setSuggestionsOpen(false);
+    setThinking(true);
+
+    const reply = await askCorey(history);
+    if (conversation !== conversationRef.current) return;
+    setThinking(false);
+
+    if (reply) {
+      setMessages((current) => [
+        ...current,
+        { id: nextMessageId("assistant"), role: "assistant", text: reply, cta: true },
+      ]);
+      return;
+    }
+
+    // AI unavailable: fall back to the built-in FAQ matching.
     const match = findBestMatch(question);
-
     setMessages((current) => [
       ...current,
-      {
-        id: nextMessageId("user"),
-        role: "user",
-        text: question,
-      },
       match
-        ? {
-            id: nextMessageId("assistant"),
-            role: "assistant",
-            text: match.answer,
-          }
+        ? { id: nextMessageId("assistant"), role: "assistant", text: match.answer }
         : {
             id: nextMessageId("assistant"),
             role: "assistant",
-            text: "I could not find an exact FAQ match. Please call Green Core or book a free estimate online so the team can help directly.",
+            text: noMatchMessage,
             fallback: true,
           },
     ]);
-
-    if (match) {
-      setSelectedCategory(match.categoryId);
-    }
-
-    setDraft("");
-    setSuggestionsOpen(false);
+    if (match) setSelectedCategory(match.categoryId);
   }
 
   function resetChat() {
+    conversationRef.current += 1;
+    setThinking(false);
     setMessages([welcomeMessage]);
     setSelectedCategory(null);
     setDraft("");
@@ -400,7 +442,7 @@ export function FAQChatbot() {
             className="min-h-0 flex-1 space-y-3 overflow-y-auto px-4 py-4"
             aria-live="polite"
           >
-            {messages.map((message) => (
+            {messages.map((message, index) => (
               <div
                 key={message.id}
                 className={cn(
@@ -428,7 +470,8 @@ export function FAQChatbot() {
                   )}
                 >
                   <p>{message.text}</p>
-                  {message.fallback && (
+                  {(message.fallback ||
+                    (message.cta && index === messages.length - 1)) && (
                     <div className="mt-3 flex flex-wrap gap-2">
                       <a
                         href={siteConfig.phoneHref}
@@ -446,6 +489,30 @@ export function FAQChatbot() {
                 </div>
               </div>
             ))}
+            {thinking && (
+              <div className="flex justify-start" role="status">
+                <span className="relative mr-2 mt-1 h-8 w-8 flex-shrink-0 overflow-hidden rounded-full bg-brand-50 ring-1 ring-brand-100">
+                  <Image
+                    src="/images/chatbot/chatbot-icon.png"
+                    alt=""
+                    fill
+                    sizes="32px"
+                    className="object-contain"
+                  />
+                </span>
+                <div className="flex items-center gap-1 rounded-2xl bg-subtle px-3.5 py-3.5">
+                  <span className="sr-only">Corey is typing</span>
+                  {[0, 150, 300].map((delay) => (
+                    <span
+                      key={delay}
+                      aria-hidden
+                      className="h-1.5 w-1.5 animate-bounce rounded-full bg-foreground/40"
+                      style={{ animationDelay: `${delay}ms` }}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
             <div ref={messageEndRef} />
           </div>
 
@@ -548,12 +615,13 @@ export function FAQChatbot() {
                 ref={inputRef}
                 value={draft}
                 onChange={(event) => setDraft(event.target.value)}
-                placeholder="Ask about estimates, rebates, or service areas"
+                maxLength={600}
+                placeholder="Ask Corey a question"
                 className="min-w-0 flex-1 bg-transparent py-3 text-sm text-foreground placeholder:text-muted/70 focus:outline-none"
               />
               <button
                 type="submit"
-                disabled={!draft.trim()}
+                disabled={!draft.trim() || thinking}
                 className={cn(
                   "grid h-9 w-9 flex-shrink-0 place-items-center rounded-full bg-brand-600 text-white",
                   "transition-[background-color,transform,opacity] duration-150 hover:bg-brand-700 active:scale-[0.96]",

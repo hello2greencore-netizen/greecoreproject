@@ -10,7 +10,7 @@ Add, remove, or reorder lines any time. Put a topic at the top to get it written
 Local keyword posts (city + service)
 - [x] Heat pump installation in Santa Rosa: what to expect
 - [x] Replacing a gas furnace with a heat pump in Novato
-- [ ] Ductless mini splits for older San Rafael homes
+- [x] Ductless mini splits for older San Rafael homes
 - [ ] Heat pump water heaters in Petaluma: is the switch worth it?
 - [ ] Air conditioning vs. heat pump in Rohnert Park and Cotati
 - [ ] Mill Valley homes and heat pumps: hills, shade, and small spaces

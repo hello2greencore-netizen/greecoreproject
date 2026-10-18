@@ -44,13 +44,13 @@ export const chatbotFaqCategories: ChatbotFAQCategory[] = [
   {
     id: "services",
     label: "Services",
-    prompt: "Heating, cooling, and airflow",
+    prompt: "Heating, cooling, and water heating",
     questions: [
       {
         id: "services-offered",
         question: "What HVAC services do you provide?",
         answer:
-          "Green Core works on heat pumps, air conditioning, furnaces, mini splits, ductwork, and Harvest Thermal systems for homeowners in Sonoma and Marin counties.",
+          "Green Core handles heating, cooling, and water heating: furnaces, air conditioning, heat pumps, mini splits, ductwork, water heaters, and Harvest Thermal systems for homeowners in Sonoma and Marin counties.",
         keywords: ["services", "hvac", "repair", "replacement", "installation"],
       },
       {
@@ -74,6 +74,13 @@ export const chatbotFaqCategories: ChatbotFAQCategory[] = [
           "Yes. Green Core provides ductwork installation, repair, and replacement to improve airflow, reduce inefficiency, and help rooms feel more even.",
         keywords: ["duct", "ducts", "ductwork", "airflow", "uneven"],
       },
+      {
+        id: "water-heaters",
+        question: "Do you install water heaters?",
+        answer:
+          "Yes. Green Core installs and replaces heat pump, tankless, gas, and electric water heaters across Sonoma and Marin. Gas and electric tank installs start at $2,850, and same-day replacement is available when the schedule allows. Heat pump and tankless water heaters are priced to each home.",
+        keywords: ["water heater", "hot water", "tankless", "tank", "heat pump water heater", "no hot water"],
+      },
     ],
   },
   {
@@ -94,13 +101,6 @@ export const chatbotFaqCategories: ChatbotFAQCategory[] = [
         answer:
           "Yes. Green Core helps homeowners find and claim the rebates a project qualifies for, including TECH Clean California, BayREN, Sonoma Clean Power, and MCE programs. The federal 25C tax credit ended for systems installed after December 31, 2025.",
         keywords: ["rebate", "rebates", "incentive", "tax credit", "bayren", "tech"],
-      },
-      {
-        id: "water-heaters",
-        question: "Do you install water heaters?",
-        answer:
-          "Yes. Green Core installs and replaces heat pump, tankless, gas, and electric water heaters across Sonoma and Marin. Gas and electric tank installs start at $2,850, and same-day replacement is available when the schedule allows. Heat pump and tankless water heaters are priced to each home.",
-        keywords: ["water heater", "hot water", "tankless", "tank", "heat pump water heater", "no hot water"],
       },
       {
         id: "contact",

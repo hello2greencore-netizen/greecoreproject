@@ -14,7 +14,7 @@ import { serviceCategories, getServicesByCategory } from "@/data/services";
 import {
   serviceAreas,
   getServiceAreaBySlug,
-  utilityForCounty,
+  utilityForArea,
 } from "@/data/serviceAreas";
 import { cityFaqs } from "@/lib/cityContent";
 import { buildMetadata } from "@/lib/seo";
@@ -152,7 +152,7 @@ export default async function ServiceAreaPage(
             </RevealItem>
             <RevealItem>
               <p>
-                For the lowest running cost, a SANCO2 or GE GeoSpring heat pump water heater is hard to beat, and {area.city} homes served by {utilityForCounty(area.county)} may qualify for rebates on top of TECH Clean California and BayREN programs, depending on current funding. Want endless hot water instead? We install Navien tankless units, sized to your household.
+                For the lowest running cost, a SANCO2 or GE GeoSpring heat pump water heater is hard to beat, and {area.city} homes served by {utilityForArea(area)} may qualify for rebates on top of TECH Clean California and BayREN programs, depending on current funding. Want endless hot water instead? We install Navien tankless units, sized to your household.
               </p>
             </RevealItem>
             {area.waterHeaterNote && (

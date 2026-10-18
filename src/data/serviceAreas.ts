@@ -502,6 +502,67 @@ export const serviceAreas: ServiceArea[] = [
     ],
   },
   {
+    slug: "healdsburg",
+    waterHeaterNote: "Many Healdsburg homes near the Plaza are older, so we often find water heaters missing seismic straps or proper venting, and we bring every replacement up to current code.",
+    city: "Healdsburg",
+    county: "Sonoma County",
+    utility: "the City of Healdsburg's electric utility",
+    heroImage: "/images/hero/service-areas.jpg",
+    intro: "Green Core Heating & Air installs, repairs, and maintains furnaces, air conditioners, heat pumps, ductless mini splits, and water heaters for homes in Healdsburg, CA. From historic homes near the Plaza to newer neighborhoods on the edge of town, we design systems that handle Healdsburg's hot summers and chilly winter nights.",
+    lifestyleLine: "Whether you're spending a summer evening on the Plaza or a weekend on the Russian River, you should come home to a house that feels comfortable. If your AC can't keep up in July or your heat struggles on frosty mornings, we can fix it.",
+    landmarks: [
+      "Healdsburg Plaza",
+      "Russian River",
+      "Fitch Mountain",
+      "Healdsburg Ridge Open Space Preserve",
+      "Dry Creek Valley"
+    ],
+    sections: [
+      {
+        "heading": "Heating, Cooling, and Hot Water for Healdsburg Homes",
+        "body": [
+          "Healdsburg sits where the Russian River, Dry Creek, and Alexander valleys meet, and it's one of the warmest spots we serve. Summer afternoons regularly push past 90 and can top 100, while winter nights drop near freezing. Your furnace, AC, or heat pump has to handle both, and your water heater works harder in the cold months too.",
+          "Homes here range from historic bungalows and Victorians near the Plaza to newer neighborhoods on the edges of town. Older homes often have undersized or leaky ductwork and equipment that was never sized to the house. When we replace a system, we size it to your home and check the ducts, which is what fixes hot bedrooms and high summer bills."
+        ]
+      },
+      {
+        "heading": "Water Heaters in Healdsburg",
+        "body": [
+          "We replace gas, electric, tankless, and heat pump water heaters in Healdsburg. Gas and electric tank installs start at $2,850, with same-day replacement when our schedule allows. Every install is brought up to current code, including seismic strapping and proper venting."
+        ]
+      },
+      {
+        "heading": "Healdsburg's City-Run Electric Utility",
+        "body": [
+          "Unlike most of Sonoma County, Healdsburg has its own city-run electric utility, so the rebate programs here are different from Sonoma Clean Power's. The City of Healdsburg has offered its own rebates for things like heat pumps and heat pump water heaters, depending on current funding. We check what's available for your address and handle the paperwork.",
+          "We pull permits through the City of Healdsburg and take care of the inspection as part of the job."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        "question": "Do you service HVAC systems and water heaters in Healdsburg, CA?",
+        "answer": "Yes. Green Core installs, repairs, and maintains furnaces, air conditioners, heat pumps, ductless mini splits, ductwork, and water heaters for Healdsburg homes. Call (707) 988-5858 or book online."
+      },
+      {
+        "question": "Are there rebates for heat pumps or water heaters in Healdsburg?",
+        "answer": "Healdsburg has its own city-run electric utility, so rebates here come from different programs than the rest of Sonoma County. Depending on current funding, the City of Healdsburg and statewide programs may offer rebates for heat pumps and heat pump water heaters. We check what's available for your home and file the paperwork. The federal 25C tax credit ended for systems installed after December 31, 2025."
+      },
+      {
+        "question": "Can you replace a water heater the same day in Healdsburg?",
+        "answer": "Often, yes. We offer same-day water heater replacement when our schedule allows, and gas and electric tank installs start at $2,850. Call (707) 988-5858 to check today's availability."
+      },
+      {
+        "question": "Do I need a permit to replace my HVAC system or water heater in Healdsburg?",
+        "answer": "Yes. HVAC and water heater replacements need a permit from the City of Healdsburg. We pull the permit and schedule the inspection as part of the job."
+      },
+      {
+        "question": "Will a new system keep up with Healdsburg's summer heat?",
+        "answer": "Yes, when it's sized correctly. Whether you choose a central air conditioner or a heat pump, we size the system to your home and check the ductwork so it can handle 100-degree afternoons without running nonstop."
+      }
+    ],
+  },
+  {
     slug: "sonoma",
     waterHeaterNote: "In older Sonoma homes, water heaters are often tucked into tight utility closets. We size replacements to fit and bring venting and seismic strapping up to code.",
     city: "Sonoma",
@@ -685,6 +746,10 @@ export const serviceAreas: ServiceArea[] = [
 /** Community choice electricity provider for most homes in the county (PG&E delivers). */
 export const utilityForCounty = (county: string): string =>
   county === "Marin County" ? "MCE" : "Sonoma Clean Power";
+
+/** The town's electric provider: its own override (e.g. Healdsburg's city utility) or the county default. */
+export const utilityForArea = (area: { county: string; utility?: string }): string =>
+  area.utility ?? utilityForCounty(area.county);
 
 export const getServiceAreaBySlug = (
   slug: string,

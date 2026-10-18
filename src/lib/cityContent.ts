@@ -1,5 +1,5 @@
 import type { FAQ, ServiceArea } from "@/types";
-import { utilityForCounty } from "@/data/serviceAreas";
+import { utilityForArea } from "@/data/serviceAreas";
 
 /**
  * Local FAQs for a city page: the city's own questions plus a few standard
@@ -10,7 +10,7 @@ export function cityFaqs(area: ServiceArea): FAQ[] {
   const own = area.faqs ?? [];
   const covers = (word: string) =>
     own.some((f) => `${f.question} ${f.answer}`.toLowerCase().includes(word));
-  const utility = utilityForCounty(area.county);
+  const utility = utilityForArea(area);
   const extra: FAQ[] = [];
 
   if (!covers("heat pump")) {

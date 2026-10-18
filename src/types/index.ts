@@ -59,6 +59,8 @@ export type ServiceArea = {
   landmarks: string[];
   sections: ServiceAreaSection[];
   scheduleLabel?: string;
+  /** Electric provider when it differs from the county default (e.g. Healdsburg's city-run utility). */
+  utility?: string;
   /** One town-specific line for the "Water heaters in {city}" section. */
   waterHeaterNote?: string;
   /** Local FAQs, rendered with FAQ schema. */

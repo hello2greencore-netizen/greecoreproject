@@ -33,7 +33,7 @@ export function MapSection({ background = "subtle" }: { background?: "subtle" | 
           </div>
         </Reveal>
         <p className="mt-4 text-center text-xs text-muted">
-          Serving Petaluma, Santa Rosa, Rohnert Park, Cotati, Sebastopol, Windsor, Healdsburg, Novato, San Rafael, Mill Valley, Fairfax, and surrounding areas.
+          Serving Petaluma, Santa Rosa, Rohnert Park, Cotati, Sebastopol, Windsor, Healdsburg, Sonoma, Novato, San Rafael, Mill Valley, San Anselmo, Fairfax, Tiburon, and surrounding areas.
         </p>
       </Container>
     </section>

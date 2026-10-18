@@ -3,16 +3,17 @@ import { serviceAreas } from "@/data/serviceAreas";
 import { services } from "@/data/services";
 
 export function LocalBusinessSchema() {
-  const validSocial = Object.values(siteConfig.social).filter(
-    (v) => v && v !== "#",
-  );
+  const validSocial = Object.values(siteConfig.social).filter((v: string) => v.startsWith("http"));
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "HVACBusiness",
+    "@id": `${siteConfig.url}/#business`,
     name: siteConfig.name,
+    alternateName: siteConfig.shortName,
+    description: siteConfig.description,
     url: siteConfig.url,
-    telephone: siteConfig.phone,
+    telephone: siteConfig.phoneE164,
     email: siteConfig.email,
     priceRange: "$$",
     image: `${siteConfig.url}/images/header/greencorelogobg.png`,
@@ -28,23 +29,25 @@ export function LocalBusinessSchema() {
       postalCode: siteConfig.address.zip,
       addressCountry: "US",
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: siteConfig.geo.latitude,
+      longitude: siteConfig.geo.longitude,
+    },
+    hasMap: siteConfig.social.google,
+    founder: siteConfig.founders.map((name) => ({ "@type": "Person", name })),
     areaServed: [
       { "@type": "AdministrativeArea", name: "Sonoma County" },
       { "@type": "AdministrativeArea", name: "Marin County" },
       ...serviceAreas.map((a) => ({ "@type": "City", name: a.city })),
     ],
+    // Open 24 hours, 7 days, matching the Google Business Profile.
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        opens: "07:00",
-        closes: "18:00",
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: "Saturday",
-        opens: "08:00",
-        closes: "16:00",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        opens: "00:00",
+        closes: "23:59",
       },
     ],
     hasCredential: {

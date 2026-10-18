@@ -38,7 +38,7 @@ export function ServiceTypePage({ type: t }: { type: ServiceType }) {
     serviceType: t.navLabel,
     description: d?.answer ?? t.intro[0],
     url: `${siteConfig.url}/${t.slug}`,
-    provider: { "@type": "HVACBusiness", name: siteConfig.name, url: siteConfig.url, telephone: siteConfig.phone },
+    provider: { "@type": "HVACBusiness", "@id": `${siteConfig.url}/#business`, name: siteConfig.name, url: siteConfig.url, telephone: siteConfig.phoneE164 },
     areaServed: [
       { "@type": "AdministrativeArea", name: "Sonoma County" },
       { "@type": "AdministrativeArea", name: "Marin County" },

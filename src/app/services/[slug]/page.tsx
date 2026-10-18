@@ -93,7 +93,7 @@ export default async function ServicePage(
     description: details?.answer ?? service.summary,
     url: `${siteConfig.url}/services/${service.slug}`,
     image: `${siteConfig.url}${service.heroImage}`,
-    provider: { "@type": "HVACBusiness", name: siteConfig.name, url: siteConfig.url, telephone: siteConfig.phone },
+    provider: { "@type": "HVACBusiness", "@id": `${siteConfig.url}/#business`, name: siteConfig.name, url: siteConfig.url, telephone: siteConfig.phoneE164 },
     areaServed: [
       { "@type": "AdministrativeArea", name: "Sonoma County" },
       { "@type": "AdministrativeArea", name: "Marin County" },

@@ -11,7 +11,7 @@ Local keyword posts (city + service)
 - [x] Heat pump installation in Santa Rosa: what to expect
 - [x] Replacing a gas furnace with a heat pump in Novato
 - [x] Ductless mini splits for older San Rafael homes
-- [ ] Heat pump water heaters in Petaluma: is the switch worth it?
+- [x] Heat pump water heaters in Petaluma: is the switch worth it?
 - [ ] Air conditioning vs. heat pump in Rohnert Park and Cotati
 - [ ] Mill Valley homes and heat pumps: hills, shade, and small spaces
 - [ ] Keeping Sebastopol and west county homes comfortable year-round

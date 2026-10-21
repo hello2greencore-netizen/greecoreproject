@@ -26,7 +26,7 @@ Customer questions
 - [x] What size heat pump does my house need?
 - [x] Do heat pumps work in a power outage? (and what to plan for)
 - [ ] Heat pump vs. furnace: running costs in the North Bay
-- [ ] Why is one room always hot or cold? (ducts, balance, zoning)
+- [x] Why is one room always hot or cold? (ducts, balance, zoning)
 - [ ] Signs your water heater is about to fail
 - [ ] How often should a heat pump be serviced?
 - [ ] Does my electrical panel need an upgrade for a heat pump?

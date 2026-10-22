@@ -47,4 +47,4 @@ Water heaters
 - [ ] SANCO2 heat pump water heater: why we like it
 - [ ] Tank vs. tankless vs. heat pump water heater: a quick guide
 - [ ] Water heater expansion tanks and seismic straps: California code basics
-- [ ] Gas to electric water heater: what changes in your home
+- [x] Gas to electric water heater: what changes in your home

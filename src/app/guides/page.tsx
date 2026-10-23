@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 import { guides, guideGroups } from "@/data/guides";
 import { buildMetadata } from "@/lib/seo";
+import { siteConfig } from "@/data/site";
 
 export const metadata = buildMetadata({
   title: "Homeowner HVAC Guides for Sonoma & Marin",
@@ -17,6 +18,33 @@ export default function GuidesIndexPage() {
   return (
     <>
       <BreadcrumbSchema items={[{ name: "Home", path: "/" }, { name: "Homeowner Guides" }]} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "@id": `${siteConfig.url}/guides#collection`,
+            url: `${siteConfig.url}/guides`,
+            name: "Homeowner HVAC Guides for Sonoma & Marin",
+            description:
+              "Free homeowner guides from Green Core: what a new system should cost, what size your home needs, how to choose, and how to keep it running.",
+            inLanguage: "en-US",
+            publisher: { "@id": `${siteConfig.url}/#business` },
+            about: { "@id": `${siteConfig.url}/#business` },
+            mainEntity: {
+              "@type": "ItemList",
+              numberOfItems: guides.length,
+              itemListElement: guides.map((g, i) => ({
+                "@type": "ListItem",
+                position: i + 1,
+                url: `${siteConfig.url}/guides/${g.slug}`,
+                name: g.name,
+              })),
+            },
+          }),
+        }}
+      />
 
       <Hero
         eyebrow="Homeowner Guides"

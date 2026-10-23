@@ -1,0 +1,117 @@
+<header class="top">
+  <div class="wrap">
+    
+    
+    <span class="eyebrow-dark">HVAC sizing calculator · Sonoma &amp; Marin</span>
+    <h1>What size AC, heat pump or furnace does my house need?</h1>
+    <p class="lede">Answer a few questions about your home to see the AC, heat pump or furnace size that fits it. Use it to sanity-check a quote, ours or anyone's. It's a starting point. At your home, we check all the details to confirm the right system size for your specific house.</p>
+  </div>
+</header>
+
+<div class="gc-main">
+  <div class="wrap">
+    <form id="f" autocomplete="off">
+      <fieldset>
+        <legend>Your home</legend>
+        <div class="f"><label for="town">Town</label><select id="town"></select><span class="hint">Sets the hottest and coldest days we size for</span></div>
+        <div class="f"><label for="sqft">Heated square feet</label><input id="sqft" type="number" inputmode="numeric" min="300" max="8000" step="50" value="1800"><span class="hint">Living space only, not the garage</span></div>
+        <div class="f"><label for="stories">Stories</label><select id="stories"><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></div>
+        <div class="f"><label for="ceiling">Ceilings</label><select id="ceiling"><option value="8">8 ft (standard)</option><option value="9">9 ft</option><option value="10">10 ft</option><option value="vault">Vaulted in main rooms</option></select></div>
+        <div class="f"><label for="era">Year built</label><select id="era"><option value="pre60">Before 1960</option><option value="60s" selected>1960–1979</option><option value="80s">1980–2000</option><option value="00s">2001–2015</option><option value="new">2016 or newer</option></select><span class="hint">Used when you pick "Not sure" below</span></div>
+        <div class="f"><label for="people">People living there</label><input id="people" type="number" inputmode="numeric" min="1" max="12" step="1" value="3"></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Insulation &amp; windows</legend>
+        <div class="f"><label for="attic">Attic insulation</label><select id="attic"><option value="none">Little or none</option><option value="some">Some (a few inches)</option><option value="good">Thick (a foot or more)</option><option value="unknown" selected>Not sure</option></select></div>
+        <div class="f"><label for="walls">Wall insulation</label><select id="walls"><option value="none">None (older home)</option><option value="some">Some</option><option value="modern">Modern / recently added</option><option value="unknown" selected>Not sure</option></select></div>
+        <div class="f"><label for="floor">Under the floor</label><select id="floor"><option value="crawl">Crawlspace, no insulation</option><option value="crawlins">Crawlspace, insulated</option><option value="slab">Concrete slab</option></select></div>
+        <div class="f"><label for="win">Windows</label><select id="win"><option value="single">Single pane</option><option value="double">Older double pane</option><option value="lowe">Newer double pane (low-E)</option><option value="unknown" selected>Mixed / not sure</option></select></div>
+        <div class="f"><label for="winAmt">How much glass</label><select id="winAmt"><option value="few">Fewer than most homes</option><option value="avg" selected>About average</option><option value="lots">Lots (big sliders, glass walls)</option></select></div>
+        <div class="f"><label for="sun">Afternoon sun</label><select id="sun"><option value="shade">Mostly shaded by trees</option><option value="some" selected>Some shade</option><option value="full">Full sun, little shade</option></select></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Air leaks &amp; ducts</legend>
+        <div class="f"><label for="draft">How drafty is it?</label><select id="draft"><option value="drafty">Drafty (air at doors and windows)</option><option value="avg" selected>About average</option><option value="tight">Tight / recently sealed</option></select></div>
+        <div class="f"><label for="ducts">Where are the ducts?</label><select id="ducts"><option value="attic">In the attic</option><option value="crawl" selected>In the crawlspace</option><option value="inside">Inside the living space</option><option value="none">No ducts</option></select></div>
+        <div class="f"><label for="dcond">Duct condition</label><select id="dcond"><option value="old">Original / never sealed</option><option value="sealed">Sealed or replaced recently</option></select></div>
+      </fieldset>
+
+      <fieldset class="quote">
+        <legend>Check a quote (optional)</legend>
+        <div class="f"><label for="qType">What were you quoted?</label><select id="qType"><option value="none">Skip this</option><option value="tons" selected>AC or heat pump (tons)</option><option value="furnace">Furnace (BTU on the quote)</option></select></div>
+        <div class="f" id="wrapTons"><label for="qTons">Size quoted (tons)</label><select id="qTons"><option>1.5</option><option>2</option><option>2.5</option><option>3</option><option selected>3.5</option><option>4</option><option>5</option></select><span class="hint">12,000 BTU = 1 ton</span></div>
+        <div class="f" id="wrapBtu" hidden><label for="qBtu">Furnace size (input BTU)</label><input id="qBtu" type="number" inputmode="numeric" min="20000" max="150000" step="5000" value="80000"></div>
+        <div class="f" id="wrapAfue" hidden><label for="afue">Furnace efficiency</label><select id="afue"><option value="0.8">80% (standard)</option><option value="0.96">95–97% (high efficiency)</option></select></div>
+      </fieldset>
+    </form>
+
+    <aside aria-live="polite">
+      <div class="result">
+        <p class="eyebrow" id="rTown">Your sizing results</p>
+        <div>
+          <div class="sub">System size we'd look at</div>
+          <div class="big" id="rSize">–</div>
+          <div class="sub" id="rSub"></div>
+        </div>
+        <div class="rows">
+          <div class="row"><span>Central AC</span><span id="rAc">–</span></div>
+          <div class="row"><span>Heat pump</span><span id="rHp">–</span></div>
+          <div class="row"><span>Furnace</span><span id="rFurn">–</span></div>
+          <div class="note" id="rHpNote" hidden>The heat pump is sized up for your coldest nights, not just summer.</div>
+        </div>
+        <div class="loads">
+          <span id="rCool"></span>
+          <span id="rHeat"></span>
+          <span class="note">The load is what your house needs. Equipment is sized a bit above it, because units lose capacity on hot days and cold nights and normal sizing allows some headroom.</span>
+        </div>
+        <div class="verdict" id="rVerdict" hidden><span class="t" id="rVT"></span><p id="rVX"></p></div>
+      </div>
+
+      <div class="card">
+        <h2>Where your heat goes on a cold night</h2>
+        <div id="rBars"></div>
+        <p class="tip" id="rTip"></p>
+      </div>
+
+      <div class="card ducts">
+        <span class="eyebrow-dark">Duct upgrades</span>
+        <h2>Your ducts matter as much as the equipment</h2>
+        <p class="pd" id="rDuctPct" hidden></p>
+        <p>Ducts installed before the mid-2000s are often insulated to R-4.2 or less. California's current energy code calls for R-8 on new ducts in most of Sonoma, Napa and inland Marin, and R-6 closer to the coast.</p>
+        <p>Thin, leaky ducts in an attic or crawlspace lose heat in winter and pick up heat in summer before the air ever reaches your rooms. New, sealed, R-8 ducts are one of the best ways to improve how well any system performs and how much it costs to run.</p>
+        <p>We check your ducts on every home visit and tell you plainly whether they're worth replacing.</p>
+      </div>
+
+      <div class="cta">
+        <h2 style="margin:0;font-size:16px;">Want the exact number?</h2>
+        <p>During a free estimate we look over the whole home, check your ducts, and show you the sizing on your proposal.</p>
+        <span class="phone">(707) 988-5858</span>
+        <a href="https://book.housecallpro.com/book/Green-Core-Heating--Air-Inc/d68ef1da956043458b2e0244b795dd66?v2=true" data-book>Book a free estimate</a>
+      </div>
+    </aside>
+  </div>
+
+<div class="wrap sizes">
+    <div class="sizecard">
+      <span class="eyebrow-dark">Typical results</span>
+      <h2 id="ts-h">What size AC or heat pump does a Sonoma County home need?</h2>
+      <p class="short">Using this sizing check, a single-story 1,500 sq ft Sonoma County home built in the 1960s or 70s with its original ducts typically lands around 3.5 tons. A newer home of the same size with sealed ducts lands around 2 to 2.5 tons. Insulation, windows and ducts change the answer more than square footage does.</p>
+      <div class="tbl"><table><caption>System size this calculator suggests, by home size and age. Single-story Sonoma County home, 8 ft ceilings, average windows and shade, 3 people, ducts in the crawlspace.</caption>
+        <thead><tr><th scope="col">Home size</th><th scope="col">Built 1960–1979, original ducts</th><th scope="col">Built 2001–2015, sealed ducts</th></tr></thead>
+        <tbody><tr><th scope="row">1,000 sq ft</th><td>2.5–3 tons</td><td>2 tons</td></tr><tr><th scope="row">1,500 sq ft</th><td>3.5 tons</td><td>2–2.5 tons</td></tr><tr><th scope="row">2,000 sq ft</th><td>4–5 tons</td><td>2.5–3 tons</td></tr><tr><th scope="row">2,500 sq ft</th><td>Over 5 tons (often two systems)</td><td>2.5–3.5 tons</td></tr></tbody>
+      </table></div>
+      <p class="tnote">Your home can land well above or below these. Marin homes often need a little less cooling. Use the calculator above for your own numbers, and we confirm the final size at your free estimate.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="explain">
+      <div><h3>How the calculator works</h3><p>We use your county's design temperatures, typical insulation for your home's age, your windows, air leaks and ducts, plus heat from people and appliances in summer. Then we pick real equipment sizes a bit above that load, the way we would on a proposal.</p></div>
+      <div><h3>Why two quotes can differ</h3><p>Different assumptions about insulation, windows, ducts and safety margins add up. Ask any contractor what they checked to size your system. A good one will walk you through it.</p></div>
+    </div>
+    <p class="fine">A planning guide for comparing quotes, not a final equipment selection. Design temperatures: ENERGY STAR county reference values (Sonoma 29°F / 96°F, Marin 32°F / 88°F, Napa 31°F / 98°F, San Francisco 40°F / 79°F). Coastal and hilltop homes can differ from the county figure.</p>
+  </div>
+</div>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "https://www.greencorehvac.com/guides/hvac-size-calculator#tool", "name": "Green Core Home HVAC Sizing Check", "url": "https://www.greencorehvac.com/guides/hvac-size-calculator", "description": "Free HVAC sizing calculator for North Bay homes. See the AC, heat pump or furnace size your house needs, check a quote, and see where you lose heat.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "browserRequirements": "Requires JavaScript", "isAccessibleForFree": true, "inLanguage": "en-US", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "provider": {"@id": "https://www.greencorehvac.com/#business"}, "publisher": {"@id": "https://www.greencorehvac.com/#business"}, "areaServed": [{"@type": "AdministrativeArea", "name": "Sonoma County, California"}, {"@type": "AdministrativeArea", "name": "Marin County, California"}], "datePublished": "2026-10-23", "dateModified": "2026-10-23", "image": "https://www.greencorehvac.com/images/hero/services.jpg", "featureList": ["Recommended central AC, heat pump and furnace size", "Heating and cooling load estimate", "Check a contractor's quoted size", "Where your home loses heat", "Duct upgrade guidance"], "isPartOf": {"@type": "CollectionPage", "@id": "https://www.greencorehvac.com/guides#collection", "url": "https://www.greencorehvac.com/guides", "name": "Homeowner Guides"}}, {"@type": "FAQPage", "@id": "https://www.greencorehvac.com/guides/hvac-size-calculator#faq", "mainEntity": [{"@type": "Question", "name": "What size AC or heat pump does a Sonoma County home need?", "acceptedAnswer": {"@type": "Answer", "text": "Using this sizing check, a single-story 1,500 sq ft Sonoma County home built in the 1960s or 70s with its original ducts typically lands around 3.5 tons. A newer home of the same size with sealed ducts lands around 2 to 2.5 tons. Insulation, windows and ducts change the answer more than square footage does."}}, {"@type": "Question", "name": "How does the HVAC sizing calculator work?", "acceptedAnswer": {"@type": "Answer", "text": "We use your county's design temperatures, typical insulation for your home's age, your windows, air leaks and ducts, plus heat from people and appliances in summer. Then we pick real equipment sizes a bit above that load, the way we would on a proposal."}}, {"@type": "Question", "name": "Why can two HVAC quotes recommend different sizes?", "acceptedAnswer": {"@type": "Answer", "text": "Different assumptions about insulation, windows, ducts and safety margins add up. Ask any contractor what they checked to size your system. A good one will walk you through it."}}]}]}</script>

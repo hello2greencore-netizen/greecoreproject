@@ -1,4 +1,8 @@
 import type { NavLink } from "@/types";
+import { getRunningSpecials } from "@/data/specials";
+
+/** "Specials" shows in the top menu only while a real offer is running. */
+const hasSpecials = getRunningSpecials().some((s) => !s.sample);
 
 export const primaryNav: NavLink[] = [
   { label: "About", href: "/about" },
@@ -57,6 +61,7 @@ export const primaryNav: NavLink[] = [
   { label: "Reviews", href: "/testimonials" },
   { label: "Guides", href: "/guides" },
   { label: "Blog", href: "/blog" },
+  ...(hasSpecials ? [{ label: "Specials", href: "/specials" }] : []),
   { label: "Contact", href: "/contact" },
 ];
 

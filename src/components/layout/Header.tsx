@@ -49,7 +49,7 @@ export function Header() {
           <Logo />
 
           <nav aria-label="Primary" className="hidden lg:flex flex-1 justify-center">
-            <ul className="flex items-center gap-5 xl:gap-7">
+            <ul className="flex items-center gap-3.5 xl:gap-7">
               {primaryNav.map((link) => {
                 const isActive =
                   link.href === "/"
@@ -122,6 +122,20 @@ export function Header() {
                           </div>
                         </div>
                       </div>
+                    </li>
+                  );
+                }
+
+                if (link.href === "/specials") {
+                  return (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        aria-current={isActive ? "page" : undefined}
+                        className="whitespace-nowrap rounded-full bg-brand-50 px-2.5 py-1.5 xl:px-3 text-sm font-semibold text-brand-700 ring-1 ring-brand-200 transition-colors duration-200 hover:bg-brand-100"
+                      >
+                        {link.label}
+                      </Link>
                     </li>
                   );
                 }

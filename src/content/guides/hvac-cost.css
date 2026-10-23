@@ -110,6 +110,18 @@
 .gc-guide .disclaimer { margin-top: 20px; font-size: 13.5px; line-height: 1.55; color: var(--muted); border-top: 1px solid var(--line); padding-top: 14px; max-width: 80ch; }
 .gc-guide .disclaimer b { color: var(--fg); }
 .gc-guide .key i { display: inline-block; width: 18px; height: 8px; border-radius: 4px; margin-right: 6px; vertical-align: middle; }
+.gc-guide .band.dark { background: var(--deep); color: var(--deep-fg); }
+.gc-guide .band.dark .head .kicker { color: var(--brand-soft); }
+.gc-guide .band.dark .head h2 { color: var(--deep-fg); }
+.gc-guide .band.dark .head p, .gc-guide .band.dark .in > p { color: var(--deep-muted) !important; }
+.gc-guide .band.dark .in > p a { color: #ffffff; }
+.gc-guide .band.dark .factor { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.16); }
+.gc-guide .band.dark .factor b { color: var(--deep-fg); }
+.gc-guide .band.dark .factor span { color: var(--deep-muted); }
+.gc-guide .band.dark .save div { border-left-color: var(--brand-soft); }
+.gc-guide .band.dark .save b { color: var(--deep-fg); }
+.gc-guide .band.dark .save span { color: var(--deep-muted); }
+.gc-guide .band.dark .save a { color: #ffffff; }
 .gc-guide { --font-fallback: ui-sans-serif, system-ui, sans-serif; }
 .gc-guide ul, .gc-guide ol { list-style: revert; }
 .gc-guide .ctrl { top: 72px; }

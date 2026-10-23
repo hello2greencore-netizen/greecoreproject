@@ -82,6 +82,18 @@
 .gc-guide .src { font-size: 13px; color: var(--muted); margin-top: 18px; }
 .gc-guide .src ul { margin: 6px 0 0; padding-left: 18px; }
 .gc-guide .updated { font-size: 13px; color: var(--deep-muted); }
+.gc-guide .band.dark { background: var(--deep); color: var(--deep-fg); }
+.gc-guide .band.dark .head .kicker { color: var(--brand-soft); }
+.gc-guide .band.dark .head h2 { color: var(--deep-fg); }
+.gc-guide .band.dark .head p, .gc-guide .band.dark .in > p { color: var(--deep-muted) !important; }
+.gc-guide .band.dark .in > p a { color: #ffffff; }
+.gc-guide .band.dark .row { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.16); }
+.gc-guide .band.dark .row .if { color: var(--deep-fg); }
+.gc-guide .band.dark .row .if b { color: var(--brand-soft); }
+.gc-guide .band.dark .steps li { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.16); }
+.gc-guide .band.dark .steps b { color: var(--deep-fg); }
+.gc-guide .band.dark .steps span { color: var(--deep-muted); }
+.gc-guide .band.dark .steps li::before { background: var(--brand-soft); color: var(--deep); }
 .gc-guide { --font-fallback: ui-sans-serif, system-ui, sans-serif; }
 .gc-guide ul, .gc-guide ol { list-style: revert; }
 .gc-guide .ctrl { top: 72px; }

@@ -71,6 +71,13 @@
 .gc-guide .explain h3 { margin: 0 0 6px; font-family: var(--display); font-weight: 800; font-size: 18px; text-wrap: balance; }
 .gc-guide .explain p { margin: 0; color: var(--muted); font-size: 15px; }
 .gc-guide .fine { font-size: 12.5px; color: var(--muted); max-width: 90ch; padding-block: 0 40px; margin: 0; }
+.gc-guide header.top { background: var(--panel); border-bottom: 0; }
+.gc-guide header.top h1 { color: var(--panel-fg); }
+.gc-guide header.top .lede { color: var(--panel-muted); }
+.gc-guide header.top .eyebrow-dark { color: var(--brand-soft); }
+.gc-guide .explain { background: var(--panel); color: var(--panel-fg); border-radius: 18px; padding: 24px; margin-bottom: 20px; }
+.gc-guide .explain h3 { color: var(--panel-fg); }
+.gc-guide .explain p { color: var(--panel-muted); }
 .gc-guide { --font-fallback: ui-sans-serif, system-ui, sans-serif; }
 .gc-guide ul, .gc-guide ol { list-style: revert; }
 .gc-guide .ctrl { top: 72px; }

@@ -36,7 +36,7 @@ Customer questions
 - [ ] How loud is a heat pump? Placement tips for small lots
 
 Rebates and programs (check current program pages before writing)
-- [ ] TECH Clean California heat pump incentives: how they work
+- [x] TECH Clean California heat pump incentives: how they work
 - [ ] BayREN home energy rebates for Sonoma and Marin homeowners
 - [ ] Sonoma Clean Power programs for heat pumps and water heaters
 - [ ] MCE rebates for Marin homeowners going electric

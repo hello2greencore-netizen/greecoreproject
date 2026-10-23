@@ -5,7 +5,7 @@ import type { ComponentProps, ReactNode } from "react";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const DURATION = 0.5;
-const VIEWPORT = { once: true, amount: 0.18, margin: "0px 0px -8% 0px" } as const;
+const VIEWPORT = { once: true, amount: "some", margin: "0px 0px -8% 0px" } as const;
 
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 14 },

@@ -33,11 +33,53 @@ const always = [
   { title: "Answered 24/7", text: `Call ${siteConfig.phone} any time. Our phones are answered around the clock.` },
 ];
 
+const AREAS = [
+  { "@type": "AdministrativeArea", name: "Sonoma County, California" },
+  { "@type": "AdministrativeArea", name: "Marin County, California" },
+];
+
+const SERVICE_NAME: Record<string, string> = {
+  heating: "Heating system installation",
+  cooling: "Air conditioning installation",
+  ductless: "Ductless mini split installation",
+  ducts: "Duct system replacement",
+  water: "Water heater installation",
+  maintenance: "HVAC maintenance",
+  financing: "HVAC installation",
+  other: "HVAC service",
+};
+
 export default function SpecialsPage() {
   const running = getRunningSpecials();
+  const live = running.filter((s) => !s.sample);
+  const business = { "@id": `${siteConfig.url}/#business` };
+  const offersLd = live.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "OfferCatalog",
+        "@id": `${siteConfig.url}/specials#offers`,
+        name: "Current specials from Green Core Heating & Air",
+        url: `${siteConfig.url}/specials`,
+        numberOfItems: live.length,
+        itemListElement: live.map((s) => ({
+          "@type": "Offer",
+          name: s.title,
+          description: s.summary,
+          url: `${siteConfig.url}/specials/${s.slug}`,
+          category: s.category,
+          ...(s.starts ? { validFrom: s.starts } : {}),
+          validThrough: `${s.ends}T23:59:59-08:00`,
+          eligibleRegion: AREAS,
+          offeredBy: business,
+          seller: business,
+          itemOffered: { "@type": "Service", name: SERVICE_NAME[s.category], provider: business, areaServed: AREAS },
+        })),
+      }
+    : null;
   return (
     <>
       <BreadcrumbSchema items={[{ name: "Home", path: "/" }, { name: "Specials" }]} />
+      {offersLd ? <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(offersLd) }} /> : null}
 
       <section className="bg-brand-900 pt-12 pb-14 text-white sm:pt-16 sm:pb-20">
         <Container size="xl">

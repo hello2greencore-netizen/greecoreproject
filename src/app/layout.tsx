@@ -4,6 +4,7 @@ import Script from "next/script";
 import { GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
+import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { Footer } from "@/components/layout/Footer";
 import { StickyMobileCTA } from "@/components/layout/StickyMobileCTA";
 import { FAQChatbot } from "@/components/chatbot/FAQChatbot";
@@ -72,6 +73,7 @@ export default function RootLayout({
           >
             Skip to content
           </a>
+          <AnnouncementBar />
           <Header />
           <main id="main" className="flex-1">
             {children}

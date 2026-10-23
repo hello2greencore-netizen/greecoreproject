@@ -4,6 +4,7 @@ import { serviceAreas } from "@/data/serviceAreas";
 import { siteConfig } from "@/data/site";
 import { getAllPosts } from "@/lib/blog";
 import { guides } from "@/data/guides";
+import { getRunningSpecials } from "@/data/specials";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.url;
@@ -12,6 +13,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // deploy doesn't tell Google every page changed when only new posts were added.
   const postDate = (p: { date: string; updated?: string }) => new Date(`${p.updated ?? p.date}T12:00:00`);
   const newestPost = posts.length > 0 ? postDate(posts[0]) : undefined;
+  // List /specials only while a real offer is running (the page is noindex otherwise).
+  const hasSpecials = getRunningSpecials().some((s) => !s.sample);
 
   return [
     // Tier 1 — highest commercial intent
@@ -59,6 +62,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
+
+    ...(hasSpecials ? [{ url: `${base}/specials`, changeFrequency: "weekly" as const, priority: 0.7 }] : []),
 
     { url: `${base}/our-work`, changeFrequency: "weekly", priority: 0.7 },
 

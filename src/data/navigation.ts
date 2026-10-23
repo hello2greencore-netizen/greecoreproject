@@ -66,6 +66,7 @@ export const footerNav = {
     { label: "Reviews", href: "/testimonials" },
     { label: "Our Work", href: "/our-work" },
     { label: "Homeowner Guides", href: "/guides" },
+    { label: "Specials", href: "/specials" },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },
   ],

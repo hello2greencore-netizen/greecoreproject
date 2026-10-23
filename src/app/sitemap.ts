@@ -3,6 +3,7 @@ import { services } from "@/data/services";
 import { serviceAreas } from "@/data/serviceAreas";
 import { siteConfig } from "@/data/site";
 import { getAllPosts } from "@/lib/blog";
+import { guides } from "@/data/guides";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.url;
@@ -49,6 +50,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: postDate(p),
       changeFrequency: "monthly" as const,
       priority: 0.6,
+    })),
+
+    // Homeowner guides (tools, cost guide, decision guides, checklists)
+    { url: `${base}/guides`, changeFrequency: "monthly", priority: 0.75 },
+    ...guides.map((g) => ({
+      url: `${base}/guides/${g.slug}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
     })),
 
     { url: `${base}/our-work`, changeFrequency: "weekly", priority: 0.7 },

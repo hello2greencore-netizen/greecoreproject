@@ -11,6 +11,9 @@ export type Service = {
   tagline: string;
   summary: string;
   heroImage: string;
+  /** Real job photo shown on the /services cards (falls back to heroImage). */
+  cardImage?: string;
+  cardImageAlt?: string;
   overview: string[];
   benefits?: { title: string; description: string }[];
   faqs: FAQ[];

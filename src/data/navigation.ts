@@ -17,7 +17,7 @@ export const primaryNav: NavLink[] = [
   },
   {
     label: "HVAC",
-    href: "/services#heating-cooling",
+    href: "/services",
     children: [
       { label: "Heat Pumps", href: "/services/heat-pumps" },
       { label: "Air Conditioning", href: "/services/air-conditioning" },
@@ -29,7 +29,7 @@ export const primaryNav: NavLink[] = [
   },
   {
     label: "Water Heaters",
-    href: "/services/water-heaters",
+    href: "/services#water-heating",
     children: [
       { label: "All Water Heaters", href: "/services/water-heaters" },
       { label: "Heat Pump Water Heaters", href: "/services/heat-pump-water-heaters" },
@@ -64,6 +64,22 @@ export const primaryNav: NavLink[] = [
   ...(hasSpecials ? [{ label: "Specials", href: "/specials" }] : []),
   { label: "Contact", href: "/contact" },
 ];
+
+/**
+ * Whether a top-menu item should show as the current page. Several items can
+ * point at /services (Services, HVAC, Water Heaters), so on /services itself
+ * only the first of them ("Services") lights up; the others light up when one
+ * of their own dropdown pages is open.
+ */
+export function isNavActive(link: NavLink, pathname: string | null): boolean {
+  if (!pathname) return false;
+  if (link.href === "/") return pathname === "/";
+  const base = link.href.split("#")[0];
+  if (link.children?.some((c) => pathname === c.href.split("#")[0])) return true;
+  const first = primaryNav.find((l) => l.href.split("#")[0] === base);
+  if (first !== link) return false;
+  return link.children ? pathname === base : pathname.startsWith(base);
+}
 
 export const footerNav = {
   company: [

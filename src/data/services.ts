@@ -505,6 +505,8 @@ export const services: Service[] = [
     tagline: "Endless hot water, wall-mounted and space-saving.",
     summary: "Navien tankless water heater installation, repair, and yearly maintenance in Sonoma and Marin. Endless hot water in a compact, wall-mounted unit.",
     heroImage: "/images/services/tankless-water-heaters.jpg",
+    cardImage: "/images/services/cards/tankless-water-heaters.jpg",
+    cardImageAlt: "Tankless water heater — installation and service from Green Core Heating & Air",
     overview: [
       "A tankless water heater heats water only when you turn on the tap, so you don't run out halfway through the third shower. Green Core installs Navien tankless water heaters for homes across Sonoma and Marin counties.",
       "Tankless units mount on a wall and free up the floor space a tank used to take. Modern condensing models like Navien vent through PVC pipe and are very efficient with gas.",
@@ -570,6 +572,8 @@ export const services: Service[] = [
     tagline: "Fast, code-compliant gas water heater replacement.",
     summary: "Gas tank water heater replacement and repair in Sonoma and Marin, with same-day replacement when our schedule allows. Tank installs start at $2,850.",
     heroImage: "/images/services/gas-water-heaters.jpg",
+    cardImage: "/images/services/cards/gas-water-heaters.jpg",
+    cardImageAlt: "Gas tank water heater — installation and service from Green Core Heating & Air",
     overview: [
       "When a gas water heater fails, you want hot water back fast. Green Core Heating & Air replaces and repairs gas tank water heaters for homes in Petaluma, Santa Rosa, Rohnert Park, Novato, San Rafael, and across Sonoma and Marin counties. Same-day water heater replacement is available when our schedule allows.",
       "We install Bradford White and American Standard gas water heaters, sized to your household. A typical home uses a 40- or 50-gallon tank, and we'll confirm the right size before we install.",
@@ -635,6 +639,8 @@ export const services: Service[] = [
     tagline: "Reliable electric water heater replacement, with an upgrade path that saves.",
     summary: "Electric tank water heater replacement and repair in Sonoma and Marin, plus heat pump upgrades that can cut water heating costs.",
     heroImage: "/images/services/electric-water-heaters.jpg",
+    cardImage: "/images/services/cards/electric-water-heaters.jpg",
+    cardImageAlt: "Electric tank water heater — installation and service from Green Core Heating & Air",
     overview: [
       "Green Core Heating & Air repairs and replaces electric tank water heaters for homes in Petaluma, Santa Rosa, Rohnert Park, Novato, San Rafael, and across Sonoma and Marin counties. We install Bradford White and American Standard electric water heaters, sized to your household.",
       "Electric tanks are simple: no gas line and no venting. Common problems like a failed heating element or thermostat can often be repaired. If the tank itself is leaking or the unit is near the end of its life, replacement is the better call. Same-day water heater replacement is available when our schedule allows.",

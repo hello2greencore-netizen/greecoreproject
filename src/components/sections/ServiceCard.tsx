@@ -14,8 +14,8 @@ export function ServiceCard({ service }: Props) {
     >
       <div className="relative aspect-[5/4] overflow-hidden bg-subtle">
         <Image
-          src={service.heroImage}
-          alt={service.name}
+          src={service.cardImage ?? service.heroImage}
+          alt={service.cardImageAlt ?? service.name}
           fill
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
           className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"

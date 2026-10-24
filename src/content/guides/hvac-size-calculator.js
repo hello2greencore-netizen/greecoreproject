@@ -96,6 +96,8 @@
     $('rSub').textContent = big ? (sqft >= 2500 ? 'Homes this size usually get two systems or zones' : 'High for the size. Insulation, air sealing and duct fixes could bring this down a lot')
       : 'about ' + (Math.round(sqft / acMax / 10) * 10).toLocaleString('en-US') + ' sq ft per ton';
     $('rAc').textContent = big ? 'Over 5 tons' : tt(acMin, acMax);
+    // Send them to the cost guide with this size already picked on its slider.
+    $('rCost').href = '/guides/hvac-cost?tons=' + (big ? 5 : sizeTop) + '#hv-h';
     $('rHp').textContent = big ? 'Over 5 tons' : hpHeatSets ? hpTons + ' tons' : tt(acMin, hpTons);
     $('rFurn').textContent = Math.round(furnIn(0.8) / 1000) + 'k (80%) · ' + Math.round(furnIn(0.96) / 1000) + 'k (96%)';
     $('rHpNote').hidden = !hpHeatSets;

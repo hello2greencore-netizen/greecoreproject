@@ -34,5 +34,8 @@ function ms(){
 $('msz').addEventListener('input', ms);
 $('tons').addEventListener('input', hvac);
 $('hh').addEventListener('input', water);
+// Coming from the sizing check (?tons=3.5): start the slider on that size.
+var qt = Number(new URLSearchParams(location.search).get('tons'));
+if (qt) { var qi = D.STEPS.indexOf(qt + ' tons'); if (qi >= 0) $('tons').value = qi; }
 hvac(); ms(); water();
 })();

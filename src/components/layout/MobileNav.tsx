@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion, type Variants } from "motion/react";
 import { Logo } from "@/components/layout/Logo";
-import { primaryNav } from "@/data/navigation";
+import { primaryNav, isNavActive } from "@/data/navigation";
 import { siteConfig } from "@/data/site";
 import { cn } from "@/lib/utils";
 import { HCPBookingButton } from "@/components/ui/HCPBookingButton";
@@ -58,9 +58,9 @@ export function MobileNav({ isOpen, onClose }: Props) {
     setPrevOpen(isOpen);
     if (isOpen) {
       const match = primaryNav.find(
-        (link) => link.children && pathname?.startsWith(link.href),
+        (link) => link.children && isNavActive(link, pathname),
       );
-      setExpanded(match?.href ?? null);
+      setExpanded(match?.label ?? null);
     }
   }
 
@@ -71,8 +71,8 @@ export function MobileNav({ isOpen, onClose }: Props) {
     return () => window.clearTimeout(t);
   }, [isOpen]);
 
-  const toggle = (href: string) =>
-    setExpanded((curr) => (curr === href ? null : href));
+  const toggle = (label: string) =>
+    setExpanded((curr) => (curr === label ? null : label));
 
   if (!mounted) return null;
 
@@ -147,16 +147,13 @@ export function MobileNav({ isOpen, onClose }: Props) {
                 className="space-y-0.5"
               >
                 {primaryNav.map((link) => {
-                  const isActive =
-                    link.href === "/"
-                      ? pathname === "/"
-                      : pathname?.startsWith(link.href);
+                  const isActive = isNavActive(link, pathname);
                   const hasChildren = Boolean(link.children?.length);
-                  const isExpanded = expanded === link.href;
+                  const isExpanded = expanded === link.label;
 
                   if (!hasChildren) {
                     return (
-                      <motion.li key={link.href} variants={itemVariants}>
+                      <motion.li key={link.label} variants={itemVariants}>
                         <Link
                           href={link.href}
                           aria-current={isActive ? "page" : undefined}
@@ -174,7 +171,7 @@ export function MobileNav({ isOpen, onClose }: Props) {
                   }
 
                   return (
-                    <motion.li key={link.href} variants={itemVariants}>
+                    <motion.li key={link.label} variants={itemVariants}>
                       <div className="flex items-stretch gap-1">
                         <Link
                           href={link.href}
@@ -189,9 +186,9 @@ export function MobileNav({ isOpen, onClose }: Props) {
                         </Link>
                         <button
                           type="button"
-                          onClick={() => toggle(link.href)}
+                          onClick={() => toggle(link.label)}
                           aria-expanded={isExpanded}
-                          aria-controls={`submenu-${link.href}`}
+                          aria-controls={`submenu-${link.label.replace(/\s+/g, "-").toLowerCase()}`}
                           aria-label={`${isExpanded ? "Collapse" : "Expand"} ${link.label}`}
                           className={cn(
                             "grid h-12 w-12 flex-shrink-0 place-items-center rounded-xl",
@@ -220,7 +217,7 @@ export function MobileNav({ isOpen, onClose }: Props) {
                       </div>
 
                       <div
-                        id={`submenu-${link.href}`}
+                        id={`submenu-${link.label.replace(/\s+/g, "-").toLowerCase()}`}
                         className={cn(
                           "grid transition-[grid-template-rows,opacity] duration-200 ease-out",
                           isExpanded

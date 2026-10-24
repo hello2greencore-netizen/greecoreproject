@@ -7,7 +7,7 @@ import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/layout/Logo";
 import { MobileNav } from "@/components/layout/MobileNav";
 import { useMobileNav } from "@/hooks/useMobileNav";
-import { primaryNav } from "@/data/navigation";
+import { primaryNav, isNavActive } from "@/data/navigation";
 import { siteConfig } from "@/data/site";
 import { cn } from "@/lib/utils";
 
@@ -51,19 +51,22 @@ export function Header() {
           <nav aria-label="Primary" className="hidden lg:flex flex-1 justify-center">
             <ul className="flex items-center gap-3.5 xl:gap-7">
               {primaryNav.map((link) => {
-                const isActive =
-                  link.href === "/"
-                    ? pathname === "/"
-                    : link.children
-                      ? pathname === link.href ||
-                        link.children.some((c) => pathname === c.href)
-                      : pathname?.startsWith(link.href);
+                const isActive = isNavActive(link, pathname);
 
                 if (link.children) {
                   return (
-                    <li key={link.href} className="group relative">
-                      {/* Trigger */}
-                      <button
+                    <li key={link.label} className="group relative">
+                      {/* Trigger: hover opens the dropdown, click goes to the page */}
+                      <Link
+                        href={link.href}
+                        onClick={(e) => {
+                          // Already on this page (e.g. HVAC while viewing /services#water-heating): go back to the top.
+                          if (!link.href.includes("#") && pathname === link.href) {
+                            e.preventDefault();
+                            window.history.replaceState(null, "", link.href);
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                          }
+                        }}
                         className={cn(
                           "flex items-center gap-1 whitespace-nowrap text-sm font-medium transition-colors duration-200",
                           isActive
@@ -86,7 +89,7 @@ export function Header() {
                             strokeLinejoin="round"
                           />
                         </svg>
-                      </button>
+                      </Link>
 
                       {/* Invisible bridge so mouse can travel from trigger to panel */}
                       <div className="absolute left-1/2 top-full h-3 w-full -translate-x-1/2" />

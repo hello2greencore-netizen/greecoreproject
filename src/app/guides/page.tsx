@@ -41,7 +41,7 @@ const Arrow = () => <span aria-hidden="true" className="transition-transform dur
 /* Approved public price ranges (as of October 2026), shown as a tiny preview of the cost guide. */
 const pricePreview = [
   { label: "Tank water heater", range: "$2,850–$4,800", lo: 2850, hi: 4800 },
-  { label: "Furnace (80%)", range: "$5,400–$8,700", lo: 5400, hi: 8700 },
+  { label: "Furnace (80%)", range: "$5,400–$14,500", lo: 5400, hi: 14500 },
   { label: "Furnace + AC", range: "$11,000–$27,300", lo: 11000, hi: 27300 },
 ];
 

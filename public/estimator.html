@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Green Core Instant Estimate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: single wizard column that widens into a tier grid on the result screen */
+:root{
+  --bg:#F3F6F2; --surface:#FFFFFF; --ink:#13201A; --muted:#5B6B62; --line:#D9E2DB;
+  --green:#1E6B47; --green-soft:#E3F0E8; --amber:#B7791F; --amber-soft:#FBF1DF; --warn:#A34A2A;
+  --display:"Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --body:"Public Sans", "Segoe UI", Roboto, Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F1713; --surface:#16211B; --ink:#E6EEE8; --muted:#9AAEA2; --line:#2A3A31;
+  --green:#5CC28D; --green-soft:#1B3427; --amber:#E2A84B; --amber-soft:#33281A; --warn:#E28B6B; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F1713; --surface:#16211B; --ink:#E6EEE8; --muted:#9AAEA2; --line:#2A3A31;
+  --green:#5CC28D; --green-soft:#1B3427; --amber:#E2A84B; --amber-soft:#33281A; --warn:#E28B6B; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:24px 48px}
+.wrap{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.wrap.wide{max-width:1120px}
+.sample{font-size:12.5px;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px 16px;justify-content:space-between;align-items:center}
+.sample b{color:var(--amber);font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:11.5px}
+header.brand{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.logo{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+.logo i{width:26px;height:26px;border-radius:50%;background:var(--green);display:inline-block;position:relative}
+.logo i::after{content:"";position:absolute;inset:7px;border-radius:50%;background:var(--surface)}
+.phone{font-size:13.5px;color:var(--muted)} .phone strong{color:var(--ink);font-variant-numeric:tabular-nums}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:clamp(18px,4vw,32px);display:flex;flex-direction:column;gap:18px}
+.progress{display:flex;flex-direction:column;gap:8px}
+.progress small{color:var(--muted);font-size:12.5px;letter-spacing:.04em;text-transform:uppercase}
+.bar{height:6px;background:var(--line);border-radius:6px;overflow:hidden}
+.bar span{display:block;height:100%;background:var(--green);border-radius:6px;transition:width .3s ease}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.01em}
+h1{font-size:clamp(26px,5vw,34px);line-height:1.1}
+h2{font-size:clamp(21px,4vw,26px);line-height:1.15}
+p{margin:0}
+.lede{color:var(--muted);max-width:60ch}
+.opts{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.opt{all:unset;box-sizing:border-box;cursor:pointer;border:1.5px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:3px;background:var(--surface);transition:border-color .15s, background .15s}
+.opt strong{font-weight:600}
+.opt span{font-size:13px;color:var(--muted)}
+.opt:hover{border-color:var(--green)}
+.opt:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+.opt[aria-pressed="true"]{border-color:var(--green);background:var(--green-soft)}
+.opt.off{opacity:.55;cursor:not-allowed}
+.opt.off:hover{border-color:var(--line)}
+label.f{display:flex;flex-direction:column;gap:6px;font-weight:500;font-size:14px}
+input[type=text],input[type=tel],input[type=email]{font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:9px;padding:11px 12px;width:100%}
+input:focus-visible{outline:3px solid var(--green);outline-offset:1px;border-color:var(--green)}
+.grid2{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--muted)}
+.check input{margin-top:3px;accent-color:var(--green)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.btn{font:inherit;font-weight:600;border-radius:9px;padding:12px 20px;cursor:pointer;border:1.5px solid var(--green);background:var(--green);color:var(--surface)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.link{all:unset;cursor:pointer;color:var(--green);font-weight:600;font-size:13.5px;text-decoration:underline;text-underline-offset:3px}
+.link:focus-visible{outline:2px solid var(--green)}
+.err{color:var(--warn);font-size:13.5px}
+.note{background:var(--amber-soft);border-radius:10px;padding:14px 16px;font-size:14px}
+/* result */
+.rhead{display:flex;flex-direction:column;gap:6px}
+.meta{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.tiers{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr))}
+.tier{border:1.5px solid var(--line);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:12px;background:var(--surface);position:relative;min-width:0}
+.tier.pick{border-color:var(--green);box-shadow:0 0 0 3px var(--green-soft)}
+.badge{align-self:flex-start;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:20px;background:var(--line);color:var(--ink)}
+.tier.pick .badge{background:var(--green);color:var(--surface)}
+.tname{font-family:var(--display);font-size:18px;font-weight:600;line-height:1.2}
+.tsub{font-size:13px;color:var(--muted)}
+.price{font-family:var(--display);font-size:clamp(22px,3vw,26px);font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.01em;line-height:1.1}
+.mo{font-size:13px;color:var(--green);font-weight:600;font-variant-numeric:tabular-nums}
+.tier ul{margin:0;padding-left:18px;font-size:13.5px;display:flex;flex-direction:column;gap:4px}
+.tpl{font-size:11.5px;color:var(--muted);border-top:1px dashed var(--line);padding-top:8px;font-family:ui-monospace,Menlo,monospace;overflow-wrap:anywhere}
+.cols{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.box{border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:10px;background:var(--surface);min-width:0}
+.box h3{font-size:16px}
+.box ul{margin:0;padding-left:18px;font-size:14px;display:flex;flex-direction:column;gap:5px}
+.addon{display:flex;justify-content:space-between;gap:12px;font-size:14px;border-top:1px solid var(--line);padding-top:8px;font-variant-numeric:tabular-nums}
+.addon:first-of-type{border-top:0;padding-top:0}
+.toggle{display:inline-flex;border:1.5px solid var(--line);border-radius:9px;overflow:hidden}
+.toggle button{all:unset;cursor:pointer;padding:7px 14px;font-size:13.5px;font-weight:600}
+.toggle button[aria-pressed="true"]{background:var(--green);color:var(--surface)}
+.toggle button:focus-visible{outline:2px solid var(--green);outline-offset:-2px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.fine{font-size:12.5px;color:var(--muted);max-width:75ch}
+.opt.pickable{position:relative;padding-left:46px}
+.tick{position:absolute;left:16px;top:16px;width:20px;height:20px;border-radius:6px;border:1.5px solid var(--line);background:var(--surface)}
+.opt[aria-pressed="true"] .tick{background:var(--green);border-color:var(--green)}
+.opt[aria-pressed="true"] .tick::after{content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;border:solid var(--surface);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.glance{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+.gl{display:flex;flex-direction:column;gap:2px;padding:14px 16px;border-radius:10px;background:var(--green-soft);color:var(--ink);text-decoration:none;min-width:0}
+.gl:hover{outline:1.5px solid var(--green)}
+.gl-t{font-weight:600}.gl-p{font-family:var(--display);font-size:22px;font-weight:700;font-variant-numeric:tabular-nums}.gl-p.muted{font-size:15px;font-weight:600;color:var(--muted)}.gl-s{font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.sys{display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--line);padding-top:18px;scroll-margin-top:16px}
+.syshead{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.muted{color:var(--muted)}
+.plans{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.plans-l{font-size:13px;font-weight:600;color:var(--muted);margin-right:4px}
+.plan{font:inherit;font-size:13px;font-weight:600;padding:6px 12px;border-radius:20px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;font-variant-numeric:tabular-nums}
+.plan[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:var(--surface)}
+.plan:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+.mo-sub{font-size:12px;color:var(--muted)}
+.pickadd{cursor:pointer;align-items:flex-start}
+.pickadd input{margin-top:3px;accent-color:var(--green);flex:none}
+.pickadd>span{flex:1}
+.addon.pickadd{justify-content:flex-start;gap:10px}
+.addon.pickadd strong{margin-left:auto;white-space:nowrap}
+.hp-field{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.add-note{display:block;font-size:12px;color:var(--muted)}
+.tpl-inline{display:block;font-size:11px;color:var(--muted);font-family:ui-monospace,Menlo,monospace}
+.disc{font-size:13.5px;color:var(--muted);border-left:3px solid var(--line);padding-left:12px}
+.about{display:flex;flex-direction:column;gap:8px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px;max-width:85ch}
+.about h3{font-size:14px;color:var(--ink)}
+.about ul{margin:0;padding-left:18px;display:grid;gap:2px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+
+</head>
+<body>
+<div class="wrap" id="app" aria-live="polite"></div>
+
+<script>
+// ---------- Price data: HCP estimate templates, pulled Oct 25, 2026 (garage/closet totals) ----------
+const HP = { // tons -> price
+  value:{name:"Hisense Hi-Edge",tpl:"Hisense Hi-Edge",p:{2:15427,3:16610,4:20308,5:20686}},
+  good:{name:"Hisense Hi-Ultra",tpl:"Hisense Hi-Ultra",p:{2:16300,3:17693,4:21503,5:21870}},
+  better:{name:"Carrier Performance",tpl:"Carrier MUHA",p:{2:17613,3:20374,4:22674,5:24030}},
+  best:{name:"Carrier Infinity",tpl:"Carrier Infinity",p:{2:28769,3:30676,4:32633,5:34286}}
+};
+const HP_ATTIC = 2096;
+const HP_COPY = {
+  value:{label:"Value",sub:"Budget-friendly heat pump",pts:["Hisense heat pump and matching indoor unit","Lowest upfront cost","Full Green Core install and startup"]},
+  good:{label:"Good",sub:"Hisense step-up line",pts:["Hisense Hi-Ultra heat pump and indoor unit","Step up from Hi-Edge","Full Green Core install and startup"]},
+  better:{label:"Better",sub:"Carrier Performance series",pts:["Variable-speed Carrier heat pump (high-heat model)","Matching Carrier fan coil","Carrier factory warranty"]},
+  best:{label:"Best",sub:"Carrier Infinity series",pts:["Carrier's top variable-speed heat pump","Variable-speed fan coil, quietest operation","Infinity Touch smart control"]}
+};
+// Furnace: one template per system size (tons) per family. t = template name prefix as in HCP
+const FURN = {
+  80:{value:{name:"WeatherMaker by Carrier 80%",fam:"WeatherMaker 80% Single-Stage",p:{2:6918,3:6898,4:7901,5:8087},t:{2:"44K – 3 Ton",3:"66K – 3 Ton",4:"88K – 4 Ton",5:"110K – 5 Ton"}},
+      good:{name:"Carrier Comfort 80%",fam:"Comfort 80% Single-Stage",p:{2:7625,3:7695,4:8721,5:9008},t:{2:"44K – 3 Ton",3:"66K – 3 Ton",4:"88K – 4 Ton",5:"110K – 5 Ton"}},
+      better:{name:"Carrier Performance 80%",fam:"Performance 80% Two-Stage",p:{2:8097,3:8159,4:9348,5:9564},t:{2:"44K – 3 Ton",3:"66K – 3 Ton",4:"88K – 4 Ton",5:"110K – 5 Ton"}},
+      best:{name:"Carrier Infinity 80%",fam:"Infinity 80% Two-Stage",p:{2:11136,3:11144,4:12180,5:12638},t:{2:"44K – 3 Ton",3:"66K – 3 Ton",4:"88K – 4 Ton",5:"110K – 5 Ton"}}},
+  95:{value:{name:"WeatherMaker by Carrier 95%",fam:"WeatherMaker 95% Single-Stage",p:{2:9148,3:9296,4:10554,5:10804},t:{2:"40K – 2.5 Ton",3:"60K – 3 Ton",4:"80K – 4 Ton",5:"100K – 5 Ton"}},
+      good:{name:"Carrier Comfort 95%",fam:"Comfort 95% Single-Stage",p:{2:9651,3:9812,4:11041,5:11189},t:{2:"40K – 2.5 Ton",3:"60K – 3 Ton",4:"80K – 4 Ton",5:"100K – 5 Ton"}},
+      better:{name:"Carrier Performance 95%",fam:"Performance 95% Two-Stage",p:{2:10669,3:10757,4:11762,5:11978},t:{2:"40K – 2.5 Ton",3:"60K – 3 Ton",4:"80K – 4 Ton",5:"100K – 5 Ton"}},
+      best:{name:"Carrier Infinity 95%",fam:"Infinity 95% Modulating",p:{2:13778,3:13778,4:15584,5:15214},t:{2:"60K – 3.5 Ton",3:"60K – 3.5 Ton",4:"80K – 5 Ton",5:"100K – 5 Ton"}}}
+};
+const FURN_ATTIC = {80:990, 95:1282};
+// Size is decided by square footage alone (Tony's cutoffs, Oct 25, 2026)
+const CUTS = [[1500,2],[2000,3],[2550,4],[3200,5]];
+const tonsFor = sq => { for(const [max,t] of CUTS) if(sq<=max) return t; return null; };
+const FURN_COPY = {
+  value:{label:"Value",sub:"Budget-friendly",pts:["WeatherMaker by Carrier furnace","Reliable single-stage heat","Full Green Core install and startup"]},
+  good:{label:"Good",sub:"Single-stage",pts:["Carrier Comfort series furnace","Reliable single-stage heat","Full Green Core install and startup"]},
+  better:{label:"Better",sub:"Two-stage",pts:["Carrier Performance series furnace","Two-stage heat for steadier comfort","Quieter, more even airflow"]},
+  best:{label:"Best",sub:"Carrier Infinity",pts:["Carrier's most advanced furnace line","Smoothest, quietest heat","Works with Infinity smart controls"]}
+};
+const DUCT = {2:5885,3:5998,4:6943,5:9159}; // R-8 flex duct system
+// Install position -> HCP template group. Downflow = Garage/Closet template + that system's downflow kit (null = kit not priced yet).
+// Kit price = (materials ÷ 0.60 + labor hrs × $186 + 10% tax on materials) × 1.10
+const DOWNFLOW_KIT = {
+  furnace:{name:"Furnace Downflow Kit", price:701},      // $150 mat, 2 hr
+  hp:{name:"Heat Pump Downflow Kit", price:701},          // $150 mat, 2 hr
+  dual:{name:"Dual Fuel Downflow Kit", price:895},        // $250 mat, 2 hr
+  ac:{name:"AC/Coil Downflow Kit", price:1294},           // $350 mat, 3 hr
+  coil:{name:"Coil Only Downflow Kit", price:1294},       // $350 mat, 3 hr
+  fac:{name:"Furnace + AC/Coil Downflow Kits", price:701+1294}
+};
+// Homes with no AC today: +$750 on any system that cools (heat pump, furnace + AC, dual fuel). Not on furnace-only.
+const NO_AC_ADD = 750;
+const noAC = () => S.a.ac==="none" || S.a.current==="gas";
+function position(a){
+  const attic = a.loc==="attic"||a.loc==="crawl";
+  const group = attic ? "Attic/Crawlspace" : "Garage/Closet";
+  const orient = attic ? "Horizontal" : (a.flow==="down" ? "Downflow" : "Upflow");
+  return {attic, group, orient, where:{garage:"garage",closet:"closet",attic:"attic",crawl:"crawlspace"}[a.loc]};
+}
+// Financing plans. Monthly = standard loan payment: P × r ÷ (1 − (1 + r)^−n), r = APR ÷ 12. Checked against lender samples on $18,000.
+const PLANS = [
+  {id:"0",  short:"0% · 21 mo", long:"0% APR for 21 months", apr:0, n:21},
+  {id:"36", short:"3 years", long:"3 years at 8.99% APR", apr:8.99, n:36},
+  {id:"60", short:"5 years", long:"5 years at 10.49% APR", apr:10.49, n:60},
+  {id:"84", short:"7 years", long:"7 years at 6.99% APR", apr:6.99, n:84}
+];
+const plan = () => PLANS.find(p=>p.id===S.plan) || PLANS[0];
+// Lead hand-off: set to the deployed Cloudflare Worker URL. Empty = prototype mode (nothing is sent).
+const SUBMIT_URL = "https://green-core-estimator.tony-ac7.workers.dev";
+const BOOK_URL = "https://book.housecallpro.com/book/Green-Core-Heating--Air-Inc/d68ef1da956043458b2e0244b795dd66?v2=true";
+const openBooking = () => window.open(BOOK_URL, "_blank", "noopener");
+function leadPayload(r, est, until){
+  const P = position(S.a), first = r.systems.find(s=>!s.pending);
+  const pickT = first && first.tiers.find(t=>t.k===S.a.priority);
+  return {
+    website: S.hp || "", estimateNo: est, validThrough: until, zip: S.zip,
+    contact: {name:S.c.name, phone:S.c.phone, email:S.c.email, street:S.c.addr, sms:S.c.sms},
+    answers: {sqft:S.a.sqft, position:`${P.where}, ${P.orient.toLowerCase()}`, priority:S.a.priority, raw:{...S.a, own:S.own}},
+    qa: [
+      {q:"Systems they wanted priced:", a:S.svcs.map(sysName).join(", ")},
+      {q:"Do they own the home?", a:({own:"I own it",rent:"I rent",landlord:"Landlord or manager"})[S.own]||""},
+      ...QS.filter(q=>q.need()).map(q=>{ const v=S.a[q.id]; if(q.num) return {q:q.q, a:v?`${Number(v).toLocaleString("en-US")} sq ft`:"(skipped)"}; const opts=typeof q.o==="function"?q.o():q.o; const o=opts.find(x=>x[0]===v); return {q:q.q, a:o?o[1]:"(skipped)"}; })
+    ],
+    systems: r.systems.map(s=>({title:s.title, pending:!!s.pending, tiers:(s.tiers||[]).map(t=>({label:t.label, name:t.name, price:t.price, template:t.tpl, picked:t.k===S.a.priority}))})),
+    primary: pickT ? {system:first.title, option:`${pickT.label} - ${pickT.name}`, price:pickT.price, template:pickT.tpl} : null,
+    addons: r.addons.filter(x=>S.addons.includes(x.id)).map(x=>({label:x.label, price:x.price})),
+    noAcAdder: noAC() && has("hp","fac","dual"), financing: plan().long, flags: r.flags, booked: S.booked
+  };
+}
+// Short, plain-English summary for the HCP lead note.
+function leadSummary(r, est, until){
+  const a = S.a, P = position(a), tons = tonsFor(a.sqft);
+  const lab = (id, v) => { const q = QS.find(x=>x.id===id); if(!q || v==null) return null; const opts = typeof q.o==="function"?q.o():q.o; const o = (opts||[]).find(x=>x[0]===v); return o ? o[1] : null; };
+  const priced = r.systems.filter(s=>!s.pending), first = priced[0];
+  const pickT = first && first.tiers.find(t=>t.k===a.priority);
+  const L = [];
+  L.push(`Online estimate ${est} - good through ${until}`);
+  if (pickT) L.push(`Picked: ${first.title} - ${pickT.name} (${pickT.label}) - ${money(pickT.price)}`);
+  const others = r.systems.filter(s=>s!==first).map(s=>s.title + (s.pending?" (price at visit)":""));
+  if (others.length) L.push(`Also priced: ${others.join(", ")}`);
+  L.push("");
+  const vents = P.orient==="Downflow" ? "floor vents (downflow)" : P.orient==="Upflow" ? (a.flow==="unsure" ? "not sure where vents are" : "ceiling vents (upflow)") : "horizontal";
+  L.push(`Home: ${Number(a.sqft).toLocaleString("en-US")} sq ft (${tons} ton) - unit in the ${P.where} - ${vents}`);
+  const now = a.current ? ({gas_ac:"Gas furnace and AC", gas:"Gas furnace, no AC", elec:"Electric furnace or older heat pump", unsure:"Not sure"})[a.current] : null;
+  if (now) L.push(`Has now: ${now}`);
+  const ac = lab("ac", a.ac); if (ac) L.push(`Has AC: ${ac}`);
+  const vent = ({metal:"Metal pipe (standard 80%)", pvc:"Plastic pipes (high-efficiency)", unsure:"Not sure", none:"No furnace now"})[a.vent]; if (vent) L.push(`Furnace vent: ${vent}`);
+  const ducts = lab("ducts", a.ducts); if (ducts) L.push(`Ducts: ${ducts}`);
+  const out = lab("outdoor", a.outdoor); if (out) L.push(`Outdoor unit: ${out}`);
+  const want = lab("priority", a.priority); if (want) L.push(`Wants: ${want}`);
+  L.push(`Owns the home: ${({own:"Yes", rent:"No, renting", landlord:"Landlord or manager"})[S.own] || "Not asked"}`);
+  L.push("");
+  const ups = r.addons.filter(x=>S.addons.includes(x.id));
+  L.push(`Upgrades picked: ${ups.length ? ups.map(x=>`${x.id==="ducts"?"New R-8 ducts":x.id==="zone"?"2-zone system":"Ecobee thermostat"} (${money(x.price)})`).join(", ") : "None"}`);
+  L.push(`Financing: ${S.planTouched ? "Looked at " + plan().long : "Didn't look"}`);
+  L.push(`Wants a visit: ${S.booked ? "Yes, clicked Book a free visit" : "Not yet"}`);
+  return L;
+}
+// Send once, with the customer's final choices: when they click Book, leave or hide the page, or after 2 minutes on their prices.
+function flushLead(){
+  if (S.sent || S.step!=="result" || !S.leadMeta) return;
+  S.sent = true; clearTimeout(S.leadTimer);
+  const r = quoteAll();
+  sendLead({...leadPayload(r, S.leadMeta.est, S.leadMeta.until), summary: leadSummary(r, S.leadMeta.est, S.leadMeta.until)});
+}
+addEventListener("visibilitychange", () => { if (document.visibilityState==="hidden") flushLead(); });
+addEventListener("pagehide", flushLead);
+function sendLead(payload){
+  if(!SUBMIT_URL) return;
+  fetch(SUBMIT_URL, {method:"POST", keepalive:true, headers:{"Content-Type":"application/json"}, body:JSON.stringify(payload)})
+    .then(r=>r.json()).then(j=>{ S.leadId = j.lead_id || null; }).catch(()=>{});
+}
+const monthlyAmt = (price, p=plan()) => { if(!p.apr) return price/p.n; const r = p.apr/1200; return price*r/(1-Math.pow(1+r,-p.n)); };
+const cents = n => "$" + n.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
+
+// ---------- Systems the customer can ask to have priced ----------
+const SYSTEMS = [
+  {id:"hp", t:"Heat pump system", s:"Heating and cooling in one, all electric", priced:true},
+  {id:"furnace", t:"Gas furnace", s:"Heating only", priced:true},
+  {id:"fac", t:"Gas furnace + central AC", s:"Gas heat with central cooling", priced:false},
+  {id:"dual", t:"Dual fuel", s:"Heat pump with a gas furnace backup", priced:false}
+];
+const SOON = [["Ductless mini split"],["Water heater"],["Whole house fan"]];
+const has = (...ids) => ids.some(id => S.svcs.includes(id));
+const sysName = id => SYSTEMS.find(x=>x.id===id).t;
+
+// ---------- Questions (each lists which systems need it) ----------
+const QS = [
+  {id:"current", need:()=>has("hp","dual"), q:"What heats your home now?", o:[["gas_ac","Gas furnace and AC"],["gas","Gas furnace only"],["elec","Electric furnace or older heat pump"],["noduct","Wall or baseboard heaters","No ducts in the home"],["unsure","Not sure"]]},
+  {id:"sqft", need:()=>true, q:"About how many square feet is your home?", num:true, help:"Living space only. Your best guess is fine; Zillow or your property records will have it."},
+  {id:"loc", need:()=>true, q:"Where is your furnace or indoor unit?", help:"The equipment inside the home, not the unit outside.", o:[["garage","Garage"],["closet","Closet","Hall or utility closet"],["attic","Attic"],["crawl","Crawlspace","Under the house"]]},
+  {id:"flow", need:()=>S.a.loc==="garage"||S.a.loc==="closet", q:"Where does air come out of your vents?", help:"Check a couple of rooms. Most homes have one or the other.", o:[["up","Ceiling or high on the walls"],["down","Floor"],["unsure","Not sure"]]},
+  {id:"vent", need:()=>has("furnace","fac","dual"), q:"What kind of vent pipe does your furnace have?", help:"Look where the pipe leaves the top of the furnace.", o:[["metal","Metal pipe","Standard 80% furnace"],["pvc","White plastic pipes","High-efficiency 90%+ furnace"],["unsure","Not sure"],["none","No furnace now"]]},
+  {id:"ac", need:()=>!["gas_ac","gas"].includes(S.a.current), q:"Do you have central air conditioning now?", o:[["new","Yes, under 10 years old"],["old","Yes, older than 10 years"],["none","No AC"]]},
+  {id:"ducts", need:()=>true, q:"How old are your ducts?", o:[["new","Under 10 years"],["mid","10–20 years"],["old","Over 20 years"],["unsure","Not sure"]]},
+  {id:"outdoor", need:()=>has("hp","fac","dual"), q:"Where can the outdoor unit go?", o:[["same","Where the AC is now"],["ground","A new spot on the ground"],["mount","On a wall bracket or roof"],["unsure","Not sure"]]},
+  {id:"priority", need:()=>true, q:"What matters most to you?", o:[["value","Lowest price"],["good","Good value"],["better","A balance of price and comfort"],["best","Quietest and most efficient"]]}
+];
+const NAPA = ["94503","94508","94515","94558","94559","94562","94567","94573","94574","94576","94581","94599"];
+function inArea(z){return /^\d{5}$/.test(z) && (z.startsWith("949")||z.startsWith("954")||z.startsWith("941")||NAPA.includes(z));}
+
+// ---------- State ----------
+const fresh = () => ({step:"service", svcs:[], zip:"", own:"", a:{}, c:{name:"",phone:"",email:"",addr:"",sms:false}, eff:null, showTpl:false, booked:false, plan:"0", addons:[]});
+let S = fresh();
+const $ = s => document.querySelector(s);
+const money = n => "$" + Math.round(n).toLocaleString("en-US");
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+function flow(){ return ["service","area", ...QS.filter(q=>q.need()).map(q=>q.id), "contact", "result"]; }
+function go(step){ S.step = step; render(); window.scrollTo({top:0}); if(window.parent!==window) window.parent.postMessage({type:"gc-estimator-top"}, "*"); }
+function next(){ const f = flow(); go(f[f.indexOf(S.step)+1]); }
+function back(){ const f = flow(); const i = f.indexOf(S.step); if(i>0) go(f[i-1]); }
+
+function shell(inner, wide){
+  const f = flow(), i = f.indexOf(S.step), total = f.length-1;
+  const prog = S.step==="result" ? "" : `<div class="progress"><small>Step ${i+1} of ${total}</small><div class="bar"><span style="width:${Math.round(((i+1)/total)*100)}%"></span></div></div>`;
+  $("#app").className = "wrap" + (wide ? " wide" : "");
+  $("#app").innerHTML = `
+    <div class="sample"><span></span>${S.step!=="service"?`<button class="link" id="restart">Start over</button>`:""}</div>
+    <header class="brand"><div class="logo"><i aria-hidden="true"></i>Green Core</div><div class="phone">Questions? Call <strong>(707) 988-5858</strong></div></header>
+    ${prog}
+    <section class="panel">${inner}</section>`;
+  const r = $("#restart"); if(r) r.onclick = () => { const keep = S.showTpl; S = fresh(); S.showTpl = keep; render(); };
+}
+
+function render(){
+  const st = S.step;
+  if(st==="service") return renderService();
+  if(st==="area") return renderArea();
+  if(st==="contact") return renderContact();
+  if(st==="result") return renderResult();
+  return renderQ(QS.find(q=>q.id===st));
+}
+
+function renderService(){
+  shell(`<div style="display:flex;flex-direction:column;gap:8px"><h1>Get an instant estimate</h1><p class="lede">Pick every system you'd like priced, and we'll show them side by side. It takes about two minutes. Your final price is confirmed after a free visit or photo review.</p></div>
+    <div class="opts">${SYSTEMS.map(x=>`<button class="opt pickable" data-sys="${x.id}" aria-pressed="${S.svcs.includes(x.id)}"><span class="tick" aria-hidden="true"></span><strong>${x.t}</strong><span>${x.s}</span></button>`).join("")}
+      ${SOON.map(([t])=>`<button class="opt off" aria-disabled="true"><strong>${t}</strong><span>Coming soon</span></button>`).join("")}</div>
+    <p class="err" id="serr" hidden></p>
+    <div class="row"><span></span><button class="btn" id="cont">Continue${S.svcs.length?` with ${S.svcs.length} ${S.svcs.length>1?"systems":"system"}`:""}</button></div>
+    <p class="fine">Something broken right now? Call (707) 988-5858 for a same-day service visit.</p>`);
+  document.querySelectorAll("[data-sys]").forEach(b => b.onclick = () => {
+    const id = b.dataset.sys; S.svcs = S.svcs.includes(id) ? S.svcs.filter(x=>x!==id) : [...S.svcs, id]; S.eff=null; renderService(); });
+  $("#cont").onclick = () => { if(!S.svcs.length){ const e=$("#serr"); e.textContent="Pick at least one system to price."; e.hidden=false; return; } next(); };
+}
+
+function renderArea(){
+  shell(`<h2>Where's the home?</h2>
+    <label class="f" for="zip">ZIP code<input type="text" id="zip" inputmode="numeric" maxlength="5" autocomplete="postal-code" value="${esc(S.zip)}" placeholder="94952"></label>
+    <div style="display:flex;flex-direction:column;gap:10px"><span style="font-weight:500;font-size:14px">Do you own the home?</span>
+    <div class="opts">${[["own","I own it"],["rent","I rent"],["landlord","I'm the landlord or manager"]].map(([v,t])=>`<button class="opt" data-own="${v}" aria-pressed="${S.own===v}"><strong>${t}</strong></button>`).join("")}</div></div>
+    <p class="err" id="aerr" hidden></p>
+    <div class="row"><button class="btn ghost" id="back">Back</button><button class="btn" id="cont">Continue</button></div>`);
+  document.querySelectorAll("[data-own]").forEach(b => b.onclick = () => { S.own=b.dataset.own; document.querySelectorAll("[data-own]").forEach(x=>x.setAttribute("aria-pressed", x===b)); });
+  $("#zip").oninput = e => S.zip = e.target.value.replace(/\D/g,"");
+  $("#back").onclick = back;
+  $("#cont").onclick = () => {
+    const e = $("#aerr");
+    if(!/^\d{5}$/.test(S.zip)){ e.textContent="Enter a 5-digit ZIP code."; e.hidden=false; return; }
+    if(!inArea(S.zip)){ e.textContent="Green Core serves Sonoma, Marin, Napa, and San Francisco. That ZIP is outside our area, but call us and we'll point you to someone good."; e.hidden=false; return; }
+    if(!S.own){ e.textContent="Let us know if you own or rent the home."; e.hidden=false; return; }
+    next();
+  };
+}
+
+function renderQ(q){
+  if(q.num) return renderNum(q);
+  const opts = typeof q.o === "function" ? q.o() : q.o;
+  shell(`<h2>${q.q}</h2>${q.help?`<p class="lede">${q.help}</p>`:""}
+    <div class="opts">${opts.map(([v,t,s])=>`<button class="opt" data-v="${v}" aria-pressed="${S.a[q.id]===v}"><strong>${t}</strong>${s?`<span>${s}</span>`:""}</button>`).join("")}</div>
+    <div class="row"><button class="btn ghost" id="back">Back</button>${S.a[q.id]?`<button class="btn" id="cont">Continue</button>`:""}</div>`);
+  document.querySelectorAll("[data-v]").forEach(b => b.onclick = () => { S.a[q.id]=b.dataset.v; if(q.id==="vent") S.eff=null; if(q.id==="current" && b.dataset.v==="noduct"){ return renderRoute("noduct"); } next(); });
+  $("#back").onclick = back; const c=$("#cont"); if(c) c.onclick = next;
+}
+
+function renderNum(q){
+  shell(`<h2>${q.q}</h2>${q.help?`<p class="lede">${q.help}</p>`:""}
+    <label class="f" for="numin">Square feet<input type="text" id="numin" inputmode="numeric" maxlength="5" value="${S.a[q.id]||""}" placeholder="1,850"></label>
+    <p class="err" id="nerr" hidden></p>
+    <div class="row"><button class="btn ghost" id="back">Back</button><button class="btn" id="cont">Continue</button></div>`);
+  $("#back").onclick = back;
+  $("#cont").onclick = () => {
+    const v = +$("#numin").value.replace(/\D/g,""), e = $("#nerr");
+    if(!v || v < 300){ e.textContent = "Enter your home's square footage, like 1850."; e.hidden = false; return; }
+    S.a[q.id] = v;
+    if(!tonsFor(v)) return renderRoute("big");
+    next();
+  };
+}
+
+function renderRoute(kind){
+  const msg = kind==="noduct"
+    ? ["Ductless is the better fit for your home","Homes without ducts usually do best with a ductless mini split. Online pricing for mini splits is coming soon. Book a free visit and we'll design a system room by room."]
+    : ["Let's size this one together","Homes over 3,200 sq ft often need two systems. A free visit gets you an accurate price instead of a guess."];
+  shell(`<h2>${msg[0]}</h2><p class="lede">${msg[1]}</p>
+    <div class="cta"><button class="btn" id="bk">Book a free visit</button><span class="phone">or call <strong>(707) 988-5858</strong></span></div>
+    <div class="row"><button class="btn ghost" id="back">Back</button></div>`);
+  $("#bk").onclick = openBooking;
+  $("#back").onclick = () => { if(kind==="noduct") delete S.a.current; render(); };
+}
+
+function renderContact(){
+  const c = S.c;
+  shell(`<div style="display:flex;flex-direction:column;gap:8px"><h2>Where should we send your estimate?</h2><p class="lede">You'll see your prices on the next screen. We'll keep your estimate on file so our team can follow up.</p></div>
+    <div class="grid2">
+      <label class="f" for="cn">Name<input type="text" id="cn" autocomplete="name" value="${esc(c.name)}"></label>
+      <label class="f" for="cp">Mobile phone<input type="tel" id="cp" autocomplete="tel" value="${esc(c.phone)}"></label>
+      <label class="f" for="ce">Email<input type="email" id="ce" autocomplete="email" value="${esc(c.email)}"></label>
+      <label class="f" for="ca">Street address<input type="text" id="ca" autocomplete="street-address" value="${esc(c.addr)}"></label>
+    </div>
+    <label class="hp-field" aria-hidden="true">Website<input type="text" id="hpf" tabindex="-1" autocomplete="off"></label>
+    <label class="check" for="cs"><input type="checkbox" id="cs" ${c.sms?"checked":""}> Text me about my estimate. Message and data rates may apply. Reply STOP to opt out.</label>
+    <p class="err" id="cerr" hidden></p>
+    <div class="row"><button class="btn ghost" id="back">Back</button><div class="cta"><button class="btn" id="see">See my prices</button></div></div>`);
+  const bind = () => { S.hp=$("#hpf").value; S.c={name:$("#cn").value.trim(),phone:$("#cp").value.trim(),email:$("#ce").value.trim(),addr:$("#ca").value.trim(),sms:$("#cs").checked}; };
+  $("#back").onclick = () => { bind(); back(); };
+  $("#see").onclick = () => {
+    bind(); const e=$("#cerr");
+    if(!S.c.name||!S.c.addr){ e.textContent="Add your name and street address."; e.hidden=false; return; }
+    if(S.c.phone.replace(/\D/g,"").length<10){ e.textContent="Enter a 10-digit mobile number."; e.hidden=false; return; }
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(S.c.email)){ e.textContent="Enter a valid email address."; e.hidden=false; return; }
+    next();
+  };
+}
+
+// ---------- Pricing: one exact HCP template price per tier ----------
+function common(){
+  const a = S.a, tons = tonsFor(a.sqft), P = position(a);
+  const tail = P.orient==="Downflow" ? "Downflow" : P.group;
+  // HCP Downflow templates = Garage/Closet template + that system's downflow kit
+  const kitFor = id => { if(P.orient!=="Downflow") return {add:0, note:""}; const k = DOWNFLOW_KIT[id]; return k ? {add:k.price, note:""} : {add:0, note:" (downflow kit not priced yet)"}; };
+  return {a, tons, P, tail, kitFor};
+}
+function quoteHP(){
+  const {a, tons, P, tail, kitFor} = common();
+  const kit = kitFor("hp");
+  const acAdd = noAC() ? NO_AC_ADD : 0;
+  const tiers = ["value","good","better","best"].map(k => ({k, ...HP_COPY[k], name:HP[k].name, price:HP[k].p[tons] + (P.attic?HP_ATTIC:0) + kit.add + acAdd, tpl:`${HP[k].tpl} ${tons} Ton – ${tail}${kit.note}${acAdd?` + No-AC adder (${money(acAdd)})`:""}`}));
+  return {id:"hp", title:"Heat pump system", note:`${tons} ton heat pump and indoor unit`, tiers};
+}
+function quoteFurnace(){
+  const {a, tons, P, tail, kitFor} = common();
+  const kit = kitFor("furnace");
+  if(S.eff==null) S.eff = a.vent==="pvc" ? 95 : 80;
+  const eff = S.eff;
+  const tiers = ["value","good","better","best"].map(k => { const F = FURN[eff][k]; return {k, ...FURN_COPY[k], name:F.name, price:F.p[tons] + (P.attic?FURN_ATTIC[eff]:0) + kit.add, tpl:`${F.t[tons]} – ${F.fam} – ${tail}${kit.note}`}; });
+  return {id:"furnace", title:`Gas furnace, ${eff}% efficiency`, note:`Sized for ${tons} ton airflow`, tiers, eff};
+}
+function quotePending(id){
+  const {tons} = common();
+  const why = id==="fac" ? "AC install kit and furnace + AC templates aren't in HCP yet" : "Dual fuel templates aren't in HCP yet";
+  return {id, title:sysName(id), note:`${tons} ton system`, pending:true, why};
+}
+function quoteAll(){
+  const {a, P} = common();
+  const out = S.svcs.map(id => id==="hp" ? quoteHP() : id==="furnace" ? quoteFurnace() : quotePending(id));
+  const flags = [];
+  if(a.flow==="unsure") flags.push("Which way your system blows air (priced as upflow)");
+  if(a.current==="unsure") flags.push("Your current system type");
+  if(a.outdoor==="ground") flags.push("New outdoor unit location (longer line set, new pad)");
+  if(a.outdoor==="mount") flags.push("Wall bracket or roof mount");
+  if(a.outdoor==="unsure") flags.push("Outdoor unit placement");
+  if(a.current==="elec") flags.push("Electrical capacity check for an all-electric system");
+  if(a.vent==="unsure") flags.push("Furnace venting (80% vs. 95% may need new vent pipes)");
+  if(a.vent==="metal" && S.eff===95) flags.push("Converting to 95% adds new PVC venting and a condensate drain");
+  if(a.vent==="none" && has("furnace","fac","dual")) flags.push("New gas line and flue for a furnace");
+  if(a.ducts==="unsure") flags.push("Duct condition");
+  const tons = tonsFor(a.sqft);
+  // Add-ons the customer can tick to include in every option's price. skipBest: Best tiers already include an Infinity Touch control.
+  const addons = [
+    {id:"ducts", label:`New R-8 insulated duct system, sized for your ${tons} ton system${a.ducts==="old"?" (recommended for ducts over 20 years old)":""}`, hcp:`${tons} Ton R-8 Duct System`, price:DUCT[tons]},
+    {id:"zone", label:"2-zone system for uneven rooms", hcp:"Zone First 2 Zone System", price:2250},
+    {id:"tstat", label:"Ecobee smart thermostat", hcp:"Ecobee Smart Thermostat Enhanced", price:582, skipBest:true, note:"Best options already include a smart control"}
+  ];
+  const sel = addons.filter(x=>S.addons.includes(x.id));
+  out.forEach(s => { if(s.pending) return; s.tiers.forEach(t => {
+    const add = sel.filter(x=>!(x.skipBest && t.k==="best")).reduce((n,x)=>n+x.price,0);
+    t.price += add; if(add) t.tpl += ` + add-ons (${money(add)})`; }); });
+  let cross = null;
+  if(S.svcs.length===1 && has("furnace") && a.ac!=="new") cross = `No AC, or an older one? A heat pump replaces your furnace and AC in one system. For your home it starts at ${money(HP.value.p[tons] + (P.attic?HP_ATTIC:0) + (noAC()?NO_AC_ADD:0))}.`;
+  return {systems:out, flags, addons, cross, posNote:`${a.sqft.toLocaleString("en-US")} sq ft home, ${P.where} install, ${P.orient.toLowerCase()}`};
+}
+
+function tierCards(sys, pick){
+  const pickK = pick;
+  return `<div class="tiers">${sys.tiers.map(t=>`
+    <article class="tier${t.k===pickK?" pick":""}">
+      <span class="badge">${t.label}${t.k===pickK?" · Your pick":""}</span>
+      <div><div class="tname">${t.name}</div><div class="tsub">${t.sub}</div></div>
+      <div><div class="price">${money(t.price)}</div><div class="mo">or ${cents(monthlyAmt(t.price))}/mo*</div><div class="mo-sub">${plan().long}</div></div>
+      <ul>${t.pts.map(p=>`<li>${p}</li>`).join("")}</ul>
+      ${S.showTpl?`<div class="tpl">${esc(t.tpl)}</div>`:""}
+    </article>`).join("")}</div>`;
+}
+
+function renderResult(){
+  const r = quoteAll();
+  const today = new Date(), until = new Date(today.getTime()+14*864e5);
+  const fmt = d => d.toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"});
+  const est = "GC-" + today.getFullYear() + String(today.getMonth()+1).padStart(2,"0") + String(today.getDate()).padStart(2,"0") + "-" + (S.zip.slice(-2)||"00") + "7";
+  const first = (S.c.name||"there").split(" ")[0];
+  const multi = r.systems.length > 1;
+  const glance = multi ? `<div class="glance">${r.systems.map(s=>`<a class="gl" href="#sys-${s.id}"><span class="gl-t">${s.title}</span>${s.pending?`<span class="gl-p muted">Priced at your visit</span>`:`<span class="gl-p">from ${money(Math.min(...s.tiers.map(t=>t.price)))}</span><span class="gl-s">${s.tiers.length} options up to ${money(Math.max(...s.tiers.map(t=>t.price)))}</span>`}</a>`).join("")}</div>` : "";
+  shell(`
+    <div class="rhead"><h1>${esc(first)}, here are your prices</h1>
+      <p class="lede">${r.posNote}. ${multi?"Compare the systems below and pick what fits.":"Pick the option that fits."} Your final price is confirmed after a free visit or photo review.</p>
+      <div class="meta"><span>Estimate ${est}</span><span>Valid through ${fmt(until)}</span><span>ZIP ${esc(S.zip)}</span></div></div>
+    ${glance}
+    <div class="row"><div class="plans" role="group" aria-label="Monthly payment options"><span class="plans-l">Monthly payments:</span>${PLANS.map(p=>`<button class="plan" data-plan="${p.id}" aria-pressed="${plan().id===p.id}">${p.short}${p.apr?` · ${p.apr}%`:""}</button>`).join("")}</div></div>
+    ${r.systems.map(s=>`<section class="sys" id="sys-${s.id}">
+      <div class="syshead"><div><h2>${s.title}</h2><p class="muted">${s.note}</p></div>
+        ${s.id==="furnace"?`<div class="toggle" role="group" aria-label="Furnace efficiency"><button data-eff="80" aria-pressed="${s.eff===80}">80% standard</button><button data-eff="95" aria-pressed="${s.eff===95}">95% high efficiency</button></div>`:""}</div>
+      ${s.pending?`<p class="note">We'll price this one at your free visit.</p>`:tierCards(s, S.a.priority)}
+    </section>`).join("")}
+    <p class="disc">These are estimated prices based on your answers, not a final quote. Your final price is confirmed after a free visit or photo review.</p>
+    ${r.cross?`<p class="note">${r.cross}</p>`:""}
+    <div class="cols">
+      <div class="box"><h3>Every option includes</h3><ul>
+        <li>Removal and haul-away of your old equipment</li><li>New equipment set and connected to your ducts</li>
+        ${has("hp","fac","dual")?"<li>Outdoor pad or wall brackets and a line hide cover</li><li>Refrigerant line set, pressure tested and evacuated</li>":""}
+        ${has("furnace","fac","dual")?"<li>Gas connection with shutoff and sediment trap, plus flue or vent connection</li>":""}
+        <li>Condensate drain with safety float switch</li><li>Electrical disconnect and control wiring</li><li>Startup, testing, and a walkthrough with you</li></ul></div>
+      <div class="box"><h3>What could change your price</h3>${r.flags.length?`<ul>${r.flags.map(f=>`<li>${f}</li>`).join("")}</ul>`:`<p class="fine">Nothing flagged. Your answers were clear, so these prices should hold.</p>`}
+        <p class="fine">See "About this estimate" below for what's not included.</p></div>
+      <div class="box"><h3>Popular add-ons</h3><p class="fine">Tick any you'd like included in your prices above.</p>${r.addons.map(x=>`<label class="addon pickadd" for="ad-${x.id}"><input type="checkbox" id="ad-${x.id}" data-add="${x.id}" ${S.addons.includes(x.id)?"checked":""}><span>${x.label}${x.note?`<span class="add-note">${x.note}</span>`:""}${S.showTpl?`<span class="tpl-inline">HCP: ${x.hcp}</span>`:""}</span><strong>+${money(x.price)}</strong></label>`).join("")}</div>
+    </div>
+    <div class="cta"><button class="btn" id="bk">${S.booked?"Visit requested":"Book a free in-home visit"}</button><span class="phone">or call <strong>(707) 988-5858</strong></span></div>
+    <p class="note" id="bkn" ${S.booked?"":"hidden"}>Thanks! We have your estimate. Pick a time in the booking page that just opened, or call us at (707) 988-5858. <button class="link" id="rebook">Open booking again</button></p>
+    <section class="about" aria-labelledby="abt">
+      <h3 id="abt">About this estimate</h3>
+      <p>This online estimate is based on the information you provided and standard installation conditions. It is not a final quote or a guaranteed price. Your final price will be confirmed in writing after a free in-home visit or photo review.</p>
+      <p>Estimated prices include the equipment shown, a standard installation, removal of old equipment, and startup. They assume up to 50 feet of refrigerant line set and that existing control wiring, ductwork, and electrical service can be reused.</p>
+      <p>Not included unless shown on your final quote:</p>
+      <ul><li>Ductwork repair, modification, or replacement</li><li>Electrical work, including new circuits, panel upgrades, or service changes</li><li>Line sets longer than 50 feet</li><li>Control (thermostat) wiring repair or replacement</li><li>Changes needed to fit equipment in the available space or meet clearances</li><li>Limited or difficult access to attics, crawlspaces, roofs, or equipment locations</li><li>Crane or lift fees</li><li>Permit fees and any required inspections</li><li>Conditions we can't see or confirm online, including code corrections, damage, or hazardous materials</li></ul>
+      <p>Estimate valid for 14 days. *Financing is subject to credit approval; monthly payments are estimates only.</p>
+    </section>`, true);
+  document.querySelectorAll("[data-eff]").forEach(b => b.onclick = () => { S.eff=+b.dataset.eff; renderResult(); });
+  if(!S.leadMeta){ S.leadMeta = {est, until: fmt(until)}; S.leadTimer = setTimeout(flushLead, 120000); }
+  document.querySelectorAll("[data-add]").forEach(c => c.onchange = () => { const id=c.dataset.add; S.addons = c.checked ? [...S.addons, id] : S.addons.filter(x=>x!==id); const y=window.scrollY; renderResult(); window.scrollTo({top:y}); });
+  document.querySelectorAll("[data-plan]").forEach(b => b.onclick = () => { S.plan=b.dataset.plan; S.planTouched=true; const y=window.scrollY; renderResult(); window.scrollTo({top:y}); });
+  $("#bk").onclick = () => { openBooking(); S.booked=true; renderResult(); flushLead(); };
+  const rb=$("#rebook"); if(rb) rb.onclick = openBooking;
+}
+
+render();
+
+// ---------- Website embed: tell the parent page how tall the estimator is ----------
+(function(){
+  if(window.parent===window) return;
+  let last=0;
+  const send=()=>{ const h=Math.ceil(document.documentElement.scrollHeight); if(h!==last){ last=h; window.parent.postMessage({type:"gc-estimator-height", height:h}, "*"); } };
+  new ResizeObserver(send).observe(document.body); window.addEventListener("load", send); send();
+})();
+</script>
+
+</body>
+</html>

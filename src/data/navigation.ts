@@ -62,7 +62,9 @@ export const primaryNav: NavLink[] = [
   { label: "Guides", href: "/guides" },
   { label: "Blog", href: "/blog" },
   ...(hasSpecials ? [{ label: "Specials", href: "/specials" }] : []),
-  { label: "Contact", href: "/contact" },
+  { label: "Instant Estimate", href: "/instant-estimate" },
+  // Desktop shows the Instant Estimate button in this spot; Contact stays in the phone menu and footer.
+  { label: "Contact", href: "/contact", mobileOnly: true },
 ];
 
 /**

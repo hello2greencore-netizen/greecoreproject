@@ -21,6 +21,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/`, changeFrequency: "weekly", priority: 1.0 },
     { url: `${base}/contact`, changeFrequency: "monthly", priority: 0.95 },
 
+    // Instant estimator page (the tool itself, /estimator.html, stays out: it's noindex)
+    { url: `${base}/instant-estimate`, changeFrequency: "monthly", priority: 0.9 },
+
     // Tier 2 — service index + area index
     { url: `${base}/services`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/service-areas`, changeFrequency: "monthly", priority: 0.85 },

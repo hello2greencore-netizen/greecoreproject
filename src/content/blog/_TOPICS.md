@@ -28,7 +28,7 @@ Customer questions
 - [ ] Heat pump vs. furnace: running costs in the North Bay
 - [x] Why is one room always hot or cold? (ducts, balance, zoning)
 - [ ] Signs your water heater is about to fail
-- [ ] How often should a heat pump be serviced?
+- [x] How often should a heat pump be serviced?
 - [ ] Does my electrical panel need an upgrade for a heat pump?
 - [ ] Ducted heat pump vs. ductless mini split: which fits your home?
 - [ ] What is Harvest Thermal and who is it right for?

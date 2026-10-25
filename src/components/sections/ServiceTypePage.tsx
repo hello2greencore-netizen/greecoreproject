@@ -58,6 +58,7 @@ export function ServiceTypePage({ type: t }: { type: ServiceType }) {
         image={t.heroImage}
         imageAlt={t.name}
         size="compact"
+        secondaryCta={t.kind === "installation" ? { label: "Get an Instant Estimate", href: "/instant-estimate" } : undefined}
       />
 
       {d && <AnswerBox answer={d.answer} />}

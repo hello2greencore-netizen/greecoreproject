@@ -2,6 +2,8 @@ export type NavLink = {
   label: string;
   href: string;
   children?: NavLink[];
+  /** Shown in the phone menu only, not the desktop top bar (e.g. Contact, where the desktop bar shows the estimate button instead). */
+  mobileOnly?: boolean;
 };
 
 export type Service = {

@@ -49,8 +49,8 @@ export function Header() {
           <Logo />
 
           <nav aria-label="Primary" className="hidden lg:flex flex-1 justify-center">
-            <ul className="flex items-center gap-3.5 xl:gap-7">
-              {primaryNav.map((link) => {
+            <ul className="flex items-center gap-2.5 xl:gap-4">
+              {primaryNav.filter((link) => !link.mobileOnly).map((link) => {
                 const isActive = isNavActive(link, pathname);
 
                 if (link.children) {
@@ -68,7 +68,7 @@ export function Header() {
                           }
                         }}
                         className={cn(
-                          "flex items-center gap-1 whitespace-nowrap text-sm font-medium transition-colors duration-200",
+                          "flex items-center gap-1 whitespace-nowrap text-[13px] xl:text-sm font-medium transition-colors duration-200",
                           isActive
                             ? "text-brand-700"
                             : "text-foreground/55 group-hover:text-foreground",
@@ -129,13 +129,29 @@ export function Header() {
                   );
                 }
 
+                if (link.href === "/instant-estimate") {
+                  return (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        aria-label="Get an instant estimate"
+                        aria-current={isActive ? "page" : undefined}
+                        className="whitespace-nowrap rounded-full bg-brand-600 px-3 py-1.5 xl:px-4 text-[13px] xl:text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-brand-700"
+                      >
+                        <span className="xl:hidden">Estimate</span>
+                        <span className="hidden xl:inline">{link.label}</span>
+                      </Link>
+                    </li>
+                  );
+                }
+
                 if (link.href === "/specials") {
                   return (
                     <li key={link.href}>
                       <Link
                         href={link.href}
                         aria-current={isActive ? "page" : undefined}
-                        className="whitespace-nowrap rounded-full bg-brand-50 px-2.5 py-1.5 xl:px-3 text-sm font-semibold text-brand-700 ring-1 ring-brand-200 transition-colors duration-200 hover:bg-brand-100"
+                        className="whitespace-nowrap rounded-full bg-brand-50 px-2.5 py-1.5 xl:px-3 text-[13px] xl:text-sm font-semibold text-brand-700 ring-1 ring-brand-200 transition-colors duration-200 hover:bg-brand-100"
                       >
                         {link.label}
                       </Link>
@@ -149,7 +165,7 @@ export function Header() {
                       href={link.href}
                       aria-current={isActive ? "page" : undefined}
                       className={cn(
-                        "relative whitespace-nowrap text-sm font-medium transition-colors duration-200",
+                        "relative whitespace-nowrap text-[13px] xl:text-sm font-medium transition-colors duration-200",
                         "after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-full after:origin-left after:bg-brand-600 after:transition-transform after:duration-200",
                         isActive
                           ? "text-brand-700 after:scale-x-100"

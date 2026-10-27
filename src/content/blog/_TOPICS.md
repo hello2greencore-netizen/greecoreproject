@@ -14,7 +14,7 @@ Local keyword posts (city + service)
 - [x] Heat pump water heaters in Petaluma: is the switch worth it?
 - [x] Air conditioning vs. heat pump in Rohnert Park and Cotati
 - [x] Mill Valley homes and heat pumps: hills, shade, and small spaces
-- [ ] Keeping Sebastopol and west county homes comfortable year-round
+- [x] Keeping Sebastopol and west county homes comfortable year-round
 - [ ] Windsor summer heat: cooling options that also heat in winter
 - [ ] Sonoma Valley homes: going all-electric with a heat pump
 - [ ] San Anselmo and Fairfax: heating older homes without gas

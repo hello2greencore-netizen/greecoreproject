@@ -41,7 +41,7 @@ Rebates and programs (check current program pages before writing)
 - [ ] Sonoma Clean Power programs for heat pumps and water heaters
 - [ ] MCE rebates for Marin homeowners going electric
 - [ ] Federal tax credits ended in 2025: what incentives are left in 2026?
-- [ ] How Green Core handles rebate paperwork for you
+- [x] How Green Core handles rebate paperwork for you
 
 Water heaters
 - [x] SANCO2 heat pump water heater: why we like it

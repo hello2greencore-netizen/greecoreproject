@@ -25,7 +25,7 @@ Customer questions
 - [x] How long does a heat pump installation take?
 - [x] What size heat pump does my house need?
 - [x] Do heat pumps work in a power outage? (and what to plan for)
-- [ ] Heat pump vs. furnace: running costs in the North Bay
+- [x] Heat pump vs. furnace: running costs in the North Bay
 - [x] Why is one room always hot or cold? (ducts, balance, zoning)
 - [ ] Signs your water heater is about to fail
 - [x] How often should a heat pump be serviced?

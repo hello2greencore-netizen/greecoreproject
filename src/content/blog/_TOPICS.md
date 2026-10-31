@@ -29,7 +29,7 @@ Customer questions
 - [x] Why is one room always hot or cold? (ducts, balance, zoning)
 - [ ] Signs your water heater is about to fail
 - [x] How often should a heat pump be serviced?
-- [ ] Does my electrical panel need an upgrade for a heat pump?
+- [x] Does my electrical panel need an upgrade for a heat pump?
 - [ ] Ducted heat pump vs. ductless mini split: which fits your home?
 - [ ] What is Harvest Thermal and who is it right for?
 - [ ] Wildfire smoke season: filtration and fresh air with your HVAC

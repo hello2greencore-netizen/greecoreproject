@@ -19,7 +19,7 @@ Local keyword posts (city + service)
 - [ ] Sonoma Valley homes: going all-electric with a heat pump
 - [ ] San Anselmo and Fairfax: heating older homes without gas
 - [ ] Tiburon homes: quiet, efficient heating and cooling options
-- [ ] Same-day water heater replacement in Sonoma and Marin
+- [x] Same-day water heater replacement in Sonoma and Marin
 
 Customer questions
 - [x] How long does a heat pump installation take?

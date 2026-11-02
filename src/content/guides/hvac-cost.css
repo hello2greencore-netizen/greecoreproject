@@ -132,3 +132,5 @@
 .gc-guide .ctrl { top: 72px; }
 @media (min-width: 1024px) { .gc-guide .ctrl { top: 84px; } }
 @media (min-width: 900px) { .gc-guide aside { top: 88px; } }
+.gc-guide .ctrl .help a.sizebtn { background: #f97316; color: #1c1206; }
+.gc-guide .ctrl .help a.sizebtn:hover { background: #fb923c; }

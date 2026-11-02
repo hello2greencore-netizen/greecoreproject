@@ -16,7 +16,7 @@ Local keyword posts (city + service)
 - [x] Mill Valley homes and heat pumps: hills, shade, and small spaces
 - [x] Keeping Sebastopol and west county homes comfortable year-round
 - [x] Windsor summer heat: cooling options that also heat in winter
-- [ ] Sonoma Valley homes: going all-electric with a heat pump
+- [x] Sonoma Valley homes: going all-electric with a heat pump
 - [ ] San Anselmo and Fairfax: heating older homes without gas
 - [ ] Tiburon homes: quiet, efficient heating and cooling options
 - [x] Same-day water heater replacement in Sonoma and Marin

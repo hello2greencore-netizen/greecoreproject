@@ -31,7 +31,7 @@ Customer questions
 - [x] How often should a heat pump be serviced?
 - [x] Does my electrical panel need an upgrade for a heat pump?
 - [ ] Ducted heat pump vs. ductless mini split: which fits your home?
-- [ ] What is Harvest Thermal and who is it right for?
+- [x] What is Harvest Thermal and who is it right for?
 - [ ] Wildfire smoke season: filtration and fresh air with your HVAC
 - [ ] How loud is a heat pump? Placement tips for small lots
 

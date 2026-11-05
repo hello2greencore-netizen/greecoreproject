@@ -46,5 +46,5 @@ Rebates and programs (check current program pages before writing)
 Water heaters
 - [x] SANCO2 heat pump water heater: why we like it
 - [ ] Tank vs. tankless vs. heat pump water heater: a quick guide
-- [ ] Water heater expansion tanks and seismic straps: California code basics
+- [x] Water heater expansion tanks and seismic straps: California code basics
 - [x] Gas to electric water heater: what changes in your home

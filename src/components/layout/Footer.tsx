@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/layout/Logo";
+import { FallScene } from "@/components/seasonal/ThanksgivingDecor";
 import { footerNav } from "@/data/navigation";
 import { siteConfig } from "@/data/site";
 
@@ -34,6 +35,7 @@ function FooterLinkGroup({ title, links }: FooterLinkGroupProps) {
 export function Footer() {
   return (
     <footer className="mt-12 bg-brand-900 text-white lg:mt-16">
+      <FallScene />
       <Container size="xl" className="py-10 sm:py-12 lg:py-16">
         <div className="grid gap-10 md:grid-cols-4 lg:grid-cols-6">
           <div className="md:col-span-4 lg:col-span-2">

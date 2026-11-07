@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/layout/Logo";
 import { MobileNav } from "@/components/layout/MobileNav";
+import { LeafGarland } from "@/components/seasonal/ThanksgivingDecor";
 import { useMobileNav } from "@/hooks/useMobileNav";
 import { primaryNav, isNavActive } from "@/data/navigation";
 import { siteConfig } from "@/data/site";
@@ -221,6 +222,7 @@ export function Header() {
           </div>
         </div>
       </Container>
+      <LeafGarland />
       <MobileNav isOpen={isOpen} onClose={close} />
     </header>
   );

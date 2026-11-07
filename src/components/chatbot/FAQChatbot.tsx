@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { PilgrimHat, useThanksgivingSeason } from "@/components/seasonal/ThanksgivingDecor";
 import {
   useEffect,
   useMemo,
@@ -220,6 +221,7 @@ export function FAQChatbot() {
   const [messages, setMessages] = useState<ChatMessage[]>([welcomeMessage]);
   const [suggestionsOpen, setSuggestionsOpen] = useState(true);
   const [greetingVisible, setGreetingVisible] = useState(false);
+  const thanksgiving = useThanksgivingSeason();
   /** On phones, the greeting waits until it won't cover a button, link, or headline. */
   const [greetingBlocked, setGreetingBlocked] = useState(true);
   const greetingRef = useRef<HTMLDivElement>(null);
@@ -792,8 +794,8 @@ export function FAQChatbot() {
             }}
             className="block pr-6 text-left font-display text-sm font-bold text-foreground sm:text-base"
           >
-            <span className="sm:hidden">Hey, I&apos;m Corey! Need a hand?</span>
-            <span className="hidden sm:inline">Hey there, I&apos;m Corey!</span>
+            <span className="sm:hidden">{thanksgiving ? "Happy Thanksgiving! Need a hand?" : <>Hey, I&apos;m Corey! Need a hand?</>}</span>
+            <span className="hidden sm:inline">{thanksgiving ? <>Happy Thanksgiving, I&apos;m Corey!</> : <>Hey there, I&apos;m Corey!</>}</span>
           </button>
           <p className="mt-1 hidden text-sm leading-relaxed text-foreground/75 sm:block">
             Got a question or need a hand? What are you looking for today?
@@ -863,6 +865,7 @@ export function FAQChatbot() {
             sizes="(min-width: 640px) 144px, 128px"
             className="object-contain"
           />
+          <PilgrimHat />
         </button>
       )}
     </>

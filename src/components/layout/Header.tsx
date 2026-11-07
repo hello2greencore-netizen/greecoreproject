@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/layout/Logo";
 import { MobileNav } from "@/components/layout/MobileNav";
+import { DancingElephant } from "@/components/layout/DancingElephant";
 import { useMobileNav } from "@/hooks/useMobileNav";
 import { primaryNav, isNavActive } from "@/data/navigation";
 import { siteConfig } from "@/data/site";
@@ -47,6 +48,8 @@ export function Header() {
       <Container size="xl">
         <div className="flex h-16 items-center justify-between gap-3 sm:gap-6 lg:h-[72px] lg:gap-8">
           <Logo />
+
+          <DancingElephant className="lg:hidden" />
 
           <nav aria-label="Primary" className="hidden lg:flex flex-1 justify-center">
             <ul className="flex items-center gap-2.5 xl:gap-4">

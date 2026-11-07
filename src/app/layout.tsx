@@ -8,7 +8,7 @@ import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { Footer } from "@/components/layout/Footer";
 import { StickyMobileCTA } from "@/components/layout/StickyMobileCTA";
 import { FAQChatbot } from "@/components/chatbot/FAQChatbot";
-import { FallingLeaves, WalkingTurkey, ThanksgivingStyles } from "@/components/seasonal/ThanksgivingDecor";
+import { FallingLeaves, LeafPile, WalkingTurkey, ThanksgivingStyles } from "@/components/seasonal/ThanksgivingDecor";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 import { LocalBusinessSchema } from "@/components/seo/LocalBusinessSchema";
 import { siteConfig } from "@/data/site";
@@ -84,6 +84,7 @@ export default function RootLayout({
           <FAQChatbot />
           <ThanksgivingStyles />
           <FallingLeaves />
+          <LeafPile />
           <WalkingTurkey />
           <Script
             src="https://online-booking.housecallpro.com/script.js?token=d68ef1da956043458b2e0244b795dd66&orgName=Green-Core-Heating--Air-Inc"

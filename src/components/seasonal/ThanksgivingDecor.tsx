@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /**
  * Thanksgiving decorations. Purely visual: everything is aria-hidden,
@@ -92,13 +92,14 @@ export function FallingLeaves() {
 
 
 /**
- * A turkey that walks across the bottom of the screen once per visit,
- * stops in the middle to say hi, then waddles off. On phones it walks just
- * above the Call / Free Estimate / Book Now bar.
+ * A turkey that walks across the bottom of the screen once per visit, stops
+ * in the middle to say hi, waddles off, then comes back and settles in the
+ * bottom-left corner (computers only) for the rest of the visit. On phones it
+ * walks across once, just above the Call / Free Estimate / Book Now bar.
  */
 export function WalkingTurkey() {
   const on = useThanksgivingSeason();
-  const [walk, setWalk] = useState(false);
+  const [mode, setMode] = useState<"off" | "walk" | "parked">("off");
   useEffect(() => {
     if (!on) return;
     const forced = new URLSearchParams(window.location.search).get("thanksgiving") === "1";
@@ -109,11 +110,17 @@ export function WalkingTurkey() {
     } catch {
       // Storage blocked: just walk.
     }
-    if (forced || !seen) setWalk(true);
+    setMode(forced || !seen ? "walk" : "parked");
   }, [on]);
-  if (!on || !walk) return null;
+  if (!on || mode === "off") return null;
   return (
-    <div aria-hidden className="gc-walk pointer-events-none fixed left-0 z-40">
+    <div
+      aria-hidden
+      className={`gc-walk pointer-events-none fixed left-0 z-40${mode === "parked" ? " gc-parked" : ""}`}
+      onAnimationEnd={(e) => {
+        if (e.target === e.currentTarget) setMode("parked");
+      }}
+    >
       <div className="gc-walk-bubble">Happy Thanksgiving!</div>
       <svg className="gc-walk-bird" viewBox="0 0 120 110" focusable="false">
         {/* tail fan */}
@@ -228,6 +235,174 @@ export function FallScene() {
   );
 }
 
+/**
+ * Leaves that drift down as the visitor scrolls and pile up along the bottom
+ * of the screen. Moving the mouse through the pile kicks them up. Computers
+ * only (needs a mouse), and off for anyone with "reduce motion" turned on.
+ * Drawn on one see-through canvas that ignores clicks.
+ */
+export function LeafPile() {
+  const on = useThanksgivingSeason();
+  const ref = useRef<HTMLCanvasElement>(null);
+  useEffect(() => {
+    if (!on) return;
+    const mq = window.matchMedia("(min-width: 1024px) and (pointer: fine) and (prefers-reduced-motion: no-preference)");
+    if (!mq.matches) return;
+    const canvas = ref.current;
+    const ctx = canvas?.getContext("2d");
+    if (!canvas || !ctx) return;
+
+    type L = { x: number; y: number; vx: number; vy: number; rot: number; vr: number; size: number; color: string; kind: "maple" | "oak"; resting: boolean; phase: number };
+    const paths = { maple: new Path2D(LEAF_PATHS.maple), oak: new Path2D(LEAF_PATHS.oak) };
+    const leaves: L[] = [];
+    const MAX = 140;
+    const COL = 12;
+    const MAX_PILE = 46;
+    let W = 0;
+    let H = 0;
+    let heights: number[] = [];
+    let raf = 0;
+    let running = false;
+    let t = 0;
+    const dpr = Math.min(2, window.devicePixelRatio || 1);
+
+    const rebuildHeights = () => {
+      heights = new Array(Math.ceil(W / COL) + 2).fill(0);
+      for (const l of leaves) {
+        if (!l.resting) continue;
+        const c = Math.max(0, Math.floor(l.x / COL));
+        for (let k = c - 1; k <= c + 1; k++) if (heights[k] !== undefined) heights[k] = Math.min(MAX_PILE, heights[k] + l.size * (k === c ? 0.3 : 0.15));
+      }
+    };
+    const resize = () => {
+      const oldH = H;
+      W = window.innerWidth;
+      H = window.innerHeight;
+      canvas.width = W * dpr;
+      canvas.height = H * dpr;
+      canvas.style.width = `${W}px`;
+      canvas.style.height = `${H}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      if (oldH) for (const l of leaves) l.y += H - oldH;
+      rebuildHeights();
+      draw();
+    };
+    const spawn = () => {
+      if (leaves.length >= MAX) {
+        const i = leaves.findIndex((l) => l.resting);
+        if (i >= 0) leaves.splice(i, 1);
+        rebuildHeights();
+      }
+      leaves.push({
+        x: Math.random() * W, y: -30, vx: 0, vy: 1 + Math.random(), rot: Math.random() * 6.28, vr: (Math.random() - 0.5) * 0.06,
+        size: 16 + Math.random() * 10, color: COLORS[Math.floor(Math.random() * COLORS.length)],
+        kind: Math.random() < 0.35 ? "oak" : "maple", resting: false, phase: Math.random() * 6.28,
+      });
+      start();
+    };
+    const draw = () => {
+      ctx.clearRect(0, 0, W, H);
+      for (const l of leaves) {
+        ctx.save();
+        ctx.translate(l.x, l.y);
+        ctx.rotate(l.rot);
+        const s = l.size / 24;
+        ctx.scale(s, s);
+        ctx.translate(-12, -12);
+        ctx.fillStyle = l.color;
+        ctx.globalAlpha = 0.95;
+        ctx.fill(paths[l.kind]);
+        ctx.restore();
+      }
+    };
+    const step = () => {
+      t++;
+      let moving = false;
+      let settled = false;
+      for (const l of leaves) {
+        if (l.resting) continue;
+        moving = true;
+        l.vy = Math.min(l.vy + 0.12, 1.8);
+        l.vx *= 0.96;
+        l.x += l.vx + Math.sin(t * 0.04 + l.phase) * 0.9;
+        l.y += l.vy;
+        l.rot += l.vr;
+        if (l.x < 0) l.x = 0;
+        if (l.x > W) l.x = W;
+        const c = Math.max(0, Math.floor(l.x / COL));
+        const floor = H - l.size * 0.35 - (heights[c] ?? 0);
+        if (l.vy > 0 && l.y >= floor) {
+          l.y = floor;
+          l.resting = true;
+          l.vr = 0;
+          settled = true;
+        }
+      }
+      if (settled) rebuildHeights();
+      draw();
+      if (moving) raf = requestAnimationFrame(step);
+      else running = false;
+    };
+    const start = () => {
+      if (running) return;
+      running = true;
+      raf = requestAnimationFrame(step);
+    };
+
+    let lastY = window.scrollY;
+    let scrolled = 0;
+    const onScroll = () => {
+      const y = window.scrollY;
+      scrolled += Math.abs(y - lastY);
+      lastY = y;
+      let n = 0;
+      while (scrolled >= 100 && n < 3) {
+        scrolled -= 100;
+        n++;
+        spawn();
+      }
+    };
+    let mx = -1;
+    let my = -1;
+    const onMove = (e: MouseEvent) => {
+      const dx = mx < 0 ? 0 : e.clientX - mx;
+      mx = e.clientX;
+      my = e.clientY;
+      if (my < H - MAX_PILE - 40) return;
+      let kicked = false;
+      for (const l of leaves) {
+        if (!l.resting) continue;
+        const ddx = l.x - mx;
+        const ddy = l.y - my;
+        const d = Math.hypot(ddx, ddy);
+        if (d > 55) continue;
+        l.resting = false;
+        l.vy = -(3 + Math.random() * 4);
+        l.vx = (ddx / (d || 1)) * 3 + dx * 0.25;
+        l.vr = (Math.random() - 0.5) * 0.3;
+        kicked = true;
+      }
+      if (kicked) {
+        rebuildHeights();
+        start();
+      }
+    };
+
+    resize();
+    window.addEventListener("resize", resize);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("mousemove", onMove, { passive: true });
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", resize);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("mousemove", onMove);
+    };
+  }, [on]);
+  if (!on) return null;
+  return <canvas ref={ref} aria-hidden className="pointer-events-none fixed inset-0 z-30 hidden lg:block" />;
+}
+
 /** A pilgrim hat that sits on Corey's head (the chat helper) in November. */
 export function PilgrimHat() {
   const on = useThanksgivingSeason();
@@ -264,31 +439,51 @@ export function ThanksgivingStyles() {
       }
       @keyframes gc-sway { from { transform: translateX(-14px) rotate(-25deg); } to { transform: translateX(14px) rotate(25deg); } }
 
-      .gc-walk { bottom: calc(84px + env(safe-area-inset-bottom)); animation: gc-walk 16s linear 1.5s both; }
-      @media (min-width: 1024px) { .gc-walk { bottom: 0; } }
+      .gc-walk { bottom: calc(84px + env(safe-area-inset-bottom)); animation: gc-walk-m 14s linear 1.5s both; }
+      @media (min-width: 1024px) { .gc-walk { bottom: 0; animation: gc-walk-d 22s linear 1.5s both; } }
       .gc-walk-bird { display: block; width: 84px; height: 77px; animation: gc-bob 0.36s ease-in-out infinite alternate; }
       @media (min-width: 1024px) { .gc-walk-bird { width: 112px; height: 103px; } }
-      @keyframes gc-walk {
+      /* phones: across once and gone */
+      @keyframes gc-walk-m {
         0% { transform: translateX(-140px); }
-        42% { transform: translateX(calc(50vw - 56px)); }
-        62% { transform: translateX(calc(50vw - 56px)); }
+        40% { transform: translateX(calc(50vw - 42px)); }
+        60% { transform: translateX(calc(50vw - 42px)); }
         100% { transform: translateX(calc(100vw + 20px)); }
       }
+      /* computers: across, stop to say hi, off the right side, back in from the left to the corner */
+      @keyframes gc-walk-d {
+        0% { transform: translateX(-140px); opacity: 1; }
+        28% { transform: translateX(calc(50vw - 56px)); }
+        44% { transform: translateX(calc(50vw - 56px)); }
+        67.9% { transform: translateX(calc(100vw + 20px)); opacity: 1; }
+        68% { transform: translateX(calc(100vw + 20px)); opacity: 0; }
+        68.1% { transform: translateX(-140px); opacity: 0; }
+        68.2% { transform: translateX(-140px); opacity: 1; }
+        100% { transform: translateX(16px); opacity: 1; }
+      }
+      .gc-walk.gc-parked { animation: none; transform: translateX(16px); display: none; }
+      @media (min-width: 1024px) { .gc-walk.gc-parked { display: block; } }
+      .gc-parked .gc-walk-bird, .gc-parked .gc-leg-1, .gc-parked .gc-leg-2 { animation: none; }
+      .gc-parked .gc-walk-head { animation: gc-idle 7s ease-in-out infinite; }
+      .gc-parked .gc-walk-bubble { display: none; }
+      @keyframes gc-idle { 0%, 80%, 100% { transform: rotate(0); } 84% { transform: rotate(10deg); } 88% { transform: rotate(-4deg); } 92% { transform: rotate(10deg); } 96% { transform: rotate(0); } }
       @keyframes gc-bob { from { transform: translateY(0); } to { transform: translateY(-2px); } }
       .gc-leg-1, .gc-leg-2 { transform-box: fill-box; transform-origin: 50% 0%; }
       .gc-leg-1 { animation: gc-step 0.36s ease-in-out infinite alternate; }
       .gc-leg-2 { animation: gc-step 0.36s ease-in-out infinite alternate-reverse; }
       @keyframes gc-step { from { transform: rotate(-16deg); } to { transform: rotate(16deg); } }
-      .gc-walk-head { transform-box: fill-box; transform-origin: 20% 100%; animation: gc-peck 16s linear 1.5s both; }
-      @keyframes gc-peck { 0%, 46% { transform: rotate(0); } 49% { transform: rotate(10deg); } 52% { transform: rotate(-6deg); } 55% { transform: rotate(10deg); } 58%, 100% { transform: rotate(0); } }
+      .gc-walk-head { transform-box: fill-box; transform-origin: 20% 100%; animation: gc-peck-m 14s linear 1.5s both; }
+      @media (min-width: 1024px) { .gc-walk-head { animation: gc-peck-d 22s linear 1.5s both; } }
+      @keyframes gc-peck-m { 0%, 44% { transform: rotate(0); } 47% { transform: rotate(10deg); } 50% { transform: rotate(-6deg); } 53% { transform: rotate(10deg); } 56%, 100% { transform: rotate(0); } }
+      @keyframes gc-peck-d { 0%, 31% { transform: rotate(0); } 33% { transform: rotate(10deg); } 35% { transform: rotate(-6deg); } 37% { transform: rotate(10deg); } 39%, 100% { transform: rotate(0); } }
       .gc-walk-bubble {
         position: absolute; bottom: 92%; left: 38%; white-space: nowrap; margin-bottom: 2px;
         background: #fff; color: #7c2d12; font: 700 13px/1 var(--font-display), system-ui, sans-serif;
         padding: 8px 12px; border-radius: 999px; box-shadow: 0 4px 14px rgba(0,0,0,.12); border: 1px solid #fed7aa;
-        animation: gc-walk-bubble 16s linear 1.5s both; display: none;
+        display: none;
       }
-      @media (min-width: 1024px) { .gc-walk-bubble { display: block; } }
-      @keyframes gc-walk-bubble { 0%, 43% { opacity: 0; transform: translateY(6px); } 46%, 60% { opacity: 1; transform: none; } 63%, 100% { opacity: 0; } }
+      @media (min-width: 1024px) { .gc-walk-bubble { display: block; animation: gc-walk-bubble 22s linear 1.5s both; } }
+      @keyframes gc-walk-bubble { 0%, 29% { opacity: 0; transform: translateY(6px); } 31%, 42% { opacity: 1; transform: none; } 45%, 100% { opacity: 0; } }
 
       .gc-smoke circle { animation: gc-smoke 3.6s ease-out infinite; transform-box: fill-box; transform-origin: center; }
       .gc-smoke circle:nth-child(2) { animation-delay: 1.2s; }

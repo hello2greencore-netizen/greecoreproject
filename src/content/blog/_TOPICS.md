@@ -32,7 +32,7 @@ Customer questions
 - [x] Does my electrical panel need an upgrade for a heat pump?
 - [x] Ducted heat pump vs. ductless mini split: which fits your home?
 - [x] What is Harvest Thermal and who is it right for?
-- [ ] Wildfire smoke season: filtration and fresh air with your HVAC
+- [x] Wildfire smoke season: filtration and fresh air with your HVAC
 - [ ] How loud is a heat pump? Placement tips for small lots
 
 Rebates and programs (check current program pages before writing)

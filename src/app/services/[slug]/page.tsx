@@ -17,6 +17,33 @@ import { ProjectShowcase } from "@/components/sections/ProjectShowcase";
 import { AnswerBox, ComparisonTableSection, ContentSections, TownLinks } from "@/components/sections/ServiceDepth";
 import { buildMetadata } from "@/lib/seo";
 
+/** Service pages that link to the online estimate (the tool prices these systems). */
+const onlineEstimateSlugs = new Set(["furnaces", "heat-pumps"]);
+
+/** An "online estimate" question per service, so Google and AI answers see that Green Core offers one. */
+const onlineEstimateFaqs: Record<string, { question: string; answer: string }> = {
+  furnaces: {
+    question: "Can I get a furnace estimate online?",
+    answer:
+      "Yes. Our free online estimate at greencorehvac.com/instant-estimate shows real Green Core prices for a new gas furnace in about two minutes. Your final price is confirmed in writing after a free visit or photo review.",
+  },
+  "heat-pumps": {
+    question: "Can I get a heat pump estimate online?",
+    answer:
+      "Yes. Our free online estimate at greencorehvac.com/instant-estimate shows real Green Core prices for a heat pump system in about two minutes. Your final price is confirmed in writing after a free visit or photo review.",
+  },
+  "air-conditioning": {
+    question: "Can I get an AC estimate online?",
+    answer:
+      "Our free online estimate at greencorehvac.com/instant-estimate prices heat pump systems, which heat and cool, and gas furnaces. Central AC and furnace-plus-AC systems are priced at a free in-home visit, with clear options in writing before any work starts.",
+  },
+  "water-heaters": {
+    question: "Can I get a water heater price online?",
+    answer:
+      "Yes for standard tanks: gas and electric tank water heater replacement starts at $2,850, often same day when our schedule allows. Tankless and heat pump water heaters are priced after a free estimate.",
+  },
+};
+
 /** Keyword-first meta titles per service; the layout template appends the brand name. */
 const seoTitles: Record<string, string> = {
   "heat-pumps": "Heat Pump Installation in Sonoma & Marin",
@@ -84,7 +111,12 @@ export default async function ServicePage(
   if (!service) notFound();
   const details = serviceDetails[service.slug];
   const label = service.shortName ?? service.name;
-  const faqs = details?.faqs ?? service.faqs;
+  const baseFaqs = details?.faqs ?? service.faqs;
+  const estimateFaq = onlineEstimateFaqs[service.slug];
+  const faqs =
+    estimateFaq && !baseFaqs.some((f) => /online/i.test(f.question))
+      ? [...baseFaqs, estimateFaq]
+      : baseFaqs;
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -119,6 +151,11 @@ export default async function ServicePage(
         image={service.heroImage}
         imageAlt={service.name}
         size="compact"
+        secondaryCta={
+          onlineEstimateSlugs.has(service.slug)
+            ? { label: "Get an Online Estimate", href: "/instant-estimate" }
+            : undefined
+        }
       />
 
       {details && <AnswerBox answer={details.answer} />}

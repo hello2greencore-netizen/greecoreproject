@@ -14,6 +14,8 @@ import { serviceDetails } from "@/data/serviceDetails";
 import { serviceAreas } from "@/data/serviceAreas";
 import { siteConfig } from "@/data/site";
 import { ProjectShowcase } from "@/components/sections/ProjectShowcase";
+import { LocalReviews } from "@/components/sections/LocalReviews";
+import { serviceReviews } from "@/data/reviewPlacements";
 import { AnswerBox, ComparisonTableSection, ContentSections, TownLinks } from "@/components/sections/ServiceDepth";
 import { buildMetadata } from "@/lib/seo";
 
@@ -218,6 +220,11 @@ export default async function ServicePage(
           projects={details.projects}
         />
       )}
+
+      <LocalReviews
+        ids={serviceReviews[`services/${service.slug}`]}
+        title={`${label}: what North Bay homeowners say`}
+      />
 
       {details && (
         <TownLinks

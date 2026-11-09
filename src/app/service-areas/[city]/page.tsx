@@ -5,6 +5,8 @@ import { Hero } from "@/components/sections/Hero";
 import { CTASection } from "@/components/sections/CTASection";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { ProjectShowcase } from "@/components/sections/ProjectShowcase";
+import { LocalReviews } from "@/components/sections/LocalReviews";
+import { cityReviews } from "@/data/reviewPlacements";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
@@ -214,6 +216,11 @@ export default async function ServiceAreaPage(
         city={area.city}
         projects={area.projects}
         showcaseCity={area.showcaseCity}
+      />
+
+      <LocalReviews
+        ids={cityReviews[area.slug]?.ids}
+        title={cityReviews[area.slug]?.title ?? `What ${area.city} customers say`}
       />
 
       <FAQSection

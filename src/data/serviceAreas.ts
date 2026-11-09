@@ -1,6 +1,7 @@
 import type { ServiceArea } from "@/types";
+import { napaSolanoAreas } from "./serviceAreasNapaSolano";
 
-export const serviceAreas: ServiceArea[] = [
+const sonomaMarinAreas: ServiceArea[] = [
   {
     slug: "petaluma",
     waterHeaterNote: "In Petaluma, we often find older water heaters in garages and closets that are missing seismic straps or proper venting, so every replacement we do is brought up to current code.",
@@ -743,9 +744,18 @@ export const serviceAreas: ServiceArea[] = [
   },
 ];
 
-/** Community choice electricity provider for most homes in the county (PG&E delivers). */
+export const serviceAreas: ServiceArea[] = [...sonomaMarinAreas, ...napaSolanoAreas];
+
+/** Counties in display order, for the Service Areas page and county hubs. */
+export const serviceCounties = ["Sonoma County", "Marin County", "Napa County", "Solano County"] as const;
+
+/**
+ * Community choice electricity provider for most homes in the county (PG&E delivers).
+ * MCE covers Marin, all of Napa County, and Fairfield, Benicia, Vallejo, and unincorporated
+ * Solano. Vacaville, Suisun City, and Dixon are PG&E, set per town with `utility`.
+ */
 export const utilityForCounty = (county: string): string =>
-  county === "Marin County" ? "MCE" : "Sonoma Clean Power";
+  county === "Sonoma County" ? "Sonoma Clean Power" : "MCE";
 
 /** The town's electric provider: its own override (e.g. Healdsburg's city utility) or the county default. */
 export const utilityForArea = (area: { county: string; utility?: string }): string =>

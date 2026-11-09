@@ -3,10 +3,10 @@ export const siteConfig = {
   shortName: "Green Core",
   url: "https://www.greencorehvac.com",
   description:
-    "Green Core Heating & Air is a family-owned heating, cooling, and water heating company in Petaluma, CA. We install, repair, and maintain furnaces, air conditioners, heat pumps, ductless mini splits, ductwork, and gas, electric, tankless, and heat pump water heaters for homes across Sonoma and Marin counties.",
+    "Green Core Heating & Air is a family-owned heating, cooling, and water heating company in Petaluma, CA. We install, repair, and maintain furnaces, air conditioners, heat pumps, ductless mini splits, ductwork, and gas, electric, tankless, and heat pump water heaters for homes across Sonoma, Marin, Napa, and Solano counties.",
   /** Short version (under 155 characters) for page meta descriptions and the footer. */
   metaDescription:
-    "Family-owned heating, cooling, and water heating company in Petaluma serving Sonoma and Marin. Furnaces, AC, heat pumps, mini splits, and water heaters.",
+    "Family-owned heating, cooling, and water heater company in Petaluma serving Sonoma, Marin, Napa & Solano. Furnaces, AC, heat pumps, mini splits.",
   phone: "(707) 988-5858",
   /** International format for structured data. */
   phoneE164: "+1-707-988-5858",

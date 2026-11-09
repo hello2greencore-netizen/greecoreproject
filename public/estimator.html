@@ -285,7 +285,9 @@ const QS = [
   {id:"priority", need:()=>true, q:"What matters most to you?", o:[["value","Lowest price"],["good","Good value"],["better","A balance of price and comfort"],["best","Quietest and most efficient"]]}
 ];
 const NAPA = ["94503","94508","94515","94558","94559","94562","94567","94573","94574","94576","94581","94599"];
-function inArea(z){return /^\d{5}$/.test(z) && (z.startsWith("949")||z.startsWith("954")||z.startsWith("941")||NAPA.includes(z));}
+// Solano County ZIPs from the Nov 2026 ad targeting list (Benicia, north Vallejo, Fairfield, Suisun City, Vacaville, Dixon).
+const SOLANO = ["94510","94533","94534","94585","94589","95620","95687","95688"];
+function inArea(z){return /^\d{5}$/.test(z) && (z.startsWith("949")||z.startsWith("954")||z.startsWith("941")||NAPA.includes(z)||SOLANO.includes(z));}
 
 // ---------- State ----------
 const fresh = () => ({step:"service", svcs:[], zip:"", own:"", a:{}, c:{name:"",phone:"",email:"",addr:"",sms:false}, eff:null, showTpl:false, booked:false, plan:"0", addons:[]});
@@ -345,7 +347,7 @@ function renderArea(){
   $("#cont").onclick = () => {
     const e = $("#aerr");
     if(!/^\d{5}$/.test(S.zip)){ e.textContent="Enter a 5-digit ZIP code."; e.hidden=false; return; }
-    if(!inArea(S.zip)){ e.textContent="Green Core serves Sonoma, Marin, Napa, and San Francisco. That ZIP is outside our area, but call us and we'll point you to someone good."; e.hidden=false; return; }
+    if(!inArea(S.zip)){ e.textContent="Green Core serves Sonoma, Marin, Napa, and Solano counties, plus San Francisco. That ZIP is outside our area, but call us and we'll point you to someone good."; e.hidden=false; return; }
     if(!S.own){ e.textContent="Let us know if you own or rent the home."; e.hidden=false; return; }
     next();
   };

@@ -22,7 +22,7 @@ export default function HomePage() {
     <>
       <Hero
         eyebrow="Sonoma, Marin, Napa & Solano HVAC"
-        title="Heat pump & HVAC experts for Sonoma, Marin, Napa, and Solano homes."
+        title="HVAC & water heater experts for Sonoma, Marin, Napa, and Solano homes."
         description="Clean, efficient heating, cooling, and hot water for the North Bay. Expert heat pumps, water heaters, AC, furnaces, mini splits, and more."
         image="/images/hero/home.jpg"
         imageAlt="Modern home at sunset in Sonoma County"

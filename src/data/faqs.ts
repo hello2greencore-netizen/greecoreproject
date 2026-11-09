@@ -12,6 +12,11 @@ export const generalFaqs: FAQ[] = [
       "Yes. In-home estimates for replacement or installation projects are free, and we'll give you clear pricing and options before any work begins.",
   },
   {
+    question: "Can I get an estimate online?",
+    answer:
+      "Yes. Our free online estimate at greencorehvac.com/instant-estimate shows real Green Core prices for a new gas furnace or heat pump system in about two minutes. Your final price is confirmed in writing after a free visit or photo review. Standard gas and electric tank water heater replacement starts at $2,850, and everything else gets a free estimate.",
+  },
+  {
     question: "Are you licensed and insured?",
     answer:
       "Absolutely. We're a fully licensed, bonded, and insured California HVAC contractor. Our license number is listed in our footer.",

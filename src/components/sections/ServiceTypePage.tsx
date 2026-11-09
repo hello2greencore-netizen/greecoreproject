@@ -14,6 +14,8 @@ import { serviceTypes, type ServiceType } from "@/data/serviceTypes";
 import { siteConfig } from "@/data/site";
 import { serviceTypeDetails, showcaseProjects } from "@/data/serviceDetails";
 import { ProjectShowcase } from "@/components/sections/ProjectShowcase";
+import { LocalReviews } from "@/components/sections/LocalReviews";
+import { serviceReviews } from "@/data/reviewPlacements";
 import { AnswerBox, ComparisonTableSection, ContentSections } from "@/components/sections/ServiceDepth";
 import { buildMetadata } from "@/lib/seo";
 
@@ -146,6 +148,8 @@ export function ServiceTypePage({ type: t }: { type: ServiceType }) {
       {projects.length > 0 && (
         <ProjectShowcase city="Sonoma and Marin" projects={projects} />
       )}
+
+      <LocalReviews ids={serviceReviews[t.slug]} title={`${t.navLabel} reviews from North Bay homeowners`} />
 
       <section className="bg-subtle py-14 sm:py-16">
         <Container size="xl">

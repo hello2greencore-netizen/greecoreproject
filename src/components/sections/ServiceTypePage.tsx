@@ -30,7 +30,19 @@ export function ServiceTypePage({ type: t }: { type: ServiceType }) {
   const others = serviceTypes.filter((o) => o.slug !== t.slug);
   const d = serviceTypeDetails[t.slug];
   const projects = (d?.projects ?? []).map((k) => showcaseProjects[k]).filter(Boolean);
-  const faqs = [...t.faqs, ...(d?.faqs ?? [])];
+  const faqs = [
+    ...t.faqs,
+    ...(d?.faqs ?? []),
+    ...(t.kind === "installation"
+      ? [
+          {
+            question: "Can I get an installation estimate online?",
+            answer:
+              "Yes. Our free online estimate at greencorehvac.com/instant-estimate shows real Green Core prices for a new gas furnace or heat pump system in about two minutes. Your final price is confirmed in writing after a free visit or photo review. Water heaters, AC, mini splits and ductwork get a free estimate.",
+          },
+        ]
+      : []),
+  ];
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -58,7 +70,7 @@ export function ServiceTypePage({ type: t }: { type: ServiceType }) {
         image={t.heroImage}
         imageAlt={t.name}
         size="compact"
-        secondaryCta={t.kind === "installation" ? { label: "Get an Instant Estimate", href: "/instant-estimate" } : undefined}
+        secondaryCta={t.kind === "installation" ? { label: "Get an Online Estimate", href: "/instant-estimate" } : undefined}
       />
 
       {d && <AnswerBox answer={d.answer} />}

@@ -156,7 +156,7 @@ export function ServiceTypePage({ type: t }: { type: ServiceType }) {
       <section className="bg-subtle py-14 sm:py-16">
         <Container size="xl">
           <h2 className="font-display text-xl font-bold text-foreground sm:text-2xl">
-            {t.navLabel} across Sonoma and Marin
+            {t.navLabel} across Sonoma, Marin, Napa, and Solano
           </h2>
           <ul className="mt-4 flex flex-wrap gap-2">
             {serviceAreas.map((a) => (

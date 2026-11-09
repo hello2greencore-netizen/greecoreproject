@@ -15,7 +15,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n2",
     date: "2026-10-10",
-    name: "Connor Johnson",
+    name: "Connor J.",
     location: "Google Review",
     rating: 5,
     service: "HVAC Service",
@@ -24,7 +24,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n3",
     date: "2026-10-10",
-    name: "Melissa Blaylock",
+    name: "Melissa B.",
     location: "Google Review",
     rating: 5,
     service: "AC Repair",
@@ -33,7 +33,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n4",
     date: "2026-10-09",
-    name: "Younie Chang",
+    name: "Younie C.",
     location: "Google Review",
     rating: 5,
     service: "HVAC Service",
@@ -42,7 +42,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n5",
     date: "2026-10-04",
-    name: "Andrew Wynkoop",
+    name: "Andrew W.",
     location: "Google Review",
     rating: 5,
     service: "HVAC Service",
@@ -51,7 +51,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n6",
     date: "2026-10-04",
-    name: "Christopher Wynkoop",
+    name: "Christopher W.",
     location: "Google Review",
     rating: 5,
     service: "HVAC Service",
@@ -60,7 +60,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n7",
     date: "2026-09-27",
-    name: "Adonis Segrove",
+    name: "Adonis S.",
     location: "Google Review",
     rating: 5,
     service: "AC Repair",
@@ -69,7 +69,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n8",
     date: "2026-09-27",
-    name: "Reece Clay",
+    name: "Reece C.",
     location: "Google Review",
     rating: 5,
     service: "HVAC Projects",
@@ -78,7 +78,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n9",
     date: "2026-09-27",
-    name: "Rolf Schumann",
+    name: "Rolf S.",
     location: "Google Review",
     rating: 5,
     service: "HVAC Repair",
@@ -87,7 +87,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n10",
     date: "2026-09-27",
-    name: "Kayla Shock",
+    name: "Kayla S.",
     location: "Google Review",
     rating: 5,
     service: "Ductwork Replacement",
@@ -105,7 +105,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n12",
     date: "2026-09-27",
-    name: "Cianna Berry",
+    name: "Cianna B.",
     location: "Google Review",
     rating: 5,
     service: "AC Service",
@@ -114,7 +114,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n13",
     date: "2026-09-27",
-    name: "Kevin Johnson",
+    name: "Kevin J.",
     location: "Google Review",
     rating: 5,
     service: "AC Repair",
@@ -123,7 +123,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n14",
     date: "2026-09-27",
-    name: "Erick Arenal-Lopez",
+    name: "Erick A.",
     location: "Google Review",
     rating: 5,
     service: "Heating & AC",
@@ -132,7 +132,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n15",
     date: "2026-09-27",
-    name: "Nick Giambattista",
+    name: "Nick G.",
     location: "Google Review",
     rating: 5,
     service: "HVAC Installation",
@@ -141,7 +141,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n16",
     date: "2026-09-27",
-    name: "Kyle Brazil",
+    name: "Kyle B.",
     location: "Google Review",
     rating: 5,
     service: "HVAC Service",
@@ -150,7 +150,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n17",
     date: "2026-09-27",
-    name: "Philip Mandelstamm",
+    name: "Philip M.",
     location: "Google Review",
     rating: 5,
     service: "HVAC Service",
@@ -177,7 +177,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "g10",
     date: "2026-09-27",
-    name: "Travis Tidd",
+    name: "Travis T.",
     location: "Google Review",
     rating: 5,
     service: "Furnace Install",
@@ -187,7 +187,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n20",
     date: "2026-09-20",
-    name: "David Fox",
+    name: "David F.",
     location: "Google Review",
     rating: 5,
     service: "HVAC Installation",
@@ -196,7 +196,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "g1",
     date: "2026-08-30",
-    name: "Patricia Andrews",
+    name: "Patricia A.",
     location: "Google Review",
     rating: 5,
     service: "Water Heater Repair",
@@ -206,7 +206,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n21",
     date: "2026-08-30",
-    name: "Louis Voccia",
+    name: "Louis V.",
     location: "Google Review",
     rating: 5,
     service: "Heat Pump Install",
@@ -215,7 +215,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n22",
     date: "2026-08-30",
-    name: "Timothy Daw",
+    name: "Timothy D.",
     location: "Google Review",
     rating: 5,
     service: "Heat Pump & Water Heater Install",
@@ -224,7 +224,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n23",
     date: "2026-08-30",
-    name: "Jesse Kreider",
+    name: "Jesse K.",
     location: "Google Review",
     rating: 5,
     service: "HVAC Service",
@@ -233,7 +233,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n24",
     date: "2026-08-30",
-    name: "Carl Tjerandsen",
+    name: "Carl T.",
     location: "Google Review",
     rating: 5,
     service: "HVAC Service",
@@ -242,7 +242,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n25",
     date: "2026-08-30",
-    name: "Chad Lewis",
+    name: "Chad L.",
     location: "Google Review",
     rating: 5,
     service: "HVAC Service",
@@ -251,7 +251,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n26",
     date: "2026-08-30",
-    name: "David Brent",
+    name: "David B.",
     location: "Google Review",
     rating: 5,
     service: "HVAC Service",
@@ -260,7 +260,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n27",
     date: "2026-08-30",
-    name: "Maureen Kelly",
+    name: "Maureen K.",
     location: "Google Review",
     rating: 5,
     service: "HVAC Service",
@@ -269,7 +269,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n28",
     date: "2026-08-30",
-    name: "Christine Bensen",
+    name: "Christine B.",
     location: "Google Review",
     rating: 5,
     service: "HVAC Installation",
@@ -278,7 +278,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n29",
     date: "2026-08-30",
-    name: "Joseph Schliffer",
+    name: "Joseph S.",
     location: "Google Review",
     rating: 5,
     service: "Harvest Thermal Install",
@@ -287,7 +287,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n30",
     date: "2026-08-30",
-    name: "Laurie Mackenzie",
+    name: "Laurie M.",
     location: "Google Review",
     rating: 5,
     service: "Heating & Duct Install",
@@ -296,7 +296,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n31",
     date: "2026-08-30",
-    name: "Barbara Olson",
+    name: "Barbara O.",
     location: "Google Review",
     rating: 5,
     service: "Harvest Thermal Install",
@@ -305,7 +305,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n32",
     date: "2026-08-30",
-    name: "Chris Manning",
+    name: "Chris M.",
     location: "Google Review",
     rating: 5,
     service: "AC Repair",
@@ -314,7 +314,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n33",
     date: "2026-08-30",
-    name: "Jay Monahan",
+    name: "Jay M.",
     location: "Google Review",
     rating: 5,
     service: "HVAC Repair",
@@ -352,7 +352,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n35",
     date: "2026-07-01",
-    name: "Dakota Ledbetter",
+    name: "Dakota L.",
     location: "Google Review",
     rating: 5,
     service: "HVAC Repair",
@@ -370,7 +370,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n37",
     date: "2026-06-01",
-    name: "Lauren Peters",
+    name: "Lauren P.",
     location: "Google Review",
     rating: 5,
     service: "Heat Pump & Mini Split Repair",
@@ -379,7 +379,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n38",
     date: "2026-06-01",
-    name: "Janet Gelatti",
+    name: "Janet G.",
     location: "Google Review",
     rating: 5,
     service: "Heat Pump Install",
@@ -388,7 +388,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n39",
     date: "2026-06-01",
-    name: "Chris Vomvolakis",
+    name: "Chris V.",
     location: "Google Review",
     rating: 5,
     service: "HVAC Service",
@@ -397,7 +397,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "n40",
     date: "2026-06-01",
-    name: "Shelly Fitzsimmons",
+    name: "Shelly F.",
     location: "Google Review",
     rating: 5,
     service: "AC Repair",
@@ -406,7 +406,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "g28",
     date: "2026-04-02",
-    name: "Scott Mueller",
+    name: "Scott M.",
     location: "Google Review",
     rating: 5,
     service: "Harvest Heat Pump Install",
@@ -426,7 +426,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "g27",
     date: "2026-02-01",
-    name: "Michael Cureton",
+    name: "Michael C.",
     location: "Google Review",
     rating: 5,
     service: "HVAC Service",
@@ -436,7 +436,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "g14",
     date: "2026-02-01",
-    name: "Gogetta Baag",
+    name: "Gogetta B.",
     location: "Google Review",
     rating: 5,
     service: "HVAC Service",
@@ -446,7 +446,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "g23",
     date: "2026-02-01",
-    name: "Elizabeth Cureton",
+    name: "Elizabeth C.",
     location: "Google Review",
     rating: 5,
     service: "Mini Split Install",
@@ -456,7 +456,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "g5",
     date: "2026-02-01",
-    name: "Richard Cureton",
+    name: "Richard C.",
     location: "Google Review",
     rating: 5,
     service: "HVAC Repair",
@@ -466,7 +466,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "g3",
     date: "2026-02-01",
-    name: "Richard Cureton",
+    name: "Richard C.",
     location: "Google Review",
     rating: 5,
     service: "Heating Service",
@@ -476,7 +476,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "g2",
     date: "2026-02-01",
-    name: "Ken Cureton",
+    name: "Ken C.",
     location: "Google Review",
     rating: 5,
     service: "Heating Service",
@@ -486,7 +486,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "g4",
     date: "2026-02-01",
-    name: "Arik Geilfuss",
+    name: "Arik G.",
     location: "Google Review",
     rating: 5,
     service: "Heating Service",
@@ -496,7 +496,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "g12",
     date: "2026-02-01",
-    name: "Richard Cureton",
+    name: "Richard C.",
     location: "Google Review",
     rating: 5,
     service: "HVAC Service",
@@ -506,7 +506,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "g25",
     date: "2026-01-02",
-    name: "Carlos Cornejo",
+    name: "Carlos C.",
     location: "Google Review",
     rating: 5,
     service: "HVAC Service",
@@ -516,7 +516,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "g8",
     date: "2026-01-02",
-    name: "Rachael Spongberg",
+    name: "Rachael S.",
     location: "Google Review",
     rating: 5,
     service: "AC Install",
@@ -526,7 +526,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "g16",
     date: "2026-01-02",
-    name: "Barbara Miller",
+    name: "Barbara M.",
     location: "Google Review",
     rating: 5,
     service: "Heating & AC Install",
@@ -536,7 +536,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "g24",
     date: "2026-01-02",
-    name: "Travis Nesbit",
+    name: "Travis N.",
     location: "Google Review",
     rating: 5,
     service: "AC Install",
@@ -545,7 +545,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "g15",
     date: "2026-01-02",
-    name: "Andy Price",
+    name: "Andy P.",
     location: "Google Review",
     rating: 5,
     service: "HVAC Service",
@@ -555,7 +555,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "g9",
     date: "2026-01-02",
-    name: "Tyler Althuizen",
+    name: "Tyler A.",
     location: "Google Review",
     rating: 5,
     service: "Heating Install",
@@ -565,7 +565,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "g18",
     date: "2026-01-02",
-    name: "Mike Aughney",
+    name: "Mike A.",
     location: "Google Review",
     rating: 5,
     service: "Heating Install",
@@ -575,7 +575,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "g21",
     date: "2026-01-02",
-    name: "Tyler Aughney",
+    name: "Tyler A.",
     location: "Google Review",
     rating: 5,
     service: "HVAC Service",
@@ -585,7 +585,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "g17",
     date: "2026-01-02",
-    name: "Jake Aughney",
+    name: "Jake A.",
     location: "Google Review",
     rating: 5,
     service: "AC Repair",
@@ -595,7 +595,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "g19",
     date: "2026-01-02",
-    name: "Cathleen Andreucci",
+    name: "Cathleen A.",
     location: "Google Review",
     rating: 5,
     service: "HVAC Service",
@@ -605,7 +605,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "g6",
     date: "2026-01-02",
-    name: "Wendy Lear",
+    name: "Wendy L.",
     location: "Google Review",
     rating: 5,
     service: "Long-Time Customer",
@@ -615,7 +615,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "g7",
     date: "2026-01-02",
-    name: "Jackie Barker",
+    name: "Jackie B.",
     location: "Google Review",
     rating: 5,
     service: "HVAC Service",
@@ -625,7 +625,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "g26",
     date: "2026-01-02",
-    name: "Brian Leonard",
+    name: "Brian L.",
     location: "Google Review",
     rating: 5,
     service: "Estimate",
@@ -635,7 +635,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "g22",
     date: "2026-01-02",
-    name: "Danielle Sturla",
+    name: "Danielle S.",
     location: "Google Review",
     rating: 5,
     service: "Heating Service",

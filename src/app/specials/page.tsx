@@ -16,9 +16,9 @@ export function generateMetadata(): Metadata {
   const live = getRunningSpecials().filter((s) => !s.sample);
   return {
     ...buildMetadata({
-      title: "HVAC & Water Heater Specials | Sonoma & Marin",
+      title: "HVAC & Water Heater Specials | Sonoma, Marin, Napa & Solano",
       description:
-        "Current specials from Green Core Heating & Air on heating, cooling and water heater service in Sonoma and Marin. Free estimates on new systems and water heaters.",
+        "Current specials from Green Core Heating & Air on heating, cooling and water heater service in Sonoma, Marin, Napa, and Solano. Free estimates on new systems and water heaters.",
       path: "/specials",
     }),
     // Keep the page out of Google until there's a real offer on it.
@@ -87,7 +87,7 @@ export default function SpecialsPage() {
         <Container size="xl">
           <span className="text-xs font-bold uppercase tracking-[0.16em] text-brand-200">Green Core specials</span>
           <h1 className="mt-3 max-w-3xl font-display text-4xl font-bold leading-tight sm:text-5xl">Current specials on heating, cooling and water heaters</h1>
-          <p className="mt-4 max-w-2xl text-lg text-white/80">Limited-time offers for homeowners in Sonoma and Marin. Every job still comes with clear options, upfront pricing and a clean install.</p>
+          <p className="mt-4 max-w-2xl text-lg text-white/80">Limited-time offers for homeowners in Sonoma, Marin, Napa, and Solano. Every job still comes with clear options, upfront pricing and a clean install.</p>
           <div className="mt-7 flex flex-wrap gap-3">
             <HCPBookingButton ctaLabel="specials_book" className="inline-flex items-center rounded-full bg-brand-200 px-6 py-3 font-display text-sm font-bold text-brand-900 transition-colors hover:bg-white">
               Book online

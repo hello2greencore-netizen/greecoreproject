@@ -39,7 +39,7 @@ const estimateFaqs = [
   {
     question: "Where do you offer online estimates?",
     answer:
-      "Anywhere we work: Sonoma and Marin counties, including Petaluma, Santa Rosa, Rohnert Park, Novato, San Rafael and Mill Valley, plus Napa County (Napa, American Canyon), Solano County (Fairfield, Vacaville, Benicia) and San Francisco.",
+      "Anywhere we work: Sonoma and Marin counties, including Petaluma, Santa Rosa, Rohnert Park, Novato, San Rafael and Mill Valley, plus Napa County (Napa, American Canyon), Solano County (Fairfield, Vacaville, Benicia, Vallejo) and San Francisco.",
   },
 ];
 
@@ -51,7 +51,7 @@ export default function InstantEstimatePage() {
       {/* Short, crawlable intro: the estimator itself lives in an iframe (public/estimator.html, noindex). */}
       <section className="border-b border-border bg-subtle">
         <Container size="lg" className="py-10 sm:py-12">
-          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-700">Free online estimate · Sonoma &amp; Marin</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-700">Free online estimate · Sonoma, Marin, Napa &amp; Solano</p>
           <h1 className="mt-2 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             Get an online estimate for a new furnace or heat pump
           </h1>

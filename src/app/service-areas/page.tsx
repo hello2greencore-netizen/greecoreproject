@@ -21,7 +21,7 @@ export default function ServiceAreasPage() {
     <>
       <Hero
         eyebrow="Service areas"
-        title="Proudly serving the North Bay."
+        title="HVAC & water heater service across Sonoma, Marin, Napa & Solano."
         description="From Petaluma to Tiburon, Napa to Vacaville, we handle heating, cooling, and water heaters for homes across the North Bay."
         image="/images/hero/service-areas.jpg"
         imageAlt="Rolling Sonoma County hills at golden hour"

@@ -8,7 +8,7 @@ import EstimatorFrame from "./EstimatorFrame";
 export const metadata = buildMetadata({
   title: "Online HVAC Estimate: Instant Furnace & Heat Pump Prices",
   description:
-    "Get a free online estimate in about two minutes. See real Green Core prices for a new gas furnace or heat pump system. Serving Sonoma, Marin, Napa and San Francisco.",
+    "Get a free online estimate in about two minutes. See real Green Core prices for a new gas furnace or heat pump system. Serving Sonoma, Marin, Napa, Solano and San Francisco.",
   path: "/instant-estimate",
 });
 
@@ -39,7 +39,7 @@ const estimateFaqs = [
   {
     question: "Where do you offer online estimates?",
     answer:
-      "Anywhere we work: Sonoma and Marin counties, including Petaluma, Santa Rosa, Rohnert Park, Novato, San Rafael and Mill Valley, plus Napa and San Francisco.",
+      "Anywhere we work: Sonoma and Marin counties, including Petaluma, Santa Rosa, Rohnert Park, Novato, San Rafael and Mill Valley, plus Napa County (Napa, American Canyon), Solano County (Fairfield, Vacaville, Benicia) and San Francisco.",
   },
 ];
 

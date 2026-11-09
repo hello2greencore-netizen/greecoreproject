@@ -284,8 +284,15 @@ const QS = [
   {id:"outdoor", need:()=>has("hp","fac","dual"), q:"Where can the outdoor unit go?", o:[["same","Where the AC is now"],["ground","A new spot on the ground"],["mount","On a wall bracket or roof"],["unsure","Not sure"]]},
   {id:"priority", need:()=>true, q:"What matters most to you?", o:[["value","Lowest price"],["good","Good value"],["better","A balance of price and comfort"],["best","Quietest and most efficient"]]}
 ];
-const NAPA = ["94503","94508","94515","94558","94559","94562","94567","94573","94574","94576","94581","94599"];
-function inArea(z){return /^\d{5}$/.test(z) && (z.startsWith("949")||z.startsWith("954")||z.startsWith("941")||NAPA.includes(z));}
+// Service-area ZIPs: exactly the Nov 2026 Google Ads target list ("Green Core Ad Targeting ZIPs - All Counties").
+// Sonoma (18), Marin (14), Napa (3), Solano (8). Any other ZIP gets the call-us message.
+const AREA_ZIPS = new Set([
+  ...["94952","94954","94951","94931","94928","95401","95403","95404","95405","95407","95409","95439","95492","95472","95444","95476","95442","95452"], // Sonoma
+  ...["94945","94947","94949","94901","94903","94904","94939","94925","94957","94960","94930","94941","94920","94965"], // Marin
+  ...["94558","94559","94503"], // Napa
+  ...["94589","94510","94534","94533","94585","95687","95688","95620"] // Solano
+]);
+function inArea(z){return /^\d{5}$/.test(z) && AREA_ZIPS.has(z);}
 
 // ---------- State ----------
 const fresh = () => ({step:"service", svcs:[], zip:"", own:"", a:{}, c:{name:"",phone:"",email:"",addr:"",sms:false}, eff:null, showTpl:false, booked:false, plan:"0", addons:[]});
@@ -345,7 +352,7 @@ function renderArea(){
   $("#cont").onclick = () => {
     const e = $("#aerr");
     if(!/^\d{5}$/.test(S.zip)){ e.textContent="Enter a 5-digit ZIP code."; e.hidden=false; return; }
-    if(!inArea(S.zip)){ e.textContent="Green Core serves Sonoma, Marin, Napa, and San Francisco. That ZIP is outside our area, but call us and we'll point you to someone good."; e.hidden=false; return; }
+    if(!inArea(S.zip)){ e.textContent="That ZIP is outside our online estimate area. Call us at (707) 988-5858 and we'll let you know if we can help, or point you to someone good."; e.hidden=false; return; }
     if(!S.own){ e.textContent="Let us know if you own or rent the home."; e.hidden=false; return; }
     next();
   };

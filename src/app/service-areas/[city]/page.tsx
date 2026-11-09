@@ -32,8 +32,10 @@ export async function generateMetadata(
   const area = getServiceAreaBySlug(city);
   if (!area) return buildMetadata({ title: "Service Area", description: "" });
   return buildMetadata({
-    title: `HVAC, Heat Pumps & Water Heaters in ${area.city}, CA`,
-    description: `Green Core Heating & Air installs heat pumps, water heaters, AC, furnaces & mini splits in ${area.city}, CA. Local HVAC contractor — free estimates.`,
+    title: area.metaTitle ?? `HVAC, Heat Pumps & Water Heaters in ${area.city}, CA`,
+    description:
+      area.metaDescription ??
+      `Green Core Heating & Air installs heat pumps, water heaters, AC, furnaces & mini splits in ${area.city}, CA. Local HVAC contractor — free estimates.`,
     path: `/service-areas/${area.slug}`,
     image: area.heroImage,
   });
@@ -58,7 +60,7 @@ export default async function ServiceAreaPage(
 
       <Hero
         eyebrow={area.county}
-        title={`Heat Pump, HVAC & Water Heater Services in ${area.city}, CA`}
+        title={area.heroTitle ?? `Heat Pump, HVAC & Water Heater Services in ${area.city}, CA`}
         description={`Heat pumps, water heaters, AC, furnaces, and mini splits for ${area.city} homes. Same-day water heater replacement when our schedule allows.`}
         image={area.heroImage}
         imageAlt={`${area.city}, California`}

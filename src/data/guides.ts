@@ -30,8 +30,8 @@ export const guideGroups: { id: GuideGroup; title: string; description: string }
 export const guides: Guide[] = [
   {
     slug: "hvac-cost",
-    title: "What Should a New HVAC System or Water Heater Cost? | Sonoma & Marin",
-    description: "Typical installed prices for furnaces, AC, heat pumps, mini splits, ductwork and water heaters in Sonoma and Marin. Slide to your size to compare.",
+    title: "What Should a New HVAC System or Water Heater Cost? | Sonoma, Marin, Napa & Solano",
+    description: "Typical installed prices for furnaces, AC, heat pumps, mini splits, ductwork and water heaters in Sonoma, Marin, Napa, and Solano. Slide to your size to compare.",
     name: "What should it cost?",
     summary: "Typical installed prices for every system, by size.",
     group: "plan",
@@ -40,7 +40,7 @@ export const guides: Guide[] = [
   },
   {
     slug: "hvac-size-calculator",
-    title: "What Size AC or Heat Pump Do I Need? | Sonoma & Marin",
+    title: "What Size AC or Heat Pump Do I Need? | Sonoma, Marin, Napa & Solano",
     description: "Free HVAC sizing calculator for North Bay homes. See the AC, heat pump or furnace size your house needs, check a quote, and see where you lose heat.",
     name: "Home sizing check",
     summary: "Find the AC, heat pump or furnace size your home needs.",
@@ -51,7 +51,7 @@ export const guides: Guide[] = [
   {
     slug: "furnace-heat-pump-or-ductless",
     title: "Furnace, Heat Pump or Ductless Mini Split? | Homeowner Guide",
-    description: "Compare gas furnaces, heat pumps and ductless mini splits for Sonoma and Marin homes, and see which one fits your house.",
+    description: "Compare gas furnaces, heat pumps and ductless mini splits for Sonoma, Marin, Napa, and Solano homes, and see which one fits your house.",
     name: "Furnace, heat pump or ductless?",
     summary: "Which heating system fits your home.",
     group: "choose",

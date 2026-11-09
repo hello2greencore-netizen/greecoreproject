@@ -31,7 +31,7 @@ const trust = [
   "Best of the North Bay 2026 (Bohemian)",
   "Family-owned in Petaluma",
   `Licensed: ${siteConfig.license}`,
-  "Serving Sonoma and Marin",
+  "Serving Sonoma, Marin, Napa & Solano",
 ];
 
 export default async function SpecialPage(props: PageProps<"/specials/[slug]">) {

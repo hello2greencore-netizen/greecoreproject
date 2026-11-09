@@ -50,7 +50,7 @@ export const chatbotFaqCategories: ChatbotFAQCategory[] = [
         id: "services-offered",
         question: "What HVAC services do you provide?",
         answer:
-          "Green Core handles heating, cooling, and water heating: furnaces, air conditioning, heat pumps, mini splits, ductwork, water heaters, and Harvest Thermal systems for homeowners in Sonoma and Marin counties.",
+          "Green Core handles heating, cooling, and water heating: furnaces, air conditioning, heat pumps, mini splits, ductwork, water heaters, and Harvest Thermal systems for homeowners in Sonoma, Marin, Napa, and Solano counties.",
         keywords: ["services", "hvac", "repair", "replacement", "installation"],
       },
       {
@@ -78,7 +78,7 @@ export const chatbotFaqCategories: ChatbotFAQCategory[] = [
         id: "water-heaters",
         question: "Do you install water heaters?",
         answer:
-          "Yes. Green Core installs and replaces heat pump, tankless, gas, and electric water heaters across Sonoma and Marin. Gas and electric tank installs start at $2,850, and same-day replacement is available when the schedule allows. Heat pump and tankless water heaters are priced to each home.",
+          "Yes. Green Core installs and replaces heat pump, tankless, gas, and electric water heaters across Sonoma, Marin, Napa, and Solano. Gas and electric tank installs start at $2,850, and same-day replacement is available when the schedule allows. Heat pump and tankless water heaters are priced to each home.",
         keywords: ["water heater", "hot water", "tankless", "tank", "heat pump water heater", "no hot water"],
       },
     ],
@@ -92,7 +92,7 @@ export const chatbotFaqCategories: ChatbotFAQCategory[] = [
         id: "service-areas",
         question: "What areas do you serve?",
         answer:
-          "Green Core serves homeowners throughout Sonoma and Marin counties, including Petaluma, Rohnert Park, Cotati, Santa Rosa, Windsor, Sebastopol, Sonoma, Novato, San Rafael, San Anselmo, Fairfax, Mill Valley, and Tiburon.",
+          "Green Core serves homeowners throughout Sonoma, Marin, Napa, and Solano counties, including Petaluma, Rohnert Park, Cotati, Santa Rosa, Windsor, Sebastopol, Sonoma, Novato, San Rafael, San Anselmo, Fairfax, Mill Valley, Tiburon, Napa, American Canyon, Fairfield, Vacaville, Benicia, and north Vallejo.",
         keywords: ["area", "areas", "serve", "city", "location", "sonoma", "marin"],
       },
       {

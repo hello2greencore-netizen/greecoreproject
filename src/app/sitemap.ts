@@ -42,6 +42,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     })),
 
+    // Tier 4 — county hub pages (Napa and Solano)
+    ...["napa-county", "solano-county"].map((slug) => ({
+      url: `${base}/service-areas/${slug}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+
     // Tier 4 — local city pages (high local SEO value)
     ...serviceAreas.map((a) => ({
       url: `${base}/service-areas/${a.slug}`,

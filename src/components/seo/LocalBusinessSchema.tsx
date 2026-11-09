@@ -39,6 +39,8 @@ export function LocalBusinessSchema() {
     areaServed: [
       { "@type": "AdministrativeArea", name: "Sonoma County" },
       { "@type": "AdministrativeArea", name: "Marin County" },
+      { "@type": "AdministrativeArea", name: "Napa County" },
+      { "@type": "AdministrativeArea", name: "Solano County" },
       ...serviceAreas.map((a) => ({ "@type": "City", name: a.city })),
     ],
     // Open 24 hours, 7 days, matching the Google Business Profile.

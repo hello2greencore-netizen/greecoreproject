@@ -28,7 +28,7 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} — Trusted HVAC in Sonoma & Marin Counties`,
+    default: `${siteConfig.name} — Trusted HVAC in Sonoma, Marin, Napa & Solano`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.metaDescription,
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: `${siteConfig.name} — Trusted HVAC in Sonoma & Marin Counties`,
+    title: `${siteConfig.name} — Trusted HVAC in Sonoma, Marin, Napa & Solano`,
     description: siteConfig.metaDescription,
   },
   twitter: {

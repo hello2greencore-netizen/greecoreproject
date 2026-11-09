@@ -10,7 +10,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "About Us — Petaluma HVAC Contractor",
   description:
-    "Green Core Heating & Air was founded to deliver a better HVAC experience in Sonoma & Marin. Licensed, locally owned, and design-first on every job.",
+    "Green Core Heating & Air was founded to deliver a better HVAC experience in Sonoma, Marin, Napa & Solano. Licensed, locally owned, and design-first on every job.",
   path: "/about",
 });
 

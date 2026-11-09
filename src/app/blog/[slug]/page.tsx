@@ -103,7 +103,7 @@ export default async function BlogPostPage(props: PageProps<"/blog/[slug]">) {
               {siteConfig.phone}
             </a>{" "}
             or <Link href="/contact" className="font-semibold text-brand-700 hover:underline">request a free estimate</Link>.
-            We serve homeowners across Sonoma and Marin counties.
+            We serve homeowners across Sonoma, Marin, Napa, and Solano counties.
           </p>
         </Container>
       </article>

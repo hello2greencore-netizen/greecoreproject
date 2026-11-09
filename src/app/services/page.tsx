@@ -12,9 +12,9 @@ import { generalFaqs } from "@/data/faqs";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "HVAC Services in Sonoma & Marin Counties",
+  title: "HVAC Services in Sonoma, Marin, Napa & Solano Counties",
   description:
-    "Green Core installs and repairs heat pumps, AC systems, furnaces, mini splits, and ductwork across Sonoma & Marin. Design-first HVAC — done right.",
+    "Green Core installs and repairs heat pumps, AC systems, furnaces, mini splits, and ductwork across Sonoma, Marin, Napa & Solano. Design-first HVAC — done right.",
   path: "/services",
 });
 
@@ -23,7 +23,7 @@ export default function ServicesPage() {
     <>
       <Hero
         eyebrow="Our services"
-        title="Heating, cooling & hot water services in Sonoma & Marin."
+        title="Heating, cooling & hot water services in Sonoma, Marin, Napa & Solano."
         description="From quick service calls to whole-home electrification, our team handles every job with the same craftsmanship."
         image="/images/hero/services.jpg"
         imageAlt="Technician installing a modern HVAC system"

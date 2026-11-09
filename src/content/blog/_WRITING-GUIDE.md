@@ -9,7 +9,7 @@ Voice
 - Concise, friendly, conversational. Write like a trusted local tech explaining things
   to a homeowner at the kitchen table, not like a brochure.
 - Always "Green Core" (two words). Full name: "Green Core Heating & Air".
-- Local and specific: name real Sonoma and Marin towns, our climate (mild winters,
+- Local and specific: name real Sonoma, Marin, Napa, and Solano towns, our climate (mild winters,
   marine layer, summer heat spikes inland), older North Bay housing stock.
 - Lean into our CORE values where it fits naturally: Craftsmanship, Ownership,
   Respect, Efficiency. Don't force it.

@@ -21,6 +21,20 @@ Local keyword posts (city + service)
 - [x] Tiburon homes: quiet, efficient heating and cooling options
 - [x] Same-day water heater replacement in Sonoma and Marin
 
+Napa and Solano expansion (link each post to its town page; about 1 in 3 posts for the first 3 months)
+- [ ] AC replacement in Vacaville: sizing a system for 100-degree summers
+- [ ] Is the original AC in your 2000s American Canyon home due for replacement?
+- [ ] Cooling an older Napa home without ductwork: mini split options
+- [ ] MCE vs. PG&E: which rebates apply in Fairfield vs. Vacaville
+- [ ] Rebates for Napa County homeowners: MCE, BayREN, and TECH
+- [ ] Wildfire smoke and your HVAC: filtration for Napa Valley homes
+- [ ] Water heater replacement in Napa: seismic straps and code updates
+- [ ] Upstairs too hot? Fixing uneven cooling in Fairfield and Green Valley two-story homes
+- [ ] Moving to Fairfield for Travis AFB? An HVAC checklist before you buy
+- [ ] Heating and cooling Benicia's historic homes
+- [ ] Same-day water heater replacement in Napa and Solano
+- [ ] AC tune-up before summer: a Solano County checklist
+
 Customer questions
 - [x] How long does a heat pump installation take?
 - [x] What size heat pump does my house need?

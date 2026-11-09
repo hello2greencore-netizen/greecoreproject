@@ -9,9 +9,9 @@ import { getAllPosts, formatPostDate } from "@/lib/blog";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "HVAC & Water Heater Blog — Sonoma & Marin",
+  title: "HVAC & Water Heater Blog — Sonoma, Marin, Napa & Solano",
   description:
-    "Straight answers on heat pumps, water heaters, rebates, and home comfort for Sonoma and Marin homeowners, from the Green Core Heating & Air team.",
+    "Straight answers on heat pumps, water heaters, rebates, and home comfort for Sonoma, Marin, Napa, and Solano homeowners, from the Green Core Heating & Air team.",
   path: "/blog",
 });
 

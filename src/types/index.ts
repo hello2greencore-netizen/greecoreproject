@@ -74,6 +74,11 @@ export type ServiceArea = {
   showcaseCity?: string;
   /** Written summaries of CompanyCam showcase jobs in this town (indexable text). */
   projects?: ShowcaseProject[];
+  /** Optional page-specific hero headline (defaults to the standard town headline). */
+  heroTitle?: string;
+  /** Optional page-specific SEO title and meta description. */
+  metaTitle?: string;
+  metaDescription?: string;
 };
 
 export type Testimonial = {

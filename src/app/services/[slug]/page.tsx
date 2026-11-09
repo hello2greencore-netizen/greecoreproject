@@ -48,43 +48,43 @@ const onlineEstimateFaqs: Record<string, { question: string; answer: string }> =
 
 /** Keyword-first meta titles per service; the layout template appends the brand name. */
 const seoTitles: Record<string, string> = {
-  "heat-pumps": "Heat Pump Installation in Sonoma & Marin",
-  "air-conditioning": "AC Installation & Repair in Sonoma & Marin",
-  furnaces: "Furnace Installation & Repair in Sonoma & Marin",
-  "mini-splits": "Ductless Mini Split Installation, Sonoma & Marin",
-  "duct-work": "Ductwork Repair & Replacement, Sonoma & Marin",
-  "harvest-thermal": "Harvest Thermal Installer, Sonoma & Marin",
-  "water-heaters": "Water Heater Installation & Replacement, Sonoma & Marin",
-  "heat-pump-water-heaters": "Heat Pump Water Heater Installation, Sonoma & Marin",
-  "tankless-water-heaters": "Tankless Water Heater Installation, Sonoma & Marin",
-  "gas-water-heaters": "Gas Water Heater Replacement, Sonoma & Marin",
-  "electric-water-heaters": "Electric Water Heater Replacement, Sonoma & Marin",
+  "heat-pumps": "Heat Pump Installation in Sonoma, Marin, Napa & Solano",
+  "air-conditioning": "AC Installation & Repair in Sonoma, Marin, Napa & Solano",
+  furnaces: "Furnace Installation & Repair in Sonoma, Marin, Napa & Solano",
+  "mini-splits": "Ductless Mini Split Installation, Sonoma, Marin, Napa & Solano",
+  "duct-work": "Ductwork Repair & Replacement, Sonoma, Marin, Napa & Solano",
+  "harvest-thermal": "Harvest Thermal Installer, Sonoma, Marin, Napa & Solano",
+  "water-heaters": "Water Heater Installation & Replacement, Sonoma, Marin, Napa & Solano",
+  "heat-pump-water-heaters": "Heat Pump Water Heater Installation, Sonoma, Marin, Napa & Solano",
+  "tankless-water-heaters": "Tankless Water Heater Installation, Sonoma, Marin, Napa & Solano",
+  "gas-water-heaters": "Gas Water Heater Replacement, Sonoma, Marin, Napa & Solano",
+  "electric-water-heaters": "Electric Water Heater Replacement, Sonoma, Marin, Napa & Solano",
 };
 
 /** Location-rich meta descriptions per service (≤155 chars). */
 const seoDescriptions: Record<string, string> = {
   "heat-pumps":
-    "Expert heat pump installation & repair in Sonoma & Marin counties. Energy-efficient, all-electric heating and cooling — properly sized for your home.",
+    "Expert heat pump installation & repair in Sonoma, Marin, Napa & Solano counties. Energy-efficient, all-electric heating and cooling — properly sized for your home.",
   "air-conditioning":
-    "Professional AC installation, repair & replacement in Sonoma & Marin. Properly sized systems for consistent cooling and lower energy bills.",
+    "Professional AC installation, repair & replacement in Sonoma, Marin, Napa & Solano. Properly sized systems for consistent cooling and lower energy bills.",
   furnaces:
-    "Expert furnace installation, repair & replacement in Sonoma & Marin. Dependable heating, proper sizing, and honest recommendations.",
+    "Expert furnace installation, repair & replacement in Sonoma, Marin, Napa & Solano. Dependable heating, proper sizing, and honest recommendations.",
   "mini-splits":
-    "Ductless mini split installation & repair in Sonoma & Marin. Flexible zoned comfort for additions, garages, and older homes — no ductwork needed.",
+    "Ductless mini split installation & repair in Sonoma, Marin, Napa & Solano. Flexible zoned comfort for additions, garages, and older homes — no ductwork needed.",
   "duct-work":
-    "Ductwork installation, repair & replacement in Sonoma & Marin. Improve airflow, reduce energy bills, and fix uneven temperatures in your home.",
+    "Ductwork installation, repair & replacement in Sonoma, Marin, Napa & Solano. Improve airflow, reduce energy bills, and fix uneven temperatures in your home.",
   "harvest-thermal":
-    "Harvest Thermal installation in Sonoma & Marin. Smart heat pump water heating with energy management — lower operating costs and better efficiency.",
+    "Harvest Thermal installation in Sonoma, Marin, Napa & Solano. Smart heat pump water heating with energy management — lower operating costs and better efficiency.",
   "water-heaters":
-    "Heat pump, tankless, gas & electric water heaters in Sonoma & Marin. Tank installs from $2,850. Same-day replacement when our schedule allows.",
+    "Heat pump, tankless, gas & electric water heaters in Sonoma, Marin, Napa & Solano. Tank installs from $2,850. Same-day replacement when our schedule allows.",
   "heat-pump-water-heaters":
-    "SANCO2 & GE GeoSpring heat pump water heater installation in Sonoma & Marin. Lower bills, rebates handled for you. Call (707) 988-5858.",
+    "SANCO2 & GE GeoSpring heat pump water heater installation in Sonoma, Marin, Napa & Solano. Lower bills, rebates handled for you. Call (707) 988-5858.",
   "tankless-water-heaters":
-    "Navien tankless water heater installation, repair & maintenance in Sonoma & Marin. Endless hot water, sized right for your home.",
+    "Navien tankless water heater installation, repair & maintenance in Sonoma, Marin, Napa & Solano. Endless hot water, sized right for your home.",
   "gas-water-heaters":
-    "Gas water heater replacement & repair in Sonoma & Marin. Bradford White & American Standard. Same-day replacement when our schedule allows.",
+    "Gas water heater replacement & repair in Sonoma, Marin, Napa & Solano. Bradford White & American Standard. Same-day replacement when our schedule allows.",
   "electric-water-heaters":
-    "Electric water heater replacement & repair in Sonoma & Marin, plus heat pump upgrades that cut water heating costs. Tank installs from $2,850.",
+    "Electric water heater replacement & repair in Sonoma, Marin, Napa & Solano, plus heat pump upgrades that cut water heating costs. Tank installs from $2,850.",
 };
 
 export function generateStaticParams() {
@@ -131,6 +131,8 @@ export default async function ServicePage(
     areaServed: [
       { "@type": "AdministrativeArea", name: "Sonoma County" },
       { "@type": "AdministrativeArea", name: "Marin County" },
+      { "@type": "AdministrativeArea", name: "Napa County" },
+      { "@type": "AdministrativeArea", name: "Solano County" },
       ...serviceAreas.map((a) => ({ "@type": "City", name: a.city })),
     ],
   };
@@ -165,7 +167,7 @@ export default async function ServicePage(
       <section className="py-16 sm:py-20 lg:py-24">
         <Container size="md">
           <Reveal>
-            <SectionHeading eyebrow="Overview" title={`${label} in Sonoma and Marin`} />
+            <SectionHeading eyebrow="Overview" title={`${label} in Sonoma, Marin, Napa, and Solano`} />
           </Reveal>
           <RevealGroup
             className="mt-8 space-y-5 text-base leading-relaxed text-muted sm:text-lg"

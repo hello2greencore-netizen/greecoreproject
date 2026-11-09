@@ -1034,7 +1034,7 @@
    "Question",
    "Service"
   ],
-  "faqQuestions": 7
+  "faqQuestions": 8
  },
  "/hvac-maintenance": {
   "canonical": "https://www.greencorehvac.com/hvac-maintenance",
@@ -1101,9 +1101,11 @@
   "canonical": "https://www.greencorehvac.com/instant-estimate",
   "schemaTypes": [
    "AdministrativeArea",
+   "Answer",
    "BreadcrumbList",
    "City",
    "EducationalOccupationalCredential",
+   "FAQPage",
    "GeoCoordinates",
    "HVACBusiness",
    "ImageObject",
@@ -1112,9 +1114,10 @@
    "OpeningHoursSpecification",
    "Person",
    "PostalAddress",
+   "Question",
    "Service"
   ],
-  "faqQuestions": 0
+  "faqQuestions": 6
  },
  "/our-work": {
   "canonical": "https://www.greencorehvac.com/our-work",
@@ -1134,6 +1137,50 @@
    "Service"
   ],
   "faqQuestions": 0
+ },
+ "/service-areas/american-canyon": {
+  "canonical": "https://www.greencorehvac.com/service-areas/american-canyon",
+  "schemaTypes": [
+   "AdministrativeArea",
+   "Answer",
+   "BreadcrumbList",
+   "City",
+   "EducationalOccupationalCredential",
+   "FAQPage",
+   "GeoCoordinates",
+   "HVACBusiness",
+   "ImageObject",
+   "ListItem",
+   "Offer",
+   "OpeningHoursSpecification",
+   "Person",
+   "PostalAddress",
+   "Question",
+   "Service"
+  ],
+  "faqQuestions": 7
+ },
+ "/service-areas/benicia": {
+  "canonical": "https://www.greencorehvac.com/service-areas/benicia",
+  "schemaTypes": [
+   "AdministrativeArea",
+   "Answer",
+   "BreadcrumbList",
+   "City",
+   "EducationalOccupationalCredential",
+   "FAQPage",
+   "GeoCoordinates",
+   "HVACBusiness",
+   "ImageObject",
+   "ListItem",
+   "Offer",
+   "OpeningHoursSpecification",
+   "Person",
+   "PostalAddress",
+   "Question",
+   "Service"
+  ],
+  "faqQuestions": 6
  },
  "/service-areas/cotati": {
   "canonical": "https://www.greencorehvac.com/service-areas/cotati",
@@ -1155,7 +1202,7 @@
    "Question",
    "Service"
   ],
-  "faqQuestions": 3
+  "faqQuestions": 4
  },
  "/service-areas/fairfax": {
   "canonical": "https://www.greencorehvac.com/service-areas/fairfax",
@@ -1177,7 +1224,29 @@
    "Question",
    "Service"
   ],
-  "faqQuestions": 4
+  "faqQuestions": 5
+ },
+ "/service-areas/fairfield": {
+  "canonical": "https://www.greencorehvac.com/service-areas/fairfield",
+  "schemaTypes": [
+   "AdministrativeArea",
+   "Answer",
+   "BreadcrumbList",
+   "City",
+   "EducationalOccupationalCredential",
+   "FAQPage",
+   "GeoCoordinates",
+   "HVACBusiness",
+   "ImageObject",
+   "ListItem",
+   "Offer",
+   "OpeningHoursSpecification",
+   "Person",
+   "PostalAddress",
+   "Question",
+   "Service"
+  ],
+  "faqQuestions": 8
  },
  "/service-areas/healdsburg": {
   "canonical": "https://www.greencorehvac.com/service-areas/healdsburg",
@@ -1199,7 +1268,7 @@
    "Question",
    "Service"
   ],
-  "faqQuestions": 5
+  "faqQuestions": 6
  },
  "/service-areas/mill-valley": {
   "canonical": "https://www.greencorehvac.com/service-areas/mill-valley",
@@ -1221,7 +1290,51 @@
    "Question",
    "Service"
   ],
-  "faqQuestions": 3
+  "faqQuestions": 4
+ },
+ "/service-areas/napa-county": {
+  "canonical": "https://www.greencorehvac.com/service-areas/napa-county",
+  "schemaTypes": [
+   "AdministrativeArea",
+   "Answer",
+   "BreadcrumbList",
+   "City",
+   "EducationalOccupationalCredential",
+   "FAQPage",
+   "GeoCoordinates",
+   "HVACBusiness",
+   "ImageObject",
+   "ListItem",
+   "Offer",
+   "OpeningHoursSpecification",
+   "Person",
+   "PostalAddress",
+   "Question",
+   "Service"
+  ],
+  "faqQuestions": 4
+ },
+ "/service-areas/napa": {
+  "canonical": "https://www.greencorehvac.com/service-areas/napa",
+  "schemaTypes": [
+   "AdministrativeArea",
+   "Answer",
+   "BreadcrumbList",
+   "City",
+   "EducationalOccupationalCredential",
+   "FAQPage",
+   "GeoCoordinates",
+   "HVACBusiness",
+   "ImageObject",
+   "ListItem",
+   "Offer",
+   "OpeningHoursSpecification",
+   "Person",
+   "PostalAddress",
+   "Question",
+   "Service"
+  ],
+  "faqQuestions": 8
  },
  "/service-areas/novato": {
   "canonical": "https://www.greencorehvac.com/service-areas/novato",
@@ -1243,7 +1356,7 @@
    "Question",
    "Service"
   ],
-  "faqQuestions": 3
+  "faqQuestions": 4
  },
  "/service-areas/petaluma": {
   "canonical": "https://www.greencorehvac.com/service-areas/petaluma",
@@ -1265,7 +1378,7 @@
    "Question",
    "Service"
   ],
-  "faqQuestions": 3
+  "faqQuestions": 4
  },
  "/service-areas/rohnert-park": {
   "canonical": "https://www.greencorehvac.com/service-areas/rohnert-park",
@@ -1287,7 +1400,7 @@
    "Question",
    "Service"
   ],
-  "faqQuestions": 3
+  "faqQuestions": 4
  },
  "/service-areas/san-anselmo": {
   "canonical": "https://www.greencorehvac.com/service-areas/san-anselmo",
@@ -1309,7 +1422,7 @@
    "Question",
    "Service"
   ],
-  "faqQuestions": 4
+  "faqQuestions": 5
  },
  "/service-areas/san-rafael": {
   "canonical": "https://www.greencorehvac.com/service-areas/san-rafael",
@@ -1331,7 +1444,7 @@
    "Question",
    "Service"
   ],
-  "faqQuestions": 3
+  "faqQuestions": 4
  },
  "/service-areas/santa-rosa": {
   "canonical": "https://www.greencorehvac.com/service-areas/santa-rosa",
@@ -1353,7 +1466,7 @@
    "Question",
    "Service"
   ],
-  "faqQuestions": 3
+  "faqQuestions": 4
  },
  "/service-areas/sebastopol": {
   "canonical": "https://www.greencorehvac.com/service-areas/sebastopol",
@@ -1375,7 +1488,29 @@
    "Question",
    "Service"
   ],
-  "faqQuestions": 3
+  "faqQuestions": 4
+ },
+ "/service-areas/solano-county": {
+  "canonical": "https://www.greencorehvac.com/service-areas/solano-county",
+  "schemaTypes": [
+   "AdministrativeArea",
+   "Answer",
+   "BreadcrumbList",
+   "City",
+   "EducationalOccupationalCredential",
+   "FAQPage",
+   "GeoCoordinates",
+   "HVACBusiness",
+   "ImageObject",
+   "ListItem",
+   "Offer",
+   "OpeningHoursSpecification",
+   "Person",
+   "PostalAddress",
+   "Question",
+   "Service"
+  ],
+  "faqQuestions": 4
  },
  "/service-areas/sonoma": {
   "canonical": "https://www.greencorehvac.com/service-areas/sonoma",
@@ -1397,7 +1532,7 @@
    "Question",
    "Service"
   ],
-  "faqQuestions": 4
+  "faqQuestions": 5
  },
  "/service-areas/tiburon": {
   "canonical": "https://www.greencorehvac.com/service-areas/tiburon",
@@ -1419,7 +1554,51 @@
    "Question",
    "Service"
   ],
-  "faqQuestions": 3
+  "faqQuestions": 4
+ },
+ "/service-areas/vacaville": {
+  "canonical": "https://www.greencorehvac.com/service-areas/vacaville",
+  "schemaTypes": [
+   "AdministrativeArea",
+   "Answer",
+   "BreadcrumbList",
+   "City",
+   "EducationalOccupationalCredential",
+   "FAQPage",
+   "GeoCoordinates",
+   "HVACBusiness",
+   "ImageObject",
+   "ListItem",
+   "Offer",
+   "OpeningHoursSpecification",
+   "Person",
+   "PostalAddress",
+   "Question",
+   "Service"
+  ],
+  "faqQuestions": 6
+ },
+ "/service-areas/vallejo": {
+  "canonical": "https://www.greencorehvac.com/service-areas/vallejo",
+  "schemaTypes": [
+   "AdministrativeArea",
+   "Answer",
+   "BreadcrumbList",
+   "City",
+   "EducationalOccupationalCredential",
+   "FAQPage",
+   "GeoCoordinates",
+   "HVACBusiness",
+   "ImageObject",
+   "ListItem",
+   "Offer",
+   "OpeningHoursSpecification",
+   "Person",
+   "PostalAddress",
+   "Question",
+   "Service"
+  ],
+  "faqQuestions": 6
  },
  "/service-areas/windsor": {
   "canonical": "https://www.greencorehvac.com/service-areas/windsor",
@@ -1441,7 +1620,7 @@
    "Question",
    "Service"
   ],
-  "faqQuestions": 5
+  "faqQuestions": 6
  },
  "/service-areas": {
   "canonical": "https://www.greencorehvac.com/service-areas",
@@ -1480,7 +1659,7 @@
    "Question",
    "Service"
   ],
-  "faqQuestions": 7
+  "faqQuestions": 8
  },
  "/services/duct-work": {
   "canonical": "https://www.greencorehvac.com/services/duct-work",
@@ -1546,7 +1725,7 @@
    "Question",
    "Service"
   ],
-  "faqQuestions": 6
+  "faqQuestions": 7
  },
  "/services/gas-water-heaters": {
   "canonical": "https://www.greencorehvac.com/services/gas-water-heaters",
@@ -1634,7 +1813,7 @@
    "Question",
    "Service"
   ],
-  "faqQuestions": 8
+  "faqQuestions": 9
  },
  "/services/mini-splits": {
   "canonical": "https://www.greencorehvac.com/services/mini-splits",
@@ -1700,7 +1879,7 @@
    "Question",
    "Service"
   ],
-  "faqQuestions": 7
+  "faqQuestions": 8
  },
  "/services": {
   "canonical": "https://www.greencorehvac.com/services",
@@ -1720,7 +1899,7 @@
    "Question",
    "Service"
   ],
-  "faqQuestions": 6
+  "faqQuestions": 7
  },
  "/specials": {
   "canonical": "https://www.greencorehvac.com/specials",

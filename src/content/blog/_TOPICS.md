@@ -33,7 +33,7 @@ Customer questions
 - [x] Ducted heat pump vs. ductless mini split: which fits your home?
 - [x] What is Harvest Thermal and who is it right for?
 - [x] Wildfire smoke season: filtration and fresh air with your HVAC
-- [ ] How loud is a heat pump? Placement tips for small lots
+- [x] How loud is a heat pump? Placement tips for small lots
 
 Rebates and programs (check current program pages before writing)
 - [x] TECH Clean California heat pump incentives: how they work

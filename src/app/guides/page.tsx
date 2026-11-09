@@ -9,7 +9,7 @@ import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/data/site";
 
 export const metadata = buildMetadata({
-  title: "Homeowner HVAC Guides for Sonoma & Marin",
+  title: "Homeowner HVAC Guides for Sonoma, Marin, Napa & Solano",
   description:
     "Free homeowner guides from Green Core: what a new system should cost, what size your home needs, how to choose, and how to keep it running.",
   path: "/guides",
@@ -85,7 +85,7 @@ export default function GuidesIndexPage() {
             "@type": "CollectionPage",
             "@id": `${siteConfig.url}/guides#collection`,
             url: `${siteConfig.url}/guides`,
-            name: "Homeowner HVAC Guides for Sonoma & Marin",
+            name: "Homeowner HVAC Guides for Sonoma, Marin, Napa & Solano",
             description:
               "Free homeowner guides from Green Core: what a new system should cost, what size your home needs, how to choose, and how to keep it running.",
             inLanguage: "en-US",
@@ -108,7 +108,7 @@ export default function GuidesIndexPage() {
       <Hero
         eyebrow="Homeowner Guides"
         title="Straight answers before you buy, and after."
-        description="Free tools and guides for Sonoma and Marin homeowners: what a new system should cost, what size you need, which option fits, and how to keep it running."
+        description="Free tools and guides for Sonoma, Marin, Napa, and Solano homeowners: what a new system should cost, what size you need, which option fits, and how to keep it running."
         image="/images/hero/services.jpg"
         imageAlt="Green Core technician working on a home heating system"
         size="compact"
@@ -124,7 +124,7 @@ export default function GuidesIndexPage() {
             <ul className="mt-2 flex flex-wrap gap-2 text-sm text-white/85">
               <li className="rounded-full border border-white/20 px-3 py-1">{guides.length} free guides</li>
               <li className="rounded-full border border-white/20 px-3 py-1">Real prices from our jobs</li>
-              <li className="rounded-full border border-white/20 px-3 py-1">Built for Sonoma &amp; Marin homes</li>
+              <li className="rounded-full border border-white/20 px-3 py-1">Built for Sonoma, Marin, Napa &amp; Solano homes</li>
             </ul>
           </div>
 

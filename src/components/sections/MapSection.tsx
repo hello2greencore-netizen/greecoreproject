@@ -12,7 +12,7 @@ export function MapSection({ background = "subtle" }: { background?: "subtle" | 
         <Reveal>
           <SectionHeading
             eyebrow="Service area"
-            title="Proudly serving Sonoma & Marin."
+            title="Proudly serving the North Bay."
             description="Based in Petaluma and serving homeowners across the North Bay. Click any pin on the map to see details."
             align="center"
             className="mx-auto"
@@ -33,7 +33,7 @@ export function MapSection({ background = "subtle" }: { background?: "subtle" | 
           </div>
         </Reveal>
         <p className="mt-4 text-center text-xs text-muted">
-          Serving Petaluma, Santa Rosa, Rohnert Park, Cotati, Sebastopol, Windsor, Healdsburg, Sonoma, Novato, San Rafael, Mill Valley, San Anselmo, Fairfax, Tiburon, and surrounding areas.
+          Serving Petaluma, Santa Rosa, Rohnert Park, Cotati, Sebastopol, Windsor, Healdsburg, Sonoma, Novato, San Rafael, Mill Valley, San Anselmo, Fairfax, Tiburon, Napa, American Canyon, Fairfield, Vacaville, Benicia, and surrounding areas.
         </p>
       </Container>
     </section>

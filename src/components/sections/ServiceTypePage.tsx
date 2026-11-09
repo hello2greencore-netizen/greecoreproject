@@ -56,6 +56,8 @@ export function ServiceTypePage({ type: t }: { type: ServiceType }) {
     areaServed: [
       { "@type": "AdministrativeArea", name: "Sonoma County" },
       { "@type": "AdministrativeArea", name: "Marin County" },
+      { "@type": "AdministrativeArea", name: "Napa County" },
+      { "@type": "AdministrativeArea", name: "Solano County" },
       ...serviceAreas.map((a) => ({ "@type": "City", name: a.city })),
     ],
   };

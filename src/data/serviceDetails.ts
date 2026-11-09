@@ -11,7 +11,7 @@ export type ServiceDetails = {
 
 export const serviceDetails: Record<string, ServiceDetails> = {
   "heat-pumps": {
-    "answer": "A heat pump is a single all-electric system that heats your home in winter and cools it in summer by moving heat instead of burning gas. Green Core Heating & Air designs, installs, repairs, and maintains ducted heat pumps for homes across Sonoma and Marin counties, starting every install with a load calculation so the system fits your home.",
+    "answer": "A heat pump is a single all-electric system that heats your home in winter and cools it in summer by moving heat instead of burning gas. Green Core Heating & Air designs, installs, repairs, and maintains ducted heat pumps for homes across Sonoma, Marin, Napa, and Solano counties, starting every install with a load calculation so the system fits your home.",
     "sections": [
       {
         "heading": "Heat pump installation",
@@ -130,7 +130,7 @@ export const serviceDetails: Record<string, ServiceDetails> = {
     ]
   },
   "air-conditioning": {
-    "answer": "Green Core Heating & Air installs, repairs, and maintains central air conditioning for homes across Sonoma and Marin counties, including adding AC to an existing furnace and replacing worn-out systems. We size every system to your home and fix the airflow and duct problems that cause hot rooms and high summer bills.",
+    "answer": "Green Core Heating & Air installs, repairs, and maintains central air conditioning for homes across Sonoma, Marin, Napa, and Solano counties, including adding AC to an existing furnace and replacing worn-out systems. We size every system to your home and fix the airflow and duct problems that cause hot rooms and high summer bills.",
     "sections": [
       {
         "heading": "AC installation and replacement",
@@ -216,7 +216,7 @@ export const serviceDetails: Record<string, ServiceDetails> = {
     ]
   },
   "furnaces": {
-    "answer": "Green Core Heating & Air installs, repairs, and maintains gas furnaces for homes across Sonoma and Marin counties. We fix no-heat calls, replace aging furnaces with right-sized high-efficiency models, and help homeowners compare a furnace with an all-electric heat pump when it's time to replace.",
+    "answer": "Green Core Heating & Air installs, repairs, and maintains gas furnaces for homes across Sonoma, Marin, Napa, and Solano counties. We fix no-heat calls, replace aging furnaces with right-sized high-efficiency models, and help homeowners compare a furnace with an all-electric heat pump when it's time to replace.",
     "sections": [
       {
         "heading": "Furnace repair",
@@ -321,7 +321,7 @@ export const serviceDetails: Record<string, ServiceDetails> = {
     ]
   },
   "mini-splits": {
-    "answer": "A ductless mini split is a heat pump that heats and cools individual rooms without ductwork, using a quiet outdoor unit and compact indoor units on the wall or ceiling. Green Core Heating & Air installs, repairs, and maintains mini splits, including Mitsubishi systems, for homes, additions, ADUs, and garages across Sonoma and Marin.",
+    "answer": "A ductless mini split is a heat pump that heats and cools individual rooms without ductwork, using a quiet outdoor unit and compact indoor units on the wall or ceiling. Green Core Heating & Air installs, repairs, and maintains mini splits, including Mitsubishi systems, for homes, additions, ADUs, and garages across Sonoma, Marin, Napa, and Solano.",
     "sections": [
       {
         "heading": "Mini split installation",
@@ -388,7 +388,7 @@ export const serviceDetails: Record<string, ServiceDetails> = {
     ]
   },
   "duct-work": {
-    "answer": "Green Core Heating & Air designs, repairs, and replaces ductwork for homes across Sonoma and Marin counties. Leaky, crushed, or undersized ducts are one of the biggest causes of hot and cold rooms, weak airflow, and high energy bills, and fixing them often matters as much as the equipment itself.",
+    "answer": "Green Core Heating & Air designs, repairs, and replaces ductwork for homes across Sonoma, Marin, Napa, and Solano counties. Leaky, crushed, or undersized ducts are one of the biggest causes of hot and cold rooms, weak airflow, and high energy bills, and fixing them often matters as much as the equipment itself.",
     "sections": [
       {
         "heading": "Signs your ducts need work",
@@ -460,7 +460,7 @@ export const serviceDetails: Record<string, ServiceDetails> = {
     ]
   },
   "harvest-thermal": {
-    "answer": "Harvest Thermal is an all-electric system that uses one high-efficiency heat pump to provide your home's heating, hot water, and cooling. Green Core Heating & Air designs and installs Harvest Thermal systems in Sonoma and Marin, often replacing both an old gas furnace and a gas water heater in one project.",
+    "answer": "Harvest Thermal is an all-electric system that uses one high-efficiency heat pump to provide your home's heating, hot water, and cooling. Green Core Heating & Air designs and installs Harvest Thermal systems in Sonoma, Marin, Napa, and Solano, often replacing both an old gas furnace and a gas water heater in one project.",
     "sections": [
       {
         "heading": "How Harvest Thermal works",
@@ -524,7 +524,7 @@ export const serviceDetails: Record<string, ServiceDetails> = {
       },
       {
         "question": "Do you install Harvest Thermal near me?",
-        "answer": "Yes. We've installed Harvest Thermal systems in homes in Petaluma and San Rafael and serve homeowners across Sonoma and Marin counties."
+        "answer": "Yes. We've installed Harvest Thermal systems in homes in Petaluma and San Rafael and serve homeowners across Sonoma, Marin, Napa, and Solano counties."
       }
     ]
   }
@@ -617,7 +617,7 @@ export type ServiceTypeDetails = Omit<ServiceDetails, "projects"> & { projects?:
 
 export const serviceTypeDetails: Record<string, ServiceTypeDetails> = {
   "hvac-repair": {
-    "answer": "Green Core Heating & Air repairs heat pumps, air conditioners, furnaces, ductless mini splits, ductwork, Harvest Thermal systems, and heat pump, tankless, gas, and electric water heaters across Sonoma and Marin counties. Our phones are answered 24/7, we aim to get out same-day or next-day for urgent calls depending on the season, and you get a written price before any work starts.",
+    "answer": "Green Core Heating & Air repairs heat pumps, air conditioners, furnaces, ductless mini splits, ductwork, Harvest Thermal systems, and heat pump, tankless, gas, and electric water heaters across Sonoma, Marin, Napa, and Solano counties. Our phones are answered 24/7, we aim to get out same-day or next-day for urgent calls depending on the season, and you get a written price before any work starts.",
     "sections": [
       {
         "heading": "Signs you need a repair",
@@ -726,7 +726,7 @@ export const serviceTypeDetails: Record<string, ServiceTypeDetails> = {
     ]
   },
   "hvac-installation": {
-    "answer": "Green Core Heating & Air designs and installs heat pumps, air conditioning, furnaces, ductless mini splits, ductwork, Harvest Thermal systems, and water heaters for homes across Sonoma and Marin counties. Every install starts with a free in-home estimate and a load calculation, and we handle the permit, inspection, and rebate paperwork.",
+    "answer": "Green Core Heating & Air designs and installs heat pumps, air conditioning, furnaces, ductless mini splits, ductwork, Harvest Thermal systems, and water heaters for homes across Sonoma, Marin, Napa, and Solano counties. Every install starts with a free in-home estimate and a load calculation, and we handle the permit, inspection, and rebate paperwork.",
     "sections": [
       {
         "heading": "How we design your system",
@@ -821,7 +821,7 @@ export const serviceTypeDetails: Record<string, ServiceTypeDetails> = {
     ]
   },
   "hvac-maintenance": {
-    "answer": "Green Core Heating & Air provides tune-ups and maintenance for heat pumps, air conditioners, furnaces, ductless mini splits, Harvest Thermal systems, and water heaters across Sonoma and Marin counties. Most systems need a tune-up once a year; heat pumps that heat and cool do best with a check before summer and again before winter.",
+    "answer": "Green Core Heating & Air provides tune-ups and maintenance for heat pumps, air conditioners, furnaces, ductless mini splits, Harvest Thermal systems, and water heaters across Sonoma, Marin, Napa, and Solano counties. Most systems need a tune-up once a year; heat pumps that heat and cool do best with a check before summer and again before winter.",
     "sections": [
       {
         "heading": "What a tune-up includes",

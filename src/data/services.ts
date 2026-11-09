@@ -15,7 +15,7 @@ export const services: Service[] = [
     cardImageAlt: "Heat pump outdoor unit — installation and service from Green Core Heating & Air",
     overview: [
       "A heat pump heats and cools your home with one all-electric system. The North Bay's mild winters are ideal for heat pumps, and inland summer afternoons that climb into the 90s are no problem for one sized correctly, which makes it one of the most efficient ways to stay comfortable year-round.",
-      "Green Core Heating & Air installs, repairs, and maintains heat pumps in Petaluma, Santa Rosa, Novato, San Rafael, and across Sonoma and Marin counties. Most of our installs replace an aging gas furnace and AC, and we design each one around your home's layout, insulation, and ducts, because a well-designed system matters more than the brand on the box.",
+      "Green Core Heating & Air installs, repairs, and maintains heat pumps in Petaluma, Santa Rosa, Novato, San Rafael, and across Sonoma, Marin, Napa, and Solano counties. Most of our installs replace an aging gas furnace and AC, and we design each one around your home's layout, insulation, and ducts, because a well-designed system matters more than the brand on the box.",
     ],
     benefits: [
       {
@@ -74,7 +74,7 @@ export const services: Service[] = [
     cardImage: "/images/services/cards/air-conditioning.jpg",
     cardImageAlt: "Central air conditioner outdoor unit — installation and service from Green Core Heating & Air",
     overview: [
-      "Summers in the North Bay can swing from foggy mornings to hot afternoons, especially inland in Santa Rosa, Windsor, and the Sonoma Valley. Green Core Heating & Air installs, repairs, and maintains central air conditioning for homes across Sonoma and Marin counties, from adding cooling to an existing furnace to replacing a worn-out rooftop unit.",
+      "Summers in the North Bay can swing from foggy mornings to hot afternoons, especially inland in Santa Rosa, Windsor, and the Sonoma Valley. Green Core Heating & Air installs, repairs, and maintains central air conditioning for homes across Sonoma, Marin, Napa, and Solano counties, from adding cooling to an existing furnace to replacing a worn-out rooftop unit.",
       "Many AC problems come from airflow and ductwork, not the equipment, so we look at the whole system. That's how we fix hot upstairs rooms and high summer bills instead of just swapping parts.",
     ],
     benefits: [
@@ -134,7 +134,7 @@ export const services: Service[] = [
     cardImage: "/images/services/cards/furnaces.jpg",
     cardImageAlt: "High-efficiency gas furnace — installation and service from Green Core Heating & Air",
     overview: [
-      "Green Core Heating & Air repairs, maintains, and replaces gas furnaces for homes in Petaluma, Santa Rosa, Novato, San Rafael, and across Sonoma and Marin counties. Whether your furnace won't light on a cold morning or it has simply reached the end of its life, we'll find the real problem and give you honest options.",
+      "Green Core Heating & Air repairs, maintains, and replaces gas furnaces for homes in Petaluma, Santa Rosa, Novato, San Rafael, and across Sonoma, Marin, Napa, and Solano counties. Whether your furnace won't light on a cold morning or it has simply reached the end of its life, we'll find the real problem and give you honest options.",
       "When it's time to replace, we'll show you a high-efficiency furnace and an all-electric heat pump side by side, with written pricing for each, so you can choose what's right for your home and budget.",
     ],
     benefits: [
@@ -192,7 +192,7 @@ export const services: Service[] = [
     cardImage: "/images/services/cards/mini-splits.jpg",
     cardImageAlt: "Ductless mini split indoor unit — installation and service from Green Core Heating & Air",
     overview: [
-      "Ductless mini splits heat and cool individual rooms without any ductwork. Green Core Heating & Air installs, repairs, and maintains mini splits for homes across Sonoma and Marin counties, and they're especially popular in the area's older homes, additions, ADUs, and converted garages.",
+      "Ductless mini splits heat and cool individual rooms without any ductwork. Green Core Heating & Air installs, repairs, and maintains mini splits for homes across Sonoma, Marin, Napa, and Solano counties, and they're especially popular in the area's older homes, additions, ADUs, and converted garages.",
       "Each indoor unit has its own temperature control, so you only heat or cool the rooms you're using. We plan the indoor and outdoor unit locations, line set routes, and electrical work up front so the finished install looks clean and runs quietly.",
     ],
     benefits: [
@@ -252,7 +252,7 @@ export const services: Service[] = [
     cardImageAlt: "New metal and insulated ductwork — installation and service from Green Core Heating & Air",
     overview: [
       "Your ducts carry every bit of heated and cooled air through your home. In many North Bay homes they run through hot attics and damp crawlspaces, where leaks, crushed runs, and missing insulation waste energy and leave some rooms uncomfortable.",
-      "Green Core Heating & Air inspects, repairs, seals, and replaces ductwork across Sonoma and Marin counties, often as part of a new heat pump or furnace install. Better ducts can make an existing system feel like a new one.",
+      "Green Core Heating & Air inspects, repairs, seals, and replaces ductwork across Sonoma, Marin, Napa, and Solano counties, often as part of a new heat pump or furnace install. Better ducts can make an existing system feel like a new one.",
     ],
     benefits: [
       {
@@ -309,7 +309,7 @@ export const services: Service[] = [
       "Harvest Thermal uses one all-electric heat pump for heating, hot water, and cooling, with smart controls that shift energy use to cheaper hours.",
     heroImage: "/images/services/harvest-thermal.jpg",
     overview: [
-      "Harvest Thermal combines your home's heating, hot water, and cooling into one all-electric heat pump system. Green Core Heating & Air installs Harvest Thermal systems in Sonoma and Marin counties, with completed projects in Petaluma and San Rafael.",
+      "Harvest Thermal combines your home's heating, hot water, and cooling into one all-electric heat pump system. Green Core Heating & Air installs Harvest Thermal systems in Sonoma, Marin, Napa, and Solano counties, with completed projects in Petaluma and San Rafael.",
       "It's a smart choice when both your gas furnace and gas water heater are getting old. Instead of replacing two gas appliances, you replace them with one system that stores heat when electricity is cheapest and uses it when you need it.",
     ],
     benefits: [
@@ -360,10 +360,10 @@ export const services: Service[] = [
     name: "Water Heater Installation, Repair & Replacement",
     shortName: "Water Heaters",
     tagline: "Heat pump, tankless, gas, and electric water heaters, installed right.",
-    summary: "Heat pump, tankless, gas, and electric water heater installation, repair, and replacement across Sonoma and Marin. Gas and electric tank installs start at $2,850.",
+    summary: "Heat pump, tankless, gas, and electric water heater installation, repair, and replacement across Sonoma, Marin, Napa, and Solano. Gas and electric tank installs start at $2,850.",
     heroImage: "/images/services/water-heaters.jpg",
     overview: [
-      "No hot water, a leaking tank, or a water heater that's simply getting old? Green Core Heating & Air installs, repairs, and replaces water heaters for homes in Petaluma, Santa Rosa, Rohnert Park, Novato, San Rafael, and across Sonoma and Marin counties.",
+      "No hot water, a leaking tank, or a water heater that's simply getting old? Green Core Heating & Air installs, repairs, and replaces water heaters for homes in Petaluma, Santa Rosa, Rohnert Park, Novato, San Rafael, and across Sonoma, Marin, Napa, and Solano counties.",
       "We work with every common type: heat pump water heaters, tankless water heaters, gas tank water heaters, and electric tank water heaters. The brands we install include SANCO2, GE GeoSpring, Navien, Bradford White, and American Standard.",
       "Not sure which type is right? A gas or electric tank is the simplest like-for-like swap. A tankless unit gives you endless hot water for a busy household. A heat pump water heater costs the least to run and usually qualifies for the biggest rebates. We'll walk you through the tradeoffs for your home, your budget, and how your family uses hot water.",
       "Gas and electric tank water heater installs start at $2,850. Heat pump and tankless systems are priced to your home. Your final price depends on the type, size, and what your home needs, like venting, gas line, or electrical work. You'll get a clear written price before any work starts. Same-day water heater replacement is available when our schedule allows.",
@@ -414,7 +414,7 @@ export const services: Service[] = [
       },
       {
         "question": "What areas do you serve?",
-        "answer": "We install water heaters throughout Sonoma and Marin counties, including Petaluma, Rohnert Park, Cotati, Santa Rosa, Sebastopol, Novato, San Rafael, Mill Valley, and Tiburon."
+        "answer": "We install water heaters throughout Sonoma, Marin, Napa, and Solano counties, including Petaluma, Rohnert Park, Cotati, Santa Rosa, Sebastopol, Novato, San Rafael, Mill Valley, Tiburon, Napa, American Canyon, Fairfield, Vacaville, Benicia, and north Vallejo."
       }
     ],
     related: [
@@ -431,7 +431,7 @@ export const services: Service[] = [
     name: "Heat Pump Water Heater Installation",
     shortName: "Heat Pump Water Heaters",
     tagline: "The most efficient way to heat water, with rebates that help cover the cost.",
-    summary: "SANCO2 and GE GeoSpring heat pump water heaters installed across Sonoma and Marin. Lower bills, cleaner hot water, and help with rebates.",
+    summary: "SANCO2 and GE GeoSpring heat pump water heaters installed across Sonoma, Marin, Napa, and Solano. Lower bills, cleaner hot water, and help with rebates.",
     heroImage: "/images/services/heat-pump-water-heaters.jpg",
     cardImage: "/images/services/cards/heat-pump-water-heaters.jpg",
     cardImageAlt: "Heat pump water heater — installation and service from Green Core Heating & Air",
@@ -440,7 +440,7 @@ export const services: Service[] = [
       "Green Core installs two kinds. SANCO2 is a split system: a quiet outdoor heat pump uses CO2, a natural refrigerant, to heat water stored in an indoor tank, and it keeps working well on cold mornings. GE GeoSpring is a hybrid, all-in-one tank that sits where your current water heater does, often in a garage, and pulls heat from the surrounding air.",
       "Every install starts with a site check. We look at where the unit will go, airflow and space, condensate drainage, and your electrical panel. Most heat pump water heaters need a dedicated circuit, and if you're switching from gas, we'll tell you up front whether your panel can handle it.",
       "Depending on where you live and current program funding, you may qualify for rebates through TECH Clean California, Sonoma Clean Power (Sonoma County), MCE (Marin County), or BayREN. We check what's available for your home and handle the paperwork. The federal 25C tax credit ended for systems installed after December 31, 2025.",
-      "Heat pump water heaters are priced to your home, since cost depends on the model, size, location, and any electrical work. You'll get a clear written price before any work starts, and we'll factor in the rebates you qualify for. We install heat pump water heaters in Petaluma, Santa Rosa, Rohnert Park, Sebastopol, Novato, San Rafael, Mill Valley, and throughout Sonoma and Marin counties."
+      "Heat pump water heaters are priced to your home, since cost depends on the model, size, location, and any electrical work. You'll get a clear written price before any work starts, and we'll factor in the rebates you qualify for. We install heat pump water heaters in Petaluma, Santa Rosa, Rohnert Park, Sebastopol, Novato, San Rafael, Mill Valley, and throughout Sonoma, Marin, Napa, and Solano counties."
     ],
     benefits: [
       {
@@ -503,16 +503,16 @@ export const services: Service[] = [
     name: "Tankless Water Heater Installation, Repair & Replacement",
     shortName: "Tankless Water Heaters",
     tagline: "Endless hot water, wall-mounted and space-saving.",
-    summary: "Navien tankless water heater installation, repair, and yearly maintenance in Sonoma and Marin. Endless hot water in a compact, wall-mounted unit.",
+    summary: "Navien tankless water heater installation, repair, and yearly maintenance in Sonoma, Marin, Napa, and Solano. Endless hot water in a compact, wall-mounted unit.",
     heroImage: "/images/services/tankless-water-heaters.jpg",
     cardImage: "/images/services/cards/tankless-water-heaters.jpg",
     cardImageAlt: "Tankless water heater — installation and service from Green Core Heating & Air",
     overview: [
-      "A tankless water heater heats water only when you turn on the tap, so you don't run out halfway through the third shower. Green Core installs Navien tankless water heaters for homes across Sonoma and Marin counties.",
+      "A tankless water heater heats water only when you turn on the tap, so you don't run out halfway through the third shower. Green Core installs Navien tankless water heaters for homes across Sonoma, Marin, Napa, and Solano counties.",
       "Tankless units mount on a wall and free up the floor space a tank used to take. Modern condensing models like Navien vent through PVC pipe and are very efficient with gas.",
       "Getting tankless right comes down to sizing and gas supply. A tankless unit needs more gas at once than a tank, so we check your gas line, meter, and venting route before recommending one. We size the unit to how many showers and appliances you run at the same time.",
       "Tankless water heaters need a yearly flush to clear mineral buildup and keep them running efficiently. We can take care of that maintenance, along with repairs on existing tankless units.",
-      "Tankless installs are priced to your home, since cost depends on gas line and venting needs. You'll get a clear written price before we start. We serve Petaluma, Santa Rosa, Rohnert Park, Novato, San Rafael, Mill Valley, Tiburon, and the rest of Sonoma and Marin."
+      "Tankless installs are priced to your home, since cost depends on gas line and venting needs. You'll get a clear written price before we start. We serve Petaluma, Santa Rosa, Rohnert Park, Novato, San Rafael, Mill Valley, Tiburon, and the rest of Sonoma, Marin, Napa, and Solano."
     ],
     benefits: [
       {
@@ -570,12 +570,12 @@ export const services: Service[] = [
     name: "Gas Water Heater Installation, Repair & Replacement",
     shortName: "Gas Water Heaters",
     tagline: "Fast, code-compliant gas water heater replacement.",
-    summary: "Gas tank water heater replacement and repair in Sonoma and Marin, with same-day replacement when our schedule allows. Tank installs start at $2,850.",
+    summary: "Gas tank water heater replacement and repair in Sonoma, Marin, Napa, and Solano, with same-day replacement when our schedule allows. Tank installs start at $2,850.",
     heroImage: "/images/services/gas-water-heaters.jpg",
     cardImage: "/images/services/cards/gas-water-heaters.jpg",
     cardImageAlt: "Gas tank water heater — installation and service from Green Core Heating & Air",
     overview: [
-      "When a gas water heater fails, you want hot water back fast. Green Core Heating & Air replaces and repairs gas tank water heaters for homes in Petaluma, Santa Rosa, Rohnert Park, Novato, San Rafael, and across Sonoma and Marin counties. Same-day water heater replacement is available when our schedule allows.",
+      "When a gas water heater fails, you want hot water back fast. Green Core Heating & Air replaces and repairs gas tank water heaters for homes in Petaluma, Santa Rosa, Rohnert Park, Novato, San Rafael, and across Sonoma, Marin, Napa, and Solano counties. Same-day water heater replacement is available when our schedule allows.",
       "We install Bradford White and American Standard gas water heaters, sized to your household. A typical home uses a 40- or 50-gallon tank, and we'll confirm the right size before we install.",
       "Every install is done to California code: seismic strapping, a properly piped temperature and pressure relief valve, correct venting, an expansion tank where required, and a permit. Those details matter for safety and for your home's resale.",
       "Thinking about going electric? A heat pump water heater can replace a gas tank, costs less to run, and usually qualifies for rebates. We're happy to price both options so you can compare.",
@@ -637,12 +637,12 @@ export const services: Service[] = [
     name: "Electric Water Heater Installation, Repair & Replacement",
     shortName: "Electric Water Heaters",
     tagline: "Reliable electric water heater replacement, with an upgrade path that saves.",
-    summary: "Electric tank water heater replacement and repair in Sonoma and Marin, plus heat pump upgrades that can cut water heating costs.",
+    summary: "Electric tank water heater replacement and repair in Sonoma, Marin, Napa, and Solano, plus heat pump upgrades that can cut water heating costs.",
     heroImage: "/images/services/electric-water-heaters.jpg",
     cardImage: "/images/services/cards/electric-water-heaters.jpg",
     cardImageAlt: "Electric tank water heater — installation and service from Green Core Heating & Air",
     overview: [
-      "Green Core Heating & Air repairs and replaces electric tank water heaters for homes in Petaluma, Santa Rosa, Rohnert Park, Novato, San Rafael, and across Sonoma and Marin counties. We install Bradford White and American Standard electric water heaters, sized to your household.",
+      "Green Core Heating & Air repairs and replaces electric tank water heaters for homes in Petaluma, Santa Rosa, Rohnert Park, Novato, San Rafael, and across Sonoma, Marin, Napa, and Solano counties. We install Bradford White and American Standard electric water heaters, sized to your household.",
       "Electric tanks are simple: no gas line and no venting. Common problems like a failed heating element or thermostat can often be repaired. If the tank itself is leaking or the unit is near the end of its life, replacement is the better call. Same-day water heater replacement is available when our schedule allows.",
       "If you're replacing an electric tank anyway, consider a heat pump water heater. It uses the same type of electrical circuit in many homes, often fits in a similar spot, and can use a fraction of the electricity. It also tends to qualify for rebates that a standard electric tank doesn't.",
       "Electric tank water heater installs start at $2,850. You'll get a clear written price before any work starts, and we'll show you the standard and heat pump options side by side if you'd like to compare."

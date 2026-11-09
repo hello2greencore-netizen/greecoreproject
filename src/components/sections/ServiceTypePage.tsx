@@ -149,7 +149,7 @@ export function ServiceTypePage({ type: t }: { type: ServiceType }) {
         <ProjectShowcase city="Sonoma and Marin" projects={projects} />
       )}
 
-      <LocalReviews ids={serviceReviews[t.slug]} title={`${t.navLabel} reviews from North Bay homeowners`} />
+      <LocalReviews ids={serviceReviews[t.slug]} title={`${t.navLabel}: what North Bay homeowners say`} />
 
       <section className="bg-subtle py-14 sm:py-16">
         <Container size="xl">

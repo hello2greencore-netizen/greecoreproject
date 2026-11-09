@@ -62,6 +62,7 @@ export default async function ServiceAreaPage(
         imageAlt={`${area.city}, California`}
         size="spacious"
         primaryCta={{ label: "Book Now", href: "#book" }}
+        secondaryCta={{ label: "Get an Online Estimate", href: "/instant-estimate" }}
       />
 
       <section className="py-16 sm:py-20 lg:py-24">

@@ -27,7 +27,7 @@ export default function HomePage() {
         image="/images/hero/home.jpg"
         imageAlt="Modern home at sunset in Sonoma County"
         primaryCta={siteConfig.cta.primary}
-        secondaryCta={{ label: "Get an Instant Estimate", href: "/instant-estimate" }}
+        secondaryCta={{ label: "Get an Online Estimate", href: "/instant-estimate" }}
       />
       <AboutPreview />
       <PainPoints />

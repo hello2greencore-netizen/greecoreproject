@@ -36,6 +36,8 @@ const always = [
 const AREAS = [
   { "@type": "AdministrativeArea", name: "Sonoma County, California" },
   { "@type": "AdministrativeArea", name: "Marin County, California" },
+  { "@type": "AdministrativeArea", name: "Napa County, California" },
+  { "@type": "AdministrativeArea", name: "Solano County, California" },
 ];
 
 const SERVICE_NAME: Record<string, string> = {

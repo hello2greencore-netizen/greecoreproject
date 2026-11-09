@@ -223,7 +223,7 @@ export default async function ServicePage(
 
       <LocalReviews
         ids={serviceReviews[`services/${service.slug}`]}
-        title={`${label} reviews from North Bay homeowners`}
+        title={`${label}: what North Bay homeowners say`}
       />
 
       {details && (

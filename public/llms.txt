@@ -1,6 +1,6 @@
 # Green Core Heating & Air
 
-> Locally owned residential HVAC and water heater contractor based in Petaluma, California, serving homeowners in Sonoma and Marin counties. Specialists in heat pumps, heat pump water heaters, and Harvest Thermal whole-home systems, with a design-first approach and help claiming rebates.
+> Locally owned residential HVAC and water heater contractor based in Petaluma, California, serving homeowners in Sonoma, Marin, Napa, and Solano counties. Specialists in heat pumps, heat pump water heaters, and Harvest Thermal whole-home systems, with a design-first approach and help claiming rebates.
 
 - Business name: Green Core Heating & Air (Green Core)
 - Phone: (707) 988-5858
@@ -38,6 +38,10 @@ Green Core is a participating contractor with TECH Clean California, BayREN, Son
 Sonoma County: [Petaluma](https://www.greencorehvac.com/service-areas/petaluma), [Rohnert Park](https://www.greencorehvac.com/service-areas/rohnert-park), [Santa Rosa](https://www.greencorehvac.com/service-areas/santa-rosa), [Cotati](https://www.greencorehvac.com/service-areas/cotati), [Sebastopol](https://www.greencorehvac.com/service-areas/sebastopol), [Windsor](https://www.greencorehvac.com/service-areas/windsor), [Healdsburg](https://www.greencorehvac.com/service-areas/healdsburg), [Sonoma](https://www.greencorehvac.com/service-areas/sonoma)
 
 Marin County: [Novato](https://www.greencorehvac.com/service-areas/novato), [San Rafael](https://www.greencorehvac.com/service-areas/san-rafael), [Mill Valley](https://www.greencorehvac.com/service-areas/mill-valley), [Tiburon](https://www.greencorehvac.com/service-areas/tiburon), [San Anselmo](https://www.greencorehvac.com/service-areas/san-anselmo), [Fairfax](https://www.greencorehvac.com/service-areas/fairfax)
+
+Napa County: [Napa County overview](https://www.greencorehvac.com/service-areas/napa-county), [Napa](https://www.greencorehvac.com/service-areas/napa), [American Canyon](https://www.greencorehvac.com/service-areas/american-canyon)
+
+Solano County: [Solano County overview](https://www.greencorehvac.com/service-areas/solano-county), [Fairfield](https://www.greencorehvac.com/service-areas/fairfield), [Vacaville](https://www.greencorehvac.com/service-areas/vacaville), [Benicia](https://www.greencorehvac.com/service-areas/benicia), [Vallejo](https://www.greencorehvac.com/service-areas/vallejo)
 
 ## More
 

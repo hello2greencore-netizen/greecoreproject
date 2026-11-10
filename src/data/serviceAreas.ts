@@ -28,7 +28,7 @@ const sonomaMarinAreas: ServiceArea[] = [
     ],
     city: "Petaluma",
     county: "Sonoma County",
-    heroImage: "/images/service-areas/PetalumaPhoto.webp",
+    heroImage: "/images/hero/service-areas.jpg",
     intro:
       "Green Core Heating & Air installs and services heat pumps, water heaters, air conditioning, furnaces, and ductless mini splits for homes in Petaluma, CA, from historic houses near D Street to newer neighborhoods on the east side of town. The climate here isn't extreme, but it's unique — cool marine air pushes in through the Petaluma Gap, mornings can be damp and foggy, and summer afternoons can still bring heat spikes. That combination means your HVAC system needs to be properly sized, efficient, and built to handle both temperature swings and moisture.",
     lifestyleLine:
@@ -78,7 +78,7 @@ const sonomaMarinAreas: ServiceArea[] = [
     ],
     city: "Rohnert Park",
     county: "Sonoma County",
-    heroImage: "/images/service-areas/RohnertPark.png",
+    heroImage: "/images/hero/service-areas.jpg",
     intro:
       "Green Core Heating & Air installs and services heat pumps, water heaters, air conditioning, furnaces, and ductless mini splits for homes in Rohnert Park, CA, from established neighborhoods near Sonoma State University to newer homes across town. Known for its open neighborhoods, parks, and proximity to Sonoma State University, Rohnert Park offers a comfortable, easygoing lifestyle — and your home should feel the same way. Our goal is to make sure your HVAC system supports that comfort every day, without inconsistency or high energy costs.",
     lifestyleLine:
@@ -134,7 +134,7 @@ const sonomaMarinAreas: ServiceArea[] = [
     ],
     city: "Santa Rosa",
     county: "Sonoma County",
-    heroImage: "/images/service-areas/SantaRosa.avif",
+    heroImage: "/images/hero/service-areas.jpg",
     intro:
       "Green Core Heating & Air installs and services heat pumps, water heaters, air conditioning, furnaces, and ductless mini splits for homes in Santa Rosa, CA, from historic homes near downtown to hillside builds in Fountaingrove and Bennett Valley. As Sonoma County's largest city, Santa Rosa has a wide mix of neighborhoods, climates, and home styles — and your HVAC system needs to be designed around your specific home, not a generic template.",
     lifestyleLine:
@@ -190,7 +190,7 @@ const sonomaMarinAreas: ServiceArea[] = [
     ],
     city: "Novato",
     county: "Marin County",
-    heroImage: "/images/service-areas/downtown-Novato.jpg",
+    heroImage: "/images/hero/service-areas.jpg",
     intro:
       "Green Core Heating & Air installs and services heat pumps, water heaters, air conditioning, furnaces, and ductless mini splits for homes in Novato, CA, from hillside homes that bake in the afternoon sun to established neighborhoods with older systems. Novato offers a unique blend of suburban comfort and open space, but that also means homes here experience a wide range of conditions — from warm afternoons to cool evenings. Your HVAC system needs to keep up with those shifts without overworking or driving up energy costs.",
     lifestyleLine:
@@ -240,7 +240,7 @@ const sonomaMarinAreas: ServiceArea[] = [
     ],
     city: "San Rafael",
     county: "Marin County",
-    heroImage: "/images/service-areas/SanRafael.avif",
+    heroImage: "/images/hero/service-areas.jpg",
     intro:
       "Green Core Heating & Air installs and services heat pumps, water heaters, air conditioning, furnaces, and ductless mini splits for homes in San Rafael, CA, from older homes near downtown to hillside properties across town. The climate here sits right in between coastal and inland conditions, which means your HVAC system needs to handle both cooler marine air and warmer inland temperatures — often in the same day. Getting that balance right is what makes the difference between a system that works and one that actually feels comfortable.",
     lifestyleLine:
@@ -282,7 +282,7 @@ const sonomaMarinAreas: ServiceArea[] = [
     waterHeaterNote: "Many Mill Valley homes have the water heater in a tight closet or under-house space, where a compact tankless unit or a SANCO2 heat pump with its unit outside can free up room.",
     city: "Mill Valley",
     county: "Marin County",
-    heroImage: "/images/service-areas/millvalley.jpg",
+    heroImage: "/images/hero/service-areas.jpg",
     intro:
       "Green Core Heating & Air installs and services heat pumps, water heaters, air conditioning, furnaces, and ductless mini splits for homes in Mill Valley, CA, including the hillside and wooded homes at the foot of Mount Tamalpais. Unlike inland areas, the climate here is heavily influenced by coastal fog, cooler temperatures, and dense tree coverage. That means HVAC systems aren't about extreme heating or cooling — they're about consistency, moisture control, and quiet, efficient operation.",
     lifestyleLine:
@@ -323,7 +323,7 @@ const sonomaMarinAreas: ServiceArea[] = [
     waterHeaterNote: "For Tiburon homes where indoor space is at a premium, a SANCO2 heat pump water heater keeps its quiet heat pump outside and only the tank indoors.",
     city: "Tiburon",
     county: "Marin County",
-    heroImage: "/images/service-areas/Tiburon_.webp",
+    heroImage: "/images/hero/service-areas.jpg",
     intro:
       "Green Core Heating & Air installs and services heat pumps, water heaters, air conditioning, furnaces, and ductless mini splits for homes in Tiburon, CA, including custom hillside homes built around bay views. With its coastal location, mild temperatures, and bay-facing properties, comfort here isn't about extreme heating or cooling — it's about consistency, efficiency, and systems that operate quietly in the background.",
     lifestyleLine:
@@ -406,7 +406,7 @@ const sonomaMarinAreas: ServiceArea[] = [
     waterHeaterNote: "Many water heater calls in Cotati are straightforward tank replacements, and since we're just down the road in Petaluma, we can often handle them the same day.",
     city: "Cotati",
     county: "Sonoma County",
-    heroImage: "/images/service-areas/Cotati.jpg",
+    heroImage: "/images/hero/service-areas.jpg",
     intro:
       "Green Core Heating & Air installs and services heat pumps, water heaters, air conditioning, furnaces, and ductless mini splits for homes in Cotati, CA, from established older neighborhoods to newer developments around town. While Cotati shares some of the same coastal influence as nearby areas, it has its own microclimate — cool mornings, occasional fog, and warm afternoons that can catch homeowners off guard. That combination means your HVAC system needs to be efficient, responsive, and properly designed to handle daily temperature swings.",
     lifestyleLine:

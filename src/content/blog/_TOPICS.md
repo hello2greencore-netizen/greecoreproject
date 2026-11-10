@@ -22,7 +22,7 @@ Local keyword posts (city + service)
 - [x] Same-day water heater replacement in Sonoma and Marin
 
 Napa and Solano expansion (link each post to its town page; about 1 in 3 posts for the first 3 months)
-- [ ] AC replacement in Vacaville: sizing a system for 100-degree summers
+- [x] AC replacement in Vacaville: sizing a system for 100-degree summers
 - [ ] Is the original AC in your 2000s American Canyon home due for replacement?
 - [ ] Cooling an older Napa home without ductwork: mini split options
 - [ ] MCE vs. PG&E: which rebates apply in Fairfield vs. Vacaville

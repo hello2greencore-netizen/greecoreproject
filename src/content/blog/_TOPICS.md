@@ -41,7 +41,7 @@ Customer questions
 - [x] Do heat pumps work in a power outage? (and what to plan for)
 - [x] Heat pump vs. furnace: running costs in the North Bay
 - [x] Why is one room always hot or cold? (ducts, balance, zoning)
-- [ ] Signs your water heater is about to fail
+- [x] Signs your water heater is about to fail
 - [x] How often should a heat pump be serviced?
 - [x] Does my electrical panel need an upgrade for a heat pump?
 - [x] Ducted heat pump vs. ductless mini split: which fits your home?
@@ -51,7 +51,7 @@ Customer questions
 
 Rebates and programs (check current program pages before writing)
 - [x] TECH Clean California heat pump incentives: how they work
-- [ ] BayREN home energy rebates for Sonoma and Marin homeowners
+- [x] BayREN home energy rebates for Sonoma and Marin homeowners
 - [ ] Sonoma Clean Power programs for heat pumps and water heaters
 - [ ] MCE rebates for Marin homeowners going electric
 - [ ] Federal tax credits ended in 2025: what incentives are left in 2026?

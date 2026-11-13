@@ -23,7 +23,7 @@ Local keyword posts (city + service)
 
 Napa and Solano expansion (link each post to its town page; about 1 in 3 posts for the first 3 months)
 - [x] AC replacement in Vacaville: sizing a system for 100-degree summers
-- [ ] Is the original AC in your 2000s American Canyon home due for replacement?
+- [x] Is the original AC in your 2000s American Canyon home due for replacement?
 - [ ] Cooling an older Napa home without ductwork: mini split options
 - [ ] MCE vs. PG&E: which rebates apply in Fairfield vs. Vacaville
 - [ ] Rebates for Napa County homeowners: MCE, BayREN, and TECH

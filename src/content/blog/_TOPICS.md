@@ -52,7 +52,7 @@ Customer questions
 Rebates and programs (check current program pages before writing)
 - [x] TECH Clean California heat pump incentives: how they work
 - [x] BayREN home energy rebates for Sonoma and Marin homeowners
-- [ ] Sonoma Clean Power programs for heat pumps and water heaters
+- [x] Sonoma Clean Power programs for heat pumps and water heaters
 - [ ] MCE rebates for Marin homeowners going electric
 - [ ] Federal tax credits ended in 2025: what incentives are left in 2026?
 - [x] How Green Core handles rebate paperwork for you

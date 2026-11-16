@@ -1937,5 +1937,49 @@
    "Service"
   ],
   "faqQuestions": 0
+ },
+ "/services/ac-repair": {
+  "canonical": "https://www.greencorehvac.com/services/ac-repair",
+  "schemaTypes": [
+   "AdministrativeArea",
+   "Answer",
+   "BreadcrumbList",
+   "City",
+   "EducationalOccupationalCredential",
+   "FAQPage",
+   "GeoCoordinates",
+   "HVACBusiness",
+   "ImageObject",
+   "ListItem",
+   "Offer",
+   "OpeningHoursSpecification",
+   "Person",
+   "PostalAddress",
+   "Question",
+   "Service"
+  ],
+  "faqQuestions": 6
+ },
+ "/services/furnace-repair": {
+  "canonical": "https://www.greencorehvac.com/services/furnace-repair",
+  "schemaTypes": [
+   "AdministrativeArea",
+   "Answer",
+   "BreadcrumbList",
+   "City",
+   "EducationalOccupationalCredential",
+   "FAQPage",
+   "GeoCoordinates",
+   "HVACBusiness",
+   "ImageObject",
+   "ListItem",
+   "Offer",
+   "OpeningHoursSpecification",
+   "Person",
+   "PostalAddress",
+   "Question",
+   "Service"
+  ],
+  "faqQuestions": 6
  }
 }

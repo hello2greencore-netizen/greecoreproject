@@ -11,7 +11,7 @@ related: mini-splits, heat-pumps, duct-work
 
 ## Why older San Rafael homes are a good match for ductless mini splits
 
-San Rafael has a lot of character: older bungalows, hillside homes, and additions built over many decades. Plenty of them were heated with wall furnaces, floor heaters, or baseboard electric, and many never had air conditioning at all.
+San Rafael has a lot of character: older bungalows, hillside homes, and additions built over many decades. Plenty of them were heated with wall [furnaces](/services/furnaces), floor heaters, or baseboard electric, and many never had air conditioning at all.
 
 Adding ducts to a finished house can mean cutting into plaster, finding space in tight attics, or giving up closet room. A [ductless mini split](/services/mini-splits) skips all that. A small outdoor unit connects to one or more slim indoor units with a thin line set, which only needs a small opening in the wall.
 

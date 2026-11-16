@@ -21,7 +21,7 @@ Marin homeowners are a different story. Most of Marin is served by MCE, which ru
 
 Sonoma Clean Power's home programs focus on helping customers move off gas and use cleaner electricity. The equipment that comes up most in our work:
 
-- **[Heat pumps](/services/heat-pumps) for heating and cooling.** One all-electric system that replaces an old furnace and an aging AC.
+- **[Heat pumps](/services/heat-pumps) for heating and cooling.** One all-electric system that replaces an old [furnace](/services/furnaces) and an aging AC.
 - **[Heat pump water heaters](/services/heat-pump-water-heaters).** These are one of the simplest gas-to-electric switches for a North Bay home, and Sonoma Clean Power has put a lot of attention on them.
 
 Customers enrolled in the CARE or FERA bill discount programs have been eligible for enhanced rebates that cover more of the project cost. If you're on one of those programs, tell us at the estimate so we can factor it in.

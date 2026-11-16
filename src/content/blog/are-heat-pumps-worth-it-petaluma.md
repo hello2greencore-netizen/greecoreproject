@@ -7,7 +7,7 @@ image: /images/services/heat-pumps.jpg
 imageAlt: Green Core technician servicing an outdoor heat pump at a Sonoma County home
 related: heat-pumps, mini-splits, harvest-thermal
 ---
-**Short answer:** yes. Petaluma's mild winters and warm summer afternoons are close to ideal for a heat pump. One system handles both heating and cooling, runs efficiently in our temperature range, and replaces a gas furnace and a separate air conditioner.
+**Short answer:** yes. Petaluma's mild winters and warm summer afternoons are close to ideal for a heat pump. One system handles both heating and cooling, runs efficiently in our temperature range, and replaces a [gas furnace](/services/furnaces) and a separate [air conditioner](/services/air-conditioning).
 
 ## Why our climate suits heat pumps
 

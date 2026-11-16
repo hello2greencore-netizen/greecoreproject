@@ -19,7 +19,7 @@ Plenty of Mill Valley homes were built long before anyone planned for central ai
 
 Steep driveways, narrow streets, and stairs to the front door are part of life here. They matter on install day because equipment has to get from the truck to the house.
 
-- **Outdoor unit placement.** The outdoor unit needs a level, stable spot with airflow around it. On a hillside lot, that might mean a pad on a side yard, a wall bracket, or a spot near the existing gas furnace or AC.
+- **Outdoor unit placement.** The outdoor unit needs a level, stable spot with airflow around it. On a hillside lot, that might mean a pad on a side yard, a wall bracket, or a spot near the existing [gas furnace](/services/furnaces) or AC.
 - **Moving equipment.** Tight access can mean more hand-carrying and a bit more time. We plan for it when we walk the property, so there are no surprises.
 - **Drainage and debris.** Hillside lots collect leaves and needles. We pick a location that's easy to keep clear.
 

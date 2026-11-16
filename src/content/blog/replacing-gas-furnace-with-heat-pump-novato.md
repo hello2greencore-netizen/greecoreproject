@@ -7,11 +7,11 @@ image: /images/service-areas/novato.jpg
 imageAlt: Neighborhood in Novato, California
 related: heat-pumps, furnaces, duct-work
 ---
-**Short answer:** yes, you can replace a gas furnace with a heat pump in most Novato homes, and it often reuses your existing ductwork. One outdoor unit and one indoor unit take over both heating and cooling, so you can retire the furnace and the old AC at the same time. The main things we check first are your ducts and your electrical panel.
+**Short answer:** yes, you can replace a [gas furnace](/services/furnaces) with a heat pump in most Novato homes, and it often reuses your existing ductwork. One outdoor unit and one indoor unit take over both heating and cooling, so you can retire the furnace and the old AC at the same time. The main things we check first are your ducts and your electrical panel.
 
 ## Why Novato homeowners are making the switch
 
-Novato has mild winters and warm, dry summers, especially away from the bay. That is exactly the kind of climate where a modern [heat pump](/services/heat-pumps) shines. It cools in summer like a central air conditioner, then reverses in winter to move heat into your home instead of burning gas.
+Novato has mild winters and warm, dry summers, especially away from the bay. That is exactly the kind of climate where a modern [heat pump](/services/heat-pumps) shines. It cools in summer like a [central air conditioner](/services/air-conditioning), then reverses in winter to move heat into your home instead of burning gas.
 
 Many Novato homes were built decades ago with a gas furnace in a closet, attic, or crawlspace and no air conditioning at all. Replacing the furnace is a good moment to add cooling without adding a second system.
 

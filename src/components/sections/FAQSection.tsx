@@ -2,6 +2,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import type { FAQ } from "@/types";
+import Link from "next/link";
 
 type Props = {
   title?: string;
@@ -66,6 +67,14 @@ export function FAQSection({
                 </summary>
                 <p className="mt-3 text-sm leading-relaxed text-muted sm:text-base">
                   {faq.answer}
+                  {faq.link ? (
+                    <>
+                      {" "}
+                      <Link href={faq.link.href} className="font-medium text-brand-700 underline underline-offset-2">
+                        {faq.link.label}
+                      </Link>
+                    </>
+                  ) : null}
                 </p>
               </details>
             </RevealItem>

@@ -556,6 +556,11 @@ export const services: Service[] = [
       {
         "question": "Can you repair my existing tankless water heater?",
         "answer": "Yes. We diagnose and repair tankless units, and we'll tell you honestly if replacement makes more sense."
+      },
+      {
+        "question": "How much does a tankless water heater cost installed in Sonoma, Marin, Napa and Solano?",
+        "answer": "Most tankless installs we quote run about $6,500 to $9,450 before rebates (our cost guide, as of October 2026). The final price depends on the unit size, your gas line and venting, and where it's mounted. We give a free estimate before any work.",
+        "link": { "label": "See our full cost guide.", "href": "/guides/hvac-cost" }
       }
     ],
     related: [

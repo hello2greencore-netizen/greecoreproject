@@ -19,6 +19,12 @@ import { serviceReviews } from "@/data/reviewPlacements";
 import { AnswerBox, ComparisonTableSection, ContentSections, TownLinks } from "@/components/sections/ServiceDepth";
 import { buildMetadata } from "@/lib/seo";
 
+/** Service pages that link to a dedicated repair page. */
+const repairLinks: Record<string, { text: string; label: string; href: string }> = {
+  "air-conditioning": { text: "AC not cooling right now?", label: "See our AC repair page.", href: "/services/ac-repair" },
+  furnaces: { text: "No heat right now?", label: "See our furnace and heating repair page.", href: "/services/furnace-repair" },
+};
+
 /** Service pages that link to the online estimate (the tool prices these systems). */
 const onlineEstimateSlugs = new Set(["furnaces", "heat-pumps"]);
 
@@ -227,6 +233,19 @@ export default async function ServicePage(
         ids={serviceReviews[`services/${service.slug}`]}
         title={`${label}: what North Bay homeowners say`}
       />
+
+      {repairLinks[service.slug] && (
+        <section className="py-10 sm:py-12">
+          <Container size="xl">
+            <p className="text-base text-muted">
+              {repairLinks[service.slug].text}{" "}
+              <Link href={repairLinks[service.slug].href} className="font-semibold text-brand-700 hover:underline">
+                {repairLinks[service.slug].label}
+              </Link>
+            </p>
+          </Container>
+        </section>
+      )}
 
       {details && (
         <TownLinks

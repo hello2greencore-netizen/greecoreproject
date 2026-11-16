@@ -65,6 +65,6 @@ Sometimes. A mini split can add comfort to one problem room while your existing 
 
 ### Will a heat pump handle Tiburon winters?
 
-Yes. Tiburon's winters are mild, and a correctly sized heat pump handles them well, with no gas furnace needed.
+Yes. Tiburon's winters are mild, and a correctly sized heat pump handles them well, with no [gas furnace](/services/furnaces) needed.
 
 Want quiet, even comfort in your Tiburon home? Call Green Core at (707) 988-5858 or [request a free estimate](/contact).

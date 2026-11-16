@@ -79,6 +79,6 @@ Because the old setup may not meet current code. The permit inspection checks th
 
 ### What does a water heater replacement cost in Napa?
 
-Standard gas or electric tank replacement starts at $2,850. Heat pump and tankless water heaters are priced to your home after a free in-home estimate.
+Standard gas or electric tank replacement starts at $2,850. Heat pump and [tankless water heaters](/services/tankless-water-heaters) are priced to your home after a free in-home estimate.
 
 Need a water heater replaced or checked in [Napa](/service-areas/napa)? Call Green Core at (707) 988-5858 or [request a free estimate](/contact).

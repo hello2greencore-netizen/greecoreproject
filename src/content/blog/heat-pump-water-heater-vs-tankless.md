@@ -15,7 +15,7 @@ Both are big upgrades over a standard tank. They just solve different problems.
 
 A **heat pump water heater** pulls heat from the surrounding air and moves it into a storage tank, a lot like a refrigerator in reverse. It can be three to four times more efficient than a standard electric tank. We install SANCO2 split systems, with a quiet outdoor heat pump and indoor tank, and GE GeoSpring hybrid tanks.
 
-A **tankless water heater** fires a gas burner only when you open a tap, heating water as it flows through. There's no tank to run empty. We install Navien condensing tankless units, which mount on a wall and vent through PVC.
+A **tankless water heater** fires a gas burner only when you open a tap, heating water as it flows through. There's no tank to run empty. We install Navien condensing [tankless](/services/tankless-water-heaters) units, which mount on a wall and vent through PVC.
 
 ## Side-by-side
 

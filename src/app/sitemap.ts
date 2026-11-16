@@ -35,6 +35,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     })),
 
+    // Dedicated repair pages
+    ...["ac-repair", "furnace-repair"].map((slug) => ({
+      url: `${base}/services/${slug}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+    })),
+
     // Tier 3 — individual service pages
     ...services.map((s) => ({
       url: `${base}/services/${s.slug}`,

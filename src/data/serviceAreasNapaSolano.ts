@@ -166,6 +166,8 @@ export const napaSolanoAreas: ServiceArea[] = [
     utility: "MCE",
     heroImage: "/images/hero/service-areas.jpg",
     heroTitle: "AC, Heating & Water Heater Services in Fairfield, CA",
+    heroDescription:
+      "AC repair and replacement, furnaces, water heaters, heat pumps and mini splits for Fairfield, Green Valley and Cordelia homes. No trip charge, free estimates on new systems, and same-day water heater replacement when our schedule allows. Call (707) 988-5858.",
     metaTitle: "AC Repair & Replacement in Fairfield & Green Valley, CA",
     metaDescription:
       "AC, furnace, heat pump & water heater service in Fairfield, Green Valley & Cordelia. No trip charge, free estimates, military discounts available.",

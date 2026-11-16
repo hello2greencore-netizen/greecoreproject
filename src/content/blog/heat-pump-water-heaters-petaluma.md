@@ -19,7 +19,7 @@ Moving heat takes less energy than making it. That's where the efficiency comes 
 
 Petaluma has mild winters and a steady marine influence, with cool mornings and fog that rolls in from the coast. That's friendly territory for a unit that draws heat from the air. Garages, utility rooms, and basements in town generally stay in a comfortable range most of the year.
 
-If you're replacing a gas water heater, switching is also a step toward an all-electric home. If you already have an electric tank, a heat pump model is often the simplest efficiency upgrade available. See our [Petaluma service area page](/service-areas/petaluma) for the work we do locally.
+If you're replacing a [gas water heater](/services/gas-water-heaters), switching is also a step toward an all-electric home. If you already have an electric tank, a heat pump model is often the simplest efficiency upgrade available. See our [Petaluma service area page](/service-areas/petaluma) for the work we do locally.
 
 ## What your home needs
 
@@ -40,7 +40,7 @@ A heat pump water heater isn't a simple swap in every case. We look at a few thi
 | Space needed | More room and airflow | Compact | Wall-mounted, compact |
 | Upfront cost | Higher | Lowest | Higher |
 
-Not sure how a tankless unit stacks up? We compared the two in [heat pump water heater vs. tankless](/blog/heat-pump-water-heater-vs-tankless).
+Not sure how a [tankless](/services/tankless-water-heaters) unit stacks up? We compared the two in [heat pump water heater vs. tankless](/blog/heat-pump-water-heater-vs-tankless).
 
 ## What about cost and rebates?
 

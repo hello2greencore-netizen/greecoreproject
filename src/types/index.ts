@@ -76,6 +76,9 @@ export type ServiceArea = {
   projects?: ShowcaseProject[];
   /** Optional page-specific hero headline (defaults to the standard town headline). */
   heroTitle?: string;
+  heroDescription?: string;
+  /** Optional line after the intro linking to a parent page (e.g. Petaluma city page -> homepage). */
+  parentLink?: { text: string; label: string; href: string };
   /** Optional page-specific SEO title and meta description. */
   metaTitle?: string;
   metaDescription?: string;
@@ -95,6 +98,8 @@ export type Testimonial = {
 export type FAQ = {
   question: string;
   answer: string;
+  /** Optional link shown after the answer on the page (not in the FAQ schema text). */
+  link?: { label: string; href: string };
 };
 
 export type CoreValue = {

@@ -7,7 +7,7 @@ image: /images/service-areas/rohnert-park.jpg
 imageAlt: Neighborhood in Rohnert Park, California
 related: air-conditioning, heat-pumps, furnaces
 ---
-**Short answer:** if your air conditioner is failing and your furnace is getting old too, a heat pump is usually the better buy for Rohnert Park and Cotati homes. It cools like an air conditioner, and in winter it reverses and heats your home. If your furnace is newer and working well, a new air conditioner can still make sense. The right call depends on your equipment, your ducts, and your plans.
+**Short answer:** if your air conditioner is failing and your [furnace](/services/furnaces) is getting old too, a heat pump is usually the better buy for Rohnert Park and Cotati homes. It cools like an air conditioner, and in winter it reverses and heats your home. If your furnace is newer and working well, a new air conditioner can still make sense. The right call depends on your equipment, your ducts, and your plans.
 
 ## How an air conditioner and a heat pump differ
 

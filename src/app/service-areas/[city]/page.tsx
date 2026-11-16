@@ -61,7 +61,7 @@ export default async function ServiceAreaPage(
       <Hero
         eyebrow={area.county}
         title={area.heroTitle ?? `Heat Pump, HVAC & Water Heater Services in ${area.city}, CA`}
-        description={`Heat pumps, water heaters, AC, furnaces, and mini splits for ${area.city} homes. Same-day water heater replacement when our schedule allows.`}
+        description={area.heroDescription ?? `Heat pumps, water heaters, AC, furnaces, and mini splits for ${area.city} homes. Same-day water heater replacement when our schedule allows.`}
         image={area.heroImage}
         imageAlt={`${area.city}, California`}
         size="spacious"
@@ -81,6 +81,16 @@ export default async function ServiceAreaPage(
               {area.lifestyleLine}
             </p>
           </Reveal>
+          {area.parentLink && (
+            <Reveal delay={0.08}>
+              <p className="mt-5 text-base leading-relaxed text-muted sm:text-lg">
+                {area.parentLink.text}{" "}
+                <Link href={area.parentLink.href} className="font-semibold text-brand-700 hover:underline">
+                  {area.parentLink.label}
+                </Link>
+              </p>
+            </Reveal>
+          )}
 
           <div className="mt-10">
             <Reveal>
@@ -211,6 +221,12 @@ export default async function ServiceAreaPage(
               </RevealGroup>
             </div>
           ))}
+          <p className="mt-10 text-base text-muted">
+            Need a repair in {area.city}? See our{" "}
+            <Link href="/services/ac-repair" className="font-semibold text-brand-700 hover:underline">AC repair</Link> and{" "}
+            <Link href="/services/furnace-repair" className="font-semibold text-brand-700 hover:underline">furnace &amp; heating repair</Link>{" "}
+            pages.
+          </p>
         </Container>
       </section>
 

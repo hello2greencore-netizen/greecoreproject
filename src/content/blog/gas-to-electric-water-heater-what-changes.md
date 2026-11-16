@@ -7,7 +7,7 @@ image: /images/services/electric-water-heaters.jpg
 imageAlt: Electric water heater installed in a Sonoma County home
 related: electric-water-heaters, heat-pump-water-heaters, water-heaters
 ---
-**Short answer:** switching from a gas water heater to an electric one mostly changes four things: the electrical supply, the venting, the gas line, and the space the new unit needs. Many homes can make the switch without trouble. Some need a new 240-volt circuit or a panel check first, and we sort that out at a free in-home estimate before you commit.
+**Short answer:** switching from a [gas water heater](/services/gas-water-heaters) to an electric one mostly changes four things: the electrical supply, the venting, the gas line, and the space the new unit needs. Many homes can make the switch without trouble. Some need a new 240-volt circuit or a panel check first, and we sort that out at a free in-home estimate before you commit.
 
 ## Why homeowners switch from gas to electric
 
@@ -71,6 +71,6 @@ Often about a day when the electrical is straightforward. Adding a circuit, a dr
 
 ### Can I keep my gas furnace and still switch the water heater?
 
-Yes. The water heater is its own appliance. Switching it doesn't change how your furnace runs, and the gas line stays in place for anything still using it.
+Yes. The water heater is its own appliance. Switching it doesn't change how your [furnace](/services/furnaces) runs, and the gas line stays in place for anything still using it.
 
 Thinking about a gas to electric water heater switch in Sonoma or Marin? Call Green Core at (707) 988-5858 or [request a free estimate](/contact).

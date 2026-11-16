@@ -7,7 +7,7 @@ image: /images/services/gas-water-heaters.jpg
 imageAlt: Green Core technician replacing a gas water heater in a hall closet
 related: water-heaters, gas-water-heaters, heat-pump-water-heaters
 ---
-**Short answer:** at Green Core Heating & Air, a standard gas or electric tank water heater replacement starts at **$2,850**. Heat pump and tankless water heaters cost more up front and are priced to your home, though heat pump models often qualify for rebates that bring the cost down.
+**Short answer:** at Green Core Heating & Air, a standard gas or [electric tank water heater](/services/electric-water-heaters) replacement starts at **$2,850**. Heat pump and [tankless water heaters](/services/tankless-water-heaters) cost more up front and are priced to your home, though heat pump models often qualify for rebates that bring the cost down.
 
 The exact number depends on what kind of water heater you choose and what your home needs to install it safely and to code. Here's how it breaks down.
 
@@ -23,7 +23,7 @@ The exact number depends on what kind of water heater you choose and what your h
 ## What changes the price
 
 - **Type and size.** A 40- or 50-gallon tank fits most homes. Bigger households or large soaking tubs may need more capacity.
-- **Venting.** Gas water heaters need a proper flue or vent. Condensing tankless units vent through PVC, which may mean a new vent route.
+- **Venting.** [Gas water heaters](/services/gas-water-heaters) need a proper flue or vent. Condensing tankless units vent through PVC, which may mean a new vent route.
 - **Gas line.** Tankless units need more gas at once than a tank, so some homes need a larger gas line.
 - **Electrical.** Heat pump water heaters need a dedicated circuit. If you're switching from gas, we check whether your panel can handle it.
 - **Code items.** California requires seismic strapping, a properly piped temperature and pressure relief valve, and a permit. An expansion tank is often required too.

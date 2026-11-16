@@ -7,11 +7,11 @@ image: /images/services/heat-pumps.jpg
 imageAlt: Outdoor heat pump unit installed at a Sonoma Valley home
 related: heat-pumps, mini-splits, heat-pump-water-heaters
 ---
-**Short answer:** going all-electric in Sonoma Valley usually starts with a heat pump, because one system handles both heating and cooling and replaces your gas furnace. From there, the other pieces, like the water heater and the electrical panel, can follow at your pace. We look at your whole house at a free in-home estimate so you can see the steps before you commit.
+**Short answer:** going all-electric in Sonoma Valley usually starts with a heat pump, because one system handles both heating and cooling and replaces your [gas furnace](/services/furnaces). From there, the other pieces, like the water heater and the electrical panel, can follow at your pace. We look at your whole house at a free in-home estimate so you can see the steps before you commit.
 
 ## Why Sonoma Valley is a good fit for a heat pump
 
-The valley has hot, dry summer afternoons and cool nights, with winters that are mild compared to much of the country. That swing is exactly what a [heat pump](/services/heat-pumps) is built for. In summer it cools like a central air conditioner. In winter it reverses and moves heat into the house instead of burning gas.
+The valley has hot, dry summer afternoons and cool nights, with winters that are mild compared to much of the country. That swing is exactly what a [heat pump](/services/heat-pumps) is built for. In summer it cools like a [central air conditioner](/services/air-conditioning). In winter it reverses and moves heat into the house instead of burning gas.
 
 For many homes in [Sonoma](/service-areas/sonoma), that means one system replacing an aging furnace and a separate air conditioner. It also means fewer things to maintain.
 
@@ -62,6 +62,6 @@ Yes. We work throughout Sonoma Valley, including the unincorporated areas around
 
 ### What does it cost?
 
-Heat pump systems are priced to your home after a free in-home estimate. The one price we publish is that standard gas or electric tank water heater replacement starts at $2,850.
+Heat pump systems are priced to your home after a free in-home estimate. The one price we publish is that standard gas or [electric tank water heater](/services/electric-water-heaters) replacement starts at $2,850.
 
 Thinking about going all-electric in Sonoma Valley? Call Green Core at (707) 988-5858 or [request a free estimate](/contact).

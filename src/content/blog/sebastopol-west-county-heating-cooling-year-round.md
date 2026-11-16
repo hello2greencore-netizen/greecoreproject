@@ -20,11 +20,11 @@ Common comfort complaints we hear:
 - A damp, chilly feeling in the morning that the thermostat doesn't seem to fix
 - A back bedroom or addition that is always a different temperature from the rest of the house
 - Ducts running through a crawlspace or attic that lose heat before it reaches the room
-- An old furnace or AC that runs constantly and still can't keep up
+- An old [furnace](/services/furnaces) or AC that runs constantly and still can't keep up
 
 ## Heat pumps for a mild coastal-influenced climate
 
-A [heat pump](/services/heat-pumps) heats and cools with the same equipment. In summer it removes heat from the house like a central air conditioner. In winter it moves heat into the house instead of burning gas.
+A [heat pump](/services/heat-pumps) heats and cools with the same equipment. In summer it removes heat from the house like a [central air conditioner](/services/air-conditioning). In winter it moves heat into the house instead of burning gas.
 
 Our mild winters are where heat pumps shine. They don't have to fight deep freezes, so they run in their most efficient range for much of the season. Many Sebastopol homeowners are also thinking about going all-electric or already have solar, and a heat pump fits that plan well.
 

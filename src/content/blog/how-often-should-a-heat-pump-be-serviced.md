@@ -7,7 +7,7 @@ image: /images/services/heat-pumps.jpg
 imageAlt: Green Core technician servicing an outdoor heat pump at a Sonoma County home
 related: heat-pumps, mini-splits, duct-work
 ---
-**Short answer:** a heat pump should get a professional check at least once a year, and twice a year is better, once before summer and once before winter. Unlike a furnace or an air conditioner, a heat pump heats and cools, so it runs most of the year. That means more wear, and more reason to keep it clean and checked.
+**Short answer:** a heat pump should get a professional check at least once a year, and twice a year is better, once before summer and once before winter. Unlike a [furnace](/services/furnaces) or an [air conditioner](/services/air-conditioning), a heat pump heats and cools, so it runs most of the year. That means more wear, and more reason to keep it clean and checked.
 
 ## Why heat pumps need regular service
 

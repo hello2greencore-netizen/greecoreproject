@@ -170,6 +170,14 @@ export function ServiceTypePage({ type: t }: { type: ServiceType }) {
               </li>
             ))}
           </ul>
+          {t.kind === "repair" && (
+            <p className="mt-6 text-sm text-muted">
+              Repair pages:{" "}
+              <Link href="/services/ac-repair" className="font-semibold text-brand-700 hover:underline">AC repair</Link>
+              {" · "}
+              <Link href="/services/furnace-repair" className="font-semibold text-brand-700 hover:underline">Furnace &amp; heating repair</Link>
+            </p>
+          )}
           <p className="mt-6 text-sm text-muted">
             Also see:{" "}
             {others.map((o, i) => (

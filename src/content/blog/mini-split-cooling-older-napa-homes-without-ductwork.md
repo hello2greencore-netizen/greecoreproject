@@ -11,7 +11,7 @@ related: mini-splits, heat-pumps, air-conditioning
 
 ## Why older Napa homes are hard to cool
 
-Napa has a lot of homes built long before central air was standard. Craftsman bungalows and Victorians near Fuller Park and downtown, and older homes in neighborhoods like Alta Heights, were often heated with a wall furnace or floor heater and never had cooling at all.
+Napa has a lot of homes built long before central air was standard. Craftsman bungalows and Victorians near Fuller Park and downtown, and older homes in neighborhoods like Alta Heights, were often heated with a wall [furnace](/services/furnaces) or floor heater and never had cooling at all.
 
 That worked when people opened the windows at night and rode out a few warm days. But Napa afternoons get hot in summer, and fire season can mean keeping the windows shut for days. A box fan in the bedroom only goes so far.
 

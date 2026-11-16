@@ -13,7 +13,7 @@ related: heat-pumps, furnaces, duct-work
 
 A gas furnace burns fuel to make heat. A [heat pump](/services/heat-pumps) uses electricity to move heat from the outside air into your home. Moving heat takes far less energy than creating it, which is why heat pumps are so efficient.
 
-That efficiency matters most in a mild climate like ours. Sonoma and Marin winters rarely stay deeply cold, so a heat pump spends most of the season in its sweet spot. Summer cooling comes along in the same system, which replaces a separate air conditioner.
+That efficiency matters most in a mild climate like ours. Sonoma and Marin winters rarely stay deeply cold, so a heat pump spends most of the season in its sweet spot. Summer cooling comes along in the same system, which replaces a separate [air conditioner](/services/air-conditioning).
 
 ## What actually drives your monthly bill
 

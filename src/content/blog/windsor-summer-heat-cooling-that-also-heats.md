@@ -7,7 +7,7 @@ image: /images/services/air-conditioning.jpg
 imageAlt: Outdoor air conditioning unit at a Sonoma County home
 related: heat-pumps, air-conditioning, mini-splits, duct-work
 ---
-**Short answer:** for most Windsor homes, the best cooling upgrade is a heat pump. It cools like a central air conditioner in summer, then reverses in winter to heat your home without burning gas. If you only have an old AC and furnace pair, one heat pump can replace both.
+**Short answer:** for most Windsor homes, the best cooling upgrade is a heat pump. It cools like a central air conditioner in summer, then reverses in winter to heat your home without burning gas. If you only have an old AC and [furnace](/services/furnaces) pair, one heat pump can replace both.
 
 ## Why Windsor summers are hard on a home
 

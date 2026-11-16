@@ -47,7 +47,7 @@ If the outdoor unit has nowhere good to go, there are still choices:
 
 ## What if my current system is already loud?
 
-An old air conditioner or furnace can be much louder than a new heat pump, so many homeowners are pleasantly surprised after a replacement. If a newer system is noisy, the cause is usually fixable: a loose panel, a fan that needs attention, a pad that has settled, or dirty coils. [Regular service](/blog/how-often-should-a-heat-pump-be-serviced) catches most of these early.
+An old [air conditioner](/services/air-conditioning) or [furnace](/services/furnaces) can be much louder than a new heat pump, so many homeowners are pleasantly surprised after a replacement. If a newer system is noisy, the cause is usually fixable: a loose panel, a fan that needs attention, a pad that has settled, or dirty coils. [Regular service](/blog/how-often-should-a-heat-pump-be-serviced) catches most of these early.
 
 Because we size the system to your home, not to the label on the old unit, you also avoid an oversized system that cycles on and off too much.
 

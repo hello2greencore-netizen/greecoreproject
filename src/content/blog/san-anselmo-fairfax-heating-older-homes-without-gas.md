@@ -13,7 +13,7 @@ related: heat-pumps, mini-splits, heat-pump-water-heaters
 
 Many San Anselmo and Fairfax homes are cottages, mid-century houses, and hillside homes tucked under redwoods and oaks. Shade and creek-side dampness keep them cool in winter. Summers are milder than inland Sonoma County, but warm afternoons still happen, and plenty of these homes were built long before central air.
 
-Older homes often have a wall furnace, floor furnace, or baseboard heaters. Those heat the room they sit in and not much else. A [heat pump](/services/heat-pumps) moves heat instead of making it, so it can cover heating and cooling with one system and cut out the gas appliance.
+Older homes often have a wall [furnace](/services/furnaces), floor furnace, or baseboard heaters. Those heat the room they sit in and not much else. A [heat pump](/services/heat-pumps) moves heat instead of making it, so it can cover heating and cooling with one system and cut out the gas appliance.
 
 ## Ducted or ductless? How to choose
 
@@ -37,7 +37,7 @@ Going without gas is mostly a planning job. Before we quote, we look at:
 1. **The electrical panel.** Smaller, older panels are common here. Sometimes a new circuit is enough. Sometimes the panel needs an upgrade first.
 2. **Where equipment can go.** Tight lots and hillside sites mean we think about outdoor unit placement, noise, and clearances up front.
 3. **Access.** Crawlspaces, narrow stairs, and steep driveways affect how we work, and we plan for them.
-4. **Hot water.** The gas water heater is usually the next gas appliance to go. A [heat pump water heater](/services/heat-pump-water-heaters) can follow the heat pump, and planning both together saves surprises with the panel.
+4. **Hot water.** The [gas water heater](/services/gas-water-heaters) is usually the next gas appliance to go. A [heat pump water heater](/services/heat-pump-water-heaters) can follow the heat pump, and planning both together saves surprises with the panel.
 
 Every home is priced to your home after the free estimate, so you see clear written options before you decide anything.
 

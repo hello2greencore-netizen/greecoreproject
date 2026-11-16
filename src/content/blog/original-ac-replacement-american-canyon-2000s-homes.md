@@ -13,7 +13,7 @@ related: air-conditioning, heat-pumps, duct-work
 
 A lot of American Canyon grew up fast in the late 1990s and 2000s. Neighborhoods like Vintage Ranch and the streets off Highway 29 went up within a few years of each other, often with similar equipment from the builder.
 
-That means whole blocks of original air conditioners and furnaces are hitting the end of their lives together. If your neighbors are replacing theirs, yours probably isn't far behind.
+That means whole blocks of original air conditioners and [furnaces](/services/furnaces) are hitting the end of their lives together. If your neighbors are replacing theirs, yours probably isn't far behind.
 
 Builder-grade systems were often picked to hit a price, not to fit each house. Many were sized by rule of thumb, and the ductwork was run quickly in the attic. Twenty years later, that shows up as hot bedrooms, high summer bills, and a system that runs all afternoon.
 

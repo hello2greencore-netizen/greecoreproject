@@ -15,7 +15,7 @@ If your water heater just quit, you probably don't want a lecture. So here's the
 
 **Tank (gas or electric).** A storage tank keeps a supply of water hot and ready, using either a gas burner or electric elements. It's the setup most North Bay homes already have. We install Bradford White and American Standard tanks.
 
-**Tankless (gas).** No storage tank. A burner fires only when you open a tap and heats the water as it flows through. It mounts on a wall and never "runs out" as long as you stay within its flow rate. We install Navien condensing tankless units.
+**Tankless (gas).** No storage tank. A burner fires only when you open a tap and heats the water as it flows through. It mounts on a wall and never "runs out" as long as you stay within its flow rate. We install Navien condensing [tankless](/services/tankless-water-heaters) units.
 
 **Heat pump water heater.** It pulls heat from the surrounding air and moves it into a storage tank, like a refrigerator working in reverse. It's all-electric and the most efficient of the three. We install SANCO2 split systems and GE GeoSpring hybrid tanks.
 

@@ -7,7 +7,7 @@ image: /images/services/heat-pumps.jpg
 imageAlt: Green Core technician servicing an outdoor heat pump at a Sonoma County home
 related: heat-pumps, duct-work, mini-splits
 ---
-**Short answer:** the right heat pump size depends on your home, not its square footage alone. Insulation, windows, sun exposure, ductwork, and how you live in the house all change how much heating and cooling it needs. We size the system to your home during a free in-home estimate, not to the label on your old furnace or AC.
+**Short answer:** the right heat pump size depends on your home, not its square footage alone. Insulation, windows, sun exposure, ductwork, and how you live in the house all change how much heating and cooling it needs. We size the system to your home during a free in-home estimate, not to the label on your old [furnace](/services/furnaces) or AC.
 
 ## How heat pump size is measured
 

@@ -7,7 +7,7 @@ image: /images/services/harvest-thermal.jpg
 imageAlt: Harvest Thermal heat pump system installed by Green Core
 related: harvest-thermal, heat-pumps, heat-pump-water-heaters
 ---
-**Short answer:** Harvest Thermal is one all-electric heat pump system that handles your home's heating, hot water, and cooling, with smart controls that shift energy use to cheaper hours. It's a good fit when your gas furnace and gas water heater are both getting old and you'd rather replace two gas appliances with one system. It isn't right for every home, so we evaluate yours before we install anything.
+**Short answer:** Harvest Thermal is one all-electric heat pump system that handles your home's heating, hot water, and cooling, with smart controls that shift energy use to cheaper hours. It's a good fit when your [gas furnace](/services/furnaces) and [gas water heater](/services/gas-water-heaters) are both getting old and you'd rather replace two gas appliances with one system. It isn't right for every home, so we evaluate yours before we install anything.
 
 ## What is Harvest Thermal?
 

@@ -11,7 +11,7 @@ related: heat-pumps, mini-splits, duct-work
 
 ## How a ducted heat pump works
 
-A ducted [heat pump](/services/heat-pumps) has an outdoor unit and one indoor air handler. The air handler pushes warm or cool air through your existing ductwork to vents in each room, much like a gas furnace and central AC do today.
+A ducted [heat pump](/services/heat-pumps) has an outdoor unit and one indoor air handler. The air handler pushes warm or cool air through your existing ductwork to vents in each room, much like a [gas furnace](/services/furnaces) and [central AC](/services/air-conditioning) do today.
 
 That makes it a natural swap for many North Bay homes built with forced-air systems. The equipment disappears into a closet, attic, or crawlspace, and you get a clean look with no units on your walls.
 

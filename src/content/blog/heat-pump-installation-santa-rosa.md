@@ -13,7 +13,7 @@ related: heat-pumps, mini-splits, duct-work
 
 Santa Rosa sits farther from the coast than Petaluma, so summers run hotter. Afternoons in the 90s are common from July through September, and heat waves can push past 100. Winter nights often drop into the 30s.
 
-A [heat pump](/services/heat-pumps) covers both ends. In summer it cools like a central air conditioner. In winter it reverses and moves heat into your home instead of burning gas. For many Santa Rosa homeowners, that means replacing an old furnace and an aging AC with one all-electric system.
+A [heat pump](/services/heat-pumps) covers both ends. In summer it cools like a [central air conditioner](/services/air-conditioning). In winter it reverses and moves heat into your home instead of burning gas. For many Santa Rosa homeowners, that means replacing an old [furnace](/services/furnaces) and an aging AC with one all-electric system.
 
 ## Step by step: how a Green Core install works
 

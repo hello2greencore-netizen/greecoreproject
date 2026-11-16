@@ -22,7 +22,7 @@ The outdoor unit and the indoor unit each need proper wiring and a disconnect, i
 
 ## Why older homes are more likely to need work
 
-Plenty of North Bay homes were built decades ago, when a house ran on far less electricity. Gas handled the furnace, water heater, and often the stove and dryer too.
+Plenty of North Bay homes were built decades ago, when a house ran on far less electricity. Gas handled the [furnace](/services/furnaces), water heater, and often the stove and dryer too.
 
 Older panels can be small, crowded, or out of date. Some have no open slots left. Switching from gas heat to a heat pump moves a big job over to electricity, so an older panel is where we look first.
 

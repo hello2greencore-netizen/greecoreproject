@@ -22,7 +22,7 @@ For single-family homeowners, BayREN's main offering is its Home+ program. It pa
 BayREN's homeowner rebates focus on upgrades that cut energy use and help homes move off gas. The equipment we see come up most often:
 
 - **[Heat pump water heaters](/services/heat-pump-water-heaters).** These have been a central part of BayREN's home program. They're also one of the easiest gas-to-electric switches for an older North Bay home.
-- **[Heat pumps](/services/heat-pumps) for heating and cooling.** Replacing an old furnace and AC with one all-electric system.
+- **[Heat pumps](/services/heat-pumps) for heating and cooling.** Replacing an old [furnace](/services/furnaces) and AC with one all-electric system.
 - **Related upgrades.** Some projects include work like duct improvements or safety testing that programs may count toward a rebate.
 
 Which measures are offered, and at what amount, changes from year to year. We don't publish a dollar figure here, because a number in a blog post can go stale fast. You can see the current details on the official [BayREN incentives page](https://www.bayren.org/find-incentives).

@@ -11,7 +11,7 @@ related: heat-pumps, mini-splits, duct-work
 
 ## How long does heat pump installation take on site?
 
-For a standard swap, where a heat pump replaces an old furnace and AC and your ducts are in decent shape, plan on about two days. Here is roughly how that time gets used:
+For a standard swap, where a heat pump replaces an old [furnace](/services/furnaces) and AC and your ducts are in decent shape, plan on about two days. Here is roughly how that time gets used:
 
 - **Day one:** protect floors and furniture, remove the old equipment, set the outdoor unit, and start on the indoor unit, refrigerant lines, and drain.
 - **Day two:** finish the electrical connections, start up the system, test airflow and temperatures, and walk you through the thermostat.

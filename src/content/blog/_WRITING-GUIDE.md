@@ -57,7 +57,11 @@ Keywords and links
   [Petaluma](/service-areas/petaluma), [request an estimate](/contact).
   Service slugs: heat-pumps, air-conditioning, furnaces, mini-splits, duct-work,
   harvest-thermal, water-heaters, heat-pump-water-heaters, tankless-water-heaters,
-  gas-water-heaters, electric-water-heaters.
+  gas-water-heaters, electric-water-heaters, ac-repair, furnace-repair.
+- Spread links across all services, not mostly heat pumps and mini splits: when a post
+  mentions a furnace, an air conditioner, AC or furnace repair, or a gas, electric or
+  tankless water heater, link that service page (furnaces, air-conditioning, ac-repair,
+  furnace-repair, gas-water-heaters, electric-water-heaters, tankless-water-heaters).
   City slugs: petaluma, rohnert-park, santa-rosa, novato, san-rafael, mill-valley, tiburon,
   sebastopol, cotati, windsor, sonoma, san-anselmo, fairfax.
 - Link out to an official program page when citing a rebate (one link is enough).

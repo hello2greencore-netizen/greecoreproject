@@ -62,7 +62,7 @@ Often, yes. We offer same-day replacement when our schedule allows. Call (707) 9
 
 ### How much does a same-day replacement cost?
 
-A standard gas or electric tank water heater replacement starts at $2,850. Heat pump and tankless systems are priced to your home. You get a clear written price before work starts.
+A standard gas or [electric tank water heater](/services/electric-water-heaters) replacement starts at $2,850. Heat pump and tankless systems are priced to your home. You get a clear written price before work starts.
 
 ### Do I need a permit for a water heater replacement?
 

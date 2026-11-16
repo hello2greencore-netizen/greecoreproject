@@ -42,6 +42,8 @@ export function LocalBusinessSchema() {
       { "@type": "AdministrativeArea", name: "Napa County" },
       { "@type": "AdministrativeArea", name: "Solano County" },
       ...serviceAreas.map((a) => ({ "@type": "City", name: a.city })),
+      // Towns on the service-area ZIP list that don't have their own page yet.
+      ...["Suisun City", "Dixon", "Sausalito", "Larkspur", "Corte Madera", "Kentfield", "Greenbrae", "Ross", "Belvedere", "Penngrove", "Glen Ellen", "Kenwood", "Graton", "Fulton"].map((name) => ({ "@type": "City", name })),
     ],
     // Open 24 hours, 7 days, matching the Google Business Profile.
     openingHoursSpecification: [

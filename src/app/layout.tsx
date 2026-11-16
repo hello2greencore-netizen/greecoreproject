@@ -8,6 +8,7 @@ import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { Footer } from "@/components/layout/Footer";
 import { StickyMobileCTA } from "@/components/layout/StickyMobileCTA";
 import { FAQChatbot } from "@/components/chatbot/FAQChatbot";
+import { HideOnPaths } from "@/components/layout/HideOnPaths";
 import { FallingLeaves, LeafPile, WalkingTurkey, ThanksgivingStyles } from "@/components/seasonal/ThanksgivingDecor";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 import { LocalBusinessSchema } from "@/components/seo/LocalBusinessSchema";
@@ -80,8 +81,11 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
-          <StickyMobileCTA />
-          <FAQChatbot />
+          {/* The /meta ad landing page uses the LeadConnector chat instead. */}
+          <HideOnPaths paths={["/meta"]}>
+            <StickyMobileCTA />
+            <FAQChatbot />
+          </HideOnPaths>
           <ThanksgivingStyles />
           <FallingLeaves />
           <LeafPile />

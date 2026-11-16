@@ -30,21 +30,28 @@ const sonomaMarinAreas: ServiceArea[] = [
     county: "Sonoma County",
     heroImage: "/images/hero/service-areas.jpg",
     intro:
-      "Green Core Heating & Air installs and services heat pumps, water heaters, air conditioning, furnaces, and ductless mini splits for homes in Petaluma, CA, from historic houses near D Street to newer neighborhoods on the east side of town. The climate here isn't extreme, but it's unique — cool marine air pushes in through the Petaluma Gap, mornings can be damp and foggy, and summer afternoons can still bring heat spikes. That combination means your HVAC system needs to be properly sized, efficient, and built to handle both temperature swings and moisture.",
+      "Petaluma is our home base, and we work in every part of it: the older homes of West Petaluma and the D Street area, the newer subdivisions on the east side of town, and the rural properties out toward Penngrove. Each part of town brings different heating, cooling and water heater problems. West side homes often have small closets, crawlspace ducts and older furnaces; newer east side homes often still run their original central AC and furnace, which may be nearing the end of its life; and Penngrove properties can mean longer duct runs, outbuildings and gas or propane water heaters.",
     lifestyleLine:
       "Whether you're spending the day walking through Downtown Petaluma, grabbing food along the riverfront, or heading out to Helen Putnam Regional Park, you should be able to come home to a space that feels comfortable and balanced. If your system struggles with humidity, uneven temperatures, or constantly running, it's often a sign the system wasn't designed for Petaluma's specific conditions — and that's where we come in.",
+    parentLink: {
+      text: "Looking for an overview of everything we do? Our",
+      label: "homepage covers all of our Petaluma heating, cooling and water heater services.",
+      href: "/",
+    },
     landmarks: [
-      "Downtown Petaluma",
+      "West Petaluma",
       "D Street",
+      "Downtown Petaluma",
+      "East Petaluma",
+      "Penngrove",
       "Petaluma River",
-      "Shollenberger Park",
       "Helen Putnam Regional Park",
     ],
     sections: [
       {
-        heading: "Designed for Petaluma Homes",
+        heading: "West Petaluma, the East Side and Penngrove",
         body: [
-          "We've worked on everything from historic homes near D Street and downtown to newer developments on the east side of town, and the differences matter. Older properties often deal with outdated ductwork, airflow issues, or systems that were never built for modern comfort expectations. Homes closer to the Petaluma River or open spaces like Shollenberger Park tend to experience more moisture in the air, while neighborhoods further west feel stronger coastal influence.",
+          "We've worked on everything from historic homes near D Street and downtown to newer developments on the east side of town and properties out in Penngrove, and the differences matter. Older properties often deal with outdated ductwork, airflow issues, or systems that were never built for modern comfort expectations. Homes closer to the Petaluma River or open spaces like Shollenberger Park tend to experience more moisture in the air, while neighborhoods further west feel stronger coastal influence.",
           "At Green Core Heating & Air, we provide heat pump installation, air conditioning services, furnace repair, mini splits, and ductwork upgrades tailored to these conditions. Instead of simply replacing equipment, we take a design-first approach — evaluating how your home actually performs so we can recommend solutions that work in real-world conditions, not just on paper.",
         ],
       },
@@ -323,6 +330,9 @@ const sonomaMarinAreas: ServiceArea[] = [
     waterHeaterNote: "For Tiburon homes where indoor space is at a premium, a SANCO2 heat pump water heater keeps its quiet heat pump outside and only the tank indoors.",
     city: "Tiburon",
     county: "Marin County",
+    metaTitle: "Heating, AC & Water Heaters in Tiburon",
+    metaDescription:
+      "Family-owned heating, cooling and water heater service for Tiburon homes. Free estimates, clear options, clean installs. Call (707) 988-5858.",
     heroImage: "/images/hero/service-areas.jpg",
     intro:
       "Green Core Heating & Air installs and services heat pumps, water heaters, air conditioning, furnaces, and ductless mini splits for homes in Tiburon, CA, including custom hillside homes built around bay views. With its coastal location, mild temperatures, and bay-facing properties, comfort here isn't about extreme heating or cooling — it's about consistency, efficiency, and systems that operate quietly in the background.",

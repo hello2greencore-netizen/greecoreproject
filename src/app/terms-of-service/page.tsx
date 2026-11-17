@@ -35,32 +35,32 @@ export default function TermsOfServicePage() {
             <h2>Text messaging (SMS) terms</h2>
             <ul>
               <li>
-                <strong>Program:</strong> Green Core Heating &amp; Air text messages. We send appointment confirmations
+                <strong>Program:</strong>{" "}Green Core Heating &amp; Air text messages. We send appointment confirmations
                 and reminders, technician arrival updates, estimate and proposal follow-ups, replies to your questions,
                 and service reminders. If you separately agree, we may also send occasional offers.
               </li>
               <li>
-                <strong>How you opt in:</strong> by giving us your mobile number and agreeing to receive texts, for
+                <strong>How you opt in:</strong>{" "}by giving us your mobile number and agreeing to receive texts, for
                 example on a website form, in our website chat, when booking online, by texting us first, or by telling
                 our team.
               </li>
               <li>
-                <strong>Consent is not a condition of purchase.</strong> You don&apos;t have to agree to texts to buy
+                <strong>Consent is not a condition of purchase.</strong>{" "}You don&apos;t have to agree to texts to buy
                 any service from us.
               </li>
               <li>
-                <strong>Message frequency varies</strong> based on your appointments and conversations with us.
+                <strong>Message frequency varies</strong>{" "}based on your appointments and conversations with us.
               </li>
               <li>
-                <strong>Message and data rates may apply.</strong> Check with your mobile carrier.
+                <strong>Message and data rates may apply.</strong>{" "}Check with your mobile carrier.
               </li>
               <li>
-                <strong>To opt out,</strong> reply <strong>STOP</strong> to any message. You&apos;ll get one message
+                <strong>To opt out,</strong>{" "}reply <strong>STOP</strong>{" "}to any message. You&apos;ll get one message
                 confirming you&apos;re unsubscribed, and we won&apos;t text you again unless you opt back in. You can
                 also reply CANCEL, END, QUIT, or UNSUBSCRIBE.
               </li>
               <li>
-                <strong>For help,</strong> reply <strong>HELP</strong> to any message, call{" "}
+                <strong>For help,</strong>{" "}reply <strong>HELP</strong>{" "}to any message, call{" "}
                 <a href={siteConfig.phoneHref}>{siteConfig.phone}</a>, or email{" "}
                 <a href={siteConfig.emailHref}>{siteConfig.email}</a>.
               </li>

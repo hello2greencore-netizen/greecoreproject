@@ -87,5 +87,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Tier 5 — trust & brand pages
     { url: `${base}/testimonials`, changeFrequency: "monthly", priority: 0.65 },
     { url: `${base}/about`, changeFrequency: "monthly", priority: 0.6 },
+
+    // Legal
+    { url: `${base}/privacy-policy`, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${base}/terms-of-service`, changeFrequency: "yearly", priority: 0.3 },
   ];
 }

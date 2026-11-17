@@ -1981,5 +1981,43 @@
    "Service"
   ],
   "faqQuestions": 6
+ },
+ "/privacy-policy": {
+  "canonical": "https://www.greencorehvac.com/privacy-policy",
+  "schemaTypes": [
+   "AdministrativeArea",
+   "BreadcrumbList",
+   "City",
+   "EducationalOccupationalCredential",
+   "GeoCoordinates",
+   "HVACBusiness",
+   "ImageObject",
+   "ListItem",
+   "Offer",
+   "OpeningHoursSpecification",
+   "Person",
+   "PostalAddress",
+   "Service"
+  ],
+  "faqQuestions": 0
+ },
+ "/terms-of-service": {
+  "canonical": "https://www.greencorehvac.com/terms-of-service",
+  "schemaTypes": [
+   "AdministrativeArea",
+   "BreadcrumbList",
+   "City",
+   "EducationalOccupationalCredential",
+   "GeoCoordinates",
+   "HVACBusiness",
+   "ImageObject",
+   "ListItem",
+   "Offer",
+   "OpeningHoursSpecification",
+   "Person",
+   "PostalAddress",
+   "Service"
+  ],
+  "faqQuestions": 0
  }
 }

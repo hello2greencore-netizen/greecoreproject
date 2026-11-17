@@ -73,12 +73,18 @@ export function Footer() {
             © {new Date().getFullYear()} {siteConfig.name}. All rights
             reserved. {siteConfig.license}.
           </p>
-          <div className="flex gap-4">
+          <div className="flex flex-wrap gap-x-4 gap-y-2">
             <Link href="/contact" className="hover:text-white">
               Contact
             </Link>
             <Link href="/testimonials" className="hover:text-white">
               Reviews
+            </Link>
+            <Link href="/privacy-policy" className="hover:text-white">
+              Privacy Policy
+            </Link>
+            <Link href="/terms-of-service" className="hover:text-white">
+              Terms of Service
             </Link>
           </div>
         </div>

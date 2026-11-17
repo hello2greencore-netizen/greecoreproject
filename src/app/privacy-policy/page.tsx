@@ -43,22 +43,22 @@ export default function PrivacyPolicyPage() {
               messaging platform and phone carriers) only as needed to send them.
             </p>
             <p>
-              You can stop text messages at any time by replying <strong>STOP</strong>. Reply <strong>HELP</strong> for
-              help. See our <Link href="/terms-of-service">Terms of Service</Link> for full text messaging terms.
+              You can stop text messages at any time by replying <strong>STOP</strong>. Reply <strong>HELP</strong>{" "}for
+              help. See our <Link href="/terms-of-service">Terms of Service</Link>{" "}for full text messaging terms.
             </p>
 
             <h2>Information we collect</h2>
             <ul>
               <li>
-                <strong>Information you give us:</strong> your name, phone number, email address, service address, details
+                <strong>Information you give us:</strong>{" "}your name, phone number, email address, service address, details
                 about your home and equipment, photos you send, messages, and appointment details.
               </li>
               <li>
-                <strong>Payment information:</strong> payments are handled by our payment and scheduling providers. We
+                <strong>Payment information:</strong>{" "}payments are handled by our payment and scheduling providers. We
                 don&apos;t store full card numbers on our website.
               </li>
               <li>
-                <strong>Information collected automatically:</strong> when you visit our website, we and our analytics and
+                <strong>Information collected automatically:</strong>{" "}when you visit our website, we and our analytics and
                 advertising tools collect device and usage information such as IP address, browser type, pages viewed,
                 and how you arrived at our site, using cookies and similar technologies.
               </li>

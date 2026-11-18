@@ -29,7 +29,7 @@ Napa and Solano expansion (link each post to its town page; about 1 in 3 posts f
 - [ ] Rebates for Napa County homeowners: MCE, BayREN, and TECH
 - [ ] Wildfire smoke and your HVAC: filtration for Napa Valley homes
 - [x] Water heater replacement in Napa: seismic straps and code updates
-- [ ] Upstairs too hot? Fixing uneven cooling in Fairfield and Green Valley two-story homes
+- [x] Upstairs too hot? Fixing uneven cooling in Fairfield and Green Valley two-story homes
 - [ ] Moving to Fairfield for Travis AFB? An HVAC checklist before you buy
 - [ ] Heating and cooling Benicia's historic homes
 - [ ] Same-day water heater replacement in Napa and Solano

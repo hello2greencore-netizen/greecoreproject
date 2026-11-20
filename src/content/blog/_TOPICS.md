@@ -54,7 +54,7 @@ Rebates and programs (check current program pages before writing)
 - [x] BayREN home energy rebates for Sonoma and Marin homeowners
 - [x] Sonoma Clean Power programs for heat pumps and water heaters
 - [x] MCE rebates for Marin homeowners going electric
-- [ ] Federal tax credits ended in 2025: what incentives are left in 2026?
+- [x] Federal tax credits ended in 2025: what incentives are left in 2026?
 - [x] How Green Core handles rebate paperwork for you
 
 Water heaters

@@ -32,7 +32,7 @@ Napa and Solano expansion (link each post to its town page; about 1 in 3 posts f
 - [x] Upstairs too hot? Fixing uneven cooling in Fairfield and Green Valley two-story homes
 - [x] Moving to Fairfield for Travis AFB? An HVAC checklist before you buy
 - [x] Heating and cooling Benicia's historic homes
-- [ ] Same-day water heater replacement in Napa and Solano
+- [x] Same-day water heater replacement in Napa and Solano
 - [ ] AC tune-up before summer: a Solano County checklist
 
 Customer questions

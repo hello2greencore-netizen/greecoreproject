@@ -33,7 +33,7 @@ Napa and Solano expansion (link each post to its town page; about 1 in 3 posts f
 - [x] Moving to Fairfield for Travis AFB? An HVAC checklist before you buy
 - [x] Heating and cooling Benicia's historic homes
 - [x] Same-day water heater replacement in Napa and Solano
-- [ ] AC tune-up before summer: a Solano County checklist
+- [x] AC tune-up before summer: a Solano County checklist
 
 Customer questions
 - [x] How long does a heat pump installation take?

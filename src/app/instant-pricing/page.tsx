@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/layout/Logo";
@@ -29,15 +30,6 @@ const trustPoints = [
 
 // The same service area the estimator accepts (by ZIP code).
 const serviceAreas = ["Sonoma County", "Marin County", "Napa County", "Solano County", "San Francisco"];
-
-const systems = [
-  { label: "Gas furnace", icon: "flame", tone: "bg-orange-50 ring-orange-200 hover:ring-orange-300", chip: "bg-orange-500" },
-  { label: "Central AC", icon: "snow", tone: "bg-sky-50 ring-sky-200 hover:ring-sky-300", chip: "bg-sky-500" },
-  { label: "Furnace + AC", icon: "both", tone: "bg-violet-50 ring-violet-200 hover:ring-violet-300", chip: "bg-violet-500" },
-  { label: "Heat pump", icon: "cycle", tone: "bg-brand-50 ring-brand-200 hover:ring-brand-300", chip: "bg-brand-600" },
-  { label: "Ductless mini split", icon: "wall", tone: "bg-teal-50 ring-teal-200 hover:ring-teal-300", chip: "bg-teal-500" },
-  { label: "Heat pump water heater", icon: "drop", tone: "bg-blue-50 ring-blue-200 hover:ring-blue-300", chip: "bg-blue-500" },
-];
 
 const steps = [
   { title: "Pick your systems", text: "Furnace, AC, heat pump, ductless or a heat pump water heater. Choose everything you want priced." },
@@ -151,88 +143,69 @@ export default function InstantPricingPage() {
         <div aria-hidden className="absolute -bottom-40 -left-24 -z-10 h-[28rem] w-[28rem] rounded-full bg-amber-300/25 blur-3xl" />
 
         <Container size="xl" className="py-10 sm:py-14 lg:py-16">
-          <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12">
-            {/* Left: the pitch */}
-            <div>
-              <p className="inline-flex items-center gap-2 rounded-full bg-amber-400 px-4 py-1.5 text-sm font-extrabold text-brand-900 shadow-md">
-                <span className="relative flex h-2.5 w-2.5">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-700 opacity-60" />
-                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-brand-800" />
+          <div className="mx-auto max-w-4xl text-center">
+            {/* Brand lockup, so ad visitors recognize who we are. */}
+            <div className="inline-flex items-center gap-4 rounded-full bg-white/10 py-2 pl-2 pr-6 ring-1 ring-white/25 backdrop-blur">
+              <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-lg sm:h-20 sm:w-20">
+                <Image
+                  src="/images/header/greencorelogobg.png"
+                  alt="Green Core Heating & Air logo"
+                  width={80}
+                  height={80}
+                  priority
+                  className="h-12 w-12 sm:h-16 sm:w-16"
+                />
+              </span>
+              <span className="text-left leading-tight">
+                <span className="block font-display text-2xl font-extrabold tracking-tight sm:text-3xl">Green Core</span>
+                <span className="block text-xs font-semibold uppercase tracking-[0.22em] text-white/80 sm:text-sm">
+                  Heating &amp; Air
                 </span>
-                Instant pricing, no sales call needed
-              </p>
-              <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.04] tracking-tight sm:text-5xl lg:text-6xl">
-                What will a new heating &amp; cooling system cost?{" "}
-                <span className="bg-gradient-to-r from-amber-300 to-amber-200 bg-clip-text text-transparent">
-                  See real prices in about 2 minutes.
-                </span>
-              </h1>
-              <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/85 sm:text-xl">
-                Pick your system, answer a few quick questions, and compare your options side by side. Your final price
-                is confirmed in writing after a free visit or photo review.
-              </p>
-              <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <a
-                  href="#estimator"
-                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-amber-400 px-8 py-4 text-lg font-extrabold text-brand-900 shadow-xl shadow-black/25 ring-4 ring-amber-300/30 transition hover:-translate-y-0.5 hover:bg-amber-300"
-                >
-                  Get my prices now
-                  <Icon name="arrow" className="h-5 w-5 transition group-hover:translate-y-0.5" />
-                </a>
-                <a
-                  href={siteConfig.phoneHref}
-                  className="inline-flex items-center justify-center gap-2 rounded-full px-5 py-4 text-base font-bold text-white ring-2 ring-white/40 transition hover:bg-white/10"
-                >
-                  <Icon name="phone" className="h-5 w-5" />
-                  Or call {siteConfig.phone}
-                </a>
-              </div>
-
-              {/* Where the estimator works (matches the estimator's service area). */}
-              <div className="mt-8">
-                <p className="text-sm font-semibold uppercase tracking-[0.14em] text-white/70">Serving homes in</p>
-                <ul className="mt-3 flex flex-wrap gap-2">
-                  {serviceAreas.map((a) => (
-                    <li
-                      key={a}
-                      className="inline-flex items-center gap-1.5 rounded-full bg-white/12 px-3 py-1.5 text-sm font-semibold text-white ring-1 ring-white/25"
-                    >
-                      <Icon name="pin" className="h-4 w-4 text-amber-300" />
-                      {a}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              </span>
             </div>
 
-            {/* Right: pick-a-system card (every tile jumps to the estimator) */}
-            <div className="relative">
-              <div aria-hidden className="absolute -inset-3 -z-10 rounded-[2rem] bg-gradient-to-br from-amber-300/50 via-brand-400/30 to-transparent blur-xl" />
-              <div className="rounded-[1.75rem] bg-white p-5 text-foreground shadow-2xl shadow-black/30 sm:p-6">
-                <p className="font-display text-xl font-extrabold sm:text-2xl">What would you like priced?</p>
-                <p className="mt-1 text-sm text-muted">Tap one to start. You can add more in the estimator.</p>
-                <ul className="mt-5 grid grid-cols-2 gap-3">
-                  {systems.map((sys) => (
-                    <li key={sys.label}>
-                      <a
-                        href="#estimator"
-                        className={`group flex h-full flex-col gap-2 rounded-2xl p-4 ring-1 transition hover:-translate-y-0.5 hover:shadow-md ${sys.tone}`}
-                      >
-                        <span className={`flex h-10 w-10 items-center justify-center rounded-xl text-white shadow-sm ${sys.chip}`}>
-                          <Icon name={sys.icon} className="h-5 w-5" />
-                        </span>
-                        <span className="text-sm font-bold leading-snug sm:text-base">{sys.label}</span>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-5 flex items-center gap-3 rounded-2xl bg-brand-50 px-4 py-3 text-sm text-brand-800 ring-1 ring-brand-100">
-                  <Icon name="percent" className="h-5 w-5 flex-none" />
-                  <span>
-                    <strong>0% financing for 21 months</strong> on approved credit.
-                  </span>
-                </div>
-              </div>
+            <h1 className="mt-8 font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+              You don&apos;t need a salesperson in your home to get a quote.
+            </h1>
+            <p className="mx-auto mt-5 max-w-3xl font-display text-2xl font-bold leading-snug text-amber-300 sm:text-3xl">
+              Use our 2-minute estimator to get your real quote now.
+            </p>
+            <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
+              Heating, cooling and heat pump water heater prices for your home, online. We confirm your final price in
+              writing after a free visit or photo review.
+            </p>
+
+            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <a
+                href="#estimator"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-amber-400 px-9 py-4 text-lg font-extrabold text-brand-900 shadow-xl shadow-black/25 ring-4 ring-amber-300/30 transition hover:-translate-y-0.5 hover:bg-amber-300 sm:text-xl"
+              >
+                Get my real quote now
+                <Icon name="arrow" className="h-5 w-5 transition group-hover:translate-y-0.5" />
+              </a>
+              <a
+                href={siteConfig.phoneHref}
+                className="inline-flex items-center justify-center gap-2 rounded-full px-5 py-4 text-base font-bold text-white ring-2 ring-white/40 transition hover:bg-white/10"
+              >
+                <Icon name="phone" className="h-5 w-5" />
+                Or call {siteConfig.phone}
+              </a>
+            </div>
+
+            {/* Where the estimator works (matches the estimator's service area). */}
+            <div className="mt-9">
+              <p className="text-sm font-semibold uppercase tracking-[0.14em] text-white/70">Serving homes in</p>
+              <ul className="mt-3 flex flex-wrap justify-center gap-2">
+                {serviceAreas.map((a) => (
+                  <li
+                    key={a}
+                    className="inline-flex items-center gap-1.5 rounded-full bg-white/12 px-3 py-1.5 text-sm font-semibold text-white ring-1 ring-white/25"
+                  >
+                    <Icon name="pin" className="h-4 w-4 text-amber-300" />
+                    {a}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
 

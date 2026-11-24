@@ -21,7 +21,7 @@ const estimateFaqs = [
   {
     question: "What does the online estimate cover?",
     answer:
-      "It prices new gas furnaces and heat pump systems. Gas furnace with central AC and dual fuel (a heat pump with a gas furnace backup) are priced at a free visit. Standard gas and electric tank water heater replacement starts at $2,850, and tankless, heat pump water heaters, mini splits and ductwork get a free estimate.",
+      "It prices new gas furnaces (including upgrading from an 80% to a 95% furnace), furnace and central AC systems, central AC on its own, heat pump systems, dual fuel systems (a heat pump with a gas furnace backup), adding a heat pump to your current furnace, ductless mini splits for one room, and heat pump water heaters. Larger homes, multi-room ductless systems and moving a water heater get a free estimate. Standard gas and electric tank water heater replacement starts at $2,850.",
   },
   {
     question: "Is the online price my final price?",
@@ -39,7 +39,7 @@ const estimateFaqs = [
   {
     question: "Where do you offer online estimates?",
     answer:
-      "Anywhere we work: Sonoma and Marin counties, including Petaluma, Santa Rosa, Rohnert Park, Novato, San Rafael and Mill Valley, plus Napa County (Napa, American Canyon), Solano County (Fairfield, Vacaville, Benicia, Vallejo) and San Francisco.",
+      "In our core service area: Sonoma County (Petaluma, Penngrove, Cotati, Rohnert Park, Santa Rosa, Fulton, Windsor, Healdsburg, Sebastopol, Graton, Guerneville, Monte Rio, Sonoma, Glen Ellen and Kenwood), Marin County (Novato, San Rafael, Kentfield, Larkspur, Corte Madera, Ross, San Anselmo, Fairfax, Mill Valley, Tiburon, Belvedere, Sausalito and West Marin, including the San Geronimo Valley, Point Reyes, Inverness, Bolinas, Stinson Beach and Tomales), Napa County (Napa and American Canyon), Solano County (Vallejo, Benicia, Fairfield, Suisun City, Vacaville and Dixon) and San Francisco. Outside those areas? Call us and we'll let you know if we can help.",
   },
 ];
 

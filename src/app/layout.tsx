@@ -95,10 +95,13 @@ export default function RootLayout({
             <FAQChatbot />
           </HideOnPaths>
           <HomeLeadChat />
-          <ThanksgivingStyles />
-          <FallingLeaves />
-          <LeafPile />
-          <WalkingTurkey />
+          {/* No seasonal decorations on the ad landing page. */}
+          <HideOnPaths paths={["/instant-pricing"]}>
+            <ThanksgivingStyles />
+            <FallingLeaves />
+            <LeafPile />
+            <WalkingTurkey />
+          </HideOnPaths>
           <Script
             src="https://online-booking.housecallpro.com/script.js?token=d68ef1da956043458b2e0244b795dd66&orgName=Green-Core-Heating--Air-Inc"
             strategy="lazyOnload"

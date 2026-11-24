@@ -7,7 +7,7 @@
 import { useEffect, useRef, useState } from "react";
 import { attributionQuery } from "@/lib/attribution";
 
-type LeadMessage = { type?: string; height?: number; channel?: string; value?: number; currency?: string; systems?: string[]; estimate?: string };
+type LeadMessage = { type?: string; height?: number; channel?: string; value?: number; currency?: string; systems?: string[]; estimate?: string; kind?: string };
 
 export default function EstimatorFrame() {
   const ref = useRef<HTMLIFrameElement>(null);
@@ -53,6 +53,12 @@ export default function EstimatorFrame() {
           estimator_systems: (d.systems || []).join(", "),
           estimate_number: d.estimate || "",
         });
+      }
+      if (d?.type === "gc-estimator-booked") {
+        // The customer booked a verify visit or a phone call from their estimate.
+        const w = window as unknown as { dataLayer?: Record<string, unknown>[] };
+        w.dataLayer = w.dataLayer || [];
+        w.dataLayer.push({ event: "estimator_booking", booking_type: d.kind || "visit" });
       }
       if (d?.type === "gc-estimator-top" && frame) {
         // New step: bring the top of the estimator back into view.

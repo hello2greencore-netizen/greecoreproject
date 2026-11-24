@@ -21,7 +21,7 @@ const estimateFaqs = [
   {
     question: "What does the online estimate cover?",
     answer:
-      "It prices new gas furnaces (including upgrading from an 80% to a 95% furnace), furnace and central AC systems, central AC on its own, heat pump systems, dual fuel systems (a heat pump with a gas furnace backup), adding a heat pump to your current furnace, ductless mini splits for one room, and heat pump water heaters. Larger homes, multi-room ductless systems and moving a water heater get a free estimate. Standard gas and electric tank water heater replacement starts at $2,850.",
+      "It prices new gas furnaces (including upgrading from an 80% to a 95% furnace), furnace and central AC systems, central AC on its own, heat pump systems, dual fuel systems (a heat pump with a gas furnace backup), adding a heat pump to your current furnace, ductless mini splits for one room, heat pump water heaters, and whole house fans. You can also add upgrades like new ductwork, zoning, a smart thermostat, a UV light or a whole-home air purifier. Larger homes, multi-room ductless systems and moving a water heater get a free estimate. Standard gas and electric tank water heater replacement starts at $2,850.",
   },
   {
     question: "Is the online price my final price?",

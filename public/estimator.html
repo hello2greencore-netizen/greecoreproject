@@ -123,6 +123,27 @@ input:focus-visible{outline:3px solid var(--green);outline-offset:1px;border-col
 .about h3{font-size:14px;color:var(--ink)}
 .about ul{margin:0;padding-left:18px;display:grid;gap:2px}
 @media (prefers-reduced-motion: reduce){*{transition:none!important}}
+.tsel{display:block;width:100%;font:inherit;font-size:13px;margin-top:6px;padding:5px 8px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink)}
+.pickadd>span{min-width:0}
+/* follow-up: choose an option, book a visit or call, send photos */
+.choose{margin-top:auto;width:100%;padding:10px 14px;font-size:14px}
+.next{display:flex;flex-direction:column;gap:14px;border:1.5px solid var(--green);border-radius:14px;padding:clamp(16px,3vw,24px);background:var(--surface);scroll-margin-top:16px}
+.next h3{font-size:16px}
+.note.good{background:var(--green-soft)}
+.days{display:flex;flex-direction:column;gap:12px}
+.day{display:flex;flex-direction:column;gap:6px}
+.day-l{font-size:13px;font-weight:600;color:var(--muted)}
+.slots{display:flex;flex-wrap:wrap;gap:8px}
+.slot{font:inherit;font-size:14px;font-weight:600;padding:8px 14px;border-radius:9px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;font-variant-numeric:tabular-nums}
+.slot:hover{border-color:var(--green)}
+.slot[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:var(--surface)}
+.slot:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+.photos{display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line);padding-top:14px}
+.photo-row{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:14px;border-top:1px solid var(--line);padding-top:10px}
+.photo-row>span{min-width:0}
+.photo-btn{flex:none;padding:8px 14px;font-size:13.5px}
+.photo-btn:focus-within{outline:3px solid var(--green);outline-offset:2px}
+.opt[disabled]{cursor:default}
 </style>
 
 </head>
@@ -224,7 +245,7 @@ function notifyLead(r){
 }
 const pickedTier = s => s && !s.pending ? (s.tiers.find(t=>t.k===s.pickK) || [...s.tiers].sort((a,b)=>a.price-b.price)[0]) : null;
 function leadPayload(r, est, until){
-  const first = r.systems.find(s=>!s.pending), pickT = pickedTier(first);
+  const first = r.systems.find(s=>s.chosen) || r.systems.find(s=>!s.pending), pickT = pickedTier(first);
   const P = ducted() ? position(S.a) : null;
   return {
     website: S.hp || "", estimateNo: est, validThrough: until, zip: S.zip,
@@ -237,8 +258,8 @@ function leadPayload(r, est, until){
     ],
     systems: r.systems.map(s=>({title:s.title, pending:!!s.pending, tiers:(s.tiers||[]).map(t=>({label:t.label, name:t.name, price:t.price, template:t.tpl, picked:t.k===s.pickK}))})),
     primary: pickT ? {system:first.title, option:`${pickT.label} - ${pickT.name}`, price:pickT.price, template:pickT.tpl} : null,
-    addons: r.addons.filter(x=>S.addons.includes(x.id)).map(x=>({label:x.label, price:x.price})),
-    existingAC: ducted() ? hasAC() : null, financing: plan().long, flags: r.flags, booked: S.booked,
+    addons: r.addons.filter(x=>S.addons.includes(x.id)).map(x=>({label:x.short||x.label, price:x.price})),
+    existingAC: ducted() ? hasAC() : null, financing: plan().long, flags: r.flags, booked: !!S.bookedInfo, followUp: S.bookedInfo ? {kind:S.bookedInfo.kind, start:S.bookedInfo.start, with:S.bookedInfo.employee} : null,
     source: ATTR
   };
 }
@@ -246,11 +267,11 @@ function leadPayload(r, est, until){
 function leadSummary(r, est, until){
   const a = S.a;
   const lab = (id, v) => { const q = QS.find(x=>x.id===id); if(!q || v==null) return null; const o = q.o.find(x=>x[0]===v); return o ? o[1] : null; };
-  const priced = r.systems.filter(s=>!s.pending), first = priced[0], pickT = pickedTier(first);
+  const first = r.systems.find(s=>s.chosen) || r.systems.find(s=>!s.pending), pickT = pickedTier(first);
   const L = [];
   L.push(`Online estimate ${est} - good through ${until}`);
   L.push(sourceLine());
-  if (pickT) L.push(`${first.pickK ? "Picked" : "Priced"}: ${first.title} - ${pickT.name} (${pickT.label}) - ${money(pickT.price)}`);
+  if (pickT) L.push(`${S.choiceMade ? "Chose" : "Leaning toward"}: ${first.title} - ${pickT.name} (${pickT.label}) - ${money(pickT.price)}`);
   const others = r.systems.filter(s=>s!==first).map(s=>s.title + (s.pending?" (price at visit)":""));
   if (others.length) L.push(`${first ? "Also priced" : "Asked about"}: ${others.join(", ")}`);
   L.push("");
@@ -265,15 +286,16 @@ function leadSummary(r, est, until){
     const ducts = lab("ducts", a.ducts); if (ducts) L.push(`Ducts: ${ducts}`);
   }
   if (has("mini")) L.push(a.rooms==="2" ? "Ductless: wants two or more rooms" : `Ductless: one room, about ${Number(a.room||0).toLocaleString("en-US")} sq ft${miniSize(a.room)?` (${miniSize(a.room)})`:" (too big to price online)"}`);
+  if (has("whf") && !ducted()) L.push(`Whole house fan: ${Number(a.sqft).toLocaleString("en-US")} sq ft home`);
   if (has("hpwh")) L.push(`Water heater: ${a.whfuel==="gas"?"Gas":"Electric"} now - ${lab("people",a.people)} people - ${lab("baths",a.baths)} bathrooms - ${whGal()} gal - ${a.whloc==="move"?"wants it moved":"same spot"}`);
   const out = lab("outdoor", a.outdoor); if (out) L.push(`Outdoor unit: ${out}`);
   const want = lab("priority", a.priority); if (want) L.push(`Wants: ${want}`);
   L.push(`Owns the home: ${({own:"Yes", rent:"No, renting", landlord:"Landlord or manager"})[S.own] || "Not asked"}`);
   L.push("");
   const ups = r.addons.filter(x=>S.addons.includes(x.id));
-  if (ducted()) L.push(`Upgrades picked: ${ups.length ? ups.map(x=>`${x.id==="ducts"?"New R-8 ducts":x.id==="zone"?"2-zone system":"Ecobee thermostat"} (${money(x.price)})`).join(", ") : "None"}`);
+  if (r.addons.length) L.push(`Upgrades picked: ${ups.length ? ups.map(x=>`${x.short} (${money(x.price)})`).join(", ") : "None"}`);
   L.push(`Financing: ${S.planTouched ? "Looked at " + plan().long : "Didn't look"}`);
-  L.push(`Wants a visit: ${S.booked ? "Yes, clicked Book a free visit" : "Not yet"}`);
+  L.push(`Follow-up: ${S.bookedInfo ? `${S.bookedInfo.kind==="call"?"Phone call":"Verify visit"} booked ${fmtSlot(S.bookedInfo.start)} with ${S.bookedInfo.employee}` : S.follow ? `Looking at ${S.follow==="call"?"phone call":"visit"} times` : "Not booked yet"}`);
   return L;
 }
 // Send once, with the customer's final choices: when they click Book, leave or hide the page, or after 2 minutes on their prices.
@@ -287,9 +309,85 @@ addEventListener("visibilitychange", () => { if (document.visibilityState==="hid
 addEventListener("pagehide", flushLead);
 function sendLead(payload){
   if(!SUBMIT_URL) return;
-  fetch(SUBMIT_URL, {method:"POST", keepalive:true, headers:{"Content-Type":"application/json"}, body:JSON.stringify(payload)})
-    .then(r=>r.json()).then(j=>{ S.leadId = j.lead_id || null; }).catch(()=>{});
+  S.leadPromise = fetch(SUBMIT_URL, {method:"POST", keepalive:true, headers:{"Content-Type":"application/json"}, body:JSON.stringify(payload)})
+    .then(r=>r.json()).then(j=>{ S.leadId = j.lead_id || null; S.leadToken = j.token || null; }).catch(()=>{});
 }
+// Booking and photos need the lead to exist first; this sends it now if it hasn't gone yet.
+async function ensureLead(){
+  if(!S.leadId && !S.leadPromise) flushLead();
+  if(S.leadPromise) await S.leadPromise;
+  return !!(S.leadId || S.estimateId);
+}
+const api = path => SUBMIT_URL.replace(/\/$/,"") + path;
+const followIds = () => ({lead_id:S.leadId, token:S.leadToken, estimate_id:S.estimateId, est_token:S.estToken});
+const prettyPhone = p => { const d = String(p).replace(/\D/g,"").replace(/^1(?=\d{10}$)/,""); return d.length===10 ? `(${d.slice(0,3)}) ${d.slice(3,6)}-${d.slice(6)}` : p; };
+const fmtSlot = iso => new Date(iso).toLocaleString("en-US",{timeZone:"America/Los_Angeles", weekday:"short", month:"short", day:"numeric", hour:"numeric", minute:"2-digit"});
+const FOLLOW = {
+  visit:{title:"Book a 30-minute verify visit", sub:"We come out, check your setup, and confirm your price in writing.", done:"visit"},
+  call:{title:"Schedule a 15-minute call", sub:"Talk through your options with Tony or Zach by phone.", done:"call"}
+};
+async function loadSlots(kind){
+  S.slots = {kind, loading:true}; renderKeep();
+  try {
+    const j = await (await fetch(api(`/availability?kind=${kind}`))).json();
+    S.slots = j.ok ? {kind, list:j.slots} : {kind, error:true};
+  } catch(e) { S.slots = {kind, error:true}; }
+  renderKeep();
+}
+async function confirmBooking(){
+  const pick = S.slotPick; if(!pick || S.booking) return;
+  S.booking = "busy"; renderKeep();
+  try {
+    if(!(await ensureLead())) throw new Error("no lead");
+    const r = quoteAll();
+    const res = await fetch(api("/book"), {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({
+      ...followIds(), kind:S.follow, start:pick.start, employee_id:pick.employee_id, phone:S.c.phone, summary:leadSummary(r, S.leadMeta.est, S.leadMeta.until)})});
+    const j = await res.json().catch(()=>({}));
+    if(res.status===409){ S.booking = "taken"; S.slotPick = null; await loadSlots(S.follow); return; }
+    if(!j.ok) throw new Error("book failed");
+    S.estimateId = j.estimate_id; S.estToken = j.est_token;
+    S.bookedInfo = {kind:j.kind, start:j.start, employee:j.employee}; S.booking = null;
+    if(window.parent!==window) try { window.parent.postMessage({type:"gc-estimator-booked", kind:j.kind}, location.origin); } catch(e) {}
+  } catch(e) { S.booking = "error"; }
+  renderKeep();
+}
+const PHOTO_SLOTS = () => {
+  const L = [];
+  if(ducted()) L.push(["indoor","Furnace or indoor unit, plus its data plate (model and serial sticker)"]);
+  if(has("hp","fac","acc","dual","dfx","mini")) L.push(["outdoor","Outdoor unit, plus its data plate"]);
+  if(has("hpwh")) L.push(["waterheater","Water heater, its data plate, and the space around it"]);
+  L.push(["panel","Electrical panel with the door open"],["other","Anything else you'd like us to see"]);
+  return L;
+};
+// Shrink big phone photos before upload so they send quickly.
+async function shrink(file){
+  try {
+    const img = await createImageBitmap(file); const max = 1600, sc = Math.min(1, max/Math.max(img.width, img.height));
+    const c = document.createElement("canvas"); c.width = Math.round(img.width*sc); c.height = Math.round(img.height*sc);
+    c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+    const blob = await new Promise(res => c.toBlob(res, "image/jpeg", 0.82));
+    return blob ? new File([blob], "photo.jpg", {type:"image/jpeg"}) : file;
+  } catch(e) { return file; }
+}
+async function sendPhotos(){
+  const items = PHOTO_SLOTS().flatMap(([k,l]) => (S.photos[k]||[]).map(f => ({k, l, f})));
+  if(!items.length || S.photoState==="busy") return;
+  S.photoState = "busy"; S.photoDone = 0; renderKeep();
+  try {
+    if(!(await ensureLead())) throw new Error("no lead");
+    for(const it of items){
+      const fd = new FormData(); const ids = followIds();
+      for(const [k,v] of Object.entries(ids)) if(v) fd.append(k, v);
+      fd.append("label", it.l.split(",")[0]); fd.append("file", await shrink(it.f));
+      const j = await (await fetch(api("/photos"), {method:"POST", body:fd})).json();
+      if(!j.ok) throw new Error("photo failed");
+      S.estimateId = j.estimate_id; S.estToken = j.est_token; S.photoDone++; renderKeep();
+    }
+    S.photoState = "sent"; S.photosSent = (S.photosSent||0) + items.length; S.photos = {};
+  } catch(e) { S.photoState = "error"; }
+  renderKeep();
+}
+function renderKeep(){ const y = window.scrollY; renderResult(); window.scrollTo({top:y}); }
 const monthlyAmt = (price, p=plan()) => { if(!p.apr) return price/p.n; const r = p.apr/1200; return price*r/(1-Math.pow(1+r,-p.n)); };
 const cents = n => "$" + n.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
 
@@ -302,10 +400,11 @@ const SYSTEMS = [
   {id:"dual", t:"Dual fuel: new furnace + heat pump", s:"All-new gas furnace with a heat pump"},
   {id:"dfx", t:"Add a heat pump to my furnace", s:"Keep your gas furnace, add heat pump heating and cooling"},
   {id:"mini", t:"Ductless mini split", s:"Heating and cooling for one room, no ducts needed"},
-  {id:"hpwh", t:"Heat pump water heater", s:"Replaces your current water heater"}
+  {id:"hpwh", t:"Heat pump water heater", s:"Replaces your current water heater"},
+  {id:"whf", t:"Whole house fan", s:"Cools your home with outside air on summer evenings"}
 ];
 const DUCTED = ["hp","furnace","fac","acc","dual","dfx"];
-const SOON = [["Gas or electric tank water heater"],["Tankless water heater"],["Whole house fan"]];
+const SOON = [["Gas or electric tank water heater"],["Tankless water heater"]];
 const has = (...ids) => ids.some(id => S.svcs.includes(id));
 const ducted = () => has(...DUCTED);
 const sysName = id => SYSTEMS.find(x=>x.id===id).t;
@@ -314,7 +413,7 @@ const whGal = () => Math.max(WH_GAL[S.a.people]||50, BATH_GAL[S.a.baths]||50);
 // ---------- Questions (each lists which systems need it) ----------
 const QS = [
   {id:"current", need:()=>has("hp","dual"), q:"What heats your home now?", o:[["gas_ac","Gas furnace and AC"],["gas","Gas furnace only"],["elec","Electric furnace or older heat pump"],["noduct","Wall or baseboard heaters","No ducts in the home"],["unsure","Not sure"]]},
-  {id:"sqft", need:ducted, q:"About how many square feet is your home?", num:true, help:"Living space only. Your best guess is fine; Zillow or your property records will have it."},
+  {id:"sqft", need:()=>ducted()||has("whf"), q:"About how many square feet is your home?", num:true, help:"Living space only. Your best guess is fine; Zillow or your property records will have it."},
   {id:"loc", need:ducted, q:"Where is your furnace or indoor unit?", help:"The equipment inside the home, not the unit outside.", o:[["garage","Garage"],["closet","Closet","Hall or utility closet"],["attic","Attic"],["crawl","Crawlspace","Under the house"]]},
   {id:"flow", need:()=>ducted() && (S.a.loc==="garage"||S.a.loc==="closet"), q:"Where does air come out of your vents?", help:"Check a couple of rooms. Most homes have one or the other.", o:[["up","Ceiling or high on the walls"],["down","Floor"],["unsure","Not sure"]]},
   {id:"vent", need:()=>has("furnace","fac","dual"), q:"What kind of vent pipe does your furnace have?", help:"Look where the pipe leaves the top of the furnace.", o:[["metal","Metal pipe","Standard 80% furnace"],["pvc","White plastic pipes","High-efficiency 90%+ furnace"],["unsure","Not sure"],["none","No furnace now"]]},
@@ -345,7 +444,7 @@ const AREA = new Set(Object.values(SERVICE_ZIPS).flat());
 function inArea(z){return /^\d{5}$/.test(z) && AREA.has(z);}
 
 // ---------- State ----------
-const fresh = () => ({step:"service", svcs:[], zip:"", own:"", a:{}, c:{name:"",phone:"",email:"",addr:"",sms:false}, effs:{}, booked:false, plan:"0", addons:[]});
+const fresh = () => ({step:"service", svcs:[], zip:"", own:"", a:{}, c:{name:"",phone:"",email:"",addr:"",sms:false}, effs:{}, booked:false, plan:"0", addons:[], tstatModel:"enhanced", choice:null, photos:{}});
 let S = fresh();
 const $ = s => document.querySelector(s);
 const money = n => "$" + Math.round(n).toLocaleString("en-US");
@@ -427,7 +526,7 @@ function renderNum(q){
     const v = +$("#numin").value.replace(/\D/g,""), e = $("#nerr"), min = q.id==="room" ? 50 : 300;
     if(!v || v < min){ e.textContent = q.id==="room" ? "Enter the room's square footage, like 300." : "Enter your home's square footage, like 1850."; e.hidden = false; return; }
     S.a[q.id] = v;
-    if(q.id==="sqft" && !tonsFor(v)) return renderRoute("big");
+    if(q.id==="sqft" && !tonsFor(v) && ducted()) return renderRoute("big");
     next();
   };
 }
@@ -543,10 +642,56 @@ function quoteHPWH(){
     price:PRICES.HPWH[o.key][o.gals.indexOf(gal)], tpl:`${o.brand} ${gal} Gallon ${o.volt} – Same Location`}));
   return {id:"hpwh", title:"Heat pump water heater", note:`${gal} gallon, sized for your household`, tiers, pickK:null};
 }
+// Upgrade prices from HCP Pricebook > Materials (Nov 23, 2026).
+const TSTATS = [
+  {k:"essential", name:"Ecobee Smart Thermostat Essential", price:284},
+  {k:"enhanced", name:"Ecobee Smart Thermostat Enhanced", price:330},
+  {k:"premium", name:"Ecobee Smart Thermostat Premium", price:428},
+  {k:"nest", name:"Google Nest Learning Thermostat (4th Gen)", price:500}
+];  // Thermostats > With New System
+// Carrier Infinity Air Purifier: furnace cabinets 16x25 (2-3 ton) / 20x25 (4-5 ton); fan coils 16x20 (2 ton), 20x20 (3 ton), 24x20 (4-5 ton).
+const PURIFIER = {furn16:3044, furn20:3071, fc16:3094, fc20:3119, fc24:3211};
+function purifierCost(sysId, tons){
+  if(sysId==="hp") return tons<=2 ? PURIFIER.fc16 : tons===3 ? PURIFIER.fc20 : PURIFIER.fc24;
+  return tons<=3 ? PURIFIER.furn16 : PURIFIER.furn20;
+}
+// Whole house fans (QuietCool, installed): [max sq ft, model size, price]
+const WHF = {
+  trident:[[749,"1.5",4385],[1245,"2.5",4912],[1608,"3.3",5150],[2214,"4.8",5501],[2534,"5.5",5727],[2854,"6.0",5990],[3507,"7.0",6197]],
+  stealth:[[1271,"2.5",5207],[1580,"3.3",5724],[2140,"4.8",6247],[2522,"5.5",6457],[2794,"6.0",6720],[3498,"7.0",6962]]
+};
+function quoteWHF(){
+  const sq = Number(S.a.sqft), fit = list => list.find(([max]) => sq <= max);
+  const t = fit(WHF.trident), s = fit(WHF.stealth);
+  if(!t && !s) return {...pending("whf","Whole house fan",`${sq.toLocaleString("en-US")} sq ft home`), custNote:"A home this size may need more than one fan. We'll price this one at your free visit."};
+  const mk = (k, label, line, m) => ({k, label, name:`QuietCool ${line} ${m[1]}`, sub:`Sized for homes up to ${m[0].toLocaleString("en-US")} sq ft`,
+    pts:[`QuietCool ${line} whole house fan`,"Pulls in cool evening air and pushes warm air out through the attic","Installed by Green Core"],
+    price:m[2], tpl:`QuietCool ${line} ${m[1]} Whole House Fan - Up to ${m[0].toLocaleString("en-US")} Sq Ft - Installed`});
+  const tiers = [];
+  if(t) tiers.push(mk("trident","Good","Trident Pro X",t));
+  if(s) tiers.push(mk("stealth","Better","Stealth Pro X",s));
+  return {id:"whf", title:"Whole house fan", note:`Sized for your ${sq.toLocaleString("en-US")} sq ft home`, tiers, pickK:null};
+}
+// 2-zone system, from HCP Pricebook > Materials > Zoning (Nov 23, 2026).
+// Honeywell: 3-Zone Board 1H/1C for single-stage furnace and AC options, 2H/2C for two-stage furnaces and anything with a heat pump,
+// plus 4 TruZone dampers (10" for 2-3 ton, 14" for 4-5 ton) and an Ecobee Enhanced for zone 2 (with-new-system price).
+// Best (Carrier Infinity): Infinity 4-Zone Damper Control Module + Infinity Smart Sensor + 4 Carrier round dampers.
+// Labor: 3 hours at $186/hr, times the 1.10 commission multiplier from the standard pricing formula = $614.
+const ZONE = {board1h:318, board2h:454, hw10:301, hw14:349, tstat2:330, infModule:1149, infSensor:711, carrier10:381, carrier14:435, labor:Math.round(3*186*1.10)};
+function zoneCost(sysId, k, tons){
+  const big = tons >= 4;
+  if(k==="best") return ZONE.infModule + ZONE.infSensor + 4*(big ? ZONE.carrier14 : ZONE.carrier10) + ZONE.labor;
+  const twoStage = ["hp","dual","dfx"].includes(sysId) || k==="better";
+  return (twoStage ? ZONE.board2h : ZONE.board1h) + 4*(big ? ZONE.hw14 : ZONE.hw10) + ZONE.tstat2 + ZONE.labor;
+}
 function quoteAll(){
   const a = S.a;
-  const Q = {hp:quoteHP, furnace:quoteFurnace, fac:()=>quoteCombo("fac","FAC"), dual:()=>quoteCombo("dual","DF"), dfx:quoteDFX, acc:quoteACC, mini:quoteMini, hpwh:quoteHPWH};
+  const Q = {hp:quoteHP, furnace:quoteFurnace, fac:()=>quoteCombo("fac","FAC"), dual:()=>quoteCombo("dual","DF"), dfx:quoteDFX, acc:quoteACC, mini:quoteMini, hpwh:quoteHPWH, whf:quoteWHF};
   const out = S.svcs.map(id => Q[id]());
+  // The option the customer chose (defaults to the one that matches what they said matters most).
+  if(S.choice && !out.some(s => s.id===S.choice.sys && !s.pending && s.tiers.some(t => t.k===S.choice.k))) S.choice = null;
+  if(!S.choice){ const f = out.find(s => !s.pending && s.tiers); if(f) S.choice = {sys:f.id, k:pickedTier(f).k}; }
+  out.forEach(s => { s.chosen = !!S.choice && s.id===S.choice.sys; if(s.chosen) s.pickK = S.choice.k; });
   const flags = [];
   if(ducted()){
     if(a.flow==="unsure") flags.push("Which way your system blows air (priced as upflow)");
@@ -558,36 +703,66 @@ function quoteAll(){
   if(a.outdoor==="ground") flags.push("New outdoor unit location (longer line set, new pad)");
   if(a.outdoor==="mount") flags.push("Wall bracket or roof mount");
   if(a.outdoor==="unsure") flags.push("Outdoor unit placement");
-  // Add-ons apply to ducted systems only. skipBest: Best tiers already include an Infinity Touch control.
-  let addons = [];
   if(ducted()){
-    const tons = tonsFor(a.sqft);
-    addons = [
-      {id:"ducts", label:`New R-8 insulated duct system, sized for your ${tons} ton system${a.ducts==="old"?" (recommended for ducts over 20 years old)":""}`, hcp:`${tons} Ton R-8 Duct System`, price:DUCT[tons]},
-      {id:"zone", label:"2-zone system for uneven rooms", hcp:"Zone First 2 Zone System", price:2250},
-      {id:"tstat", label:"Ecobee smart thermostat", hcp:"Ecobee Smart Thermostat Enhanced", price:582, skipBest:true, note:"Best options already include a smart control"}
-    ];
-    const sel = addons.filter(x=>S.addons.includes(x.id));
-    out.forEach(s => { if(s.pending || !DUCTED.includes(s.id)) return; s.tiers.forEach(t => {
-      const add = sel.filter(x=>!(x.skipBest && t.k==="best")).reduce((n,x)=>n+x.price,0);
-      t.price += add; if(add) t.tpl += ` + add-ons (${money(add)})`; }); });
+    if(position(a).attic) flags.push("Access and working space in your attic or crawlspace");
+    if(a.ducts==="old" && !S.addons.includes("ducts")) flags.push("Older ductwork may need sealing or repairs");
+    if(S.addons.includes("zone") && !S.addons.includes("ducts")) flags.push("The 2-zone price assumes a new duct system");
+    if(has("hp","fac","acc","dual","dfx") && !hasAC()) flags.push("A new electrical circuit or panel space may be needed for the outdoor unit");
   }
+  if(has("mini") && a.rooms==="1") flags.push("Where the indoor unit mounts and how far the line set runs");
+  if(has("hpwh") && a.whloc!=="move") flags.push("Space and airflow around the water heater, and a nearby outlet or circuit");
+  if(has("whf")) flags.push("Attic space and venting for the fan (extra attic venting may be needed)", "A nearby electrical circuit for the fan");
+  flags.push("Asbestos or other hazardous materials on old equipment or ducts");
+  flags.push("Permit and inspection fees for your city or county");
+  // Upgrades. "ducted" ones apply to heating and cooling systems, "hpwh" ones to heat pump water heaters.
+  // skipBest: Best tiers already include an Infinity Touch control. perTier: price depends on the system and option.
+  // Every upgrade is subject to compatibility with the equipment and install conditions (the customer is told this).
+  const addons = [];
+  if(ducted()){
+    const aTons = tonsFor(a.sqft), tm = TSTATS.find(x=>x.k===S.tstatModel) || TSTATS[1];
+    addons.push(
+      {id:"ducts", for:"ducted", short:"New R-8 ducts", label:`New R-8 insulated duct system, sized for your ${aTons} ton system${a.ducts==="old"?" (recommended for ducts over 20 years old)":""}`, hcp:`${aTons} Ton R-8 Duct System`, price:DUCT[aTons]},
+      {id:"zone", for:"ducted", short:"2-zone system", label:"2-zone system for uneven rooms*", hcp:"Zoning: zone board + 4 dampers + zone 2 thermostat + 3 hrs labor", perTier:(sysId,k)=>zoneCost(sysId,k,aTons),
+        note:"*Price is with a new duct system. Includes a zone control board, 4 zone dampers, a thermostat or sensor for the second zone, and installation."},
+      {id:"tstat", for:"ducted", short:tm.name, label:"Smart thermostat", select:true, hcp:`${tm.name} (Thermostats > With New System)`, price:tm.price, skipBest:true, note:"Best options already include a smart control"},
+      {id:"uv", for:"ducted", short:"UV germicidal light", label:"UV germicidal light for your indoor coil", hcp:"Carrier UV Germicidal Light - Single Lamp (115V)", price:999},
+      {id:"purifier", for:"ducted", short:"Whole-home air purifier", label:"Whole-home air purifier (Carrier Infinity), sized for your system", hcp:"Carrier Infinity Air Purifier", perTier:(sysId)=>purifierCost(sysId,aTons)}
+    );
+  }
+  if(has("hpwh")) addons.push({id:"halo", for:"hpwh", short:"Halo 5 water filtration", label:"Halo 5 whole-home water filtration system", hcp:"Halo 5 Water Filtration System", price:5439});
+  const appliesTo = (x, s) => x.for==="ducted" ? DUCTED.includes(s.id) : s.id==="hpwh";
+  const priced = out.filter(s => !s.pending && s.tiers);
+  // Per-option add-ons show the price for the customer's pick (or a range across the options shown).
+  addons.filter(x=>x.perTier).forEach(x => {
+    const ps = priced.filter(s => appliesTo(x, s));
+    const all = ps.flatMap(s => s.tiers.map(t => x.perTier(s.id, t.k)));
+    const first = ps[0], pk = first && (first.tiers.find(t=>t.k===first.pickK) || first.tiers[0]);
+    x.price = pk ? x.perTier(first.id, pk.k) : (all.length ? Math.min(...all) : 0);
+    const lo = all.length ? Math.min(...all) : x.price, hi = all.length ? Math.max(...all) : x.price;
+    x.priceText = lo===hi ? `+${money(lo)}` : `+${money(lo)}–${money(hi)}`;
+  });
+  const sel = addons.filter(x=>S.addons.includes(x.id));
+  priced.forEach(s => s.tiers.forEach(t => {
+    const add = sel.filter(x=>appliesTo(x, s) && !(x.skipBest && t.k==="best")).reduce((n,x)=>n+(x.perTier ? x.perTier(s.id, t.k) : x.price),0);
+    t.price += add; if(add) t.tpl += ` + add-ons (${money(add)})`; }));
   let cross = null;
   if(S.svcs.length===1 && has("furnace") && a.ac!=="new"){ const P = position(a); cross = `No AC, or an older one? A heat pump replaces your furnace and AC in one system. For your home it starts at ${money(PRICES.HP[`${hasAC()?"yes":"no"}.${P.key}.value`][TI[tonsFor(a.sqft)]])}.`; }
   const notes = [];
   if(ducted()){ const P = position(a); notes.push(`${a.sqft.toLocaleString("en-US")} sq ft home, ${P.where} install, ${P.orient.toLowerCase()}`); }
+  if(has("whf") && !ducted()) notes.push(`${Number(a.sqft).toLocaleString("en-US")} sq ft home`);
   if(has("hpwh")) notes.push(`${whGal()} gallon water heater`);
   return {systems:out, flags, addons, cross, posNote:notes.join("; ")};
 }
 
 function tierCards(sys){
-  return `<div class="tiers">${sys.tiers.map(t=>`
-    <article class="tier${t.k===sys.pickK?" pick":""}">
-      <span class="badge">${t.label}${t.k===sys.pickK?" · Your pick":""}</span>
+  return `<div class="tiers">${sys.tiers.map(t=>{ const on = sys.chosen && t.k===sys.pickK; return `
+    <article class="tier${on?" pick":""}">
+      <span class="badge">${t.label}${on?" · Your choice":""}</span>
       <div><div class="tname">${t.name}</div><div class="tsub">${t.sub}</div></div>
       <div><div class="price">${money(t.price)}</div><div class="mo">or ${cents(monthlyAmt(t.price))}/mo*</div><div class="mo-sub">${plan().long}</div></div>
       <ul>${t.pts.map(p=>`<li>${p}</li>`).join("")}</ul>
-    </article>`).join("")}</div>`;
+      <button class="btn ${on?"":"ghost "}choose" data-choose="${sys.id}|${t.k}" aria-pressed="${on}">${on?"✓ Your choice":"Choose this option"}</button>
+    </article>`; }).join("")}</div>`;
 }
 
 function includesList(){
@@ -599,10 +774,52 @@ function includesList(){
   if(ducted()||has("mini")) L.push("Condensate drain with safety float switch");
   if(ducted()) L.push("Electrical disconnect and control wiring");
   if(has("hpwh")) L.push("Heat pump water heater installed in the same spot, with water connections and condensate drain");
+  if(has("whf")) L.push("Whole house fan installed in your attic");
   L.push("Startup, testing, and a walkthrough with you");
   return L;
 }
 
+// Pick an option, then book a verify visit or a call on Tony's or Zach's schedule, and optionally send photos.
+function nextSteps(r){
+  const cs = r.systems.find(s => s.chosen), ct = pickedTier(cs);
+  const chosenLine = ct ? `<p class="lede">Your choice: <strong>${esc(cs.title)}: ${esc(ct.name)}, ${money(ct.price)}</strong>. Not quite right? Tap "Choose this option" on any card above.</p>` : `<p class="lede">These options are priced at your visit. Pick how you'd like to follow up.</p>`;
+  let times = "";
+  if(S.bookedInfo){
+    const b = S.bookedInfo;
+    times = `<div class="note good"><strong>You're booked: ${b.kind==="call"?"15-minute call":"30-minute verify visit"} on ${fmtSlot(b.start)} with ${esc(b.employee)}.</strong><br>${b.kind==="call" ? `${esc(b.employee)} will call you at ${esc(prettyPhone(S.c.phone))}.` : "You'll get a confirmation from Green Core."} Need to change it? Call (707) 988-5858.</div>`;
+  } else if(S.follow){
+    const sl = S.slots || {};
+    if(sl.loading) times = `<p class="fine">Finding open times…</p>`;
+    else if(sl.error || (sl.list && !sl.list.length)) times = `<div class="note">We couldn't load open times right now. Call us at (707) 988-5858 and we'll set it up, or check back in a bit.</div>`;
+    else if(sl.list){
+      const days = {}; sl.list.forEach((s,i) => { const d = new Date(s.start).toLocaleDateString("en-US",{timeZone:"America/Los_Angeles", weekday:"long", month:"short", day:"numeric"}); (days[d] = days[d] || []).push([s,i]); });
+      const keys = Object.keys(days), show = S.showDays || 4;
+      times = `<div class="days">${keys.slice(0, show).map(d => `<div class="day"><span class="day-l">${d}</span><div class="slots">${days[d].map(([s,i]) => `<button class="slot" data-slot="${i}" aria-pressed="${!!S.slotPick && S.slotPick.start===s.start}">${new Date(s.start).toLocaleTimeString("en-US",{timeZone:"America/Los_Angeles", hour:"numeric", minute:"2-digit"})}</button>`).join("")}</div></div>`).join("")}</div>
+        ${keys.length > show ? `<button class="link" id="showTimes">Show more days</button>` : ""}
+        ${S.booking==="taken" ? `<p class="err">Sorry, that time was just taken. Please pick another.</p>` : ""}
+        ${S.booking==="error" ? `<p class="err">We couldn't book that online. Call us at (707) 988-5858 and we'll get you on the schedule.</p>` : ""}
+        ${S.slotPick ? `<div class="cta"><button class="btn" id="confirmBook" ${S.booking==="busy"?"disabled":""}>${S.booking==="busy" ? "Booking…" : `Confirm ${fmtSlot(S.slotPick.start)}`}</button></div>` : ""}`;
+    }
+  }
+  const slots = PHOTO_SLOTS();
+  const photoRows = slots.map(([k,l]) => { const fs = S.photos[k] || []; return `<div class="photo-row"><span>${l}${fs.length ? `<span class="add-note">${fs.length} photo${fs.length>1?"s":""} ready · <button class="link" data-unphoto="${k}">Remove</button></span>` : ""}</span>
+      <label class="btn ghost photo-btn">${fs.length ? "Add more" : "Add photo"}<input type="file" accept="image/*" multiple data-photo="${k}" hidden></label></div>`; }).join("");
+  const nReady = slots.reduce((n,[k]) => n + (S.photos[k]||[]).length, 0);
+  const photoStatus = S.photoState==="busy" ? `<p class="fine">Sending ${S.photoDone+1 > nReady ? nReady : S.photoDone+1} of ${nReady}…</p>`
+    : S.photoState==="sent" ? `<div class="note good">Got your photos, thanks! We'll use them to confirm your price.</div>`
+    : S.photoState==="error" ? `<p class="err">Some photos didn't send. Try again, or text them to (707) 988-5858.</p>` : "";
+  return `<section class="next" aria-labelledby="next-h">
+    <h2 id="next-h">Next: confirm your price</h2>
+    ${chosenLine}
+    <div class="opts">${Object.entries(FOLLOW).map(([k,f]) => `<button class="opt" data-follow="${k}" aria-pressed="${S.follow===k || (S.bookedInfo && S.bookedInfo.kind===k)}" ${S.bookedInfo?"disabled":""}><strong>${f.title}</strong><span>${f.sub}</span></button>`).join("")}</div>
+    ${times}
+    <div class="photos"><h3>Send photos (optional)</h3><p class="fine">Photos help us confirm your price faster. Add any you can.</p>
+      ${photoRows}
+      ${nReady && S.photoState!=="busy" ? `<div class="cta"><button class="btn" id="sendPhotos">Send ${nReady} photo${nReady>1?"s":""}</button></div>` : ""}
+      ${photoStatus}</div>
+    <p class="fine">Prefer to talk now? Call <strong>(707) 988-5858</strong>.</p>
+  </section>`;
+}
 function renderResult(){
   const r = quoteAll();
   const today = new Date(), until = new Date(today.getTime()+14*864e5);
@@ -628,24 +845,30 @@ function renderResult(){
       <div class="box"><h3>Every option includes</h3><ul>${includesList().map(x=>`<li>${x}</li>`).join("")}</ul></div>
       <div class="box"><h3>What could change your price</h3>${r.flags.length?`<ul>${r.flags.map(f=>`<li>${f}</li>`).join("")}</ul>`:`<p class="fine">Nothing flagged. Your answers were clear, so these prices should hold.</p>`}
         <p class="fine">See "About this estimate" below for what's not included.</p></div>
-      ${r.addons.length?`<div class="box"><h3>Popular add-ons</h3><p class="fine">Tick any you'd like included in your heating and cooling prices above.</p>${r.addons.map(x=>`<label class="addon pickadd" for="ad-${x.id}"><input type="checkbox" id="ad-${x.id}" data-add="${x.id}" ${S.addons.includes(x.id)?"checked":""}><span>${x.label}${x.note?`<span class="add-note">${x.note}</span>`:""}</span><strong>+${money(x.price)}</strong></label>`).join("")}</div>`:""}
+      ${r.addons.length?`<div class="box"><h3>Popular upgrades</h3><p class="fine">Tick any you'd like included in your prices above. All upgrades are subject to compatibility with your equipment and install conditions, confirmed at your free visit.</p>${r.addons.map(x=>`<label class="addon pickadd" for="ad-${x.id}"><input type="checkbox" id="ad-${x.id}" data-add="${x.id}" ${S.addons.includes(x.id)?"checked":""}><span>${x.label}${x.select?` <select class="tsel" data-tstat aria-label="Thermostat model">${TSTATS.map(m=>`<option value="${m.k}" ${m.k===S.tstatModel?"selected":""}>${esc(m.name.replace("Ecobee Smart Thermostat","Ecobee").replace(" (4th Gen)",""))} (${money(m.price)})</option>`).join("")}</select>`:""}${x.note?`<span class="add-note">${x.note}</span>`:""}</span><strong>${x.priceText || "+"+money(x.price)}</strong></label>`).join("")}</div>`:""}
     </div>
-    <div class="cta"><button class="btn" id="bk">${S.booked?"Visit requested":"Book a free in-home visit"}</button><span class="phone">or call <strong>(707) 988-5858</strong></span></div>
-    <p class="note" id="bkn" ${S.booked?"":"hidden"}>Thanks! We have your estimate. Pick a time in the booking page that just opened, or call us at (707) 988-5858. <button class="link" id="rebook">Open booking again</button></p>
+    ${nextSteps(r)}
     <section class="about" aria-labelledby="abt">
       <h3 id="abt">About this estimate</h3>
       <p>This online estimate is based on the information you provided and standard installation conditions. It is not a final quote or a guaranteed price. Your final price will be confirmed in writing after a free in-home visit or photo review.</p>
-      <p>Estimated prices include the equipment shown, a standard installation, removal of old equipment, and startup. Heating and cooling prices assume up to 50 feet of refrigerant line set and that existing control wiring, ductwork, and electrical service can be reused. Water heater prices assume the new unit goes in the same spot as the old one.</p>
+      <p>Estimated prices include the equipment shown, a standard installation, removal of old equipment, and startup. Heating and cooling prices assume up to 50 feet of refrigerant line set and that existing control wiring, ductwork, and electrical service can be reused. Water heater prices assume the new unit goes in the same spot as the old one. Upgrades are subject to compatibility with your equipment and install conditions.</p>
       <p>Not included unless shown on your final quote:</p>
       <ul><li>Ductwork repair, modification, or replacement</li><li>Electrical work, including new circuits, outlets, panel upgrades, or service changes</li><li>Line sets longer than 50 feet</li><li>Control (thermostat) wiring repair or replacement</li><li>Changes needed to fit equipment in the available space or meet clearances</li><li>Limited or difficult access to attics, crawlspaces, roofs, or equipment locations</li><li>Crane or lift fees</li><li>Permit fees and any required inspections</li><li>Conditions we can't see or confirm online, including code corrections, damage, or hazardous materials</li></ul>
       <p>Estimate valid for 14 days. *Financing is subject to credit approval; monthly payments are estimates only.</p>
     </section>`, true);
   document.querySelectorAll("[data-eff]").forEach(b => b.onclick = () => { S.effs[b.dataset.for]=+b.dataset.eff; const y=window.scrollY; renderResult(); window.scrollTo({top:y}); });
   if(!S.leadMeta){ S.leadMeta = {est, until: fmt(until)}; S.leadTimer = setTimeout(flushLead, 120000); notifyLead(r); }
+  document.querySelectorAll("[data-tstat]").forEach(s => { s.onclick = e => e.stopPropagation(); s.onchange = () => { S.tstatModel = s.value; const y=window.scrollY; renderResult(); window.scrollTo({top:y}); }; });
   document.querySelectorAll("[data-add]").forEach(c => c.onchange = () => { const id=c.dataset.add; S.addons = c.checked ? [...S.addons, id] : S.addons.filter(x=>x!==id); const y=window.scrollY; renderResult(); window.scrollTo({top:y}); });
   document.querySelectorAll("[data-plan]").forEach(b => b.onclick = () => { S.plan=b.dataset.plan; S.planTouched=true; const y=window.scrollY; renderResult(); window.scrollTo({top:y}); });
-  $("#bk").onclick = () => { openBooking(); S.booked=true; renderResult(); flushLead(); };
-  const rb=$("#rebook"); if(rb) rb.onclick = openBooking;
+  document.querySelectorAll("[data-choose]").forEach(btn => btn.onclick = () => { const [sys,k] = btn.dataset.choose.split("|"); S.choice = {sys,k}; S.choiceMade = true; renderKeep(); });
+  document.querySelectorAll("[data-follow]").forEach(btn => btn.onclick = () => { if(S.bookedInfo) return; S.follow = btn.dataset.follow; S.slotPick = null; S.booking = null; loadSlots(S.follow); });
+  document.querySelectorAll("[data-slot]").forEach(btn => btn.onclick = () => { const s = S.slots.list[+btn.dataset.slot]; S.slotPick = s; S.booking = null; renderKeep(); });
+  const cb = $("#confirmBook"); if(cb) cb.onclick = confirmBooking;
+  document.querySelectorAll("[data-photo]").forEach(inp => inp.onchange = () => { const k = inp.dataset.photo; S.photos[k] = [...(S.photos[k]||[]), ...inp.files].slice(0,4); S.photoState = null; renderKeep(); });
+  document.querySelectorAll("[data-unphoto]").forEach(x => x.onclick = () => { delete S.photos[x.dataset.unphoto]; renderKeep(); });
+  const sp = $("#sendPhotos"); if(sp) sp.onclick = sendPhotos;
+  const st = $("#showTimes"); if(st) st.onclick = () => { S.showDays = (S.showDays||4) + 4; renderKeep(); };
 }
 
 render();

@@ -141,7 +141,7 @@ export default function InstantPricingPage() {
             </div>
           </div>
 
-          <ul className="mt-10 grid gap-3 sm:mt-12 sm:grid-cols-3 sm:gap-4">
+          <ul className="mt-10 grid gap-3 sm:mt-12 md:grid-cols-3 md:gap-4">
             {trustPoints.map((t) => (
               <li key={t.title} className="flex items-center gap-4 rounded-2xl bg-white/10 p-4 ring-1 ring-white/20 backdrop-blur">
                 <span className="flex h-12 w-12 flex-none items-center justify-center rounded-xl bg-amber-400 text-brand-900">
@@ -163,7 +163,7 @@ export default function InstantPricingPage() {
           <h2 className="text-center font-display text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
             Your price in <span className="text-brand-600">3 easy steps</span>
           </h2>
-          <ol className="mt-8 grid gap-4 sm:grid-cols-3 sm:gap-6">
+          <ol className="mt-8 grid gap-4 md:grid-cols-3 md:gap-6">
             {steps.map((s, i) => (
               <li key={s.title} className="relative rounded-3xl border border-brand-100 bg-gradient-to-br from-brand-50 to-white p-6 shadow-sm">
                 <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-brand-700 font-display text-xl font-extrabold text-white shadow-md">

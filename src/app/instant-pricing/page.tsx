@@ -130,10 +130,11 @@ export default function InstantPricingPage() {
           <Logo />
           <a
             href={siteConfig.phoneHref}
-            className="inline-flex items-center gap-2 rounded-full bg-brand-600 px-4 py-2 text-sm font-bold text-white shadow-sm transition hover:bg-brand-700 sm:text-base"
+            className="inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-brand-600 px-4 py-2 text-sm font-bold text-white shadow-sm transition hover:bg-brand-700 sm:text-base"
           >
             <Icon name="phone" className="h-4 w-4" />
-            <span>Call {siteConfig.phone}</span>
+            <span className="sm:hidden">Call now</span>
+            <span className="hidden sm:inline">Call {siteConfig.phone}</span>
           </a>
         </Container>
       </header>

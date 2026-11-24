@@ -5,7 +5,7 @@ import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 import { siteConfig } from "@/data/site";
 import { buildMetadata } from "@/lib/seo";
 
-const EFFECTIVE_DATE = "November 23, 2026";
+const EFFECTIVE_DATE = "November 24, 2026";
 const LEGAL_NAME = "Green Core Heating & Air Inc.";
 
 export const metadata: Metadata = buildMetadata({
@@ -56,9 +56,9 @@ export default function PrivacyPolicyPage() {
               </li>
               <li>
                 <strong>Online estimate:</strong>{" "}when you use our online estimate, we collect your answers about your
-                home and equipment, the options, prices, and financing terms you view, any add-ons you choose, whether you
-                ask to book a visit, and your contact information. We save this as a request in our scheduling software so
-                our team can follow up with you.
+                home and equipment, the options, prices, and financing terms you view, any add-ons you choose, the option
+                you pick, any visit or phone call you book, any photos you choose to send us, and your contact information.
+                We save this in our scheduling software so our team can follow up with you and confirm your price.
               </li>
               <li>
                 <strong>Payment information:</strong>{" "}payments are handled by our payment and scheduling providers. We

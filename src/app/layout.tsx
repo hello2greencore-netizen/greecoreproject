@@ -78,7 +78,7 @@ export default function RootLayout({
             Skip to content
           </a>
           <AttributionCapture />
-          {/* The /instant-pricing ad landing page has its own simple header and footer, and no chat, so visitors stay on the estimator. */}
+          {/* The /instant-pricing ad landing page has no site header, menu, chat or booking bar, so visitors stay on the estimator. */}
           <HideOnPaths paths={["/instant-pricing"]}>
             <AnnouncementBar />
             <Header />
@@ -89,15 +89,17 @@ export default function RootLayout({
           <HideOnPaths paths={["/instant-pricing"]}>
             <Footer />
           </HideOnPaths>
-          <StickyMobileCTA />
+          {/* The ad landing page keeps people on the estimator: no Book Now / Free Estimate bar, which opens a separate booking form. */}
+          <HideOnPaths paths={["/instant-pricing"]}>
+            <StickyMobileCTA />
+          </HideOnPaths>
           {/* The homepage uses the LeadConnector chat instead of Corey. */}
           <HideOnPaths paths={["/", "/instant-pricing"]}>
             <FAQChatbot />
           </HideOnPaths>
           <HomeLeadChat />
-          {/* No seasonal decorations on the ad landing page. */}
+          <ThanksgivingStyles />
           <HideOnPaths paths={["/instant-pricing"]}>
-            <ThanksgivingStyles />
             <FallingLeaves />
             <LeafPile />
             <WalkingTurkey />

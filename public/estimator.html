@@ -293,7 +293,8 @@ const PLANS = [
   {id:"0",  short:"0% · 21 mo", long:"0% APR for 21 months", apr:0, n:21},
   {id:"36", short:"3 years", long:"3 years at 8.99% APR", apr:8.99, n:36},
   {id:"60", short:"5 years", long:"5 years at 10.49% APR", apr:10.49, n:60},
-  {id:"84", short:"7 years", long:"7 years at 6.99% APR", apr:6.99, n:84}
+  {id:"84", short:"7 years", long:"7 years at 6.99% APR", apr:6.99, n:84},
+  {id:"none", short:"No financing, pay in full", long:"Paying in full, no financing", none:true}
 ];
 const plan = () => PLANS.find(p=>p.id===S.plan) || PLANS[0];
 const SUBMIT_URL = "https://green-core-estimator.tony-ac7.workers.dev";
@@ -362,7 +363,7 @@ function leadSummary(r, est, until){
   L.push("");
   const ups = r.addons.filter(x=>S.addons.includes(x.id));
   if (r.addons.length) L.push(`Upgrades picked: ${ups.length ? ups.map(x=>`${x.short} (${money(x.price)})`).join(", ") : "None"}`);
-  L.push(`Financing: ${S.planTouched ? "Looked at " + plan().long : "Didn't look"}`);
+  L.push(`Financing: ${plan().none ? "No financing, paying in full" : S.planTouched ? "Looked at " + plan().long : "Didn't look"}`);
   L.push(`Follow-up: ${S.bookedInfo ? `${S.bookedInfo.kind==="call"?"Phone call":"Verify visit"} booked ${fmtSlot(S.bookedInfo.start)} with ${S.bookedInfo.employee}` : S.follow ? `Looking at ${S.follow==="call"?"phone call":"visit"} times` : "Not booked yet"}`);
   return L;
 }
@@ -835,7 +836,7 @@ function tierCards(sys){
     <article class="tier${on?" pick":""}">
       <span class="badge">${t.label}${on?" · Your choice":""}</span>
       <div><div class="tname">${t.name}</div><div class="tsub">${t.sub}</div></div>
-      <div><div class="price">${money(t.price)}</div><div class="mo">or ${cents(monthlyAmt(t.price))}/mo*</div><div class="mo-sub">${plan().long}</div></div>
+      <div><div class="price">${money(t.price)}</div>${plan().none?`<div class="mo-sub">Paying in full</div>`:`<div class="mo">or ${cents(monthlyAmt(t.price))}/mo*</div><div class="mo-sub">${plan().long}</div>`}</div>
       <details class="pts" ${window.innerWidth>600?"open":""}><summary>What's included</summary><ul>${t.pts.map(p=>`<li>${p}</li>`).join("")}</ul></details>
       <button class="btn ${on?"":"ghost "}choose" data-choose="${sys.id}|${t.k}" aria-pressed="${on}">${on?"✓ Your choice":"Choose this option"}</button>
     </article>`; }).join("")}</div>`;
@@ -918,7 +919,7 @@ function renderResult(){
     </section>`).join("")}
     <p class="disc">Estimated prices based on your answers, not a final quote. Your final price is confirmed after a free visit or photo review.<span class="meta">${r.posNote?`<span>${r.posNote}</span>`:""}<span>Estimate ${est}</span><span>Valid through ${fmt(until)}</span><span>ZIP ${esc(S.zip)}</span></span></p>
     ${r.cross?`<p class="note">${r.cross}</p>`:""}`)}
-    ${stepCard(2, "fin-h", "Pay over time", "Pick a plan and the monthly payments in step 1 update. On approved credit.", `
+    ${stepCard(2, "fin-h", "Pay over time", "Pick a plan and the monthly payments in step 1 update, or choose no financing if you'd rather pay in full. Financing is on approved credit.", `
       <div class="plans" role="group" aria-label="Monthly payment options">${PLANS.map(p=>`<button class="plan" data-plan="${p.id}" aria-pressed="${plan().id===p.id}">${p.short}${p.apr?` · ${p.apr}%`:""}</button>`).join("")}</div>`)}
     ${nextSteps(r)}
     <h2 class="more-h">Good to know</h2>

@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { Logo } from "@/components/layout/Logo";
 import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/data/site";
 import { testimonials } from "@/data/testimonials";
 import { reviewTowns } from "@/data/reviewPlacements";
 import EstimatorFrame from "../instant-estimate/EstimatorFrame";
+import LandingIntro from "./LandingIntro";
 
 // Ads landing page for paid social (Meta) campaigns. Same estimator as /instant-estimate, but with no
 // site menu, and hidden from search engines so it doesn't compete with the organic page.
@@ -16,7 +15,7 @@ export const metadata: Metadata = {
   ...buildMetadata({
     title: "See Real Prices for Your New Heating & Cooling System",
     description:
-      "Answer a few quick questions and see real Green Core prices for your home in about two minutes. Furnaces, AC, heat pumps, ductless and heat pump water heaters.",
+      "Answer a few quick questions and see real Green Core prices for your home in about two minutes. Furnaces, AC, heat pumps, ductless, heat pump water heaters and whole house fans.",
     path: "/instant-pricing",
   }),
   robots: { index: false, follow: false },
@@ -116,21 +115,8 @@ function Stars() {
 export default function InstantPricingPage() {
   return (
     <>
-      {/* Simple header: logo and phone only, no site menu. */}
-      <header className="sticky top-0 z-30 border-b border-black/5 bg-white/95 backdrop-blur">
-        <Container size="xl" className="flex items-center justify-between gap-4 py-3">
-          <Logo />
-          <a
-            href={siteConfig.phoneHref}
-            className="inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-brand-600 px-4 py-2 text-sm font-bold text-white shadow-sm transition hover:bg-brand-700 sm:text-base"
-          >
-            <Icon name="phone" className="h-4 w-4" />
-            <span className="sm:hidden">Call now</span>
-            <span className="hidden sm:inline">Call {siteConfig.phone}</span>
-          </a>
-        </Container>
-      </header>
-
+      {/* Intro (hero + steps). Hides once the customer reaches their prices; comes back on "Start over". */}
+      <LandingIntro>
       {/* Hero */}
       <section className="relative isolate overflow-hidden bg-brand-900 text-white">
         <div
@@ -171,7 +157,7 @@ export default function InstantPricingPage() {
               Use our 2-minute estimator to get your real quote now.
             </p>
             <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
-              Heating, cooling and heat pump water heater prices for your home, online. We confirm your final price in
+              Heating, cooling, heat pump water heater and whole house fan prices for your home, online. We confirm your final price in
               writing after a free visit or photo review.
             </p>
 
@@ -245,6 +231,8 @@ export default function InstantPricingPage() {
         </Container>
       </section>
 
+      </LandingIntro>
+
       {/* Estimator */}
       <section id="estimator" className="scroll-mt-16 bg-gradient-to-b from-brand-50 via-[#F3F6F2] to-[#F3F6F2] py-10 sm:py-14">
         <Container size="xl">
@@ -312,12 +300,12 @@ export default function InstantPricingPage() {
         <Container size="xl" className="flex flex-wrap items-center justify-between gap-3 border-t border-white/10 py-6 text-sm">
           <p>&copy; {new Date().getFullYear()} Green Core Heating &amp; Air Inc. {siteConfig.license}.</p>
           <nav className="flex gap-4">
-            <Link href="/privacy-policy" className="hover:text-white">
+            <a href="/privacy-policy" target="_blank" rel="noopener" className="hover:text-white">
               Privacy Policy
-            </Link>
-            <Link href="/terms-of-service" className="hover:text-white">
+            </a>
+            <a href="/terms-of-service" target="_blank" rel="noopener" className="hover:text-white">
               Terms of Service
-            </Link>
+            </a>
           </nav>
         </Container>
       </footer>

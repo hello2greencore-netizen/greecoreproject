@@ -164,6 +164,57 @@ input:focus-visible{outline:3px solid var(--green);outline-offset:1px;border-col
   .pts[open] summary{display:block}
   .pts[open] summary::after{content:" ▴"}
 }
+/* price page: numbered, bordered step cards */
+.rpage{display:flex;flex-direction:column;gap:18px}
+.rpage .rhead{padding:4px 2px 0}
+.step{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:clamp(16px,3vw,26px);display:flex;flex-direction:column;gap:16px;scroll-margin-top:16px}
+.step-h{display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.step-h h2{font-size:clamp(19px,3.4vw,22px)}
+.step-sub{font-size:13.5px;color:var(--muted);margin-top:3px}
+.num{flex:none;width:32px;height:32px;border-radius:50%;background:var(--green);color:var(--surface);display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:16px;margin-top:-2px}
+.opt-tag{font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);background:var(--line);padding:2px 8px;border-radius:20px;vertical-align:middle;margin-left:4px}
+.step.next{border-color:var(--green)}
+.step .sys:first-of-type{border-top:0;padding-top:0}
+.step .photos{border-top:0;padding-top:0}
+.more-h{font-size:18px;margin-top:6px}
+.rpage .cols .box{border-width:1.5px}
+.rpage .about{border-top:0;padding-top:0}
+@media (max-width:600px){
+  .rpage{gap:14px}
+  .step{padding:14px;gap:14px}
+  .num{width:28px;height:28px;font-size:14px}
+}
+/* color separation: tinted header band on each step, solid green on the booking step */
+.step{--pad:clamp(16px,3vw,26px);padding:0 var(--pad) var(--pad);overflow:hidden;box-shadow:0 1px 2px rgba(19,32,26,.05),0 4px 14px -6px rgba(19,32,26,.10)}
+.step-h{margin:0 calc(-1 * var(--pad));padding:14px var(--pad);background:var(--green-soft);border-bottom:1.5px solid var(--line)}
+.step.next .step-h{background:var(--green);border-bottom-color:var(--green)}
+.step.next .step-h h2{color:var(--surface)}
+.step.next .step-h .step-sub{color:var(--surface);opacity:.88}
+.step.next .num{background:var(--surface);color:var(--green)}
+.step.next{border-width:2px}
+.step .sys + .sys{border-top:1.5px dashed var(--line)}
+.rpage .cols .box{padding:0 18px 18px;overflow:hidden;border-width:1.5px}
+.rpage .cols .box h3{margin:0 -18px;padding:12px 18px;border-bottom:1.5px solid var(--line);background:var(--bg)}
+.rpage .cols .box:nth-child(1) h3{background:var(--green-soft)}
+.rpage .cols .box:nth-child(2) h3{background:var(--amber-soft)}
+.more-h{padding-left:2px;color:var(--muted);font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+@media (max-width:600px){.step{--pad:14px}.rpage .cols .box{padding:0 14px 14px}.rpage .cols .box h3{margin:0 -14px;padding:11px 14px}}
+/* bold green step headers (Tony's pick, Nov 2026). Fixed greens so they read the same in light and dark mode. */
+:root{--page:#E3EAE4;--hd:#1E6B47;--hd-strong:#0F4A30}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--page:#0A100D}}
+:root[data-theme="dark"]{--page:#0A100D}
+body:has(.wrap.result){background:var(--page)}
+.rpage{gap:26px}
+.step{border:0;box-shadow:0 2px 4px rgba(19,32,26,.08),0 10px 24px -10px rgba(19,32,26,.25)}
+.step-h{background:var(--hd);border-bottom:0}
+.step-h h2{color:#fff}
+.step-h .step-sub{color:#fff;opacity:.88}
+.num{background:#fff;color:var(--hd)}
+.step.next{border:0}
+.step.next .step-h{background:var(--hd-strong);border-bottom:0}
+.step.next .num{color:var(--hd-strong)}
+.step-h .opt-tag{background:rgba(255,255,255,.2);color:#fff}
+@media (max-width:600px){.rpage{gap:20px}}
 </style>
 
 </head>
@@ -478,7 +529,7 @@ function shell(inner, wide){
     <div class="sample"><span></span>${S.step!=="service"?`<button class="link" id="restart">Start over</button>`:""}</div>
     <header class="brand"><div class="logo"><i aria-hidden="true"></i>Green Core</div><div class="phone">Questions? Call <strong>(707) 988-5858</strong></div></header>
     ${prog}
-    <section class="panel">${inner}</section>`;
+    ${S.step==="result" ? `<div class="rpage">${inner}</div>` : `<section class="panel">${inner}</section>`}`;
   const r = $("#restart"); if(r) r.onclick = () => { S = fresh(); render(); };
 }
 
@@ -805,6 +856,10 @@ function includesList(){
 }
 
 // Pick an option, then book a verify visit or a call on Tony's or Zach's schedule, and optionally send photos.
+// A numbered, bordered card so each part of the price page reads as its own step.
+const stepCard = (n, id, title, sub, body, cls="") => `<section class="step ${cls}" aria-labelledby="${id}">
+    <div class="step-h">${n?`<span class="num" aria-hidden="true">${n}</span>`:""}<div><h2 id="${id}">${title}</h2>${sub?`<p class="step-sub">${sub}</p>`:""}</div></div>
+    ${body}</section>`;
 function nextSteps(r){
   const cs = r.systems.find(s => s.chosen), ct = pickedTier(cs);
   const chosenLine = ct ? `<p class="lede">Your choice: <strong>${esc(cs.title)}: ${esc(ct.name)}, ${money(ct.price)}</strong>. Not quite right? Tap "Choose this option" on any card above.</p>` : `<p class="lede">These options are priced at your visit. Pick how you'd like to follow up.</p>`;
@@ -833,17 +888,15 @@ function nextSteps(r){
   const photoStatus = S.photoState==="busy" ? `<p class="fine">Sending ${S.photoDone+1 > nReady ? nReady : S.photoDone+1} of ${nReady}…</p>`
     : S.photoState==="sent" ? `<div class="note good">Got your photos, thanks! We'll use them to confirm your price.</div>`
     : S.photoState==="error" ? `<p class="err">Some photos didn't send. Try again, or text them to (707) 988-5858.</p>` : "";
-  return `<section class="next" aria-labelledby="next-h">
-    <h2 id="next-h">Next: confirm your price</h2>
+  return stepCard(3, "next-h", "Book your follow-up", "Pick a quick visit or a phone call to confirm your price.", `
     ${chosenLine}
     <div class="opts">${Object.entries(FOLLOW).map(([k,f]) => `<button class="opt" data-follow="${k}" aria-pressed="${S.follow===k || (S.bookedInfo && S.bookedInfo.kind===k)}" ${S.bookedInfo?"disabled":""}><strong>${f.title}</strong><span>${f.sub}</span></button>`).join("")}</div>
     ${times}
-    <div class="photos"><h3>Send photos (optional)</h3><p class="fine">Photos help us confirm your price faster. Add any you can.</p>
-      ${photoRows}
+    <p class="fine">Prefer to talk now? Call <strong>(707) 988-5858</strong>.</p>`, "next") +
+  stepCard(4, "photos-h", "Send photos <span class=\"opt-tag\">Optional</span>", "Photos help us confirm your price faster. Add any you can.", `
+    <div class="photos">${photoRows}
       ${nReady && S.photoState!=="busy" ? `<div class="cta"><button class="btn" id="sendPhotos">Send ${nReady} photo${nReady>1?"s":""}</button></div>` : ""}
-      ${photoStatus}</div>
-    <p class="fine">Prefer to talk now? Call <strong>(707) 988-5858</strong>.</p>
-  </section>`;
+      ${photoStatus}</div>`);
 }
 function renderResult(){
   const r = quoteAll();
@@ -856,6 +909,7 @@ function renderResult(){
   shell(`
     <div class="rhead"><h1>${esc(first)}, here are your prices</h1>
       <p class="lede">${multi?"Compare the options and pick what fits.":"Pick the option that fits."}</p></div>
+    ${stepCard(1, "pick-h", "Choose your option", multi?"Compare the options and tap \"Choose this option\" on the one you like.":"Tap \"Choose this option\" on the one you like.", `
     ${glance}
     ${r.systems.map(s=>`<section class="sys" id="sys-${s.id}">
       <div class="syshead"><div><h2>${s.title}</h2><p class="muted">${s.note}</p></div>
@@ -863,11 +917,11 @@ function renderResult(){
       ${s.pending?`<p class="note">${s.custNote||"We'll price this one at your free visit."}</p>`:tierCards(s)}
     </section>`).join("")}
     <p class="disc">Estimated prices based on your answers, not a final quote. Your final price is confirmed after a free visit or photo review.<span class="meta">${r.posNote?`<span>${r.posNote}</span>`:""}<span>Estimate ${est}</span><span>Valid through ${fmt(until)}</span><span>ZIP ${esc(S.zip)}</span></span></p>
-    <section class="fin" aria-labelledby="fin-h"><h2 id="fin-h">Pay over time</h2>
-      <p class="fine">Pick a plan and the monthly payments above update. On approved credit.</p>
-      <div class="plans" role="group" aria-label="Monthly payment options">${PLANS.map(p=>`<button class="plan" data-plan="${p.id}" aria-pressed="${plan().id===p.id}">${p.short}${p.apr?` · ${p.apr}%`:""}</button>`).join("")}</div></section>
+    ${r.cross?`<p class="note">${r.cross}</p>`:""}`)}
+    ${stepCard(2, "fin-h", "Pay over time", "Pick a plan and the monthly payments in step 1 update. On approved credit.", `
+      <div class="plans" role="group" aria-label="Monthly payment options">${PLANS.map(p=>`<button class="plan" data-plan="${p.id}" aria-pressed="${plan().id===p.id}">${p.short}${p.apr?` · ${p.apr}%`:""}</button>`).join("")}</div>`)}
     ${nextSteps(r)}
-    ${r.cross?`<p class="note">${r.cross}</p>`:""}
+    <h2 class="more-h">Good to know</h2>
     <div class="cols">
       <div class="box"><h3>Every option includes</h3><ul>${includesList().map(x=>`<li>${x}</li>`).join("")}</ul></div>
       <div class="box"><h3>What could change your price</h3>${r.flags.length?`<ul>${r.flags.map(f=>`<li>${f}</li>`).join("")}</ul>`:`<p class="fine">Nothing flagged. Your answers were clear, so these prices should hold.</p>`}

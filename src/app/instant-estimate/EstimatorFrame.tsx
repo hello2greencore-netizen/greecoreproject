@@ -7,7 +7,7 @@
 import { useEffect, useRef, useState } from "react";
 import { attributionQuery } from "@/lib/attribution";
 
-type LeadMessage = { type?: string; height?: number; channel?: string; value?: number; currency?: string; systems?: string[]; estimate?: string; kind?: string };
+type LeadMessage = { type?: string; height?: number; channel?: string; value?: number; currency?: string; systems?: string[]; estimate?: string; kind?: string; step?: string };
 
 export default function EstimatorFrame() {
   const ref = useRef<HTMLIFrameElement>(null);
@@ -53,6 +53,10 @@ export default function EstimatorFrame() {
           estimator_systems: (d.systems || []).join(", "),
           estimate_number: d.estimate || "",
         });
+      }
+      if (d?.type === "gc-estimator-step") {
+        // Lets the page react to the estimator's step (the ad landing page hides its intro on the price page).
+        window.dispatchEvent(new CustomEvent("gc-estimator-step", { detail: d.step || "" }));
       }
       if (d?.type === "gc-estimator-booked") {
         // The customer booked a verify visit or a phone call from their estimate.

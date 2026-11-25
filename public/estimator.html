@@ -216,7 +216,7 @@ function position(a){
   return {attic, key, orient, where:{garage:"garage",closet:"closet",attic:"attic",crawl:"crawlspace"}[a.loc]};
 }
 // Existing AC decides which HCP template set to use (Existing AC vs No Existing AC).
-const hasAC = () => S.a.current==="gas_ac" || S.a.ac==="new" || S.a.ac==="old";
+const hasAC = () => S.a.current==="gas_ac" || S.a.ac==="yes";
 // Financing plans. Monthly = standard loan payment: P × r ÷ (1 − (1 + r)^−n), r = APR ÷ 12. Checked against lender samples on $18,000.
 const PLANS = [
   {id:"0",  short:"0% · 21 mo", long:"0% APR for 21 months", apr:0, n:21},
@@ -250,11 +250,11 @@ function leadPayload(r, est, until){
   return {
     website: S.hp || "", estimateNo: est, validThrough: until, zip: S.zip,
     contact: {name:S.c.name, phone:S.c.phone, email:S.c.email, street:S.c.addr, sms:S.c.sms},
-    answers: {sqft:S.a.sqft, position:P?`${P.where}, ${P.orient.toLowerCase()}`:"", priority:S.a.priority, raw:{...S.a, own:S.own}},
+    answers: {sqft:S.a.sqft, position:P?`${P.where}, ${P.orient.toLowerCase()}`:"", raw:{...S.a, own:S.own}},
     qa: [
       {q:"Systems they wanted priced:", a:S.svcs.map(sysName).join(", ")},
       {q:"Do they own the home?", a:({own:"I own it",rent:"I rent",landlord:"Landlord or manager"})[S.own]||""},
-      ...QS.filter(q=>q.need()).map(q=>{ const v=S.a[q.id]; if(q.num) return {q:q.q, a:v?`${Number(v).toLocaleString("en-US")} sq ft`:"(skipped)"}; const o=q.o.find(x=>x[0]===v); return {q:q.q, a:o?o[1]:"(skipped)"}; })
+      ...QS.filter(q=>q.need()).flatMap(q=>q.multi||[q]).map(q=>{ const v=S.a[q.id]; if(q.num) return {q:q.q, a:v?`${Number(v).toLocaleString("en-US")} sq ft`:"(skipped)"}; const o=q.o.find(x=>x[0]===v); return {q:q.q, a:o?o[1]:"(skipped)"}; })
     ],
     systems: r.systems.map(s=>({title:s.title, pending:!!s.pending, tiers:(s.tiers||[]).map(t=>({label:t.label, name:t.name, price:t.price, template:t.tpl, picked:t.k===s.pickK}))})),
     primary: pickT ? {system:first.title, option:`${pickT.label} - ${pickT.name}`, price:pickT.price, template:pickT.tpl} : null,
@@ -266,7 +266,7 @@ function leadPayload(r, est, until){
 // Short, plain-English summary for the HCP lead note.
 function leadSummary(r, est, until){
   const a = S.a;
-  const lab = (id, v) => { const q = QS.find(x=>x.id===id); if(!q || v==null) return null; const o = q.o.find(x=>x[0]===v); return o ? o[1] : null; };
+  const lab = (id, v) => { const q = [...QS, ...QS.flatMap(x=>x.multi||[])].find(x=>x.id===id); if(!q || v==null) return null; const o = q.o.find(x=>x[0]===v); return o ? o[1] : null; };
   const first = r.systems.find(s=>s.chosen) || r.systems.find(s=>!s.pending), pickT = pickedTier(first);
   const L = [];
   L.push(`Online estimate ${est} - good through ${until}`);
@@ -283,13 +283,10 @@ function leadSummary(r, est, until){
     if (now) L.push(`Has now: ${now}`);
     const ac = lab("ac", a.ac); if (ac) L.push(`Has AC: ${ac}`);
     const vent = ({metal:"Metal pipe (standard 80%)", pvc:"Plastic pipes (high-efficiency)", unsure:"Not sure", none:"No furnace now"})[a.vent]; if (vent) L.push(`Furnace vent: ${vent}`);
-    const ducts = lab("ducts", a.ducts); if (ducts) L.push(`Ducts: ${ducts}`);
   }
   if (has("mini")) L.push(a.rooms==="2" ? "Ductless: wants two or more rooms" : `Ductless: one room, about ${Number(a.room||0).toLocaleString("en-US")} sq ft${miniSize(a.room)?` (${miniSize(a.room)})`:" (too big to price online)"}`);
   if (has("whf") && !ducted()) L.push(`Whole house fan: ${Number(a.sqft).toLocaleString("en-US")} sq ft home`);
   if (has("hpwh")) L.push(`Water heater: ${a.whfuel==="gas"?"Gas":"Electric"} now - ${lab("people",a.people)} people - ${lab("baths",a.baths)} bathrooms - ${whGal()} gal - ${a.whloc==="move"?"wants it moved":"same spot"}`);
-  const out = lab("outdoor", a.outdoor); if (out) L.push(`Outdoor unit: ${out}`);
-  const want = lab("priority", a.priority); if (want) L.push(`Wants: ${want}`);
   L.push(`Owns the home: ${({own:"Yes", rent:"No, renting", landlord:"Landlord or manager"})[S.own] || "Not asked"}`);
   L.push("");
   const ups = r.addons.filter(x=>S.addons.includes(x.id));
@@ -417,16 +414,14 @@ const QS = [
   {id:"loc", need:ducted, q:"Where is your furnace or indoor unit?", help:"The equipment inside the home, not the unit outside.", o:[["garage","Garage"],["closet","Closet","Hall or utility closet"],["attic","Attic"],["crawl","Crawlspace","Under the house"]]},
   {id:"flow", need:()=>ducted() && (S.a.loc==="garage"||S.a.loc==="closet"), q:"Where does air come out of your vents?", help:"Check a couple of rooms. Most homes have one or the other.", o:[["up","Ceiling or high on the walls"],["down","Floor"],["unsure","Not sure"]]},
   {id:"vent", need:()=>has("furnace","fac","dual"), q:"What kind of vent pipe does your furnace have?", help:"Look where the pipe leaves the top of the furnace.", o:[["metal","Metal pipe","Standard 80% furnace"],["pvc","White plastic pipes","High-efficiency 90%+ furnace"],["unsure","Not sure"],["none","No furnace now"]]},
-  {id:"ac", need:()=>ducted() && !["gas_ac","gas"].includes(S.a.current), q:"Do you have central air conditioning now?", o:[["new","Yes, under 10 years old"],["old","Yes, older than 10 years"],["none","No AC"]]},
-  {id:"ducts", need:ducted, q:"How old are your ducts?", o:[["new","Under 10 years"],["mid","10–20 years"],["old","Over 20 years"],["unsure","Not sure"]]},
+  {id:"ac", need:()=>ducted() && !["gas_ac","gas"].includes(S.a.current), q:"Do you have central air conditioning now?", o:[["yes","Yes"],["none","No"]]},
   {id:"rooms", need:()=>has("mini"), q:"How many rooms do you want to heat and cool with ductless?", o:[["1","One room"],["2","Two or more rooms","We'll design these at a free visit"]]},
   {id:"room", need:()=>has("mini") && S.a.rooms==="1", q:"About how big is that room?", num:true, label:"Room size in square feet", ph:"300", help:"Length times width. A 15 by 20 foot room is 300 sq ft."},
-  {id:"outdoor", need:()=>has("hp","fac","acc","dual","dfx","mini"), q:"Where can the outdoor unit go?", o:[["same","Where the AC is now"],["ground","A new spot on the ground"],["mount","On a wall bracket or roof"],["unsure","Not sure"]]},
   {id:"whfuel", need:()=>has("hpwh"), q:"Is your water heater gas or electric now?", o:[["gas","Gas"],["elec","Electric"]]},
-  {id:"people", need:()=>has("hpwh"), q:"How many people live in the home?", o:[["2","1–2"],["4","3–4"],["5","5 or more"]]},
-  {id:"baths", need:()=>has("hpwh"), q:"How many bathrooms does the home have?", o:[["2","1–2"],["3","3"],["4","4 or more"]]},
+  {id:"household", need:()=>has("hpwh"), q:"Who uses the hot water?", help:"This sets the tank size.", multi:[
+    {id:"people", q:"People in the home", o:[["2","1–2"],["4","3–4"],["5","5 or more"]]},
+    {id:"baths", q:"Bathrooms", o:[["2","1–2"],["3","3"],["4","4 or more"]]}]},
   {id:"whloc", need:()=>has("hpwh"), q:"Where should the new water heater go?", help:"Heat pump water heaters need some open air around them, like a garage.", o:[["same","Same spot as the old one"],["move","Somewhere new","We'll look at it at a free visit"]]},
-  {id:"priority", need:()=>ducted()||(has("mini") && S.a.rooms!=="2"), q:"What matters most to you?", o:[["value","Lowest price"],["good","Good value"],["better","A balance of price and comfort"],["best","Quietest and most efficient"]]}
 ];
 // Service area: the target ZIP list sent to Well-Oiled Marketing (Nov 6, 2026) for Sonoma, Marin, Napa and Solano, plus the additions below.
 const SERVICE_ZIPS = {
@@ -507,8 +502,18 @@ function renderArea(){
   };
 }
 
+function renderMulti(q){
+  const done = () => q.multi.every(p => S.a[p.id]);
+  shell(`<h2>${q.q}</h2>${q.help?`<p class="lede">${q.help}</p>`:""}
+    ${q.multi.map(p=>`<div style="display:flex;flex-direction:column;gap:10px"><span style="font-weight:500;font-size:14px">${p.q}</span>
+    <div class="opts">${p.o.map(([v,t])=>`<button class="opt" data-m="${p.id}" data-v="${v}" aria-pressed="${S.a[p.id]===v}"><strong>${t}</strong></button>`).join("")}</div></div>`).join("")}
+    <div class="row"><button class="btn ghost" id="back">Back</button>${done()?`<button class="btn" id="cont">Continue</button>`:""}</div>`);
+  document.querySelectorAll("[data-m]").forEach(b => b.onclick = () => { const was = done(); S.a[b.dataset.m] = b.dataset.v; if(!was && done()) return next(); renderMulti(q); });
+  $("#back").onclick = back; const c=$("#cont"); if(c) c.onclick = next;
+}
 function renderQ(q){
   if(q.num) return renderNum(q);
+  if(q.multi) return renderMulti(q);
   shell(`<h2>${q.q}</h2>${q.help?`<p class="lede">${q.help}</p>`:""}
     <div class="opts">${q.o.map(([v,t,s])=>`<button class="opt" data-v="${v}" aria-pressed="${S.a[q.id]===v}"><strong>${t}</strong>${s?`<span>${s}</span>`:""}</button>`).join("")}</div>
     <div class="row"><button class="btn ghost" id="back">Back</button>${S.a[q.id]?`<button class="btn" id="cont">Continue</button>`:""}</div>`);
@@ -582,7 +587,7 @@ function quoteHP(){
   const tons = tonsFor(S.a.sqft), P = position(S.a), ac = hasAC() ? "yes" : "no", i = TI[tons];
   const tiers = TIERS.map(k => ({k, ...HP_COPY[k], name:HP_NAMES[k][0], price:PRICES.HP[`${ac}.${P.key}.${k}`][i],
     tpl:`${HP_NAMES[k][1]} ${tons} Ton – ${POS_LABEL[P.key]}${ac==="yes"?" – Existing AC":""}`}));
-  return {id:"hp", title:"Heat pump system", note:`${tons} ton heat pump and indoor unit`, tiers, pickK:S.a.priority};
+  return {id:"hp", title:"Heat pump system", note:`${tons} ton heat pump and indoor unit`, tiers, pickK:"better"};
 }
 function quoteFurnace(){
   const tons = tonsFor(S.a.sqft), P = position(S.a), i = TI[tons];
@@ -591,7 +596,7 @@ function quoteFurnace(){
   const tiers = TIERS.map(k => { const [btu, ton, width] = PRICES.FURNW[`${job}.${k}`][i].split("|");
     return {k, ...FURN_COPY[k], name:`${FURN_NAMES[k]} ${eff}%`, price:PRICES.FURN[`${job}.${k}.${P.key}`][i],
       tpl:`${btu} – ${ton} – ${width} – ${FURN_FAM[eff][k]} – ${POS_LABEL[P.key]}${job==="9595"?" – 95% to 95%":""}`}; });
-  return {id:"furnace", title:furnTitle("Gas furnace","furnace"), note:`Sized for ${tons} ton airflow`, tiers, eff, job, toggle:!has95(), pickK:S.a.priority};
+  return {id:"furnace", title:furnTitle("Gas furnace","furnace"), note:`Sized for ${tons} ton airflow`, tiers, eff, job, toggle:!has95(), pickK:"better"};
 }
 // Furnace + AC (FAC) and dual fuel, new furnace + heat pump (DF).
 function quoteCombo(id, kind){
@@ -604,7 +609,7 @@ function quoteCombo(id, kind){
     const outdoor = id==="fac" ? (k==="best"?"Infinity AC":"Carrier AC") : (k==="best"?"Infinity heat pump":"Carrier heat pump");
     return {k, ...copy[k], name:`${FURN_NAMES[k]} ${eff}% + ${outdoor}`, price:PRICES[kind][`${ac}.${job}.${k}.${P.key}`][i],
       tpl:`${tons} Ton – ${btu} – ${FAC_FAM[k]} ${eff}% + ${unit} – ${POS_LABEL[P.key]}${ac==="yes"?" – Existing AC":""}${job==="9595"?" – 95% to 95%":""}`}; });
-  return {id, title:furnTitle(base,id), note:`${tons} ton system`, tiers, eff, job, toggle:!has95(), pickK:S.a.priority};
+  return {id, title:furnTitle(base,id), note:`${tons} ton system`, tiers, eff, job, toggle:!has95(), pickK:"better"};
 }
 // Dual fuel, keep the existing furnace (single- and two-stage furnace templates are priced the same).
 function quoteDFX(){
@@ -626,8 +631,8 @@ function quoteMini(){
   if(!size) return {...pending("mini","Ductless mini split",`${Number(a.room).toLocaleString("en-US")} sq ft room`), custNote:"A room this size needs a closer look. We'll price this one at your free visit."};
   const row = PRICES.MINI[size];
   const tiers = MINI_TIERS.map((m,i)=>({...m, price:row[i], tpl:`${size} High Wall – ${i+1} ${m.label} – ${m.name}`})).filter(t=>t.price>0);
-  let pickK = MINI_PICK[a.priority];
-  if(!tiers.some(t=>t.k===pickK)) pickK = (a.priority==="better"||a.priority==="best") ? tiers[tiers.length-1].k : tiers[0].k;
+  let pickK = MINI_PICK.better;
+  if(!tiers.some(t=>t.k===pickK)) pickK = tiers[tiers.length-1].k;
   return {id:"mini", title:"Ductless mini split", note:`One room, about ${Number(a.room).toLocaleString("en-US")} sq ft (${size.replace(/^0/,"")} BTU)`, tiers, pickK};
 }
 function quoteHPWH(){
@@ -688,7 +693,7 @@ function quoteAll(){
   const a = S.a;
   const Q = {hp:quoteHP, furnace:quoteFurnace, fac:()=>quoteCombo("fac","FAC"), dual:()=>quoteCombo("dual","DF"), dfx:quoteDFX, acc:quoteACC, mini:quoteMini, hpwh:quoteHPWH, whf:quoteWHF};
   const out = S.svcs.map(id => Q[id]());
-  // The option the customer chose (defaults to the one that matches what they said matters most).
+  // The option the customer chose (defaults to the "Better" option of the first system).
   if(S.choice && !out.some(s => s.id===S.choice.sys && !s.pending && s.tiers.some(t => t.k===S.choice.k))) S.choice = null;
   if(!S.choice){ const f = out.find(s => !s.pending && s.tiers); if(f) S.choice = {sys:f.id, k:pickedTier(f).k}; }
   out.forEach(s => { s.chosen = !!S.choice && s.id===S.choice.sys; if(s.chosen) s.pickK = S.choice.k; });
@@ -698,14 +703,11 @@ function quoteAll(){
     if(a.current==="unsure") flags.push("Your current system type");
     if(a.current==="elec") flags.push("Electrical capacity check for an all-electric system");
     if(a.vent==="unsure" && has("furnace","fac","dual")) flags.push("Which furnace you have now (priced as a standard 80% furnace)");
-    if(a.ducts==="unsure") flags.push("Duct condition");
   }
-  if(a.outdoor==="ground") flags.push("New outdoor unit location (longer line set, new pad)");
-  if(a.outdoor==="mount") flags.push("Wall bracket or roof mount");
-  if(a.outdoor==="unsure") flags.push("Outdoor unit placement");
+  if(has("hp","fac","acc","dual","dfx")) flags.push(hasAC() ? "Where the outdoor unit goes (priced in the same spot as your current AC; a new spot, wall bracket or roof mount can change the price)" : "Where the outdoor unit goes (priced on a ground pad near the house; a wall bracket or roof mount can change the price)");
   if(ducted()){
     if(position(a).attic) flags.push("Access and working space in your attic or crawlspace");
-    if(a.ducts==="old" && !S.addons.includes("ducts")) flags.push("Older ductwork may need sealing or repairs");
+    if(!S.addons.includes("ducts")) flags.push("The condition of your ductwork (older ducts may need sealing or repairs)");
     if(S.addons.includes("zone") && !S.addons.includes("ducts")) flags.push("The 2-zone price assumes a new duct system");
     if(has("hp","fac","acc","dual","dfx") && !hasAC()) flags.push("A new electrical circuit or panel space may be needed for the outdoor unit");
   }
@@ -721,7 +723,7 @@ function quoteAll(){
   if(ducted()){
     const aTons = tonsFor(a.sqft), tm = TSTATS.find(x=>x.k===S.tstatModel) || TSTATS[1];
     addons.push(
-      {id:"ducts", for:"ducted", short:"New R-8 ducts", label:`New R-8 insulated duct system, sized for your ${aTons} ton system${a.ducts==="old"?" (recommended for ducts over 20 years old)":""}`, hcp:`${aTons} Ton R-8 Duct System`, price:DUCT[aTons]},
+      {id:"ducts", for:"ducted", short:"New R-8 ducts", label:`New R-8 insulated duct system, sized for your ${aTons} ton system`, hcp:`${aTons} Ton R-8 Duct System`, price:DUCT[aTons]},
       {id:"zone", for:"ducted", short:"2-zone system", label:"2-zone system for uneven rooms*", hcp:"Zoning: zone board + 4 dampers + zone 2 thermostat + 3 hrs labor", perTier:(sysId,k)=>zoneCost(sysId,k,aTons),
         note:"*Price is with a new duct system. Includes a zone control board, 4 zone dampers, a thermostat or sensor for the second zone, and installation."},
       {id:"tstat", for:"ducted", short:tm.name, label:"Smart thermostat", select:true, hcp:`${tm.name} (Thermostats > With New System)`, price:tm.price, skipBest:true, note:"Best options already include a smart control"},
@@ -746,7 +748,7 @@ function quoteAll(){
     const add = sel.filter(x=>appliesTo(x, s) && !(x.skipBest && t.k==="best")).reduce((n,x)=>n+(x.perTier ? x.perTier(s.id, t.k) : x.price),0);
     t.price += add; if(add) t.tpl += ` + add-ons (${money(add)})`; }));
   let cross = null;
-  if(S.svcs.length===1 && has("furnace") && a.ac!=="new"){ const P = position(a); cross = `No AC, or an older one? A heat pump replaces your furnace and AC in one system. For your home it starts at ${money(PRICES.HP[`${hasAC()?"yes":"no"}.${P.key}.value`][TI[tonsFor(a.sqft)]])}.`; }
+  if(S.svcs.length===1 && has("furnace")){ const P = position(a); cross = `No AC, or an older one? A heat pump replaces your furnace and AC in one system. For your home it starts at ${money(PRICES.HP[`${hasAC()?"yes":"no"}.${P.key}.value`][TI[tonsFor(a.sqft)]])}.`; }
   const notes = [];
   if(ducted()){ const P = position(a); notes.push(`${a.sqft.toLocaleString("en-US")} sq ft home, ${P.where} install, ${P.orient.toLowerCase()}`); }
   if(has("whf") && !ducted()) notes.push(`${Number(a.sqft).toLocaleString("en-US")} sq ft home`);

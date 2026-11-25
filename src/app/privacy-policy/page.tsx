@@ -5,7 +5,7 @@ import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 import { siteConfig } from "@/data/site";
 import { buildMetadata } from "@/lib/seo";
 
-const EFFECTIVE_DATE = "November 24, 2026";
+const EFFECTIVE_DATE = "November 25, 2026";
 const LEGAL_NAME = "Green Core Heating & Air Inc.";
 
 export const metadata: Metadata = buildMetadata({

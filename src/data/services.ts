@@ -360,13 +360,13 @@ export const services: Service[] = [
     name: "Water Heater Installation, Repair & Replacement",
     shortName: "Water Heaters",
     tagline: "Heat pump, tankless, gas, and electric water heaters, installed right.",
-    summary: "Heat pump, tankless, gas, and electric water heater installation, repair, and replacement across Sonoma, Marin, Napa, and Solano. Gas and electric tank installs start at $2,850.",
+    summary: "Heat pump, tankless, gas, and electric water heater installation, repair, and replacement across Sonoma, Marin, Napa, and Solano. See real prices in our online estimate.",
     heroImage: "/images/services/water-heaters.jpg",
     overview: [
       "No hot water, a leaking tank, or a water heater that's simply getting old? Green Core Heating & Air installs, repairs, and replaces water heaters for homes in Petaluma, Santa Rosa, Rohnert Park, Novato, San Rafael, and across Sonoma, Marin, Napa, and Solano counties.",
       "We work with every common type: heat pump water heaters, tankless water heaters, gas tank water heaters, and electric tank water heaters. The brands we install include SANCO2, GE GeoSpring, Navien, Bradford White, and American Standard.",
       "Not sure which type is right? A gas or electric tank is the simplest like-for-like swap. A tankless unit gives you endless hot water for a busy household. A heat pump water heater costs the least to run and usually qualifies for the biggest rebates. We'll walk you through the tradeoffs for your home, your budget, and how your family uses hot water.",
-      "Gas and electric tank water heater installs start at $2,850. Heat pump and tankless systems are priced to your home. Your final price depends on the type, size, and what your home needs, like venting, gas line, or electrical work. You'll get a clear written price before any work starts. Same-day water heater replacement is available when our schedule allows.",
+      "See real prices for tank, tankless and heat pump water heaters in our 2-minute online estimate. Your final price depends on the type, size, and what your home needs, like venting, gas line, or electrical work. You'll get a clear written price before any work starts. Same-day water heater replacement is available when our schedule allows.",
       "Depending on where you live and current program funding, you may qualify for rebates through TECH Clean California, Sonoma Clean Power (Sonoma County), MCE (Marin County), or BayREN. We check what's available for your home and handle the paperwork. Want one system for heating, cooling, and hot water? Ask us about Harvest Thermal."
     ],
     benefits: [
@@ -380,7 +380,7 @@ export const services: Service[] = [
       },
       {
         "title": "Up-front pricing",
-        "description": "Tank installs start at $2,850, with a clear written price before we begin."
+        "description": "Real prices in our online estimate, with a clear written price before we begin."
       },
       {
         "title": "Rebates handled",
@@ -390,7 +390,7 @@ export const services: Service[] = [
     faqs: [
       {
         "question": "How much does a new water heater cost?",
-        "answer": "Gas and electric tank water heater installs start at $2,850. Heat pump and tankless water heaters cost more up front and are priced to your home. The final price depends on the type, the size, and whether your home needs venting, gas line, or electrical updates. Rebates can bring the cost of a heat pump water heater down."
+        "answer": "Our 2-minute online estimate shows real prices for gas and electric tank, tankless and heat pump water heaters. Heat pump and tankless models cost more up front. The final price depends on the type, the size, and whether your home needs venting, gas line, or electrical updates. Rebates can bring the cost of a heat pump water heater down."
       },
       {
         "question": "Do you offer same-day water heater replacement?",
@@ -575,7 +575,7 @@ export const services: Service[] = [
     name: "Gas Water Heater Installation, Repair & Replacement",
     shortName: "Gas Water Heaters",
     tagline: "Fast, code-compliant gas water heater replacement.",
-    summary: "Gas tank water heater replacement and repair in Sonoma, Marin, Napa, and Solano, with same-day replacement when our schedule allows. Tank installs start at $2,850.",
+    summary: "Gas tank water heater replacement and repair in Sonoma, Marin, Napa, and Solano, with same-day replacement when our schedule allows. See real prices in our online estimate.",
     heroImage: "/images/services/gas-water-heaters.jpg",
     cardImage: "/images/services/cards/gas-water-heaters.jpg",
     cardImageAlt: "Gas tank water heater — installation and service from Green Core Heating & Air",
@@ -584,7 +584,7 @@ export const services: Service[] = [
       "We install Bradford White and American Standard gas water heaters, sized to your household. A typical home uses a 40- or 50-gallon tank, and we'll confirm the right size before we install.",
       "Every install is done to California code: seismic strapping, a properly piped temperature and pressure relief valve, correct venting, an expansion tank where required, and a permit. Those details matter for safety and for your home's resale.",
       "Thinking about going electric? A heat pump water heater can replace a gas tank, costs less to run, and usually qualifies for rebates. We're happy to price both options so you can compare.",
-      "Gas tank water heater installs start at $2,850. You'll get a clear written price before any work starts."
+      "See real gas tank prices in our online estimate. You'll get a clear written price before any work starts."
     ],
     benefits: [
       {
@@ -601,7 +601,7 @@ export const services: Service[] = [
       },
       {
         "title": "Clear pricing",
-        "description": "Gas tank installs start at $2,850, with a clear written price before we begin."
+        "description": "Real prices in our online estimate, with a clear written price before we begin."
       }
     ],
     faqs: [
@@ -650,7 +650,7 @@ export const services: Service[] = [
       "Green Core Heating & Air repairs and replaces electric tank water heaters for homes in Petaluma, Santa Rosa, Rohnert Park, Novato, San Rafael, and across Sonoma, Marin, Napa, and Solano counties. We install Bradford White and American Standard electric water heaters, sized to your household.",
       "Electric tanks are simple: no gas line and no venting. Common problems like a failed heating element or thermostat can often be repaired. If the tank itself is leaking or the unit is near the end of its life, replacement is the better call. Same-day water heater replacement is available when our schedule allows.",
       "If you're replacing an electric tank anyway, consider a heat pump water heater. It uses the same type of electrical circuit in many homes, often fits in a similar spot, and can use a fraction of the electricity. It also tends to qualify for rebates that a standard electric tank doesn't.",
-      "Electric tank water heater installs start at $2,850. You'll get a clear written price before any work starts, and we'll show you the standard and heat pump options side by side if you'd like to compare."
+      "See real electric tank prices in our online estimate. You'll get a clear written price before any work starts, and we'll show you the standard and heat pump options side by side if you'd like to compare."
     ],
     benefits: [
       {
@@ -667,7 +667,7 @@ export const services: Service[] = [
       },
       {
         "title": "Clear pricing",
-        "description": "Electric tank installs start at $2,850, with a written price before we begin."
+        "description": "Real prices in our online estimate, with a written price before we begin."
       }
     ],
     faqs: [

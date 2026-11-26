@@ -78,7 +78,7 @@ export const chatbotFaqCategories: ChatbotFAQCategory[] = [
         id: "water-heaters",
         question: "Do you install water heaters?",
         answer:
-          "Yes. Green Core installs and replaces heat pump, tankless, gas, and electric water heaters across Sonoma, Marin, Napa, and Solano. Gas and electric tank installs start at $2,850, and same-day replacement is available when the schedule allows. Heat pump and tankless water heaters are priced to each home.",
+          "Yes. Green Core installs and replaces heat pump, tankless, gas, and electric water heaters across Sonoma, Marin, Napa, and Solano. Same-day replacement is available when the schedule allows, and the online estimate shows real prices. Heat pump and tankless water heaters are priced to each home.",
         keywords: ["water heater", "hot water", "tankless", "tank", "heat pump water heater", "no hot water"],
       },
     ],

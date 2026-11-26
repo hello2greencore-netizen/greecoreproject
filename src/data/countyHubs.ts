@@ -53,7 +53,7 @@ export const countyHubs: CountyHub[] = [
       {
         question: "Do you replace water heaters in Napa County?",
         answer:
-          "Yes. We install heat pump, tankless, gas, and electric water heaters. Gas and electric tank installs start at $2,850, with same-day replacement when our schedule allows.",
+          "Yes. We install heat pump, tankless, gas, and electric water heaters. Same-day replacement when our schedule allows, and our online estimate shows real prices.",
       },
     ],
   },

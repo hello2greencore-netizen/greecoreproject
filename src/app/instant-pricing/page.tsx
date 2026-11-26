@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   ...buildMetadata({
     title: "See Real Prices for Your New Heating & Cooling System",
     description:
-      "Answer a few quick questions and see real Green Core prices for your home in about two minutes. Furnaces, AC, heat pumps, ductless, heat pump water heaters and whole house fans.",
+      "Answer a few quick questions and see real Green Core prices for your home in about two minutes. Furnaces, AC, heat pumps, ductless, water heaters (tank, tankless and heat pump) and whole house fans.",
     path: "/instant-pricing",
   }),
   robots: { index: false, follow: false },
@@ -31,7 +31,7 @@ const trustPoints = [
 const serviceAreas = ["Sonoma County", "Marin County", "Napa County", "Solano County", "San Francisco"];
 
 const steps = [
-  { title: "Pick your systems", text: "Furnace, AC, heat pump, ductless or a heat pump water heater. Choose everything you want priced." },
+  { title: "Pick your systems", text: "Furnace, AC, heat pump, ductless or a water heater. Choose everything you want priced." },
   { title: "Tell us about your home", text: "A few quick questions about your home and the equipment you have now." },
   { title: "See your prices", text: "Compare your options side by side. We confirm the final price in writing after a free visit or photo review." },
 ];
@@ -114,7 +114,8 @@ function Stars() {
 
 export default function InstantPricingPage() {
   return (
-    <>
+    // Keep (707) 988-5858 on this page: data-calltrk-noswap stops CallRail from swapping in a tracking number.
+    <div data-calltrk-noswap="">
       {/* Intro (hero + steps). Hides once the customer reaches their prices; comes back on "Start over". */}
       <LandingIntro>
       {/* Hero */}
@@ -157,7 +158,7 @@ export default function InstantPricingPage() {
               Use our 2-minute estimator to get your real quote now.
             </p>
             <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
-              Heating, cooling, heat pump water heater and whole house fan prices for your home, online. We confirm your final price in
+              Heating, cooling, water heater and whole house fan prices for your home, online. We confirm your final price in
               writing after a free visit or photo review.
             </p>
 
@@ -309,6 +310,6 @@ export default function InstantPricingPage() {
           </nav>
         </Container>
       </footer>
-    </>
+    </div>
   );
 }

@@ -2,11 +2,20 @@
 
 // Embeds the Green Core instant estimator (public/estimator.html) and keeps the
 // iframe as tall as its content, so the page scrolls normally with no inner scrollbar.
+// It also passes ad tracking tags into the estimator (so Meta ad leads are credited) and
+// turns the estimator's "lead" signal into a Google Tag Manager event ("estimator_lead").
 import { useEffect, useRef, useState } from "react";
+import { attributionQuery } from "@/lib/attribution";
+
+type LeadMessage = { type?: string; height?: number; channel?: string; value?: number; currency?: string; systems?: string[]; estimate?: string; kind?: string; step?: string };
 
 export default function EstimatorFrame() {
   const ref = useRef<HTMLIFrameElement>(null);
   const [height, setHeight] = useState(900);
+  // Load the estimator after mount, with the tracking tags (from this page's URL or saved earlier) in its URL.
+  useEffect(() => {
+    if (ref.current) ref.current.src = `/estimator.html${attributionQuery()}`;
+  }, []);
 
   useEffect(() => {
     const frame = ref.current;
@@ -29,8 +38,32 @@ export default function EstimatorFrame() {
     const onMessage = (e: MessageEvent) => {
       if (e.origin !== window.location.origin) return;
       if (e.source !== frame?.contentWindow) return;
-      const d = e.data as { type?: string; height?: number };
+      const d = e.data as LeadMessage;
       if (d?.type === "gc-estimator-height") measure(d.height);
+      if (d?.type === "gc-estimator-lead") {
+        // The customer submitted their contact info and is seeing prices. GTM can fire the
+        // Meta Pixel "Lead" event (and any other conversion tags) from this.
+        const w = window as unknown as { dataLayer?: Record<string, unknown>[] };
+        w.dataLayer = w.dataLayer || [];
+        w.dataLayer.push({
+          event: "estimator_lead",
+          lead_channel: d.channel || "website",
+          value: d.value || 0,
+          currency: d.currency || "USD",
+          estimator_systems: (d.systems || []).join(", "),
+          estimate_number: d.estimate || "",
+        });
+      }
+      if (d?.type === "gc-estimator-step") {
+        // Lets the page react to the estimator's step (the ad landing page hides its intro on the price page).
+        window.dispatchEvent(new CustomEvent("gc-estimator-step", { detail: d.step || "" }));
+      }
+      if (d?.type === "gc-estimator-booked") {
+        // The customer booked a verify visit or a phone call from their estimate.
+        const w = window as unknown as { dataLayer?: Record<string, unknown>[] };
+        w.dataLayer = w.dataLayer || [];
+        w.dataLayer.push({ event: "estimator_booking", booking_type: d.kind || "visit" });
+      }
       if (d?.type === "gc-estimator-top" && frame) {
         // New step: bring the top of the estimator back into view.
         const top = frame.getBoundingClientRect().top + window.scrollY - 96; // clear the sticky header
@@ -55,7 +88,6 @@ export default function EstimatorFrame() {
   return (
     <iframe
       ref={ref}
-      src="/estimator.html"
       title="Green Core instant estimate"
       scrolling="no"
       style={{ width: "100%", height, border: 0, display: "block" }}

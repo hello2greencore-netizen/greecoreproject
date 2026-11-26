@@ -10,7 +10,6 @@ import { StickyMobileCTA } from "@/components/layout/StickyMobileCTA";
 import { FAQChatbot } from "@/components/chatbot/FAQChatbot";
 import { HideOnPaths } from "@/components/layout/HideOnPaths";
 import { AttributionCapture } from "@/components/tracking/AttributionCapture";
-import { HomeLeadChat } from "@/components/chatbot/HomeLeadChat";
 import { FallingLeaves, LeafPile, WalkingTurkey, ThanksgivingStyles } from "@/components/seasonal/ThanksgivingDecor";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 import { LocalBusinessSchema } from "@/components/seo/LocalBusinessSchema";
@@ -93,11 +92,10 @@ export default function RootLayout({
           <HideOnPaths paths={["/instant-pricing"]}>
             <StickyMobileCTA />
           </HideOnPaths>
-          {/* The homepage uses the LeadConnector chat instead of Corey. */}
-          <HideOnPaths paths={["/", "/instant-pricing"]}>
+          {/* Corey, the website chat, is on every page except the ad landing page. */}
+          <HideOnPaths paths={["/instant-pricing"]}>
             <FAQChatbot />
           </HideOnPaths>
-          <HomeLeadChat />
           <ThanksgivingStyles />
           <HideOnPaths paths={["/instant-pricing"]}>
             <FallingLeaves />

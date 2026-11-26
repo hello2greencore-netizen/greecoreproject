@@ -755,7 +755,7 @@ export const serviceTypeDetails: Record<string, ServiceTypeDetails> = {
       {
         "heading": "Installs from start to finish",
         "body": [
-          "Most water heater replacements take part of a day, and gas and electric tank installs start at $2,850, with same-day replacement when our schedule allows. Heat pump, furnace, and AC replacements typically take one to a few days depending on ductwork and electrical work. We protect your floors, clean up every day, and walk you through the new system when we're done."
+          "Most water heater replacements take part of a day, with same-day replacement when our schedule allows. Heat pump, furnace, and AC replacements typically take one to a few days depending on ductwork and electrical work. We protect your floors, clean up every day, and walk you through the new system when we're done."
         ]
       }
     ],

@@ -14,7 +14,7 @@ export const generalFaqs: FAQ[] = [
   {
     question: "Can I get an estimate online?",
     answer:
-      "Yes. Our free online estimate at greencorehvac.com/instant-estimate shows real Green Core prices for a new gas furnace or heat pump system in about two minutes. Your final price is confirmed in writing after a free visit or photo review. Standard gas and electric tank water heater replacement starts at $2,850, and everything else gets a free estimate.",
+      "Yes. Our free online estimate at greencorehvac.com/instant-estimate shows real Green Core prices for a new furnace, AC, heat pump, ductless mini split, water heater or whole house fan in about two minutes. Your final price is confirmed in writing after a free visit or photo review.",
   },
   {
     question: "Are you licensed and insured?",
@@ -29,7 +29,7 @@ export const generalFaqs: FAQ[] = [
   {
     question: "Do you install and replace water heaters?",
     answer:
-      "Yes. We install heat pump, tankless, gas, and electric water heaters. Gas and electric tank installs start at $2,850, and we offer same-day replacement when our schedule allows.",
+      "Yes. We install heat pump, tankless, gas, and electric water heaters, and we offer same-day replacement when our schedule allows.",
   },
   {
     question: "How quickly can you come out?",

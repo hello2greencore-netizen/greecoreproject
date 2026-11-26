@@ -79,7 +79,7 @@ export const serviceTypes: ServiceType[] = [
       },
       {
         "question": "Do you repair water heaters?",
-        "answer": "Yes, including heat pump, tankless, gas, and electric water heaters. If replacement is the better call, gas and electric tank installs start at $2,850, with same-day replacement when our schedule allows."
+        "answer": "Yes, including heat pump, tankless, gas, and electric water heaters. If replacement is the better call, we offer same-day replacement when our schedule allows."
       }
     ],
   },
@@ -107,8 +107,8 @@ export const serviceTypes: ServiceType[] = [
       "harvest-thermal": "One integrated system for heating, cooling, and hot water.",
       "heat-pump-water-heaters": "SANCO2 and GE GeoSpring heat pump water heaters, often eligible for rebates.",
       "tankless-water-heaters": "Navien tankless water heaters, with gas line and venting sized correctly.",
-      "gas-water-heaters": "Bradford White and American Standard tanks, installed to code. Installs start at $2,850.",
-      "electric-water-heaters": "Bradford White and American Standard tanks from $2,850, or an upgrade to a heat pump model."
+      "gas-water-heaters": "Bradford White and American Standard tanks, installed to code.",
+      "electric-water-heaters": "Bradford White and American Standard tanks, or an upgrade to a heat pump model."
     },
     steps: [
       {

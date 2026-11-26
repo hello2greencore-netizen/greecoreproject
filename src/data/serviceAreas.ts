@@ -478,7 +478,7 @@ const sonomaMarinAreas: ServiceArea[] = [
       {
         "heading": "Heat Pumps and Water Heaters in Windsor",
         "body": [
-          "Windsor's hot summers make a heat pump an easy upgrade: one all-electric system gives you efficient cooling in July and heating in January, and it replaces both an old furnace and an old AC. For hot water, a heat pump water heater is the lowest-cost option to run, and gas and electric tank replacements start at $2,850, with same-day replacement when our schedule allows.",
+          "Windsor's hot summers make a heat pump an easy upgrade: one all-electric system gives you efficient cooling in July and heating in January, and it replaces both an old furnace and an old AC. For hot water, a heat pump water heater is the lowest-cost option to run, and gas and electric tank replacement is often same day when our schedule allows.",
           "We pull permits through the Town of Windsor and handle the inspections, so you don't have to coordinate any of it."
         ]
       },
@@ -504,7 +504,7 @@ const sonomaMarinAreas: ServiceArea[] = [
       },
       {
         "question": "Can you replace a water heater the same day in Windsor?",
-        "answer": "Often, yes. We offer same-day water heater replacement when our schedule allows, and gas and electric tank installs start at $2,850. Call (707) 988-5858 to check today's availability."
+        "answer": "Often, yes. We offer same-day water heater replacement when our schedule allows. Call (707) 988-5858 to check today's availability."
       },
       {
         "question": "Will a heat pump keep my Windsor home cool in the summer?",
@@ -539,7 +539,7 @@ const sonomaMarinAreas: ServiceArea[] = [
       {
         "heading": "Water Heaters in Healdsburg",
         "body": [
-          "We replace gas, electric, tankless, and heat pump water heaters in Healdsburg. Gas and electric tank installs start at $2,850, with same-day replacement when our schedule allows. Every install is brought up to current code, including seismic strapping and proper venting."
+          "We replace gas, electric, tankless, and heat pump water heaters in Healdsburg. We offer same-day replacement when our schedule allows. Every install is brought up to current code, including seismic strapping and proper venting."
         ]
       },
       {
@@ -561,7 +561,7 @@ const sonomaMarinAreas: ServiceArea[] = [
       },
       {
         "question": "Can you replace a water heater the same day in Healdsburg?",
-        "answer": "Often, yes. We offer same-day water heater replacement when our schedule allows, and gas and electric tank installs start at $2,850. Call (707) 988-5858 to check today's availability."
+        "answer": "Often, yes. We offer same-day water heater replacement when our schedule allows. Call (707) 988-5858 to check today's availability."
       },
       {
         "question": "Do I need a permit to replace my HVAC system or water heater in Healdsburg?",
@@ -626,7 +626,7 @@ const sonomaMarinAreas: ServiceArea[] = [
       },
       {
         "question": "Do you replace water heaters in Sonoma?",
-        "answer": "Yes. We install heat pump, tankless, gas, and electric water heaters. Gas and electric tank installs start at $2,850, with same-day replacement when our schedule allows."
+        "answer": "Yes. We install heat pump, tankless, gas, and electric water heaters, with same-day replacement when our schedule allows."
       }
     ],
     showcaseCity: "Sonoma, CA",

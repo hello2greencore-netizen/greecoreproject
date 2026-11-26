@@ -65,6 +65,8 @@ input:focus-visible{outline:3px solid var(--green);outline-offset:1px;border-col
 .grid2{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
 .check{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--muted)}
 .check input{margin-top:3px;accent-color:var(--green)}
+.consent{font-size:11.5px;line-height:1.5;color:var(--muted);max-width:75ch;margin:0}
+.consent a{color:inherit;text-decoration:underline;text-underline-offset:2px}
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between}
 .btn{font:inherit;font-weight:600;border-radius:9px;padding:12px 20px;cursor:pointer;border:1.5px solid var(--green);background:var(--green);color:var(--surface)}
 .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
@@ -311,17 +313,24 @@ const openBooking = () => window.open(BOOK_URL, "_blank", "noopener");
 // ---------- Lead hand-off ----------
 // Where the visitor came from. The website page passes its saved tracking tags into this frame's URL.
 const ATTR = (() => { const o = {}; try { const q = new URLSearchParams(location.search);
-  for (const k of ["utm_source","utm_medium","utm_campaign","utm_content","utm_term","fbclid","lp"]) { const v = q.get(k); if (v) o[k] = v.slice(0, 200); } } catch(e) {}
-  o.channel = (/^(meta|facebook|fb|instagram|ig)$/i.test(o.utm_source||"") || o.fbclid) ? "meta" : "website"; return o; })();
+  for (const k of ["utm_source","utm_medium","utm_campaign","utm_content","utm_term","fbclid","gclid","gbraid","wbraid","lp"]) { const v = q.get(k); if (v) o[k] = v.slice(0, 200); } } catch(e) {}
+  o.channel = (/^(meta|facebook|fb|instagram|ig)$/i.test(o.utm_source||"") || o.fbclid) ? "meta"
+    : (/^(google|google-ads|googleads|adwords|gads)$/i.test(o.utm_source||"") || o.gclid || o.gbraid || o.wbraid) ? "google" : "website"; return o; })();
 const sourceLine = () => ATTR.channel==="meta"
-  ? `Came from: Meta ads${ATTR.utm_campaign?` - campaign ${ATTR.utm_campaign}`:""}${ATTR.utm_content?` - ad ${ATTR.utm_content}`:""}`
+  ? `Came from: Meta ads${ATTR.utm_campaign?` - campaign ${ATTR.utm_campaign}`:""}${ATTR.utm_content?` - ad ${ATTR.utm_content}`:""}${ATTR.lp?` - page ${ATTR.lp}`:""}`
+  : ATTR.channel==="google"
+  ? `Came from: Google ads${ATTR.utm_campaign?` - campaign ${ATTR.utm_campaign}`:""}${ATTR.utm_term?` - keyword ${ATTR.utm_term}`:""}${ATTR.lp?` - page ${ATTR.lp}`:""}`
   : `Came from: Website${ATTR.utm_source?` (${ATTR.utm_source}${ATTR.utm_campaign?`, ${ATTR.utm_campaign}`:""})`:""}`;
 // Tell the website page a lead happened (it passes this on to Google Tag Manager / the Meta Pixel).
 function notifyLead(r){
   if(window.parent===window) return;
   const first = r.systems.find(s=>!s.pending), t = pickedTier(first);
   try { window.parent.postMessage({type:"gc-estimator-lead", channel:ATTR.channel, value:t?t.price:0, currency:"USD", systems:S.svcs.map(sysName), estimate:S.leadMeta.est}, location.origin); } catch(e) {}
+  convert("Lead", {value:t?t.price:0, currency:"USD"});
 }
+// Conversion signal for partner landing pages that embed the estimator (for their Meta Pixel).
+// It carries no customer details, only that a lead or booking happened, so it's safe to send to any page.
+function convert(event, extra){ if(window.parent===window) return; try { window.parent.postMessage({type:"gc-estimator-conversion", event, ...extra}, "*"); } catch(e) {} }
 const pickedTier = s => s && !s.pending ? (s.tiers.find(t=>t.k===s.pickK) || [...s.tiers].sort((a,b)=>a.price-b.price)[0]) : null;
 function leadPayload(r, est, until){
   const first = r.systems.find(s=>s.chosen) || r.systems.find(s=>!s.pending), pickT = pickedTier(first);
@@ -369,6 +378,7 @@ function leadSummary(r, est, until){
   if (has("tankless")) L.push(`Tankless: has ${lab("twnow",a.twnow)||"?"} now${a.twnow!=="elec"?` - ${lab(has("hpwh")?"baths":"tbaths", has("hpwh")?a.baths:a.tbaths)||"?"} bathrooms - ${a.whloc==="move"?"wants it moved":"same spot"}`:""}`);
   if (has("hpwh")) L.push(`Water heater: ${a.whfuel==="gas"?"Gas":"Electric"} now - ${lab("people",a.people)} people - ${lab("baths",a.baths)} bathrooms - ${whGal()} gal - ${a.whloc==="move"?"wants it moved":"same spot"}`);
   L.push(`Owns the home: ${({own:"Yes", rent:"No, renting", landlord:"Landlord or manager"})[S.own] || "Not asked"}`);
+  L.push(`Consent: agreed to calls, texts and emails by tapping "See my prices" (on-page disclosure, Nov 26 2026 version)`);
   L.push("");
   const ups = r.addons.filter(x=>S.addons.includes(x.id));
   if (r.addons.length) L.push(`Upgrades picked: ${ups.length ? ups.map(x=>`${x.short} (${money(x.price)})`).join(", ") : "None"}`);
@@ -426,6 +436,7 @@ async function confirmBooking(){
     S.estimateId = j.estimate_id; S.estToken = j.est_token;
     S.bookedInfo = {kind:j.kind, start:j.start, employee:j.employee}; S.booking = null;
     if(window.parent!==window) try { window.parent.postMessage({type:"gc-estimator-booked", kind:j.kind}, location.origin); } catch(e) {}
+    convert("Schedule", {kind:j.kind});
   } catch(e) { S.booking = "error"; }
   renderKeep();
 }
@@ -647,10 +658,11 @@ function renderContact(){
       <label class="f" for="ca">Street address<input type="text" id="ca" autocomplete="street-address" value="${esc(c.addr)}"></label>
     </div>
     <label class="hp-field" aria-hidden="true">Website<input type="text" id="hpf" tabindex="-1" autocomplete="off"></label>
-    <label class="check" for="cs"><input type="checkbox" id="cs" ${c.sms?"checked":""}> OK to text me about my estimate. Message and data rates may apply. Reply STOP to opt out.</label>
     <p class="err" id="cerr" hidden></p>
-    <div class="row"><button class="btn ghost" id="back">Back</button><div class="cta"><button class="btn" id="see">See my prices</button></div></div>`);
-  const bind = () => { S.hp=$("#hpf").value; S.c={name:$("#cn").value.trim(),phone:$("#cp").value.trim(),email:$("#ce").value.trim(),addr:$("#ca").value.trim(),sms:$("#cs").checked}; };
+    <div class="row"><button class="btn ghost" id="back">Back</button><div class="cta"><button class="btn" id="see">See my prices</button></div></div>
+    <p class="consent">By tapping "See my prices," you agree that Green Core Heating &amp; Air may contact you by phone call, text message and email at the number and email you entered, about your estimate, appointments and service, and with occasional offers, including by automated means. Consent isn't a condition of any purchase. Message frequency varies. Message and data rates may apply. Reply STOP to opt out of texts or HELP for help. You also agree to our <a href="https://www.greencorehvac.com/terms-of-service" target="_blank" rel="noopener">Terms of Service</a> and <a href="https://www.greencorehvac.com/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>, which explains what information we collect, how we use it and our use of cookies. Text messaging consent and opt-in data are not shared with third parties for their marketing.</p>`);
+  // Consent is given by submitting the form (the disclosure above), so every submission is marked as agreeing to texts.
+  const bind = () => { S.hp=$("#hpf").value; S.c={name:$("#cn").value.trim(),phone:$("#cp").value.trim(),email:$("#ce").value.trim(),addr:$("#ca").value.trim(),sms:true}; };
   $("#back").onclick = () => { bind(); back(); };
   $("#see").onclick = () => {
     bind(); const e=$("#cerr");

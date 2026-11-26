@@ -52,7 +52,7 @@ If you're buying from out of state or overseas, you may not be able to walk the 
 
 We'll check the [air conditioner](/services/air-conditioning), [furnace](/services/furnaces) or heat pump, ductwork, and [water heater](/services/water-heaters), and tell you in plain language what's in good shape and what isn't. If something needs work, you'll get clear options with upfront pricing, which can help when you're negotiating with the seller.
 
-If a replacement is in your future, we size the new system to the house itself, looking at insulation, windows, sun exposure, and duct condition, not just the label on the old unit. For reference, standard gas or electric tank water heater replacement starts at $2,850. Everything else is priced to your home, and estimates on new systems are free.
+If a replacement is in your future, we size the new system to the house itself, looking at insulation, windows, sun exposure, and duct condition, not just the label on the old unit. Our [online estimate](/instant-estimate) shows real prices in about two minutes, and estimates on new systems are free.
 
 ## Tips for military families moving to Fairfield
 

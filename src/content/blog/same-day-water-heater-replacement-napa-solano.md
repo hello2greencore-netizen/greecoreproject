@@ -7,7 +7,7 @@ image: /images/services/gas-water-heaters.jpg
 imageAlt: Green Core technician replacing a gas water heater in a hall closet
 related: water-heaters, gas-water-heaters, electric-water-heaters
 ---
-**Short answer:** Green Core offers same-day water heater replacement in Napa and Solano County when our schedule allows. A like-for-like tank swap usually takes part of a day, so calling in the morning gives you the best chance at hot water by evening. Standard gas or electric tank replacement starts at $2,850, and you get a written price before any work begins.
+**Short answer:** Green Core offers same-day water heater replacement in Napa and Solano County when our schedule allows. A like-for-like tank swap usually takes part of a day, so calling in the morning gives you the best chance at hot water by evening. You get a written price before any work begins.
 
 A dead water heater never picks a good day. Here's what to do first, how a fast replacement works in Napa and Solano homes, and what can turn a quick swap into a longer job.
 
@@ -75,7 +75,7 @@ Yes, when our schedule allows. Call (707) 988-5858 early in the day and we'll te
 
 ### How much does a water heater replacement cost in Napa or Solano?
 
-A standard gas or electric tank replacement starts at $2,850. Tankless and heat pump water heaters are priced to your home, and you get a written price before work starts.
+Our [online estimate](/instant-estimate) shows real prices for tank, tankless and heat pump water heaters, and you get a written price before work starts.
 
 ### Do I need a permit to replace a water heater?
 

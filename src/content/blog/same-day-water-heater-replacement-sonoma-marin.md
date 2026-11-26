@@ -7,7 +7,7 @@ image: /images/services/water-heaters.jpg
 imageAlt: Green Core technician installing a water heater in a North Bay home
 related: water-heaters, gas-water-heaters, electric-water-heaters
 ---
-**Short answer:** Green Core offers same-day water heater replacement in Sonoma and Marin when our schedule allows. A straightforward tank-for-tank swap usually takes part of a day, so calling early gives you the best shot at hot water that night. Standard gas or electric tank replacement starts at $2,850, with a clear written price before any work begins.
+**Short answer:** Green Core offers same-day water heater replacement in Sonoma and Marin when our schedule allows. A straightforward tank-for-tank swap usually takes part of a day, so calling early gives you the best shot at hot water that night. You get a clear written price before any work begins.
 
 Waking up to a cold shower or a puddle in the closet is stressful. Here's what to do, and what a fast replacement looks like from start to finish.
 
@@ -62,7 +62,7 @@ Often, yes. We offer same-day replacement when our schedule allows. Call (707) 9
 
 ### How much does a same-day replacement cost?
 
-A standard gas or [electric tank water heater](/services/electric-water-heaters) replacement starts at $2,850. Heat pump and tankless systems are priced to your home. You get a clear written price before work starts.
+Our [online estimate](/instant-estimate) shows real prices for gas, [electric tank](/services/electric-water-heaters), heat pump and tankless water heaters. You get a clear written price before work starts.
 
 ### Do I need a permit for a water heater replacement?
 

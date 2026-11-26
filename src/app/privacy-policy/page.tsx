@@ -5,7 +5,7 @@ import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 import { siteConfig } from "@/data/site";
 import { buildMetadata } from "@/lib/seo";
 
-const EFFECTIVE_DATE = "November 16, 2026";
+const EFFECTIVE_DATE = "November 25, 2026";
 const LEGAL_NAME = "Green Core Heating & Air Inc.";
 
 export const metadata: Metadata = buildMetadata({
@@ -39,8 +39,9 @@ export default function PrivacyPolicyPage() {
                 purposes. Text messaging originator opt-in data and consent are not shared with any third parties.
               </strong>{" "}
               We use your mobile number only to send the messages you agreed to receive and to run our text messaging
-              service. Information may be shared with the service providers that deliver our messages (such as our
-              messaging platform and phone carriers) only as needed to send them.
+              service. Information may be shared with the service providers that deliver our messages on Green Core&apos;s
+              behalf (such as our messaging platform, phone carriers, and the marketing partner that helps us follow up
+              on online estimate requests) only as needed to send them.
             </p>
             <p>
               You can stop text messages at any time by replying <strong>STOP</strong>. Reply <strong>HELP</strong>{" "}for
@@ -54,13 +55,20 @@ export default function PrivacyPolicyPage() {
                 about your home and equipment, photos you send, messages, and appointment details.
               </li>
               <li>
+                <strong>Online estimate:</strong>{" "}when you use our online estimate, we collect your answers about your
+                home and equipment, the options, prices, and financing terms you view, any add-ons you choose, the option
+                you pick, any visit or phone call you book, any photos you choose to send us, and your contact information.
+                We save this in our scheduling software so our team can follow up with you and confirm your price.
+              </li>
+              <li>
                 <strong>Payment information:</strong>{" "}payments are handled by our payment and scheduling providers. We
                 don&apos;t store full card numbers on our website.
               </li>
               <li>
                 <strong>Information collected automatically:</strong>{" "}when you visit our website, we and our analytics and
                 advertising tools collect device and usage information such as IP address, browser type, pages viewed,
-                and how you arrived at our site, using cookies and similar technologies.
+                and how you arrived at our site (including the ad, campaign, or link that brought you here, such as
+                tracking tags and ad click IDs), using cookies and similar technologies.
               </li>
             </ul>
 
@@ -80,7 +88,15 @@ export default function PrivacyPolicyPage() {
               <li>
                 With service providers that help us run our business, such as scheduling and invoicing software, online
                 booking, payment processing, our website chat and messaging platform, email, and website analytics and
-                advertising tools (for example Google and Microsoft). They may use it only to provide services to us.
+                advertising tools (for example Google, Microsoft, and Meta). They may use it only to provide services to
+                us.
+              </li>
+              <li>
+                With the marketing partner that runs our online advertising (for example on Facebook and Instagram). If
+                you reach our online estimate through one of our ads, we share your contact information, your estimate
+                answers, the options and prices you viewed, and the ad that brought you to us with that partner, so they
+                can measure how our ads perform and help us follow up with you on Green Core&apos;s behalf. They may use
+                this information only for Green Core, not for their own or anyone else&apos;s marketing.
               </li>
               <li>
                 With equipment manufacturers, distributors, utilities, or rebate programs when needed for your warranty,
@@ -94,9 +110,12 @@ export default function PrivacyPolicyPage() {
 
             <h2>Cookies and analytics</h2>
             <p>
-              Our website uses cookies and similar tools, including Google Analytics, Google Tag Manager, Google Ads, and
-              Microsoft Clarity, to understand how visitors use the site and to measure advertising. You can manage
-              cookies through our cookie banner, your browser settings, or Google&apos;s ad settings. Our site does not
+              Our website uses cookies and similar tools, including Google Analytics, Google Tag Manager, Google Ads,
+              Microsoft Clarity, and the Meta Pixel (for Facebook and Instagram advertising), to understand how visitors
+              use the site and to measure and improve our advertising. For example, when you finish our online estimate,
+              we may tell these tools that a request was made so we can see which ads work. You can manage cookies
+              through our cookie banner, your browser settings, Google&apos;s ad settings, or your Facebook and Instagram
+              ad preferences. Our site does not
               currently respond to browser &quot;Do Not Track&quot; signals.
             </p>
 
@@ -120,6 +139,11 @@ export default function PrivacyPolicyPage() {
                 Contact us to review, correct, or delete the personal information we have about you. California
                 residents may also ask what personal information we have shared with third parties for their direct
                 marketing purposes; we don&apos;t share it for that purpose.
+              </li>
+              <li>
+                Some advertising cookies, such as the Meta Pixel, may count as &quot;sharing&quot; personal information
+                for targeted advertising under California law. You can opt out by declining advertising cookies in our
+                cookie banner, or by contacting us.
               </li>
             </ul>
 

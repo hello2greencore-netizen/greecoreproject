@@ -57,7 +57,7 @@ This is the Craftsmanship part of our CORE values. You can't see most of it once
 
 Straps and pressure protection apply across the board, with some differences in detail:
 
-- **Gas and electric tanks.** Strapping is standard. See our [gas water heaters](/services/gas-water-heaters) and [electric water heaters](/services/electric-water-heaters) pages. Standard gas or electric tank replacement starts at $2,850.
+- **Gas and electric tanks.** Strapping is standard. See our [gas water heaters](/services/gas-water-heaters) and [electric water heaters](/services/electric-water-heaters) pages.
 - **Heat pump water heaters.** These are often taller and heavier, so bracing and placement need extra attention. See [heat pump water heaters](/services/heat-pump-water-heaters).
 - **Tankless.** There's no storage tank to tip, so seismic straps matter less, though the unit still has to be mounted securely.
 

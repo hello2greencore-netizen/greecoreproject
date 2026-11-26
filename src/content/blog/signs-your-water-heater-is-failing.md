@@ -29,7 +29,7 @@ You can usually find the install date on the label on the side of the tank. If y
 
 Some problems have simple fixes: a new thermostat, heating element, gas valve, or relief valve. A tank that is leaking from its body, rusting inside, or past its expected life is usually a replacement.
 
-At Green Core, a standard gas or [electric tank water heater](/services/electric-water-heaters) replacement starts at **$2,850**, installed. See our [water heater replacement cost guide](/blog/water-heater-replacement-cost-sonoma-county) for what affects the price.
+At Green Core, you can see the installed price of a new gas or [electric tank water heater](/services/electric-water-heaters) in our [online estimate](/instant-estimate). See our [water heater replacement cost guide](/blog/water-heater-replacement-cost-sonoma-county) for what affects the price.
 
 ## Thinking about an upgrade?
 

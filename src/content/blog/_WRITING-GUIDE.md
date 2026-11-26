@@ -18,8 +18,8 @@ Voice
 Accuracy rules (never break these)
 ----------------------------------
 - Never invent numbers, statistics, prices, or rebate amounts.
-- The only price we publish: standard gas or electric tank water heater replacement
-  starts at $2,850. Everything else is "priced to your home" with a free in-home estimate.
+- Never publish a price or a "starts at" price in a post. For prices, point readers to
+  the online estimate at /instant-estimate. Final prices are confirmed after a free visit.
 - Rebates (TECH Clean California, BayREN, Sonoma Clean Power, MCE): check the program's
   current website before writing. Only state a dollar amount if the official page shows it
   today, and say "as of <Month Year>". Otherwise say rebates "may be available depending on

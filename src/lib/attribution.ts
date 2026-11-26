@@ -2,7 +2,7 @@
 // to the right campaign (for example Meta ads) even if the visitor browses other pages first.
 // Stored in this browser only, for 30 days. Wrapped in try/catch because storage can be blocked.
 
-export const ATTR_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "fbclid"] as const;
+export const ATTR_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "fbclid", "gclid", "gbraid", "wbraid"] as const;
 const STORE = "gc_attr";
 const MAX_AGE_MS = 30 * 24 * 60 * 60 * 1000;
 

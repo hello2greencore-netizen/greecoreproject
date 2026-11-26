@@ -88,12 +88,12 @@ export default function RootLayout({
           <HideOnPaths paths={["/instant-pricing"]}>
             <Footer />
           </HideOnPaths>
-          {/* The ad landing page keeps people on the estimator: no Book Now / Free Estimate bar, which opens a separate booking form. */}
-          <HideOnPaths paths={["/instant-pricing"]}>
+          {/* The estimator pages keep people on the estimator: no Book Now / Free Estimate bar, which opens a separate booking form and covers the form on phones. */}
+          <HideOnPaths paths={["/instant-pricing", "/instant-estimate"]}>
             <StickyMobileCTA />
           </HideOnPaths>
-          {/* Corey, the website chat, is on every page except the ad landing page. */}
-          <HideOnPaths paths={["/instant-pricing"]}>
+          {/* Corey, the website chat, is on every page except the two estimator pages, where it gets in the way of the form. */}
+          <HideOnPaths paths={["/instant-pricing", "/instant-estimate"]}>
             <FAQChatbot />
           </HideOnPaths>
           <ThanksgivingStyles />

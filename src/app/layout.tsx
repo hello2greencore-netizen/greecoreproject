@@ -9,6 +9,7 @@ import { Footer } from "@/components/layout/Footer";
 import { StickyMobileCTA } from "@/components/layout/StickyMobileCTA";
 import { FAQChatbot } from "@/components/chatbot/FAQChatbot";
 import { HideOnPaths } from "@/components/layout/HideOnPaths";
+import { AttributionCapture } from "@/components/tracking/AttributionCapture";
 import { HomeLeadChat } from "@/components/chatbot/HomeLeadChat";
 import { FallingLeaves, LeafPile, WalkingTurkey, ThanksgivingStyles } from "@/components/seasonal/ThanksgivingDecor";
 import { MotionProvider } from "@/components/motion/MotionProvider";
@@ -76,22 +77,33 @@ export default function RootLayout({
           >
             Skip to content
           </a>
-          <AnnouncementBar />
-          <Header />
+          <AttributionCapture />
+          {/* The /instant-pricing ad landing page has no site header, menu, chat or booking bar, so visitors stay on the estimator. */}
+          <HideOnPaths paths={["/instant-pricing"]}>
+            <AnnouncementBar />
+            <Header />
+          </HideOnPaths>
           <main id="main" className="flex-1">
             {children}
           </main>
-          <Footer />
-          <StickyMobileCTA />
+          <HideOnPaths paths={["/instant-pricing"]}>
+            <Footer />
+          </HideOnPaths>
+          {/* The ad landing page keeps people on the estimator: no Book Now / Free Estimate bar, which opens a separate booking form. */}
+          <HideOnPaths paths={["/instant-pricing"]}>
+            <StickyMobileCTA />
+          </HideOnPaths>
           {/* The homepage uses the LeadConnector chat instead of Corey. */}
-          <HideOnPaths paths={["/"]}>
+          <HideOnPaths paths={["/", "/instant-pricing"]}>
             <FAQChatbot />
           </HideOnPaths>
           <HomeLeadChat />
           <ThanksgivingStyles />
-          <FallingLeaves />
-          <LeafPile />
-          <WalkingTurkey />
+          <HideOnPaths paths={["/instant-pricing"]}>
+            <FallingLeaves />
+            <LeafPile />
+            <WalkingTurkey />
+          </HideOnPaths>
           <Script
             src="https://online-booking.housecallpro.com/script.js?token=d68ef1da956043458b2e0244b795dd66&orgName=Green-Core-Heating--Air-Inc"
             strategy="lazyOnload"

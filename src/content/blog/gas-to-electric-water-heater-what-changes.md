@@ -51,7 +51,7 @@ A tight closet with a solid door can starve a heat pump model of air. A garage o
 
 ## What about cost and rebates?
 
-Standard gas or electric tank water heater replacement starts at **$2,850**. Switching fuels usually adds work, such as a new circuit or a capped gas line, so a gas-to-electric job is priced to your home. Heat pump models cost more up front and are also priced to your home after a free estimate.
+You can see real prices for gas, electric, tankless and heat pump water heaters in our [online estimate](/instant-estimate). Switching fuels usually adds work, such as a new circuit or a capped gas line, so a gas-to-electric job is priced to your home. Heat pump models cost more up front and are also priced to your home after a free estimate.
 
 Rebates may be available through programs like TECH Clean California, BayREN, and Sonoma Clean Power, depending on program funding. Amounts and rules change during the year, so we check what's open when we quote your job and handle the paperwork. You can see the current program details on the official [TECH Clean California site](https://techcleanca.com). The federal 25C tax credit ended for systems installed after December 31, 2025.
 

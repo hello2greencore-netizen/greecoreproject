@@ -28,7 +28,7 @@ export function generateMetadata(): Metadata {
 
 const always = [
   { title: "Free estimates", text: "Free in-home estimates on new systems and water heater replacements, with written pricing." },
-  { title: "Same-day water heaters", text: "Standard gas or electric tank replacement starts at $2,850, often same-day when our schedule allows." },
+  { title: "Same-day water heaters", text: "Standard gas or electric tank replacement, often same-day when our schedule allows. See your price in our online estimate." },
   { title: "Rebate help", text: "Rebates may be available for some systems. We check what you qualify for and handle the paperwork." },
   { title: "Answered 24/7", text: `Call ${siteConfig.phone} any time. Our phones are answered around the clock.` },
 ];

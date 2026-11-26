@@ -162,7 +162,7 @@ export default async function ServiceAreaPage(
                 <Link href="/services/tankless-water-heaters" className="font-semibold text-brand-700 hover:underline">tankless</Link>,{" "}
                 <Link href="/services/gas-water-heaters" className="font-semibold text-brand-700 hover:underline">gas</Link>, and{" "}
                 <Link href="/services/electric-water-heaters" className="font-semibold text-brand-700 hover:underline">electric</Link>{" "}
-                water heaters, with same-day replacement when our schedule allows. Gas and electric tank installs start at $2,850.
+                water heaters, with same-day replacement when our schedule allows.
               </p>
             </RevealItem>
             <RevealItem>

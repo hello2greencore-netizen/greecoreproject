@@ -28,13 +28,13 @@ export function cityFaqs(area: ServiceArea): FAQ[] {
   if (!covers("water heater")) {
     extra.push({
       question: `Do you replace water heaters in ${area.city}?`,
-      answer: `Yes. We install heat pump, tankless, gas, and electric water heaters in ${area.city}. Gas and electric tank installs start at $2,850, and we offer same-day replacement when our schedule allows.`,
+      answer: `Yes. We install heat pump, tankless, gas, and electric water heaters in ${area.city}. We offer same-day replacement when our schedule allows.`,
     });
   }
   if (!covers("online estimate")) {
     extra.push({
       question: `Can I get an online estimate in ${area.city}?`,
-      answer: `Yes. Our free online estimate shows real Green Core prices for a new gas furnace or heat pump system for your ${area.city} home in about two minutes, at greencorehvac.com/instant-estimate. Your final price is confirmed in writing after a free visit or photo review. Gas and electric tank water heater replacement starts at $2,850, and we give free estimates on everything else.`,
+      answer: `Yes. Our free online estimate shows real Green Core prices for a new furnace, AC, heat pump, ductless mini split, water heater or whole house fan for your ${area.city} home in about two minutes, at greencorehvac.com/instant-estimate. Your final price is confirmed in writing after a free visit or photo review.`,
     });
   }
   return [...own, ...extra];

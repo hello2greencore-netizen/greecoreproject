@@ -29,10 +29,17 @@ body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15p
 .sample{font-size:12.5px;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px 16px;justify-content:space-between;align-items:center}
 .sample b{color:var(--amber);font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:11.5px}
 header.brand{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.logo{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
-.logo i{width:26px;height:26px;border-radius:50%;background:var(--green);display:inline-block;position:relative}
-.logo i::after{content:"";position:absolute;inset:7px;border-radius:50%;background:var(--surface)}
-.phone{font-size:13.5px;color:var(--muted)} .phone strong{color:var(--ink);font-variant-numeric:tabular-nums}
+header.brand{background:linear-gradient(135deg,#0F4A30 0%,#1E6B47 60%,#2C8A5C 100%);color:#fff;border-radius:16px;padding:14px clamp(14px,3vw,22px);box-shadow:0 6px 20px rgba(15,74,48,.18)}
+.logo{display:flex;align-items:center;gap:12px;min-width:0;color:#fff;text-decoration:none}
+.logo-mark{flex:none;width:52px;height:52px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.logo-mark img{width:44px;height:44px;display:block}
+.logo-text{display:flex;flex-direction:column;line-height:1.1;min-width:0}
+.logo-name{font-family:var(--display);font-weight:700;font-size:clamp(18px,4.6vw,23px);letter-spacing:-.01em}
+.logo-sub{font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#F6C76A;margin-top:3px}
+.phone{font-size:13.5px;color:rgba(255,255,255,.85)} .phone a{color:#fff;font-weight:700;text-decoration:none;font-variant-numeric:tabular-nums;white-space:nowrap}
+.phone a:hover{text-decoration:underline}
+@media (min-width:481px){header.brand{flex-wrap:nowrap} header.brand .phone{display:flex;flex-direction:column;align-items:flex-end;text-align:right;font-size:12.5px;line-height:1.3} header.brand .phone a{font-size:16px}}
+@media (max-width:480px){header.brand .phone{width:100%;padding-top:10px;border-top:1px solid rgba(255,255,255,.18)}}
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:clamp(18px,4vw,32px);display:flex;flex-direction:column;gap:18px}
 .progress{display:flex;flex-direction:column;gap:8px}
 .progress small{color:var(--muted);font-size:12.5px;letter-spacing:.04em;text-transform:uppercase}
@@ -123,6 +130,98 @@ input:focus-visible{outline:3px solid var(--green);outline-offset:1px;border-col
 .about h3{font-size:14px;color:var(--ink)}
 .about ul{margin:0;padding-left:18px;display:grid;gap:2px}
 @media (prefers-reduced-motion: reduce){*{transition:none!important}}
+.tsel{display:block;width:100%;font:inherit;font-size:13px;margin-top:6px;padding:5px 8px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink)}
+.pickadd>span{min-width:0}
+/* follow-up: choose an option, book a visit or call, send photos */
+.choose{margin-top:auto;width:100%;padding:10px 14px;font-size:14px}
+.next{display:flex;flex-direction:column;gap:14px;border:1.5px solid var(--green);border-radius:14px;padding:clamp(16px,3vw,24px);background:var(--surface);scroll-margin-top:16px}
+.next h3{font-size:16px}
+.note.good{background:var(--green-soft)}
+.days{display:flex;flex-direction:column;gap:12px}
+.day{display:flex;flex-direction:column;gap:6px}
+.day-l{font-size:13px;font-weight:600;color:var(--muted)}
+.slots{display:flex;flex-wrap:wrap;gap:8px}
+.slot{font:inherit;font-size:14px;font-weight:600;padding:8px 14px;border-radius:9px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;font-variant-numeric:tabular-nums}
+.slot:hover{border-color:var(--green)}
+.slot[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:var(--surface)}
+.slot:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+.photos{display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line);padding-top:14px}
+.photo-row{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:14px;border-top:1px solid var(--line);padding-top:10px}
+.photo-row>span{min-width:0}
+.photo-btn{flex:none;padding:8px 14px;font-size:13.5px}
+.photo-btn:focus-within{outline:3px solid var(--green);outline-offset:2px}
+.opt[disabled]{cursor:default}
+/* result page: prices first, then financing, then booking */
+.disc .meta{display:flex;margin-top:6px;font-size:12px}
+.fin{display:flex;flex-direction:column;gap:8px;border-top:1px solid var(--line);padding-top:16px}
+.fin h2{font-size:18px}
+.pts summary{cursor:pointer;font-size:13px;font-weight:600;color:var(--green);list-style:none}
+.pts summary::-webkit-details-marker{display:none}
+.pts summary::after{content:" ▾"}
+.pts[open] summary{display:none}
+.pts ul{margin:0;padding-left:18px;font-size:13.5px;display:flex;flex-direction:column;gap:4px}
+@media (max-width:600px){
+  .wrap.result header.brand{display:none}
+  .wrap.result{gap:10px}
+  .wrap.result .panel{padding:16px;gap:14px}
+  .wrap.result .rhead h1{font-size:24px}
+  .tier{padding:14px;gap:8px}
+  .tiers{gap:10px}
+  .mo-sub{display:none}
+  .pts[open] summary{display:block}
+  .pts[open] summary::after{content:" ▴"}
+}
+/* price page: numbered, bordered step cards */
+.rpage{display:flex;flex-direction:column;gap:18px}
+.rpage .rhead{padding:4px 2px 0}
+.step{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:clamp(16px,3vw,26px);display:flex;flex-direction:column;gap:16px;scroll-margin-top:16px}
+.step-h{display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.step-h h2{font-size:clamp(19px,3.4vw,22px)}
+.step-sub{font-size:13.5px;color:var(--muted);margin-top:3px}
+.num{flex:none;width:32px;height:32px;border-radius:50%;background:var(--green);color:var(--surface);display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:16px;margin-top:-2px}
+.opt-tag{font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);background:var(--line);padding:2px 8px;border-radius:20px;vertical-align:middle;margin-left:4px}
+.step.next{border-color:var(--green)}
+.step .sys:first-of-type{border-top:0;padding-top:0}
+.step .photos{border-top:0;padding-top:0}
+.more-h{font-size:18px;margin-top:6px}
+.rpage .cols .box{border-width:1.5px}
+.rpage .about{border-top:0;padding-top:0}
+@media (max-width:600px){
+  .rpage{gap:14px}
+  .step{padding:14px;gap:14px}
+  .num{width:28px;height:28px;font-size:14px}
+}
+/* color separation: tinted header band on each step, solid green on the booking step */
+.step{--pad:clamp(16px,3vw,26px);padding:0 var(--pad) var(--pad);overflow:hidden;box-shadow:0 1px 2px rgba(19,32,26,.05),0 4px 14px -6px rgba(19,32,26,.10)}
+.step-h{margin:0 calc(-1 * var(--pad));padding:14px var(--pad);background:var(--green-soft);border-bottom:1.5px solid var(--line)}
+.step.next .step-h{background:var(--green);border-bottom-color:var(--green)}
+.step.next .step-h h2{color:var(--surface)}
+.step.next .step-h .step-sub{color:var(--surface);opacity:.88}
+.step.next .num{background:var(--surface);color:var(--green)}
+.step.next{border-width:2px}
+.step .sys + .sys{border-top:1.5px dashed var(--line)}
+.rpage .cols .box{padding:0 18px 18px;overflow:hidden;border-width:1.5px}
+.rpage .cols .box h3{margin:0 -18px;padding:12px 18px;border-bottom:1.5px solid var(--line);background:var(--bg)}
+.rpage .cols .box:nth-child(1) h3{background:var(--green-soft)}
+.rpage .cols .box:nth-child(2) h3{background:var(--amber-soft)}
+.more-h{padding-left:2px;color:var(--muted);font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+@media (max-width:600px){.step{--pad:14px}.rpage .cols .box{padding:0 14px 14px}.rpage .cols .box h3{margin:0 -14px;padding:11px 14px}}
+/* bold green step headers (Tony's pick, Nov 2026). Fixed greens so they read the same in light and dark mode. */
+:root{--page:#E3EAE4;--hd:#1E6B47;--hd-strong:#0F4A30}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--page:#0A100D}}
+:root[data-theme="dark"]{--page:#0A100D}
+body:has(.wrap.result){background:var(--page)}
+.rpage{gap:26px}
+.step{border:0;box-shadow:0 2px 4px rgba(19,32,26,.08),0 10px 24px -10px rgba(19,32,26,.25)}
+.step-h{background:var(--hd);border-bottom:0}
+.step-h h2{color:#fff}
+.step-h .step-sub{color:#fff;opacity:.88}
+.num{background:#fff;color:var(--hd)}
+.step.next{border:0}
+.step.next .step-h{background:var(--hd-strong);border-bottom:0}
+.step.next .num{color:var(--hd-strong)}
+.step-h .opt-tag{background:rgba(255,255,255,.2);color:#fff}
+@media (max-width:600px){.rpage{gap:20px}}
 </style>
 
 </head>
@@ -130,118 +229,151 @@ input:focus-visible{outline:3px solid var(--green);outline-offset:1px;border-col
 <div class="wrap" id="app" aria-live="polite"></div>
 
 <script>
-// ---------- Price data: HCP estimate templates, pulled Oct 25, 2026 (garage/closet totals) ----------
-const HP = { // tons -> price
-  value:{name:"Hisense Hi-Edge",tpl:"Hisense Hi-Edge",p:{2:15427,3:16610,4:20308,5:20686}},
-  good:{name:"Hisense Hi-Ultra",tpl:"Hisense Hi-Ultra",p:{2:16300,3:17693,4:21503,5:21870}},
-  better:{name:"Carrier Performance",tpl:"Carrier MUHA",p:{2:17613,3:20374,4:22674,5:24030}},
-  best:{name:"Carrier Infinity",tpl:"Carrier Infinity",p:{2:28769,3:30676,4:32633,5:34286}}
-};
-const HP_ATTIC = 2096;
+// ---------- Price data: HCP estimate templates, pulled Nov 22, 2026 (downflow and attic templates added) ----------
+// Furnace job types: 80 = 80% to 80% swap, 8095 = 80% to 95% upgrade, 9595 = 95% to 95% swap.
+// Arrays are prices for 2, 3, 4, 5 ton. Keys: yes/no = existing AC; gc = Garage/Closet, ac = Attic/Crawlspace, df = Downflow.
+const PRICES = {"HP":{"yes.gc.value":[11611,12794,15252,15630],"yes.gc.good":[12692,14085,16655,17022],"yes.gc.better":[14005,16766,17826,19182],"yes.gc.best":[24831,26738,27455,29108],"yes.ac.value":[13067,14250,16707,17085],"yes.ac.good":[14148,15541,18110,18477],"yes.ac.better":[15461,18222,19281,20637],"yes.ac.best":[26287,28194,28910,30563],"yes.df.value":[12312,13495,15953,16331],"yes.df.good":[13393,14786,17356,17723],"yes.df.better":[14706,17467,18527,19883],"yes.df.best":[25532,27439,28156,29809],"no.gc.value":[13413,14596,17053,17431],"no.gc.good":[14494,15887,18456,18823],"no.gc.better":[15807,18568,19627,20983],"no.gc.best":[26633,28540,29256,30909],"no.ac.value":[15683,16866,19323,19701],"no.ac.good":[16764,18157,20726,21093],"no.ac.better":[18077,20838,21897,23253],"no.ac.best":[28903,30810,31526,33179],"no.df.value":[14114,15297,17754,18132],"no.df.good":[15195,16588,19157,19524],"no.df.better":[16508,19269,20328,21684],"no.df.best":[27334,29241,29957,31610]},"FURN":{"80.value.gc":[5808,5788,6111,6297],"80.value.ac":[6506,6486,6810,6996],"80.value.df":[6509,6489,6812,6998],"80.good.gc":[6795,6863,7211,7492],"80.good.ac":[7493,7561,7910,8191],"80.good.df":[7496,7564,7912,8193],"80.better.gc":[7267,7329,7838,8054],"80.better.ac":[7965,8027,8537,8753],"80.better.df":[7968,8030,8539,8755],"80.best.gc":[9976,9984,10340,10798],"80.best.ac":[10674,10682,11039,11497],"80.best.df":[10677,10685,11041,11499],"8095.value.gc":[7768,7916,8494,8744],"8095.value.ac":[8467,8615,9192,9442],"8095.value.df":[8469,8617,9195,9445],"8095.good.gc":[8551,8712,9261,9409],"8095.good.ac":[9250,9411,9959,10107],"8095.good.df":[9252,9413,9962,10110],"8095.better.gc":[9569,9657,9982,10198],"8095.better.ac":[10268,10356,10680,10896],"8095.better.df":[10270,10358,10683,10899],"8095.best.gc":[12348,12348,13474,13104],"8095.best.ac":[13047,13047,14172,13802],"8095.best.df":[13049,13049,14175,13805],"9595.value.gc":[7008,7156,7733,7983],"9595.value.ac":[7707,7855,8432,8682],"9595.value.df":[7709,7857,8434,8684],"9595.good.gc":[7791,7952,8500,8648],"9595.good.ac":[8490,8651,9199,9347],"9595.good.df":[8492,8653,9201,9349],"9595.better.gc":[8809,8897,9221,9437],"9595.better.ac":[9508,9596,9920,10136],"9595.better.df":[9510,9598,9922,10138],"9595.best.gc":[11588,11588,12713,12343],"9595.best.ac":[12287,12287,13412,13042],"9595.best.df":[12289,12289,13414,13044]},"FURNW":{"80.value":["44K|3 Ton|14-3/16 in.","66K|3 Ton|14-3/16 in.","88K|4 Ton|21 in.","110K|5 Ton|21 in."],"80.good":["44K|3 Ton|14-3/16 in.","66K|3 Ton|14-3/16 in.","88K|4 Ton|21 in.","110K|5 Ton|21 in."],"80.better":["44K|3 Ton|14-3/16 in.","66K|3 Ton|14-3/16 in.","88K|4 Ton|17-1/2 in.","110K|5 Ton|21 in."],"80.best":["44K|3 Ton|17-1/2 in.","66K|3 Ton|14-3/16 in.","88K|4 Ton|17-1/2 in.","110K|5 Ton|21 in."],"8095.value":["40K|2.5 Ton|14-3/16 in.","60K|3 Ton|14-3/16 in.","80K|4 Ton|17-1/2 in.","100K|5 Ton|21 in."],"8095.good":["40K|2.5 Ton|14-3/16 in.","60K|3 Ton|14-3/16 in.","80K|4 Ton|17-1/2 in.","100K|5 Ton|21 in."],"8095.better":["40K|2.5 Ton|14-3/16 in.","60K|3 Ton|14-3/16 in.","80K|4 Ton|17-1/2 in.","100K|5 Ton|21 in."],"8095.best":["60K|3.5 Ton|17-1/2 in.","60K|3.5 Ton|17-1/2 in.","80K|5 Ton|21 in.","100K|5 Ton|21 in."],"9595.value":["40K|2.5 Ton|14-3/16 in.","60K|3 Ton|14-3/16 in.","80K|4 Ton|17-1/2 in.","100K|5 Ton|21 in."],"9595.good":["40K|2.5 Ton|14-3/16 in.","60K|3 Ton|14-3/16 in.","80K|4 Ton|17-1/2 in.","100K|5 Ton|21 in."],"9595.better":["40K|2.5 Ton|14-3/16 in.","60K|3 Ton|14-3/16 in.","80K|4 Ton|17-1/2 in.","100K|5 Ton|21 in."],"9595.best":["60K|3.5 Ton|17-1/2 in.","60K|3.5 Ton|17-1/2 in.","80K|5 Ton|21 in.","100K|5 Ton|21 in."]},"FAC":{"no.80.value.gc":[15773,16853,19390,20539],"no.80.value.ac":[18078,19158,21595,22567],"no.80.good.gc":[16760,17928,20527,21667],"no.80.good.ac":[19065,20233,22732,23695],"no.80.better.gc":[17232,18394,21081,22230],"no.80.better.ac":[19537,20699,23286,24258],"no.80.best.gc":[23827,26617,27246,29438],"no.80.best.ac":[26097,28887,29515,31707],"no.8095.value.gc":[17733,18981,21362,22820],"no.8095.value.ac":[19631,20879,23161,24442],"no.8095.good.gc":[18516,19777,22122,23555],"no.8095.good.ac":[20414,21675,23921,25177],"no.8095.better.gc":[19534,20722,23264,24191],"no.8095.better.ac":[21432,22620,25063,25813],"no.8095.best.gc":[26199,30009,30206,32093],"no.8095.best.ac":[28062,31872,32069,33956],"no.9595.value.gc":[16973,18221,20602,22060],"no.9595.value.ac":[19278,20526,22807,24088],"no.9595.good.gc":[17756,19017,21362,22795],"no.9595.good.ac":[20061,21322,23567,24823],"no.9595.better.gc":[18774,19962,22504,23431],"no.9595.better.ac":[21079,22267,24709,25459],"no.9595.best.gc":[25439,29249,29446,31333],"no.9595.best.ac":[27709,31519,31715,33602],"yes.80.value.gc":[12291,13371,15907,17056],"yes.80.value.ac":[13781,14861,17299,18271],"yes.80.good.gc":[13278,14446,17044,18184],"yes.80.good.ac":[14768,15936,18436,19399],"yes.80.better.gc":[13750,14912,17598,18747],"yes.80.better.ac":[15240,16402,18990,19962],"yes.80.best.gc":[20345,22785,23113,25305],"yes.80.best.ac":[21800,24240,24569,26761],"yes.8095.value.gc":[14251,15499,17880,19338],"yes.8095.value.ac":[15742,16990,19272,20553],"yes.8095.good.gc":[15034,16295,18640,20073],"yes.8095.good.ac":[16525,17786,20032,21288],"yes.8095.better.gc":[16052,17240,19782,20709],"yes.8095.better.ac":[17543,18731,21174,21924],"yes.8095.best.gc":[22717,26177,26074,27961],"yes.8095.best.ac":[24173,27633,27530,29417],"yes.9595.value.gc":[13491,14739,17119,18577],"yes.9595.value.ac":[14981,16229,18511,19792],"yes.9595.good.gc":[14274,15535,17879,19312],"yes.9595.good.ac":[15764,17025,19271,20527],"yes.9595.better.gc":[15292,16480,19021,19948],"yes.9595.better.ac":[16782,17970,20413,21163],"yes.9595.best.gc":[21957,25417,25313,27200],"yes.9595.best.ac":[23412,26872,26769,28656],"no.80.value.df":[16523,17681,20062,20913],"no.80.good.df":[17510,18756,21199,22041],"no.80.better.df":[17982,19222,21753,22604],"no.80.best.df":[24528,27318,27947,30139],"no.8095.value.df":[18483,19809,22034,23194],"no.8095.good.df":[19266,20605,22794,23929],"no.8095.better.df":[20284,21550,23936,24565],"no.8095.best.df":[26900,30710,30907,32794],"no.9595.value.df":[17723,19049,21274,22434],"no.9595.good.df":[18506,19845,22034,23169],"no.9595.better.df":[19524,20790,23176,23805],"no.9595.best.df":[26140,29950,30147,32034],"yes.80.value.df":[13041,14199,16579,17430],"yes.80.good.df":[14028,15274,17716,18558],"yes.80.better.df":[14500,15740,18270,19121],"yes.80.best.df":[21046,23486,23814,26006],"yes.8095.value.df":[15001,16327,18552,19712],"yes.8095.good.df":[15784,17123,19312,20447],"yes.8095.better.df":[16802,18068,20454,21083],"yes.8095.best.df":[23418,26878,26775,28662],"yes.9595.value.df":[14241,15567,17791,18951],"yes.9595.good.df":[15024,16363,18551,19686],"yes.9595.better.df":[16042,17308,19693,20322],"yes.9595.best.df":[22658,26118,26014,27901]},"FACBTU":{"80.value":["44K|MURA","66K|MURA","66K|MURA","88K|MURA"],"80.good":["44K|MURA","66K|MURA","66K|MURA","88K|MURA"],"80.better":["44K|MURA","66K|MURA","66K|MURA","88K|MURA"],"80.best":["44K|26VNA1","66K|26VNA1","66K|26VNA1","66K|26VNA1"],"8095.value":["40K|MURA","60K|MURA","60K|MURA","80K|MURA"],"8095.good":["40K|MURA","60K|MURA","60K|MURA","80K|MURA"],"8095.better":["40K|MURA","60K|MURA","60K|MURA","80K|MURA"],"8095.best":["60K|26VNA1","80K|26VNA1","100K|26VNA1","100K|26VNA1"],"9595.value":["40K|MURA","60K|MURA","60K|MURA","80K|MURA"],"9595.good":["40K|MURA","60K|MURA","60K|MURA","80K|MURA"],"9595.better":["40K|MURA","60K|MURA","60K|MURA","80K|MURA"],"9595.best":["60K|26VNA1","80K|26VNA1","100K|26VNA1","100K|26VNA1"]},"DF":{"no.80.value.gc":[16249,18244,20048,21954],"no.80.value.ac":[18554,20549,22253,23982],"no.80.good.gc":[16956,19039,20905,22802],"no.80.good.ac":[19261,21344,23110,24830],"no.80.better.gc":[17428,19505,21459,23365],"no.80.better.ac":[19733,21810,23664,25393],"no.80.best.gc":[28951,31348,31497,33593],"no.80.best.ac":[31221,33618,33766,35862],"no.8095.value.gc":[18209,20372,22020,24235],"no.8095.value.ac":[20107,22270,23819,25857],"no.8095.good.gc":[18712,20888,22500,24690],"no.8095.good.ac":[20610,22786,24299,26312],"no.8095.better.gc":[19730,21833,23642,25326],"no.8095.better.ac":[21628,23731,25441,26948],"no.8095.best.gc":[31323,34740,34457,36248],"no.8095.best.ac":[33186,36603,36320,38111],"no.9595.value.gc":[17449,19612,21260,23475],"no.9595.value.ac":[19754,21917,23465,25503],"no.9595.good.gc":[17952,20128,21740,23930],"no.9595.good.ac":[20257,22433,23945,25958],"no.9595.better.gc":[18970,21073,22882,24566],"no.9595.better.ac":[21275,23378,25087,26594],"no.9595.best.gc":[30563,33980,33697,35488],"no.9595.best.ac":[32833,36250,35966,37757],"yes.80.value.gc":[12767,14762,16565,18471],"yes.80.value.ac":[14257,16252,17957,19686],"yes.80.good.gc":[13474,15557,17422,19319],"yes.80.good.ac":[14964,17047,18814,20534],"yes.80.better.gc":[13946,16023,17976,19882],"yes.80.better.ac":[15436,17513,19368,21097],"yes.80.best.gc":[25469,27516,27364,29460],"yes.80.best.ac":[26924,28971,28820,30916],"yes.8095.value.gc":[14727,16890,18538,20753],"yes.8095.value.ac":[16218,18381,19930,21968],"yes.8095.good.gc":[15230,17406,19018,21208],"yes.8095.good.ac":[16721,18897,20410,22423],"yes.8095.better.gc":[16248,18351,20160,21844],"yes.8095.better.ac":[17739,19842,21552,23059],"yes.8095.best.gc":[27841,30908,30325,32116],"yes.8095.best.ac":[29297,32364,31781,33572],"yes.9595.value.gc":[13967,16130,17777,19992],"yes.9595.value.ac":[15457,17620,19169,21207],"yes.9595.good.gc":[14470,16646,18257,20447],"yes.9595.good.ac":[15960,18136,19649,21662],"yes.9595.better.gc":[15488,17591,19399,21083],"yes.9595.better.ac":[16978,19081,20791,22298],"yes.9595.best.gc":[27081,30148,29564,31355],"yes.9595.best.ac":[28536,31603,31020,32811],"no.80.value.df":[16999,19072,20720,22328],"no.80.good.df":[17706,19867,21577,23176],"no.80.better.df":[18178,20333,22131,23739],"no.80.best.df":[29652,32049,32198,34294],"no.8095.value.df":[18959,21200,22692,24609],"no.8095.good.df":[19462,21716,23172,25064],"no.8095.better.df":[20480,22661,24314,25700],"no.8095.best.df":[32024,35441,35158,36949],"no.9595.value.df":[18199,20440,21932,23849],"no.9595.good.df":[18702,20956,22412,24304],"no.9595.better.df":[19720,21901,23554,24940],"no.9595.best.df":[31264,34681,34398,36189],"yes.80.value.df":[13517,15590,17237,18845],"yes.80.good.df":[14224,16385,18094,19693],"yes.80.better.df":[14696,16851,18648,20256],"yes.80.best.df":[26170,28217,28065,30161],"yes.8095.value.df":[15477,17718,19210,21127],"yes.8095.good.df":[15980,18234,19690,21582],"yes.8095.better.df":[16998,19179,20832,22218],"yes.8095.best.df":[28542,31609,31026,32817],"yes.9595.value.df":[14717,16958,18449,20366],"yes.9595.good.df":[15220,17474,18929,20821],"yes.9595.better.df":[16238,18419,20071,21457],"yes.9595.best.df":[27782,30849,30265,32056]},"DFBTU":{"80.value":["44K|MUHA","66K|MUHA","66K|MUHA","88K|MUHA"],"80.good":["44K|MUHA","66K|MUHA","66K|MUHA","88K|MUHA"],"80.better":["44K|MUHA","66K|MUHA","66K|MUHA","88K|MUHA"],"80.best":["44K|27VNA3","66K|27VNA3","66K|27VNA3","66K|27VNA3"],"8095.value":["40K|MUHA","60K|MUHA","60K|MUHA","80K|MUHA"],"8095.good":["40K|MUHA","60K|MUHA","60K|MUHA","80K|MUHA"],"8095.better":["40K|MUHA","60K|MUHA","60K|MUHA","80K|MUHA"],"8095.best":["60K|27VNA3","80K|27VNA3","100K|27VNA3","100K|27VNA3"],"9595.value":["40K|MUHA","60K|MUHA","60K|MUHA","80K|MUHA"],"9595.good":["40K|MUHA","60K|MUHA","60K|MUHA","80K|MUHA"],"9595.better":["40K|MUHA","60K|MUHA","60K|MUHA","80K|MUHA"],"9595.best":["60K|27VNA3","80K|27VNA3","100K|27VNA3","100K|27VNA3"]},"DFX":{"yes.upflow":[9649,11664,13271,14925],"yes.downflow":[10278,12293,13900,15554],"no.upflow":[13131,15146,16753,18407],"no.downflow":[13760,15775,17382,19036],"yes.horizontal":[10626,12641,14128,15605],"no.horizontal":[15843,17858,19366,20843]},"ACC":{"no.upflow":[12935,14035,16375,17272],"no.downflow":[13613,14791,16975,17574],"no.horizontal":[15647,16747,18988,19708],"yes.upflow":[9129,10229,12548,13445],"yes.downflow":[9806,10984,13147,13746],"yes.horizontal":[10430,11530,13750,14470]},"MINI":{"09k":[6241,6462,6892,8366,9309],"12k":[6342,6482,6925,8841,9742],"18k":[7387,7450,7858,10247,11416],"24k":[8269,8247,9203,11569,12719],"30k":[0,9115,0,12477,0],"36k":[0,9475,0,14092,0]},"HPWH":{"240.GE":[7106,8449,8631],"240.NAV":[7471,8121,9102]},"TANK":{"gas.40.tall":[3366,3686],"gas.50.tall":[3438,3757],"elec.40.short":[2949,3284],"elec.40.tall":[3097,3432],"elec.50.short":[3118,3453],"elec.50.tall":[3118,3432]},"TANKLESS":{"tank":[[7196,7633],[7439,7960],[7688,8314]],"tankless":[[5276,5713],[5519,6040],[5768,6394]]}};
+const TI = {2:0,3:1,4:2,5:3};
+const TIERS = ["value","good","better","best"];
+const POS_LABEL = {gc:"Garage/Closet", ac:"Attic/Crawlspace", df:"Downflow"};
+const HP_NAMES = {value:["Hisense Hi-Edge","Hisense Hi-Edge"], good:["Hisense Hi-Ultra","Hisense Hi-Ultra"], better:["Carrier Performance","Carrier MUHA"], best:["Carrier Infinity","Carrier Infinity"]};
 const HP_COPY = {
   value:{label:"Value",sub:"Budget-friendly heat pump",pts:["Hisense heat pump and matching indoor unit","Lowest upfront cost","Full Green Core install and startup"]},
   good:{label:"Good",sub:"Hisense step-up line",pts:["Hisense Hi-Ultra heat pump and indoor unit","Step up from Hi-Edge","Full Green Core install and startup"]},
   better:{label:"Better",sub:"Carrier Performance series",pts:["Variable-speed Carrier heat pump (high-heat model)","Matching Carrier fan coil","Carrier factory warranty"]},
   best:{label:"Best",sub:"Carrier Infinity series",pts:["Carrier's top variable-speed heat pump","Variable-speed fan coil, quietest operation","Infinity Touch smart control"]}
 };
-// Furnace: one template per system size (tons) per family. t = template name prefix as in HCP
-const FURN = {
-  80:{value:{name:"WeatherMaker by Carrier 80%",fam:"WeatherMaker 80% Single-Stage",p:{2:6918,3:6898,4:7901,5:8087},t:{2:"44K – 3 Ton",3:"66K – 3 Ton",4:"88K – 4 Ton",5:"110K – 5 Ton"}},
-      good:{name:"Carrier Comfort 80%",fam:"Comfort 80% Single-Stage",p:{2:7625,3:7695,4:8721,5:9008},t:{2:"44K – 3 Ton",3:"66K – 3 Ton",4:"88K – 4 Ton",5:"110K – 5 Ton"}},
-      better:{name:"Carrier Performance 80%",fam:"Performance 80% Two-Stage",p:{2:8097,3:8159,4:9348,5:9564},t:{2:"44K – 3 Ton",3:"66K – 3 Ton",4:"88K – 4 Ton",5:"110K – 5 Ton"}},
-      best:{name:"Carrier Infinity 80%",fam:"Infinity 80% Two-Stage",p:{2:11136,3:11144,4:12180,5:12638},t:{2:"44K – 3 Ton",3:"66K – 3 Ton",4:"88K – 4 Ton",5:"110K – 5 Ton"}}},
-  95:{value:{name:"WeatherMaker by Carrier 95%",fam:"WeatherMaker 95% Single-Stage",p:{2:9148,3:9296,4:10554,5:10804},t:{2:"40K – 2.5 Ton",3:"60K – 3 Ton",4:"80K – 4 Ton",5:"100K – 5 Ton"}},
-      good:{name:"Carrier Comfort 95%",fam:"Comfort 95% Single-Stage",p:{2:9651,3:9812,4:11041,5:11189},t:{2:"40K – 2.5 Ton",3:"60K – 3 Ton",4:"80K – 4 Ton",5:"100K – 5 Ton"}},
-      better:{name:"Carrier Performance 95%",fam:"Performance 95% Two-Stage",p:{2:10669,3:10757,4:11762,5:11978},t:{2:"40K – 2.5 Ton",3:"60K – 3 Ton",4:"80K – 4 Ton",5:"100K – 5 Ton"}},
-      best:{name:"Carrier Infinity 95%",fam:"Infinity 95% Modulating",p:{2:13778,3:13778,4:15584,5:15214},t:{2:"60K – 3.5 Ton",3:"60K – 3.5 Ton",4:"80K – 5 Ton",5:"100K – 5 Ton"}}}
-};
-const FURN_ATTIC = {80:990, 95:1282};
-// Size is decided by square footage alone (Tony's cutoffs, Oct 25, 2026)
-const CUTS = [[1500,2],[2000,3],[2550,4],[3200,5]];
-const tonsFor = sq => { for(const [max,t] of CUTS) if(sq<=max) return t; return null; };
+const FURN_NAMES = {value:"WeatherMaker by Carrier", good:"Carrier Comfort", better:"Carrier Performance", best:"Carrier Infinity"};
+const FURN_FAM = {80:{value:"WeatherMaker 80% Single-Stage",good:"Comfort 80% Single-Stage",better:"Performance 80% Two-Stage",best:"Infinity 80% Two-Stage"},
+                  95:{value:"WeatherMaker 95% Single-Stage",good:"Comfort 95% Single-Stage",better:"Performance 95% Two-Stage",best:"Infinity 95% Modulating"}};
 const FURN_COPY = {
   value:{label:"Value",sub:"Budget-friendly",pts:["WeatherMaker by Carrier furnace","Reliable single-stage heat","Full Green Core install and startup"]},
   good:{label:"Good",sub:"Single-stage",pts:["Carrier Comfort series furnace","Reliable single-stage heat","Full Green Core install and startup"]},
   better:{label:"Better",sub:"Two-stage",pts:["Carrier Performance series furnace","Two-stage heat for steadier comfort","Quieter, more even airflow"]},
   best:{label:"Best",sub:"Carrier Infinity",pts:["Carrier's most advanced furnace line","Smoothest, quietest heat","Works with Infinity smart controls"]}
 };
-const DUCT = {2:5885,3:5998,4:6943,5:9159}; // R-8 flex duct system
-// Install position -> HCP template group. Downflow = Garage/Closet template + that system's downflow kit (null = kit not priced yet).
-// Kit price = (materials ÷ 0.60 + labor hrs × $186 + 10% tax on materials) × 1.10
-const DOWNFLOW_KIT = {
-  furnace:{name:"Furnace Downflow Kit", price:701},      // $150 mat, 2 hr
-  hp:{name:"Heat Pump Downflow Kit", price:701},          // $150 mat, 2 hr
-  dual:{name:"Dual Fuel Downflow Kit", price:895},        // $250 mat, 2 hr
-  ac:{name:"AC/Coil Downflow Kit", price:1294},           // $350 mat, 3 hr
-  coil:{name:"Coil Only Downflow Kit", price:1294},       // $350 mat, 3 hr
-  fac:{name:"Furnace + AC/Coil Downflow Kits", price:701+1294}
+const FAC_FAM = {value:"WeatherMaker by Carrier", good:"Comfort", better:"Performance", best:"Infinity"};
+const JOB_LABEL = {"80":"80% to 80% swap", "8095":"80% to 95% upgrade", "9595":"95% to 95% swap"};
+// "No furnace now": price ranges from the website cost guide (2, 3, 4, 5 ton), then a free visit.
+const GUIDE = {f80:[[5400,13250],[5750,13250],[6000,14250],[6500,14500]], f95:[[7400,14500],[8000,16500],[8250,16750],[8500,17000]],
+  fac:[[11500,20750],[12750,23250],[14500,27000],[15250,27300]], dual:[[9500,25000],[11500,28000],[13250,29000],[14750,30000]]};
+const DF_COPY = {
+  value:{label:"Value",sub:"Budget-friendly",pts:["WeatherMaker by Carrier gas furnace","Carrier Performance heat pump and coil","Heat pump does most of the work, gas covers the coldest nights"]},
+  good:{label:"Good",sub:"Single-stage gas backup",pts:["Carrier Comfort series gas furnace","Carrier Performance heat pump and coil","Heat pump does most of the work, gas covers the coldest nights"]},
+  better:{label:"Better",sub:"Two-stage gas backup",pts:["Carrier Performance series gas furnace","Carrier Performance heat pump and coil","Steadier, quieter comfort"]},
+  best:{label:"Best",sub:"Carrier Infinity",pts:["Carrier Infinity gas furnace","Carrier Infinity variable-speed heat pump","Infinity smart controls, quietest operation"]}
 };
-// Homes with no AC today: +$750 on any system that cools (heat pump, furnace + AC, dual fuel). Not on furnace-only.
-const NO_AC_ADD = 750;
-const noAC = () => S.a.ac==="none" || S.a.current==="gas";
+const FAC_COPY = {
+  value:{label:"Value",sub:"Budget-friendly",pts:["WeatherMaker by Carrier furnace","Carrier central AC and matching coil","Full Green Core install and startup"]},
+  good:{label:"Good",sub:"Single-stage heat",pts:["Carrier Comfort series furnace","Carrier central AC and matching coil","Full Green Core install and startup"]},
+  better:{label:"Better",sub:"Two-stage heat",pts:["Carrier Performance series furnace","Carrier central AC and matching coil","Steadier, quieter comfort"]},
+  best:{label:"Best",sub:"Carrier Infinity",pts:["Carrier Infinity furnace","Carrier Infinity variable-speed AC","Infinity smart controls, quietest operation"]}
+};
+// Ductless: one room, size by room sq ft. Tier slots 1-5 as in HCP.
+const MINI_CUTS = [[350,"09k"],[500,"12k"],[750,"18k"],[1000,"24k"],[1250,"30k"],[1500,"36k"]];
+const MINI_TIERS = [
+  {k:"m1",label:"Value",name:"Mitsubishi WX",sub:"Mitsubishi entry line",pts:["Mitsubishi wall-mounted indoor unit and outdoor unit","Heating and cooling for one room","Full Green Core install and startup"]},
+  {k:"m2",label:"Budget",name:"Hisense Hi-Edge",sub:"Budget-friendly",pts:["Hisense wall-mounted indoor unit and outdoor unit","Heating and cooling for one room","Full Green Core install and startup"]},
+  {k:"m3",label:"Good",name:"Hisense Hi-Ultra",sub:"Hisense step-up line",pts:["Hisense Hi-Ultra indoor unit and outdoor unit","Step up from Hi-Edge","Full Green Core install and startup"]},
+  {k:"m4",label:"Better",name:"Mitsubishi GX",sub:"Mitsubishi mid line",pts:["Mitsubishi GX indoor unit and outdoor unit","Quiet, efficient comfort","Full Green Core install and startup"]},
+  {k:"m5",label:"Best",name:"Mitsubishi FX Hyper Heat",sub:"Mitsubishi top line",pts:["Mitsubishi Hyper Heat indoor unit and outdoor unit","Built for strong heating in cold weather","Full Green Core install and startup"]}
+];
+const MINI_PICK = {value:"m1", good:"m3", better:"m4", best:"m5"};
+const miniSize = sq => { for(const [max,s] of MINI_CUTS) if(sq<=max) return s; return null; };
+// Heat pump water heaters: tank size is the bigger of the people rule and the bathroom rule.
+const WH_GAL = {"2":50,"4":65,"5":80};
+const BATH_GAL = {"2":50,"3":65,"4":80};
+const DUCT = {2:5885,3:5998,4:6943,5:9159}; // R-8 flex duct system
+// Size is decided by square footage alone (Tony's cutoffs, Oct 25, 2026)
+const CUTS = [[1500,2],[2000,3],[2550,4],[3200,5]];
+const tonsFor = sq => { for(const [max,t] of CUTS) if(sq<=max) return t; return null; };
 function position(a){
   const attic = a.loc==="attic"||a.loc==="crawl";
-  const group = attic ? "Attic/Crawlspace" : "Garage/Closet";
   const orient = attic ? "Horizontal" : (a.flow==="down" ? "Downflow" : "Upflow");
-  return {attic, group, orient, where:{garage:"garage",closet:"closet",attic:"attic",crawl:"crawlspace"}[a.loc]};
+  const key = attic ? "ac" : (a.flow==="down" ? "df" : "gc");
+  return {attic, key, orient, where:{garage:"garage",closet:"closet",attic:"attic",crawl:"crawlspace"}[a.loc]};
 }
+// Existing AC decides which HCP template set to use (Existing AC vs No Existing AC).
+const hasAC = () => S.a.current==="gas_ac" || S.a.ac==="yes";
 // Financing plans. Monthly = standard loan payment: P × r ÷ (1 − (1 + r)^−n), r = APR ÷ 12. Checked against lender samples on $18,000.
 const PLANS = [
   {id:"0",  short:"0% · 21 mo", long:"0% APR for 21 months", apr:0, n:21},
   {id:"36", short:"3 years", long:"3 years at 8.99% APR", apr:8.99, n:36},
   {id:"60", short:"5 years", long:"5 years at 10.49% APR", apr:10.49, n:60},
-  {id:"84", short:"7 years", long:"7 years at 6.99% APR", apr:6.99, n:84}
+  {id:"84", short:"7 years", long:"7 years at 6.99% APR", apr:6.99, n:84},
+  {id:"none", short:"No financing, pay in full", long:"Paying in full, no financing", none:true}
 ];
 const plan = () => PLANS.find(p=>p.id===S.plan) || PLANS[0];
-// Lead hand-off: set to the deployed Cloudflare Worker URL. Empty = prototype mode (nothing is sent).
 const SUBMIT_URL = "https://green-core-estimator.tony-ac7.workers.dev";
 const BOOK_URL = "https://book.housecallpro.com/book/Green-Core-Heating--Air-Inc/d68ef1da956043458b2e0244b795dd66?v2=true";
 const openBooking = () => window.open(BOOK_URL, "_blank", "noopener");
+
+// ---------- Lead hand-off ----------
+// Where the visitor came from. The website page passes its saved tracking tags into this frame's URL.
+const ATTR = (() => { const o = {}; try { const q = new URLSearchParams(location.search);
+  for (const k of ["utm_source","utm_medium","utm_campaign","utm_content","utm_term","fbclid","lp"]) { const v = q.get(k); if (v) o[k] = v.slice(0, 200); } } catch(e) {}
+  o.channel = (/^(meta|facebook|fb|instagram|ig)$/i.test(o.utm_source||"") || o.fbclid) ? "meta" : "website"; return o; })();
+const sourceLine = () => ATTR.channel==="meta"
+  ? `Came from: Meta ads${ATTR.utm_campaign?` - campaign ${ATTR.utm_campaign}`:""}${ATTR.utm_content?` - ad ${ATTR.utm_content}`:""}`
+  : `Came from: Website${ATTR.utm_source?` (${ATTR.utm_source}${ATTR.utm_campaign?`, ${ATTR.utm_campaign}`:""})`:""}`;
+// Tell the website page a lead happened (it passes this on to Google Tag Manager / the Meta Pixel).
+function notifyLead(r){
+  if(window.parent===window) return;
+  const first = r.systems.find(s=>!s.pending), t = pickedTier(first);
+  try { window.parent.postMessage({type:"gc-estimator-lead", channel:ATTR.channel, value:t?t.price:0, currency:"USD", systems:S.svcs.map(sysName), estimate:S.leadMeta.est}, location.origin); } catch(e) {}
+}
+const pickedTier = s => s && !s.pending ? (s.tiers.find(t=>t.k===s.pickK) || [...s.tiers].sort((a,b)=>a.price-b.price)[0]) : null;
 function leadPayload(r, est, until){
-  const P = position(S.a), first = r.systems.find(s=>!s.pending);
-  const pickT = first && first.tiers.find(t=>t.k===S.a.priority);
+  const first = r.systems.find(s=>s.chosen) || r.systems.find(s=>!s.pending), pickT = pickedTier(first);
+  const P = ducted() ? position(S.a) : null;
   return {
     website: S.hp || "", estimateNo: est, validThrough: until, zip: S.zip,
     contact: {name:S.c.name, phone:S.c.phone, email:S.c.email, street:S.c.addr, sms:S.c.sms},
-    answers: {sqft:S.a.sqft, position:`${P.where}, ${P.orient.toLowerCase()}`, priority:S.a.priority, raw:{...S.a, own:S.own}},
+    answers: {sqft:S.a.sqft, position:P?`${P.where}, ${P.orient.toLowerCase()}`:"", raw:{...S.a, own:S.own}},
     qa: [
       {q:"Systems they wanted priced:", a:S.svcs.map(sysName).join(", ")},
       {q:"Do they own the home?", a:({own:"I own it",rent:"I rent",landlord:"Landlord or manager"})[S.own]||""},
-      ...QS.filter(q=>q.need()).map(q=>{ const v=S.a[q.id]; if(q.num) return {q:q.q, a:v?`${Number(v).toLocaleString("en-US")} sq ft`:"(skipped)"}; const opts=typeof q.o==="function"?q.o():q.o; const o=opts.find(x=>x[0]===v); return {q:q.q, a:o?o[1]:"(skipped)"}; })
+      ...QS.filter(q=>q.need()).flatMap(q=>q.multi||[q]).map(q=>{ const v=S.a[q.id]; if(q.num) return {q:q.q, a:v?`${Number(v).toLocaleString("en-US")} sq ft`:"(skipped)"}; const o=q.o.find(x=>x[0]===v); return {q:q.q, a:o?o[1]:"(skipped)"}; })
     ],
-    systems: r.systems.map(s=>({title:s.title, pending:!!s.pending, tiers:(s.tiers||[]).map(t=>({label:t.label, name:t.name, price:t.price, template:t.tpl, picked:t.k===S.a.priority}))})),
+    systems: r.systems.map(s=>({title:s.title, pending:!!s.pending, tiers:(s.tiers||[]).map(t=>({label:t.label, name:t.name, price:t.price, template:t.tpl, picked:t.k===s.pickK}))})),
     primary: pickT ? {system:first.title, option:`${pickT.label} - ${pickT.name}`, price:pickT.price, template:pickT.tpl} : null,
-    addons: r.addons.filter(x=>S.addons.includes(x.id)).map(x=>({label:x.label, price:x.price})),
-    noAcAdder: noAC() && has("hp","fac","dual"), financing: plan().long, flags: r.flags, booked: S.booked
+    addons: r.addons.filter(x=>S.addons.includes(x.id)).map(x=>({label:x.short||x.label, price:x.price})),
+    existingAC: ducted() ? hasAC() : null, financing: plan().long, flags: r.flags, booked: !!S.bookedInfo, followUp: S.bookedInfo ? {kind:S.bookedInfo.kind, start:S.bookedInfo.start, with:S.bookedInfo.employee} : null,
+    source: ATTR
   };
 }
 // Short, plain-English summary for the HCP lead note.
 function leadSummary(r, est, until){
-  const a = S.a, P = position(a), tons = tonsFor(a.sqft);
-  const lab = (id, v) => { const q = QS.find(x=>x.id===id); if(!q || v==null) return null; const opts = typeof q.o==="function"?q.o():q.o; const o = (opts||[]).find(x=>x[0]===v); return o ? o[1] : null; };
-  const priced = r.systems.filter(s=>!s.pending), first = priced[0];
-  const pickT = first && first.tiers.find(t=>t.k===a.priority);
+  const a = S.a;
+  const lab = (id, v) => { const q = [...QS, ...QS.flatMap(x=>x.multi||[])].find(x=>x.id===id); if(!q || v==null) return null; const o = q.o.find(x=>x[0]===v); return o ? o[1] : null; };
+  const first = r.systems.find(s=>s.chosen) || r.systems.find(s=>!s.pending), pickT = pickedTier(first);
   const L = [];
   L.push(`Online estimate ${est} - good through ${until}`);
-  if (pickT) L.push(`Picked: ${first.title} - ${pickT.name} (${pickT.label}) - ${money(pickT.price)}`);
+  L.push(sourceLine());
+  if (pickT) L.push(`${S.choiceMade ? "Chose" : "Leaning toward"}: ${first.title} - ${pickT.name} (${pickT.label}) - ${money(pickT.price)}`);
   const others = r.systems.filter(s=>s!==first).map(s=>s.title + (s.pending?" (price at visit)":""));
-  if (others.length) L.push(`Also priced: ${others.join(", ")}`);
+  if (others.length) L.push(`${first ? "Also priced" : "Asked about"}: ${others.join(", ")}`);
   L.push("");
-  const vents = P.orient==="Downflow" ? "floor vents (downflow)" : P.orient==="Upflow" ? (a.flow==="unsure" ? "not sure where vents are" : "ceiling vents (upflow)") : "horizontal";
-  L.push(`Home: ${Number(a.sqft).toLocaleString("en-US")} sq ft (${tons} ton) - unit in the ${P.where} - ${vents}`);
-  const now = a.current ? ({gas_ac:"Gas furnace and AC", gas:"Gas furnace, no AC", elec:"Electric furnace or older heat pump", unsure:"Not sure"})[a.current] : null;
-  if (now) L.push(`Has now: ${now}`);
-  const ac = lab("ac", a.ac); if (ac) L.push(`Has AC: ${ac}`);
-  const vent = ({metal:"Metal pipe (standard 80%)", pvc:"Plastic pipes (high-efficiency)", unsure:"Not sure", none:"No furnace now"})[a.vent]; if (vent) L.push(`Furnace vent: ${vent}`);
-  const ducts = lab("ducts", a.ducts); if (ducts) L.push(`Ducts: ${ducts}`);
-  const out = lab("outdoor", a.outdoor); if (out) L.push(`Outdoor unit: ${out}`);
-  const want = lab("priority", a.priority); if (want) L.push(`Wants: ${want}`);
+  if (ducted()) {
+    const P = position(a), tons = tonsFor(a.sqft);
+    const vents = P.orient==="Downflow" ? "floor vents (downflow)" : P.orient==="Upflow" ? (a.flow==="unsure" ? "not sure where vents are" : "ceiling vents (upflow)") : "horizontal";
+    L.push(`Home: ${Number(a.sqft).toLocaleString("en-US")} sq ft (${tons} ton) - unit in the ${P.where} - ${vents}`);
+    const now = a.current ? ({gas_ac:"Gas furnace and AC", gas:"Gas furnace, no AC", elec:"Electric furnace or older heat pump", unsure:"Not sure"})[a.current] : null;
+    if (now) L.push(`Has now: ${now}`);
+    const ac = lab("ac", a.ac); if (ac) L.push(`Has AC: ${ac}`);
+    const vent = ({metal:"Metal pipe (standard 80%)", pvc:"Plastic pipes (high-efficiency)", unsure:"Not sure", none:"No furnace now"})[a.vent]; if (vent) L.push(`Furnace vent: ${vent}`);
+  }
+  if (has("mini")) L.push(a.rooms==="2" ? "Ductless: wants two or more rooms" : `Ductless: one room, about ${Number(a.room||0).toLocaleString("en-US")} sq ft${miniSize(a.room)?` (${miniSize(a.room)})`:" (too big to price online)"}`);
+  if (has("whf") && !ducted()) L.push(`Whole house fan: ${Number(a.sqft).toLocaleString("en-US")} sq ft home`);
+  if (has("tank")) L.push(`Tank water heater: ${a.whfuel==="gas"?"Gas":"Electric"} now - size ${lab("tanksize",a.tanksize)||"?"}${a.whfuel==="elec"?` - ${lab("tankh",a.tankh)||"?"}`:""} - ${a.whloc==="move"?"wants it moved":"same spot"}`);
+  if (has("tankless")) L.push(`Tankless: has ${lab("twnow",a.twnow)||"?"} now${a.twnow!=="elec"?` - ${lab(has("hpwh")?"baths":"tbaths", has("hpwh")?a.baths:a.tbaths)||"?"} bathrooms - ${a.whloc==="move"?"wants it moved":"same spot"}`:""}`);
+  if (has("hpwh")) L.push(`Water heater: ${a.whfuel==="gas"?"Gas":"Electric"} now - ${lab("people",a.people)} people - ${lab("baths",a.baths)} bathrooms - ${whGal()} gal - ${a.whloc==="move"?"wants it moved":"same spot"}`);
   L.push(`Owns the home: ${({own:"Yes", rent:"No, renting", landlord:"Landlord or manager"})[S.own] || "Not asked"}`);
   L.push("");
   const ups = r.addons.filter(x=>S.addons.includes(x.id));
-  L.push(`Upgrades picked: ${ups.length ? ups.map(x=>`${x.id==="ducts"?"New R-8 ducts":x.id==="zone"?"2-zone system":"Ecobee thermostat"} (${money(x.price)})`).join(", ") : "None"}`);
-  L.push(`Financing: ${S.planTouched ? "Looked at " + plan().long : "Didn't look"}`);
-  L.push(`Wants a visit: ${S.booked ? "Yes, clicked Book a free visit" : "Not yet"}`);
+  if (r.addons.length) L.push(`Upgrades picked: ${ups.length ? ups.map(x=>`${x.short} (${money(x.price)})`).join(", ") : "None"}`);
+  L.push(`Financing: ${plan().none ? "No financing, paying in full" : S.planTouched ? "Looked at " + plan().long : "Didn't look"}`);
+  L.push(`Follow-up: ${S.bookedInfo ? `${S.bookedInfo.kind==="call"?"Phone call":"Verify visit"} booked ${fmtSlot(S.bookedInfo.start)} with ${S.bookedInfo.employee}` : S.follow ? `Looking at ${S.follow==="call"?"phone call":"visit"} times` : "Not booked yet"}`);
   return L;
 }
 // Send once, with the customer's final choices: when they click Book, leave or hide the page, or after 2 minutes on their prices.
@@ -255,47 +387,146 @@ addEventListener("visibilitychange", () => { if (document.visibilityState==="hid
 addEventListener("pagehide", flushLead);
 function sendLead(payload){
   if(!SUBMIT_URL) return;
-  fetch(SUBMIT_URL, {method:"POST", keepalive:true, headers:{"Content-Type":"application/json"}, body:JSON.stringify(payload)})
-    .then(r=>r.json()).then(j=>{ S.leadId = j.lead_id || null; }).catch(()=>{});
+  S.leadPromise = fetch(SUBMIT_URL, {method:"POST", keepalive:true, headers:{"Content-Type":"application/json"}, body:JSON.stringify(payload)})
+    .then(r=>r.json()).then(j=>{ S.leadId = j.lead_id || null; S.leadToken = j.token || null; }).catch(()=>{});
 }
+// Booking and photos need the lead to exist first; this sends it now if it hasn't gone yet.
+async function ensureLead(){
+  if(!S.leadId && !S.leadPromise) flushLead();
+  if(S.leadPromise) await S.leadPromise;
+  return !!(S.leadId || S.estimateId);
+}
+const api = path => SUBMIT_URL.replace(/\/$/,"") + path;
+const followIds = () => ({lead_id:S.leadId, token:S.leadToken, estimate_id:S.estimateId, est_token:S.estToken});
+const prettyPhone = p => { const d = String(p).replace(/\D/g,"").replace(/^1(?=\d{10}$)/,""); return d.length===10 ? `(${d.slice(0,3)}) ${d.slice(3,6)}-${d.slice(6)}` : p; };
+const fmtSlot = iso => new Date(iso).toLocaleString("en-US",{timeZone:"America/Los_Angeles", weekday:"short", month:"short", day:"numeric", hour:"numeric", minute:"2-digit"});
+const FOLLOW = {
+  visit:{title:"Book a 30-minute verify visit", sub:"We come out, check your setup, and confirm your price in writing.", done:"visit"},
+  call:{title:"Schedule a 15-minute call", sub:"Talk through your options with Tony or Zach by phone.", done:"call"}
+};
+async function loadSlots(kind){
+  S.slots = {kind, loading:true}; renderKeep();
+  try {
+    const j = await (await fetch(api(`/availability?kind=${kind}`))).json();
+    S.slots = j.ok ? {kind, list:j.slots} : {kind, error:true};
+  } catch(e) { S.slots = {kind, error:true}; }
+  renderKeep();
+}
+async function confirmBooking(){
+  const pick = S.slotPick; if(!pick || S.booking) return;
+  S.booking = "busy"; renderKeep();
+  try {
+    if(!(await ensureLead())) throw new Error("no lead");
+    const r = quoteAll();
+    const res = await fetch(api("/book"), {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({
+      ...followIds(), kind:S.follow, start:pick.start, employee_id:pick.employee_id, phone:S.c.phone, summary:leadSummary(r, S.leadMeta.est, S.leadMeta.until)})});
+    const j = await res.json().catch(()=>({}));
+    if(res.status===409){ S.booking = "taken"; S.slotPick = null; await loadSlots(S.follow); return; }
+    if(!j.ok) throw new Error("book failed");
+    S.estimateId = j.estimate_id; S.estToken = j.est_token;
+    S.bookedInfo = {kind:j.kind, start:j.start, employee:j.employee}; S.booking = null;
+    if(window.parent!==window) try { window.parent.postMessage({type:"gc-estimator-booked", kind:j.kind}, location.origin); } catch(e) {}
+  } catch(e) { S.booking = "error"; }
+  renderKeep();
+}
+const PHOTO_SLOTS = () => {
+  const L = [];
+  if(ducted()) L.push(["indoor","Furnace or indoor unit, plus its data plate (model and serial sticker)"]);
+  if(has("hp","fac","acc","dual","dfx","mini")) L.push(["outdoor","Outdoor unit, plus its data plate"]);
+  if(has("hpwh","tank","tankless")) L.push(["waterheater","Water heater, its data plate, and the space around it"]);
+  L.push(["panel","Electrical panel with the door open"],["other","Anything else you'd like us to see"]);
+  return L;
+};
+// Shrink big phone photos before upload so they send quickly.
+async function shrink(file){
+  try {
+    const img = await createImageBitmap(file); const max = 1600, sc = Math.min(1, max/Math.max(img.width, img.height));
+    const c = document.createElement("canvas"); c.width = Math.round(img.width*sc); c.height = Math.round(img.height*sc);
+    c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+    const blob = await new Promise(res => c.toBlob(res, "image/jpeg", 0.82));
+    return blob ? new File([blob], "photo.jpg", {type:"image/jpeg"}) : file;
+  } catch(e) { return file; }
+}
+async function sendPhotos(){
+  const items = PHOTO_SLOTS().flatMap(([k,l]) => (S.photos[k]||[]).map(f => ({k, l, f})));
+  if(!items.length || S.photoState==="busy") return;
+  S.photoState = "busy"; S.photoDone = 0; renderKeep();
+  try {
+    if(!(await ensureLead())) throw new Error("no lead");
+    for(const it of items){
+      const fd = new FormData(); const ids = followIds();
+      for(const [k,v] of Object.entries(ids)) if(v) fd.append(k, v);
+      fd.append("label", it.l.split(",")[0]); fd.append("file", await shrink(it.f));
+      const j = await (await fetch(api("/photos"), {method:"POST", body:fd})).json();
+      if(!j.ok) throw new Error("photo failed");
+      S.estimateId = j.estimate_id; S.estToken = j.est_token; S.photoDone++; renderKeep();
+    }
+    S.photoState = "sent"; S.photosSent = (S.photosSent||0) + items.length; S.photos = {};
+  } catch(e) { S.photoState = "error"; }
+  renderKeep();
+}
+function renderKeep(){ const y = window.scrollY; renderResult(); window.scrollTo({top:y}); }
 const monthlyAmt = (price, p=plan()) => { if(!p.apr) return price/p.n; const r = p.apr/1200; return price*r/(1-Math.pow(1+r,-p.n)); };
 const cents = n => "$" + n.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
 
 // ---------- Systems the customer can ask to have priced ----------
 const SYSTEMS = [
-  {id:"hp", t:"Heat pump system", s:"Heating and cooling in one, all electric", priced:true},
-  {id:"furnace", t:"Gas furnace", s:"Heating only", priced:true},
-  {id:"fac", t:"Gas furnace + central AC", s:"Gas heat with central cooling", priced:false},
-  {id:"dual", t:"Dual fuel", s:"Heat pump with a gas furnace backup", priced:false}
+  {id:"hp", t:"Heat pump system", s:"Heating and cooling in one, all electric"},
+  {id:"furnace", t:"Gas furnace", s:"Heating only"},
+  {id:"fac", t:"Gas furnace + central AC", s:"Gas heat with central cooling"},
+  {id:"acc", t:"Central AC only", s:"New AC and coil, keep your furnace"},
+  {id:"dual", t:"Dual fuel: new furnace + heat pump", s:"All-new gas furnace with a heat pump"},
+  {id:"dfx", t:"Add a heat pump to my furnace", s:"Keep your gas furnace, add heat pump heating and cooling"},
+  {id:"mini", t:"Ductless mini split", s:"Heating and cooling for one room, no ducts needed"},
+  {id:"hpwh", t:"Heat pump water heater", s:"Replaces your current water heater"},
+  {id:"tank", t:"Gas or electric tank water heater", s:"Same-size replacement for your current tank"},
+  {id:"tankless", t:"Tankless water heater", s:"Navien gas tankless for endless hot water"},
+  {id:"whf", t:"Whole house fan", s:"Cools your home with outside air on summer evenings"}
 ];
-const SOON = [["Ductless mini split"],["Water heater"],["Whole house fan"]];
+const DUCTED = ["hp","furnace","fac","acc","dual","dfx"];
+const SOON = [];
 const has = (...ids) => ids.some(id => S.svcs.includes(id));
+const ducted = () => has(...DUCTED);
 const sysName = id => SYSTEMS.find(x=>x.id===id).t;
+const whGal = () => Math.max(WH_GAL[S.a.people]||50, BATH_GAL[S.a.baths]||50);
 
 // ---------- Questions (each lists which systems need it) ----------
 const QS = [
   {id:"current", need:()=>has("hp","dual"), q:"What heats your home now?", o:[["gas_ac","Gas furnace and AC"],["gas","Gas furnace only"],["elec","Electric furnace or older heat pump"],["noduct","Wall or baseboard heaters","No ducts in the home"],["unsure","Not sure"]]},
-  {id:"sqft", need:()=>true, q:"About how many square feet is your home?", num:true, help:"Living space only. Your best guess is fine; Zillow or your property records will have it."},
-  {id:"loc", need:()=>true, q:"Where is your furnace or indoor unit?", help:"The equipment inside the home, not the unit outside.", o:[["garage","Garage"],["closet","Closet","Hall or utility closet"],["attic","Attic"],["crawl","Crawlspace","Under the house"]]},
-  {id:"flow", need:()=>S.a.loc==="garage"||S.a.loc==="closet", q:"Where does air come out of your vents?", help:"Check a couple of rooms. Most homes have one or the other.", o:[["up","Ceiling or high on the walls"],["down","Floor"],["unsure","Not sure"]]},
+  {id:"sqft", need:()=>ducted()||has("whf"), q:"About how many square feet is your home?", num:true, help:"Living space only. Your best guess is fine; Zillow or your property records will have it."},
+  {id:"loc", need:ducted, q:"Where is your furnace or indoor unit?", help:"The equipment inside the home, not the unit outside.", o:[["garage","Garage"],["closet","Closet","Hall or utility closet"],["attic","Attic"],["crawl","Crawlspace","Under the house"]]},
+  {id:"flow", need:()=>ducted() && (S.a.loc==="garage"||S.a.loc==="closet"), q:"Where does air come out of your vents?", help:"Check a couple of rooms. Most homes have one or the other.", o:[["up","Ceiling or high on the walls"],["down","Floor"],["unsure","Not sure"]]},
   {id:"vent", need:()=>has("furnace","fac","dual"), q:"What kind of vent pipe does your furnace have?", help:"Look where the pipe leaves the top of the furnace.", o:[["metal","Metal pipe","Standard 80% furnace"],["pvc","White plastic pipes","High-efficiency 90%+ furnace"],["unsure","Not sure"],["none","No furnace now"]]},
-  {id:"ac", need:()=>!["gas_ac","gas"].includes(S.a.current), q:"Do you have central air conditioning now?", o:[["new","Yes, under 10 years old"],["old","Yes, older than 10 years"],["none","No AC"]]},
-  {id:"ducts", need:()=>true, q:"How old are your ducts?", o:[["new","Under 10 years"],["mid","10–20 years"],["old","Over 20 years"],["unsure","Not sure"]]},
-  {id:"outdoor", need:()=>has("hp","fac","dual"), q:"Where can the outdoor unit go?", o:[["same","Where the AC is now"],["ground","A new spot on the ground"],["mount","On a wall bracket or roof"],["unsure","Not sure"]]},
-  {id:"priority", need:()=>true, q:"What matters most to you?", o:[["value","Lowest price"],["good","Good value"],["better","A balance of price and comfort"],["best","Quietest and most efficient"]]}
+  {id:"ac", need:()=>ducted() && !["gas_ac","gas"].includes(S.a.current), q:"Do you have central air conditioning now?", o:[["yes","Yes"],["none","No"]]},
+  {id:"rooms", need:()=>has("mini"), q:"How many rooms do you want to heat and cool with ductless?", o:[["1","One room"],["2","Two or more rooms","We'll design these at a free visit"]]},
+  {id:"room", need:()=>has("mini") && S.a.rooms==="1", q:"About how big is that room?", num:true, label:"Room size in square feet", ph:"300", help:"Length times width. A 15 by 20 foot room is 300 sq ft."},
+  {id:"whfuel", need:()=>has("hpwh","tank"), q:"Is your water heater gas or electric now?", o:[["gas","Gas"],["elec","Electric"]]},
+  {id:"tanksize", need:()=>has("tank"), q:"What size is your water heater now?", help:"It's on the label on the side of the tank.", o:[["40","40 gallon"],["50","50 gallon"],["other","Another size","30, 55 or 75 gallon, or a lowboy"],["unsure","Not sure"]]},
+  {id:"tankh", need:()=>has("tank") && S.a.whfuel==="elec" && S.a.tanksize!=="other", q:"Is it a short or tall tank?", help:"Short tanks are about 4 feet tall or less, often tucked under stairs or a counter.", o:[["tall","Tall"],["short","Short"],["unsure","Not sure"]]},
+  {id:"household", need:()=>has("hpwh"), q:"Who uses the hot water?", help:"This sets the tank size.", multi:[
+    {id:"people", q:"People in the home", o:[["2","1–2"],["4","3–4"],["5","5 or more"]]},
+    {id:"baths", q:"Bathrooms", o:[["2","1–2"],["3","3"],["4","4 or more"]]}]},
+  {id:"twnow", need:()=>has("tankless"), q:"What water heater do you have now?", o:[["gastank","Gas tank water heater"],["tankless","Gas tankless water heater"],["elec","Electric water heater"]]},
+  {id:"tbaths", need:()=>has("tankless") && !has("hpwh") && S.a.twnow!=="elec", q:"How many bathrooms does the home have?", help:"This sets the size of the tankless.", o:[["2","1–2"],["3","2.5–3"],["4","3.5 or more"]]},
+  {id:"whloc", need:()=>has("hpwh","tank") || (has("tankless") && S.a.twnow!=="elec"), q:"Where should the new water heater go?", get help(){ return has("hpwh") ? "Heat pump water heaters need some open air around them, like a garage." : ""; }, o:[["same","Same spot as the old one"],["move","Somewhere new","We'll look at it at a free visit"]]},
 ];
-// Service-area ZIPs: exactly the Nov 2026 Google Ads target list ("Green Core Ad Targeting ZIPs - All Counties").
-// Sonoma (18), Marin (14), Napa (3), Solano (8). Any other ZIP gets the call-us message.
-const AREA_ZIPS = new Set([
-  ...["94952","94954","94951","94931","94928","95401","95403","95404","95405","95407","95409","95439","95492","95472","95444","95476","95442","95452"], // Sonoma
-  ...["94945","94947","94949","94901","94903","94904","94939","94925","94957","94960","94930","94941","94920","94965"], // Marin
-  ...["94558","94559","94503"], // Napa
-  ...["94589","94510","94534","94533","94585","95687","95688","95620"] // Solano
-]);
-function inArea(z){return /^\d{5}$/.test(z) && AREA_ZIPS.has(z);}
+// Service area: the target ZIP list sent to Well-Oiled Marketing (Nov 6, 2026) for Sonoma, Marin, Napa and Solano, plus the additions below.
+const SERVICE_ZIPS = {
+  sonoma:["94952","94954","94951","94931","94928","95401","95403","95404","95405","95407","95409","95439","95492","95472","95444","95476","95442","95452"],
+  marin:["94945","94947","94949","94901","94903","94904","94939","94925","94957","94960","94930","94941","94920","94965"],
+  napa:["94558","94559","94503"],
+  solano:["94589","94510","94534","94533","94585","95687","95688","95620"]  ,
+  // Added Nov 2026 beyond the ad-targeting list: West Marin, Healdsburg, Guerneville, Monte Rio, all of Vallejo and San Francisco.
+  westMarin:["94937","94956","94950","94924","94970","94971","94940","94929","94946","94973","94963","94933","94938"],
+  sonomaExtra:["95448","95446","95462"],
+  vallejo:["94590","94591","94592"],
+  sanFrancisco:["94102","94103","94104","94105","94107","94108","94109","94110","94111","94112","94114","94115","94116","94117","94118","94121","94122","94123","94124","94127","94129","94130","94131","94132","94133","94134","94158"]
+};
+const AREA = new Set(Object.values(SERVICE_ZIPS).flat());
+function inArea(z){return /^\d{5}$/.test(z) && AREA.has(z);}
 
 // ---------- State ----------
-const fresh = () => ({step:"service", svcs:[], zip:"", own:"", a:{}, c:{name:"",phone:"",email:"",addr:"",sms:false}, eff:null, showTpl:false, booked:false, plan:"0", addons:[]});
+const fresh = () => ({step:"service", svcs:[], zip:"", own:"", a:{}, c:{name:"",phone:"",email:"",addr:"",sms:false}, effs:{}, booked:false, plan:"0", addons:[], tstatModel:"enhanced", choice:null, photos:{}});
 let S = fresh();
 const $ = s => document.querySelector(s);
 const money = n => "$" + Math.round(n).toLocaleString("en-US");
@@ -309,17 +540,19 @@ function back(){ const f = flow(); const i = f.indexOf(S.step); if(i>0) go(f[i-1
 function shell(inner, wide){
   const f = flow(), i = f.indexOf(S.step), total = f.length-1;
   const prog = S.step==="result" ? "" : `<div class="progress"><small>Step ${i+1} of ${total}</small><div class="bar"><span style="width:${Math.round(((i+1)/total)*100)}%"></span></div></div>`;
-  $("#app").className = "wrap" + (wide ? " wide" : "");
+  $("#app").className = "wrap" + (wide ? " wide" : "") + (S.step==="result" ? " result" : "");
   $("#app").innerHTML = `
     <div class="sample"><span></span>${S.step!=="service"?`<button class="link" id="restart">Start over</button>`:""}</div>
-    <header class="brand"><div class="logo"><i aria-hidden="true"></i>Green Core</div><div class="phone">Questions? Call <strong>(707) 988-5858</strong></div></header>
+    <header class="brand"><div class="logo"><span class="logo-mark"><img src="/images/header/greencorelogo-128.png" alt="Green Core Heating &amp; Air logo" width="44" height="44"></span><span class="logo-text"><span class="logo-name">Green Core Heating &amp; Air</span><span class="logo-sub">Instant estimate · Best of the North Bay 2026</span></span></div><div class="phone">Questions? Call <a href="tel:+17079885858" target="_top">(707) 988-5858</a></div></header>
     ${prog}
-    <section class="panel">${inner}</section>`;
-  const r = $("#restart"); if(r) r.onclick = () => { const keep = S.showTpl; S = fresh(); S.showTpl = keep; render(); };
+    ${S.step==="result" ? `<div class="rpage">${inner}</div>` : `<section class="panel">${inner}</section>`}`;
+  const r = $("#restart"); if(r) r.onclick = () => { S = fresh(); render(); };
 }
 
 function render(){
   const st = S.step;
+  // Tell the page around the estimator which step is showing (the ad landing page hides its intro on the price page).
+  if(window.parent!==window) try { window.parent.postMessage({type:"gc-estimator-step", step:st}, location.origin); } catch(e) {}
   if(st==="service") return renderService();
   if(st==="area") return renderArea();
   if(st==="contact") return renderContact();
@@ -328,15 +561,15 @@ function render(){
 }
 
 function renderService(){
-  shell(`<div style="display:flex;flex-direction:column;gap:8px"><h1>Get an instant estimate</h1><p class="lede">Pick every system you'd like priced, and we'll show them side by side. It takes about two minutes. Your final price is confirmed after a free visit or photo review.</p></div>
+  shell(`<div style="display:flex;flex-direction:column;gap:8px"><h1>Get an instant estimate</h1><p class="lede">Pick everything you'd like priced, and we'll show the options side by side. It takes about two minutes. Your final price is confirmed after a free visit or photo review.</p></div>
     <div class="opts">${SYSTEMS.map(x=>`<button class="opt pickable" data-sys="${x.id}" aria-pressed="${S.svcs.includes(x.id)}"><span class="tick" aria-hidden="true"></span><strong>${x.t}</strong><span>${x.s}</span></button>`).join("")}
       ${SOON.map(([t])=>`<button class="opt off" aria-disabled="true"><strong>${t}</strong><span>Coming soon</span></button>`).join("")}</div>
     <p class="err" id="serr" hidden></p>
-    <div class="row"><span></span><button class="btn" id="cont">Continue${S.svcs.length?` with ${S.svcs.length} ${S.svcs.length>1?"systems":"system"}`:""}</button></div>
+    <div class="row"><span></span><button class="btn" id="cont">Continue${S.svcs.length?` with ${S.svcs.length} ${S.svcs.length>1?"items":"item"}`:""}</button></div>
     <p class="fine">Something broken right now? Call (707) 988-5858 for a same-day service visit.</p>`);
   document.querySelectorAll("[data-sys]").forEach(b => b.onclick = () => {
-    const id = b.dataset.sys; S.svcs = S.svcs.includes(id) ? S.svcs.filter(x=>x!==id) : [...S.svcs, id]; S.eff=null; renderService(); });
-  $("#cont").onclick = () => { if(!S.svcs.length){ const e=$("#serr"); e.textContent="Pick at least one system to price."; e.hidden=false; return; } next(); };
+    const id = b.dataset.sys; S.svcs = S.svcs.includes(id) ? S.svcs.filter(x=>x!==id) : [...S.svcs, id]; renderService(); });
+  $("#cont").onclick = () => { if(!S.svcs.length){ const e=$("#serr"); e.textContent="Pick at least one thing to price."; e.hidden=false; return; } next(); };
 }
 
 function renderArea(){
@@ -352,45 +585,55 @@ function renderArea(){
   $("#cont").onclick = () => {
     const e = $("#aerr");
     if(!/^\d{5}$/.test(S.zip)){ e.textContent="Enter a 5-digit ZIP code."; e.hidden=false; return; }
-    if(!inArea(S.zip)){ e.textContent="That ZIP is outside our online estimate area. Call us at (707) 988-5858 and we'll let you know if we can help, or point you to someone good."; e.hidden=false; return; }
+    if(!inArea(S.zip)){ e.textContent="That ZIP is outside our online estimate area. Call us at (707) 988-5858 and we'll let you know if we can help."; e.hidden=false; return; }
     if(!S.own){ e.textContent="Let us know if you own or rent the home."; e.hidden=false; return; }
     next();
   };
 }
 
+function renderMulti(q){
+  const done = () => q.multi.every(p => S.a[p.id]);
+  shell(`<h2>${q.q}</h2>${q.help?`<p class="lede">${q.help}</p>`:""}
+    ${q.multi.map(p=>`<div style="display:flex;flex-direction:column;gap:10px"><span style="font-weight:500;font-size:14px">${p.q}</span>
+    <div class="opts">${p.o.map(([v,t])=>`<button class="opt" data-m="${p.id}" data-v="${v}" aria-pressed="${S.a[p.id]===v}"><strong>${t}</strong></button>`).join("")}</div></div>`).join("")}
+    <div class="row"><button class="btn ghost" id="back">Back</button>${done()?`<button class="btn" id="cont">Continue</button>`:""}</div>`);
+  document.querySelectorAll("[data-m]").forEach(b => b.onclick = () => { const was = done(); S.a[b.dataset.m] = b.dataset.v; if(!was && done()) return next(); renderMulti(q); });
+  $("#back").onclick = back; const c=$("#cont"); if(c) c.onclick = next;
+}
 function renderQ(q){
   if(q.num) return renderNum(q);
-  const opts = typeof q.o === "function" ? q.o() : q.o;
+  if(q.multi) return renderMulti(q);
   shell(`<h2>${q.q}</h2>${q.help?`<p class="lede">${q.help}</p>`:""}
-    <div class="opts">${opts.map(([v,t,s])=>`<button class="opt" data-v="${v}" aria-pressed="${S.a[q.id]===v}"><strong>${t}</strong>${s?`<span>${s}</span>`:""}</button>`).join("")}</div>
+    <div class="opts">${q.o.map(([v,t,s])=>`<button class="opt" data-v="${v}" aria-pressed="${S.a[q.id]===v}"><strong>${t}</strong>${s?`<span>${s}</span>`:""}</button>`).join("")}</div>
     <div class="row"><button class="btn ghost" id="back">Back</button>${S.a[q.id]?`<button class="btn" id="cont">Continue</button>`:""}</div>`);
-  document.querySelectorAll("[data-v]").forEach(b => b.onclick = () => { S.a[q.id]=b.dataset.v; if(q.id==="vent") S.eff=null; if(q.id==="current" && b.dataset.v==="noduct"){ return renderRoute("noduct"); } next(); });
+  document.querySelectorAll("[data-v]").forEach(b => b.onclick = () => { S.a[q.id]=b.dataset.v; if(q.id==="vent") S.effs={}; if(q.id==="current" && b.dataset.v==="noduct"){ return renderRoute("noduct"); } next(); });
   $("#back").onclick = back; const c=$("#cont"); if(c) c.onclick = next;
 }
 
 function renderNum(q){
   shell(`<h2>${q.q}</h2>${q.help?`<p class="lede">${q.help}</p>`:""}
-    <label class="f" for="numin">Square feet<input type="text" id="numin" inputmode="numeric" maxlength="5" value="${S.a[q.id]||""}" placeholder="1,850"></label>
+    <label class="f" for="numin">${q.label||"Square feet"}<input type="text" id="numin" inputmode="numeric" maxlength="5" value="${S.a[q.id]||""}" placeholder="${q.ph||"1,850"}"></label>
     <p class="err" id="nerr" hidden></p>
     <div class="row"><button class="btn ghost" id="back">Back</button><button class="btn" id="cont">Continue</button></div>`);
   $("#back").onclick = back;
   $("#cont").onclick = () => {
-    const v = +$("#numin").value.replace(/\D/g,""), e = $("#nerr");
-    if(!v || v < 300){ e.textContent = "Enter your home's square footage, like 1850."; e.hidden = false; return; }
+    const v = +$("#numin").value.replace(/\D/g,""), e = $("#nerr"), min = q.id==="room" ? 50 : 300;
+    if(!v || v < min){ e.textContent = q.id==="room" ? "Enter the room's square footage, like 300." : "Enter your home's square footage, like 1850."; e.hidden = false; return; }
     S.a[q.id] = v;
-    if(!tonsFor(v)) return renderRoute("big");
+    if(q.id==="sqft" && !tonsFor(v) && ducted()) return renderRoute("big");
     next();
   };
 }
 
 function renderRoute(kind){
   const msg = kind==="noduct"
-    ? ["Ductless is the better fit for your home","Homes without ducts usually do best with a ductless mini split. Online pricing for mini splits is coming soon. Book a free visit and we'll design a system room by room."]
+    ? ["Ductless is the better fit for your home","Homes without ducts usually do best with a ductless mini split. We can price one room online right now, or design a whole-home system at a free visit."]
     : ["Let's size this one together","Homes over 3,200 sq ft often need two systems. A free visit gets you an accurate price instead of a guess."];
   shell(`<h2>${msg[0]}</h2><p class="lede">${msg[1]}</p>
-    <div class="cta"><button class="btn" id="bk">Book a free visit</button><span class="phone">or call <strong>(707) 988-5858</strong></span></div>
+    <div class="cta">${kind==="noduct"?`<button class="btn" id="mini">Price a ductless mini split</button><button class="btn ghost" id="bk">Book a free visit</button>`:`<button class="btn" id="bk">Book a free visit</button>`}<span class="phone">or call <strong>(707) 988-5858</strong></span></div>
     <div class="row"><button class="btn ghost" id="back">Back</button></div>`);
   $("#bk").onclick = openBooking;
+  const m = $("#mini"); if(m) m.onclick = () => { S.svcs = [...S.svcs.filter(x=>!DUCTED.includes(x)), ...(S.svcs.includes("mini")?[]:["mini"])]; delete S.a.current; go(flow()[2]); };
   $("#back").onclick = () => { if(kind==="noduct") delete S.a.current; render(); };
 }
 
@@ -404,7 +647,7 @@ function renderContact(){
       <label class="f" for="ca">Street address<input type="text" id="ca" autocomplete="street-address" value="${esc(c.addr)}"></label>
     </div>
     <label class="hp-field" aria-hidden="true">Website<input type="text" id="hpf" tabindex="-1" autocomplete="off"></label>
-    <label class="check" for="cs"><input type="checkbox" id="cs" ${c.sms?"checked":""}> Text me about my estimate. Message and data rates may apply. Reply STOP to opt out.</label>
+    <label class="check" for="cs"><input type="checkbox" id="cs" ${c.sms?"checked":""}> OK to text me about my estimate. Message and data rates may apply. Reply STOP to opt out.</label>
     <p class="err" id="cerr" hidden></p>
     <div class="row"><button class="btn ghost" id="back">Back</button><div class="cta"><button class="btn" id="see">See my prices</button></div></div>`);
   const bind = () => { S.hp=$("#hpf").value; S.c={name:$("#cn").value.trim(),phone:$("#cp").value.trim(),email:$("#ce").value.trim(),addr:$("#ca").value.trim(),sms:$("#cs").checked}; };
@@ -418,76 +661,297 @@ function renderContact(){
   };
 }
 
-// ---------- Pricing: one exact HCP template price per tier ----------
-function common(){
-  const a = S.a, tons = tonsFor(a.sqft), P = position(a);
-  const tail = P.orient==="Downflow" ? "Downflow" : P.group;
-  // HCP Downflow templates = Garage/Closet template + that system's downflow kit
-  const kitFor = id => { if(P.orient!=="Downflow") return {add:0, note:""}; const k = DOWNFLOW_KIT[id]; return k ? {add:k.price, note:""} : {add:0, note:" (downflow kit not priced yet)"}; };
-  return {a, tons, P, tail, kitFor};
+// ---------- Pricing: one exact HCP template price per option ----------
+// Furnace job type: what the customer has now decides the template set.
+const has95 = () => S.a.vent==="pvc";
+const effFor = id => { if(has95()) return 95; if(S.effs[id]==null) S.effs[id] = 80; return S.effs[id]; };
+const jobFor = id => has95() ? "9595" : (effFor(id)===95 ? "8095" : "80");
+const furnTitle = (base, id) => { const j = jobFor(id); return j==="80" ? `${base}, 80% swap` : j==="8095" ? `${base}, upgrade to 95%` : `${base}, 95% swap`; };
+const pending = (id, title, note) => ({id, title, note, pending:true});
+function noFurnace(id, title, tons, rows){
+  const r = rows.map(([lab,arr]) => `${money(arr[TI[tons]][0])}–${money(arr[TI[tons]][1])} for ${lab}`).join(" or ");
+  return {...pending(id, title, `${tons} ton system`), custNote:`Adding gas heat for the first time means a new gas line and venting, so we'll confirm your price at a free visit. For a home your size, this typically runs ${r}, installed.`};
 }
 function quoteHP(){
-  const {a, tons, P, tail, kitFor} = common();
-  const kit = kitFor("hp");
-  const acAdd = noAC() ? NO_AC_ADD : 0;
-  const tiers = ["value","good","better","best"].map(k => ({k, ...HP_COPY[k], name:HP[k].name, price:HP[k].p[tons] + (P.attic?HP_ATTIC:0) + kit.add + acAdd, tpl:`${HP[k].tpl} ${tons} Ton – ${tail}${kit.note}${acAdd?` + No-AC adder (${money(acAdd)})`:""}`}));
-  return {id:"hp", title:"Heat pump system", note:`${tons} ton heat pump and indoor unit`, tiers};
+  const tons = tonsFor(S.a.sqft), P = position(S.a), ac = hasAC() ? "yes" : "no", i = TI[tons];
+  const tiers = TIERS.map(k => ({k, ...HP_COPY[k], name:HP_NAMES[k][0], price:PRICES.HP[`${ac}.${P.key}.${k}`][i],
+    tpl:`${HP_NAMES[k][1]} ${tons} Ton – ${POS_LABEL[P.key]}${ac==="yes"?" – Existing AC":""}`}));
+  return {id:"hp", title:"Heat pump system", note:`${tons} ton heat pump and indoor unit`, tiers, pickK:"better"};
 }
 function quoteFurnace(){
-  const {a, tons, P, tail, kitFor} = common();
-  const kit = kitFor("furnace");
-  if(S.eff==null) S.eff = a.vent==="pvc" ? 95 : 80;
-  const eff = S.eff;
-  const tiers = ["value","good","better","best"].map(k => { const F = FURN[eff][k]; return {k, ...FURN_COPY[k], name:F.name, price:F.p[tons] + (P.attic?FURN_ATTIC[eff]:0) + kit.add, tpl:`${F.t[tons]} – ${F.fam} – ${tail}${kit.note}`}; });
-  return {id:"furnace", title:`Gas furnace, ${eff}% efficiency`, note:`Sized for ${tons} ton airflow`, tiers, eff};
+  const tons = tonsFor(S.a.sqft), P = position(S.a), i = TI[tons];
+  if(S.a.vent==="none") return noFurnace("furnace", "Gas furnace", tons, [["an 80% furnace",GUIDE.f80],["a 95% furnace",GUIDE.f95]]);
+  const job = jobFor("furnace"), eff = job==="80" ? 80 : 95;
+  const tiers = TIERS.map(k => { const [btu, ton, width] = PRICES.FURNW[`${job}.${k}`][i].split("|");
+    return {k, ...FURN_COPY[k], name:`${FURN_NAMES[k]} ${eff}%`, price:PRICES.FURN[`${job}.${k}.${P.key}`][i],
+      tpl:`${btu} – ${ton} – ${width} – ${FURN_FAM[eff][k]} – ${POS_LABEL[P.key]}${job==="9595"?" – 95% to 95%":""}`}; });
+  return {id:"furnace", title:furnTitle("Gas furnace","furnace"), note:`Sized for ${tons} ton airflow`, tiers, eff, job, toggle:!has95(), pickK:"better"};
 }
-function quotePending(id){
-  const {tons} = common();
-  const why = id==="fac" ? "AC install kit and furnace + AC templates aren't in HCP yet" : "Dual fuel templates aren't in HCP yet";
-  return {id, title:sysName(id), note:`${tons} ton system`, pending:true, why};
+// Furnace + AC (FAC) and dual fuel, new furnace + heat pump (DF).
+function quoteCombo(id, kind){
+  const tons = tonsFor(S.a.sqft), P = position(S.a), ac = hasAC() ? "yes" : "no", i = TI[tons];
+  const base = id==="fac" ? "Gas furnace + central AC" : "Dual fuel";
+  if(S.a.vent==="none") return noFurnace(id, base, tons, [[id==="fac"?"a furnace and AC":"a dual fuel system", id==="fac"?GUIDE.fac:GUIDE.dual]]);
+  const job = jobFor(id), eff = job==="80" ? 80 : 95;
+  const copy = id==="fac" ? FAC_COPY : DF_COPY;
+  const tiers = TIERS.map(k => { const [btu, unit] = PRICES[kind+"BTU"][`${job}.${k}`][i].split("|");
+    const outdoor = id==="fac" ? (k==="best"?"Infinity AC":"Carrier AC") : (k==="best"?"Infinity heat pump":"Carrier heat pump");
+    return {k, ...copy[k], name:`${FURN_NAMES[k]} ${eff}% + ${outdoor}`, price:PRICES[kind][`${ac}.${job}.${k}.${P.key}`][i],
+      tpl:`${tons} Ton – ${btu} – ${FAC_FAM[k]} ${eff}% + ${unit} – ${POS_LABEL[P.key]}${ac==="yes"?" – Existing AC":""}${job==="9595"?" – 95% to 95%":""}`}; });
+  return {id, title:furnTitle(base,id), note:`${tons} ton system`, tiers, eff, job, toggle:!has95(), pickK:"better"};
+}
+// Dual fuel, keep the existing furnace (single- and two-stage furnace templates are priced the same).
+function quoteDFX(){
+  const tons = tonsFor(S.a.sqft), P = position(S.a), ac = hasAC() ? "yes" : "no";
+  const o = P.orient.toLowerCase();
+  const t = {k:"dfx", label:"Carrier", name:"Carrier heat pump + matching coil", sub:`${tons} ton, ${P.attic?"attic or crawlspace":o}`, pts:["New outdoor heat pump and indoor coil","Works with your current gas furnace","Full Green Core install and startup"],
+    price:PRICES.DFX[`${ac}.${o}`][TI[tons]], tpl:`${tons} Ton – MUHA – Existing Single-Stage Furnace – ${P.attic?"Attic/Crawlspace":P.orient}`};
+  return {id:"dfx", title:"Add a heat pump to your furnace", note:`${tons} ton heat pump, keeps your furnace`, tiers:[t], pickK:null};
+}
+function quoteACC(){
+  const tons = tonsFor(S.a.sqft), P = position(S.a), ac = hasAC() ? "yes" : "no", o = P.orient.toLowerCase();
+  const t = {k:"acc", label:"Carrier", name:"Carrier AC + matching coil", sub:`${tons} ton, ${o}`, pts:["New outdoor AC and indoor coil","Works with your current furnace","Full Green Core install and startup"],
+    price:PRICES.ACC[`${ac}.${o}`][TI[tons]], tpl:`${tons} Ton – MURA AC + Coil – ${P.orient}${ac==="yes"?" – Existing AC":""}`};
+  return {id:"acc", title:"Central AC only", note:`${tons} ton AC and coil, keeps your furnace`, tiers:[t], pickK:null};
+}
+function quoteMini(){
+  const a = S.a, size = miniSize(a.room);
+  if(a.rooms==="2") return {...pending("mini","Ductless mini split","Two or more rooms"), custNote:"Multi-room ductless systems are designed room by room. We'll price this one at your free visit."};
+  if(!size) return {...pending("mini","Ductless mini split",`${Number(a.room).toLocaleString("en-US")} sq ft room`), custNote:"A room this size needs a closer look. We'll price this one at your free visit."};
+  const row = PRICES.MINI[size];
+  const tiers = MINI_TIERS.map((m,i)=>({...m, price:row[i], tpl:`${size} High Wall – ${i+1} ${m.label} – ${m.name}`})).filter(t=>t.price>0);
+  let pickK = MINI_PICK.better;
+  if(!tiers.some(t=>t.k===pickK)) pickK = tiers[tiers.length-1].k;
+  return {id:"mini", title:"Ductless mini split", note:`One room, about ${Number(a.room).toLocaleString("en-US")} sq ft (${size.replace(/^0/,"")} BTU)`, tiers, pickK};
+}
+// Tank water heaters: same size and fuel as the current tank. Two options: 6-year and 12-year tank warranty.
+function quoteTank(){
+  const a = S.a, fuel = a.whfuel, fl = fuel==="gas" ? "gas" : "electric";
+  if(a.whloc==="move") return {...pending("tank","Tank water heater",`${fl} tank`), custNote:"Moving a water heater needs a quick look first. We'll price this one at your free visit."};
+  if(a.tanksize==="other") return {...pending("tank","Tank water heater",`${fl} tank, other size`), custNote:"This tank size needs a quick look first. We'll price this one at your free visit."};
+  const gal = a.tanksize==="40" ? 40 : 50, h = fuel==="gas" ? "tall" : (a.tankh==="short" ? "short" : "tall"), H = h==="short" ? "Short" : "Tall";
+  const arr = PRICES.TANK[`${fuel}.${gal}.${h}`];
+  const tiers = [[6,"t6","6-year warranty"],[12,"t12","12-year warranty"]].map(([y,k,label],i) => ({k, label, name:`${gal} gallon ${fl} water heater`, sub:`${y}-year tank warranty`,
+    pts:[`${gal} gallon ${h} ${fl} tank, same size as now`,"Installed in the same spot as your old one","Removal and haul-away of your old water heater"],
+    price:arr[i], tpl:`${fuel==="gas"?"Gas":"Electric"} Tank – ${gal} Gallon ${H} – ${y}-Year`}));
+  return {id:"tank", title:"Tank water heater", note:`${gal} gallon ${fl}, same size as your current tank`, tiers, pickK:null};
+}
+// Tankless: Navien condensing tankless sized by bathrooms. Standard (S2) or with built-in recirculation (A2).
+const TL_SIZE = b => b==="4" ? 2 : b==="3" ? 1 : 0;
+function quoteTankless(){
+  const a = S.a;
+  if(a.twnow==="elec") return {...pending("tankless","Tankless water heater","Switching from electric"), custNote:"Switching from an electric water heater to a gas tankless needs a gas line run, so we'll price this one at your free visit."};
+  const i = TL_SIZE(has("hpwh") ? a.baths : a.tbaths), model = ["180","210","240"][i], bl = ["1–2 Baths","2.5–3 Baths","3.5 Baths"][i], bw = ["1–2 bathrooms","2.5–3 bathrooms","3.5 or more bathrooms"][i];
+  const kind = a.twnow==="tankless" ? "tankless" : "tank", job = kind==="tank" ? "Tank to Tankless" : "Tankless to Tankless";
+  if(a.whloc==="move") return {...pending("tankless","Tankless water heater",`Navien NPE-${model}`), custNote:"Moving a water heater needs a quick look first. We'll price this one at your free visit."};
+  const arr = PRICES.TANKLESS[kind][i], where = kind==="tank" ? "Mounted on the wall where your tank was" : "Replaces your current tankless in the same spot";
+  const tiers = [
+    {k:"s2", label:"Standard", name:`Navien NPE-${model}S2 tankless`, sub:"Condensing tankless, endless hot water", pts:[`Sized for ${bw}`, where, "Removal and haul-away of your old water heater"], price:arr[0], tpl:`${bl} – Navien NPE-${model}S2 – ${job}`},
+    {k:"a2", label:"With recirculation", name:`Navien NPE-${model}A2 tankless`, sub:"Built-in recirculation for faster hot water", pts:[`Sized for ${bw}`, where, "Built-in recirculation pump and buffer tank", "Removal and haul-away of your old water heater"], price:arr[1], tpl:`${bl} – Navien NPE-${model}A2 Recirc – ${job}`}];
+  return {id:"tankless", title:"Tankless water heater", note:`Navien NPE-${model}, sized for ${bw}`, tiers, pickK:null};
+}
+function quoteHPWH(){
+  const a = S.a, gal = whGal();
+  if(a.whloc==="move") return {...pending("hpwh","Heat pump water heater",`${gal} gallon`), custNote:"Moving a water heater needs a quick look first. We'll price this one at your free visit."};
+  // 240V models only, for gas and electric homes alike. Gas homes need a new 240V circuit, which isn't included online.
+  const sub = a.whfuel==="gas" ? "Needs a 240V circuit (electrical not included)" : "Uses your water heater's 240V circuit";
+  const opts = [{k:"ge240", brand:"GE GeoSpring", key:"240.GE", gals:[50,65,80], volt:"240V", sub},
+                {k:"nav240", brand:"Navien NWP500", key:"240.NAV", gals:[50,65,80], volt:"240V", sub}];
+  const tiers = opts.map(o => ({k:o.k, label:`${gal} gallon`, name:`${o.brand} heat pump water heater`, sub:o.sub,
+    pts:[`${gal} gallon ${o.brand} heat pump water heater`,"Installed in the same spot as your old one","Removal and haul-away of your old water heater"],
+    price:PRICES.HPWH[o.key][o.gals.indexOf(gal)], tpl:`${o.brand} ${gal} Gallon ${o.volt} – Same Location`}));
+  return {id:"hpwh", title:"Heat pump water heater", note:`${gal} gallon, sized for your household`, tiers, pickK:null};
+}
+// Upgrade prices from HCP Pricebook > Materials (Nov 23, 2026).
+const TSTATS = [
+  {k:"essential", name:"Ecobee Smart Thermostat Essential", price:284},
+  {k:"enhanced", name:"Ecobee Smart Thermostat Enhanced", price:330},
+  {k:"premium", name:"Ecobee Smart Thermostat Premium", price:428},
+  {k:"nest", name:"Google Nest Learning Thermostat (4th Gen)", price:500}
+];  // Thermostats > With New System
+// Carrier Infinity Air Purifier: furnace cabinets 16x25 (2-3 ton) / 20x25 (4-5 ton); fan coils 16x20 (2 ton), 20x20 (3 ton), 24x20 (4-5 ton).
+const PURIFIER = {furn16:3044, furn20:3071, fc16:3094, fc20:3119, fc24:3211};
+function purifierCost(sysId, tons){
+  if(sysId==="hp") return tons<=2 ? PURIFIER.fc16 : tons===3 ? PURIFIER.fc20 : PURIFIER.fc24;
+  return tons<=3 ? PURIFIER.furn16 : PURIFIER.furn20;
+}
+// Whole house fans (QuietCool, installed): [max sq ft, model size, price]
+const WHF = {
+  trident:[[749,"1.5",4385],[1245,"2.5",4912],[1608,"3.3",5150],[2214,"4.8",5501],[2534,"5.5",5727],[2854,"6.0",5990],[3507,"7.0",6197]],
+  stealth:[[1271,"2.5",5207],[1580,"3.3",5724],[2140,"4.8",6247],[2522,"5.5",6457],[2794,"6.0",6720],[3498,"7.0",6962]]
+};
+function quoteWHF(){
+  const sq = Number(S.a.sqft), fit = list => list.find(([max]) => sq <= max);
+  const t = fit(WHF.trident), s = fit(WHF.stealth);
+  if(!t && !s) return {...pending("whf","Whole house fan",`${sq.toLocaleString("en-US")} sq ft home`), custNote:"A home this size may need more than one fan. We'll price this one at your free visit."};
+  const mk = (k, label, line, m) => ({k, label, name:`QuietCool ${line} ${m[1]}`, sub:`Sized for homes up to ${m[0].toLocaleString("en-US")} sq ft`,
+    pts:[`QuietCool ${line} whole house fan`,"Pulls in cool evening air and pushes warm air out through the attic","Installed by Green Core"],
+    price:m[2], tpl:`QuietCool ${line} ${m[1]} Whole House Fan - Up to ${m[0].toLocaleString("en-US")} Sq Ft - Installed`});
+  const tiers = [];
+  if(t) tiers.push(mk("trident","Good","Trident Pro X",t));
+  if(s) tiers.push(mk("stealth","Better","Stealth Pro X",s));
+  return {id:"whf", title:"Whole house fan", note:`Sized for your ${sq.toLocaleString("en-US")} sq ft home`, tiers, pickK:null};
+}
+// 2-zone system, from HCP Pricebook > Materials > Zoning (Nov 23, 2026).
+// Honeywell: 3-Zone Board 1H/1C for single-stage furnace and AC options, 2H/2C for two-stage furnaces and anything with a heat pump,
+// plus 4 TruZone dampers (10" for 2-3 ton, 14" for 4-5 ton) and an Ecobee Enhanced for zone 2 (with-new-system price).
+// Best (Carrier Infinity): Infinity 4-Zone Damper Control Module + Infinity Smart Sensor + 4 Carrier round dampers.
+// Labor: 3 hours at $186/hr, times the 1.10 commission multiplier from the standard pricing formula = $614.
+const ZONE = {board1h:318, board2h:454, hw10:301, hw14:349, tstat2:330, infModule:1149, infSensor:711, carrier10:381, carrier14:435, labor:Math.round(3*186*1.10)};
+function zoneCost(sysId, k, tons){
+  const big = tons >= 4;
+  if(k==="best") return ZONE.infModule + ZONE.infSensor + 4*(big ? ZONE.carrier14 : ZONE.carrier10) + ZONE.labor;
+  const twoStage = ["hp","dual","dfx"].includes(sysId) || k==="better";
+  return (twoStage ? ZONE.board2h : ZONE.board1h) + 4*(big ? ZONE.hw14 : ZONE.hw10) + ZONE.tstat2 + ZONE.labor;
 }
 function quoteAll(){
-  const {a, P} = common();
-  const out = S.svcs.map(id => id==="hp" ? quoteHP() : id==="furnace" ? quoteFurnace() : quotePending(id));
+  const a = S.a;
+  const Q = {hp:quoteHP, furnace:quoteFurnace, fac:()=>quoteCombo("fac","FAC"), dual:()=>quoteCombo("dual","DF"), dfx:quoteDFX, acc:quoteACC, mini:quoteMini, hpwh:quoteHPWH, tank:quoteTank, tankless:quoteTankless, whf:quoteWHF};
+  const out = S.svcs.map(id => Q[id]());
+  // The option the customer chose (defaults to the "Better" option of the first system).
+  if(S.choice && !out.some(s => s.id===S.choice.sys && !s.pending && s.tiers.some(t => t.k===S.choice.k))) S.choice = null;
+  if(!S.choice){ const f = out.find(s => !s.pending && s.tiers); if(f) S.choice = {sys:f.id, k:pickedTier(f).k}; }
+  out.forEach(s => { s.chosen = !!S.choice && s.id===S.choice.sys; if(s.chosen) s.pickK = S.choice.k; });
   const flags = [];
-  if(a.flow==="unsure") flags.push("Which way your system blows air (priced as upflow)");
-  if(a.current==="unsure") flags.push("Your current system type");
-  if(a.outdoor==="ground") flags.push("New outdoor unit location (longer line set, new pad)");
-  if(a.outdoor==="mount") flags.push("Wall bracket or roof mount");
-  if(a.outdoor==="unsure") flags.push("Outdoor unit placement");
-  if(a.current==="elec") flags.push("Electrical capacity check for an all-electric system");
-  if(a.vent==="unsure") flags.push("Furnace venting (80% vs. 95% may need new vent pipes)");
-  if(a.vent==="metal" && S.eff===95) flags.push("Converting to 95% adds new PVC venting and a condensate drain");
-  if(a.vent==="none" && has("furnace","fac","dual")) flags.push("New gas line and flue for a furnace");
-  if(a.ducts==="unsure") flags.push("Duct condition");
-  const tons = tonsFor(a.sqft);
-  // Add-ons the customer can tick to include in every option's price. skipBest: Best tiers already include an Infinity Touch control.
-  const addons = [
-    {id:"ducts", label:`New R-8 insulated duct system, sized for your ${tons} ton system${a.ducts==="old"?" (recommended for ducts over 20 years old)":""}`, hcp:`${tons} Ton R-8 Duct System`, price:DUCT[tons]},
-    {id:"zone", label:"2-zone system for uneven rooms", hcp:"Zone First 2 Zone System", price:2250},
-    {id:"tstat", label:"Ecobee smart thermostat", hcp:"Ecobee Smart Thermostat Enhanced", price:582, skipBest:true, note:"Best options already include a smart control"}
-  ];
+  if(ducted()){
+    if(a.flow==="unsure") flags.push("Which way your system blows air (priced as upflow)");
+    if(a.current==="unsure") flags.push("Your current system type");
+    if(a.current==="elec") flags.push("Electrical capacity check for an all-electric system");
+    if(a.vent==="unsure" && has("furnace","fac","dual")) flags.push("Which furnace you have now (priced as a standard 80% furnace)");
+  }
+  if(has("hp","fac","acc","dual","dfx")) flags.push(hasAC() ? "Where the outdoor unit goes (priced in the same spot as your current AC; a new spot, wall bracket or roof mount can change the price)" : "Where the outdoor unit goes (priced on a ground pad near the house; a wall bracket or roof mount can change the price)");
+  if(ducted()){
+    if(position(a).attic) flags.push("Access and working space in your attic or crawlspace");
+    if(!S.addons.includes("ducts")) flags.push("The condition of your ductwork (older ducts may need sealing or repairs)");
+    if(S.addons.includes("zone") && !S.addons.includes("ducts")) flags.push("The 2-zone price assumes a new duct system");
+    if(has("hp","fac","acc","dual","dfx") && !hasAC()) flags.push("A new electrical circuit or panel space may be needed for the outdoor unit");
+  }
+  if(has("mini") && a.rooms==="1") flags.push("Where the indoor unit mounts and how far the line set runs");
+  if(has("hpwh") && a.whloc!=="move") flags.push("Space and airflow around the water heater");
+  if(has("hpwh") && a.whloc!=="move") flags.push(a.whfuel==="gas" ? "A new 240V circuit for the water heater (electrical work is not included in this price)" : "Your existing 240V water heater circuit (if it needs upgrading, that electrical work is extra)");
+  if(has("tank") && a.whloc!=="move" && a.tanksize!=="other"){
+    if(a.tanksize==="unsure") flags.push("Your tank size (priced as 50 gallon)");
+    if(a.tankh==="unsure") flags.push("Your tank height (priced as a tall tank)");
+    flags.push("Code updates your setup may need, like an expansion tank, seismic straps or a drain pan");
+  }
+  if(has("tankless") && a.twnow!=="elec" && a.whloc!=="move"){
+    if(a.twnow==="gastank") flags.push("Gas line size and venting for the tankless (a larger gas line or a new vent route can change the price)", "A nearby outlet and a drain for the tankless unit's condensate");
+    else flags.push("The condition of your current tankless venting and gas line");
+  }
+  if(has("whf")) flags.push("Attic space and venting for the fan (extra attic venting may be needed)", "A nearby electrical circuit for the fan");
+  flags.push("Asbestos or other hazardous materials on old equipment or ducts");
+  flags.push("Permit and inspection fees for your city or county");
+  // Upgrades. "ducted" ones apply to heating and cooling systems, "hpwh" ones to heat pump water heaters.
+  // skipBest: Best tiers already include an Infinity Touch control. perTier: price depends on the system and option.
+  // Every upgrade is subject to compatibility with the equipment and install conditions (the customer is told this).
+  const addons = [];
+  if(ducted()){
+    const aTons = tonsFor(a.sqft), tm = TSTATS.find(x=>x.k===S.tstatModel) || TSTATS[1];
+    addons.push(
+      {id:"ducts", for:"ducted", short:"New R-8 ducts", label:`New R-8 insulated duct system, sized for your ${aTons} ton system`, hcp:`${aTons} Ton R-8 Duct System`, price:DUCT[aTons]},
+      {id:"zone", for:"ducted", short:"2-zone system", label:"2-zone system for uneven rooms*", hcp:"Zoning: zone board + 4 dampers + zone 2 thermostat + 3 hrs labor", perTier:(sysId,k)=>zoneCost(sysId,k,aTons),
+        note:"*Price is with a new duct system. Includes a zone control board, 4 zone dampers, a thermostat or sensor for the second zone, and installation."},
+      {id:"tstat", for:"ducted", short:tm.name, label:"Smart thermostat", select:true, hcp:`${tm.name} (Thermostats > With New System)`, price:tm.price, skipBest:true, note:"Best options already include a smart control"},
+      {id:"uv", for:"ducted", short:"UV germicidal light", label:"UV germicidal light for your indoor coil", hcp:"Carrier UV Germicidal Light - Single Lamp (115V)", price:999},
+      {id:"purifier", for:"ducted", short:"Whole-home air purifier", label:"Whole-home air purifier (Carrier Infinity), sized for your system", hcp:"Carrier Infinity Air Purifier", perTier:(sysId)=>purifierCost(sysId,aTons)}
+    );
+  }
+  if(has("hpwh","tank","tankless")) addons.push({id:"halo", for:"wh", short:"Halo 5 water filtration", label:"Halo 5 whole-home water filtration system", hcp:"Halo 5 Water Filtration System", price:5439});
+  const appliesTo = (x, s) => x.for==="ducted" ? DUCTED.includes(s.id) : ["hpwh","tank","tankless"].includes(s.id);
+  const priced = out.filter(s => !s.pending && s.tiers);
+  // Per-option add-ons show the price for the customer's pick (or a range across the options shown).
+  addons.filter(x=>x.perTier).forEach(x => {
+    const ps = priced.filter(s => appliesTo(x, s));
+    const all = ps.flatMap(s => s.tiers.map(t => x.perTier(s.id, t.k)));
+    const first = ps[0], pk = first && (first.tiers.find(t=>t.k===first.pickK) || first.tiers[0]);
+    x.price = pk ? x.perTier(first.id, pk.k) : (all.length ? Math.min(...all) : 0);
+    const lo = all.length ? Math.min(...all) : x.price, hi = all.length ? Math.max(...all) : x.price;
+    x.priceText = lo===hi ? `+${money(lo)}` : `+${money(lo)}–${money(hi)}`;
+  });
   const sel = addons.filter(x=>S.addons.includes(x.id));
-  out.forEach(s => { if(s.pending) return; s.tiers.forEach(t => {
-    const add = sel.filter(x=>!(x.skipBest && t.k==="best")).reduce((n,x)=>n+x.price,0);
-    t.price += add; if(add) t.tpl += ` + add-ons (${money(add)})`; }); });
+  priced.forEach(s => s.tiers.forEach(t => {
+    const add = sel.filter(x=>appliesTo(x, s) && !(x.skipBest && t.k==="best")).reduce((n,x)=>n+(x.perTier ? x.perTier(s.id, t.k) : x.price),0);
+    t.price += add; if(add) t.tpl += ` + add-ons (${money(add)})`; }));
   let cross = null;
-  if(S.svcs.length===1 && has("furnace") && a.ac!=="new") cross = `No AC, or an older one? A heat pump replaces your furnace and AC in one system. For your home it starts at ${money(HP.value.p[tons] + (P.attic?HP_ATTIC:0) + (noAC()?NO_AC_ADD:0))}.`;
-  return {systems:out, flags, addons, cross, posNote:`${a.sqft.toLocaleString("en-US")} sq ft home, ${P.where} install, ${P.orient.toLowerCase()}`};
+  if(S.svcs.length===1 && has("furnace")){ const P = position(a); cross = `No AC, or an older one? A heat pump replaces your furnace and AC in one system. For your home it starts at ${money(PRICES.HP[`${hasAC()?"yes":"no"}.${P.key}.value`][TI[tonsFor(a.sqft)]])}.`; }
+  const notes = [];
+  if(ducted()){ const P = position(a); notes.push(`${a.sqft.toLocaleString("en-US")} sq ft home, ${P.where} install, ${P.orient.toLowerCase()}`); }
+  if(has("whf") && !ducted()) notes.push(`${Number(a.sqft).toLocaleString("en-US")} sq ft home`);
+  if(has("hpwh")) notes.push(`${whGal()} gallon water heater`);
+  if(has("tank") && a.tanksize!=="other") notes.push(`${a.tanksize==="40"?40:50} gallon tank water heater`);
+  return {systems:out, flags, addons, cross, posNote:notes.join("; ")};
 }
 
-function tierCards(sys, pick){
-  const pickK = pick;
-  return `<div class="tiers">${sys.tiers.map(t=>`
-    <article class="tier${t.k===pickK?" pick":""}">
-      <span class="badge">${t.label}${t.k===pickK?" · Your pick":""}</span>
+function tierCards(sys){
+  return `<div class="tiers">${sys.tiers.map(t=>{ const on = sys.chosen && t.k===sys.pickK; return `
+    <article class="tier${on?" pick":""}">
+      <span class="badge">${t.label}${on?" · Your choice":""}</span>
       <div><div class="tname">${t.name}</div><div class="tsub">${t.sub}</div></div>
-      <div><div class="price">${money(t.price)}</div><div class="mo">or ${cents(monthlyAmt(t.price))}/mo*</div><div class="mo-sub">${plan().long}</div></div>
-      <ul>${t.pts.map(p=>`<li>${p}</li>`).join("")}</ul>
-      ${S.showTpl?`<div class="tpl">${esc(t.tpl)}</div>`:""}
-    </article>`).join("")}</div>`;
+      <div><div class="price">${money(t.price)}</div>${plan().none?`<div class="mo-sub">Paying in full</div>`:`<div class="mo">or ${cents(monthlyAmt(t.price))}/mo*</div><div class="mo-sub">${plan().long}</div>`}</div>
+      <details class="pts" ${window.innerWidth>600?"open":""}><summary>What's included</summary><ul>${t.pts.map(p=>`<li>${p}</li>`).join("")}</ul></details>
+      <button class="btn ${on?"":"ghost "}choose" data-choose="${sys.id}|${t.k}" aria-pressed="${on}">${on?"✓ Your choice":"Choose this option"}</button>
+    </article>`; }).join("")}</div>`;
 }
 
+function includesList(){
+  const L = ["Removal and haul-away of your old equipment"];
+  if(ducted()) L.push("New equipment set and connected to your ducts");
+  if(has("hp","fac","acc","dual","dfx","mini")) L.push("Outdoor pad or wall brackets and a line hide cover","Refrigerant line set, pressure tested and evacuated");
+  if(has("mini")) L.push("Wall-mounted indoor unit for your room");
+  if(has("furnace","fac","dual")) L.push("Gas connection with shutoff and sediment trap, plus flue or vent connection");
+  if(ducted()||has("mini")) L.push("Condensate drain with safety float switch");
+  if(ducted()) L.push("Electrical disconnect and control wiring");
+  if(has("hpwh")) L.push("Heat pump water heater installed in the same spot, with water connections and condensate drain");
+  if(has("tank")) L.push("New tank water heater connected to your existing water and gas or electric lines");
+  if(has("tankless")) L.push("Navien tankless installed with water and gas connections and venting");
+  if(has("whf")) L.push("Whole house fan installed in your attic");
+  L.push("Startup, testing, and a walkthrough with you");
+  return L;
+}
+
+// Pick an option, then book a verify visit or a call on Tony's or Zach's schedule, and optionally send photos.
+// A numbered, bordered card so each part of the price page reads as its own step.
+const stepCard = (n, id, title, sub, body, cls="") => `<section class="step ${cls}" aria-labelledby="${id}">
+    <div class="step-h">${n?`<span class="num" aria-hidden="true">${n}</span>`:""}<div><h2 id="${id}">${title}</h2>${sub?`<p class="step-sub">${sub}</p>`:""}</div></div>
+    ${body}</section>`;
+function nextSteps(r){
+  const cs = r.systems.find(s => s.chosen), ct = pickedTier(cs);
+  const chosenLine = ct ? `<p class="lede">Your choice: <strong>${esc(cs.title)}: ${esc(ct.name)}, ${money(ct.price)}</strong>. Not quite right? Tap "Choose this option" on any card above.</p>` : `<p class="lede">These options are priced at your visit. Pick how you'd like to follow up.</p>`;
+  let times = "";
+  if(S.bookedInfo){
+    const b = S.bookedInfo;
+    times = `<div class="note good"><strong>You're booked: ${b.kind==="call"?"15-minute call":"30-minute verify visit"} on ${fmtSlot(b.start)} with ${esc(b.employee)}.</strong><br>${b.kind==="call" ? `${esc(b.employee)} will call you at ${esc(prettyPhone(S.c.phone))}.` : "You'll get a confirmation from Green Core."} Need to change it? Call (707) 988-5858.</div>`;
+  } else if(S.follow){
+    const sl = S.slots || {};
+    if(sl.loading) times = `<p class="fine">Finding open times…</p>`;
+    else if(sl.error || (sl.list && !sl.list.length)) times = `<div class="note">We couldn't load open times right now. Call us at (707) 988-5858 and we'll set it up, or check back in a bit.</div>`;
+    else if(sl.list){
+      const days = {}; sl.list.forEach((s,i) => { const d = new Date(s.start).toLocaleDateString("en-US",{timeZone:"America/Los_Angeles", weekday:"long", month:"short", day:"numeric"}); (days[d] = days[d] || []).push([s,i]); });
+      const keys = Object.keys(days), show = S.showDays || 4;
+      times = `<div class="days">${keys.slice(0, show).map(d => `<div class="day"><span class="day-l">${d}</span><div class="slots">${days[d].map(([s,i]) => `<button class="slot" data-slot="${i}" aria-pressed="${!!S.slotPick && S.slotPick.start===s.start}">${new Date(s.start).toLocaleTimeString("en-US",{timeZone:"America/Los_Angeles", hour:"numeric", minute:"2-digit"})}</button>`).join("")}</div></div>`).join("")}</div>
+        ${keys.length > show ? `<button class="link" id="showTimes">Show more days</button>` : ""}
+        ${S.booking==="taken" ? `<p class="err">Sorry, that time was just taken. Please pick another.</p>` : ""}
+        ${S.booking==="error" ? `<p class="err">We couldn't book that online. Call us at (707) 988-5858 and we'll get you on the schedule.</p>` : ""}
+        ${S.slotPick ? `<div class="cta"><button class="btn" id="confirmBook" ${S.booking==="busy"?"disabled":""}>${S.booking==="busy" ? "Booking…" : `Confirm ${fmtSlot(S.slotPick.start)}`}</button></div>` : ""}`;
+    }
+  }
+  const slots = PHOTO_SLOTS();
+  const photoRows = slots.map(([k,l]) => { const fs = S.photos[k] || []; return `<div class="photo-row"><span>${l}${fs.length ? `<span class="add-note">${fs.length} photo${fs.length>1?"s":""} ready · <button class="link" data-unphoto="${k}">Remove</button></span>` : ""}</span>
+      <label class="btn ghost photo-btn">${fs.length ? "Add more" : "Add photo"}<input type="file" accept="image/*" multiple data-photo="${k}" hidden></label></div>`; }).join("");
+  const nReady = slots.reduce((n,[k]) => n + (S.photos[k]||[]).length, 0);
+  const photoStatus = S.photoState==="busy" ? `<p class="fine">Sending ${S.photoDone+1 > nReady ? nReady : S.photoDone+1} of ${nReady}…</p>`
+    : S.photoState==="sent" ? `<div class="note good">Got your photos, thanks! We'll use them to confirm your price.</div>`
+    : S.photoState==="error" ? `<p class="err">Some photos didn't send. Try again, or text them to (707) 988-5858.</p>` : "";
+  return stepCard(3, "next-h", "Book your follow-up", "Pick a quick visit or a phone call to confirm your price.", `
+    ${chosenLine}
+    <div class="opts">${Object.entries(FOLLOW).map(([k,f]) => `<button class="opt" data-follow="${k}" aria-pressed="${S.follow===k || (S.bookedInfo && S.bookedInfo.kind===k)}" ${S.bookedInfo?"disabled":""}><strong>${f.title}</strong><span>${f.sub}</span></button>`).join("")}</div>
+    ${times}
+    <p class="fine">Prefer to talk now? Call <strong>(707) 988-5858</strong>.</p>`, "next") +
+  stepCard(4, "photos-h", "Send photos <span class=\"opt-tag\">Optional</span>", "Photos help us confirm your price faster. Add any you can.", `
+    <div class="photos">${photoRows}
+      ${nReady && S.photoState!=="busy" ? `<div class="cta"><button class="btn" id="sendPhotos">Send ${nReady} photo${nReady>1?"s":""}</button></div>` : ""}
+      ${photoStatus}</div>`);
+}
 function renderResult(){
   const r = quoteAll();
   const today = new Date(), until = new Date(today.getTime()+14*864e5);
@@ -495,46 +959,50 @@ function renderResult(){
   const est = "GC-" + today.getFullYear() + String(today.getMonth()+1).padStart(2,"0") + String(today.getDate()).padStart(2,"0") + "-" + (S.zip.slice(-2)||"00") + "7";
   const first = (S.c.name||"there").split(" ")[0];
   const multi = r.systems.length > 1;
-  const glance = multi ? `<div class="glance">${r.systems.map(s=>`<a class="gl" href="#sys-${s.id}"><span class="gl-t">${s.title}</span>${s.pending?`<span class="gl-p muted">Priced at your visit</span>`:`<span class="gl-p">from ${money(Math.min(...s.tiers.map(t=>t.price)))}</span><span class="gl-s">${s.tiers.length} options up to ${money(Math.max(...s.tiers.map(t=>t.price)))}</span>`}</a>`).join("")}</div>` : "";
+  const glance = multi ? `<div class="glance">${r.systems.map(s=>`<a class="gl" href="#sys-${s.id}"><span class="gl-t">${s.title}</span>${s.pending?`<span class="gl-p muted">Priced at your visit</span>`:`<span class="gl-p">from ${money(Math.min(...s.tiers.map(t=>t.price)))}</span><span class="gl-s">${s.tiers.length>1?`${s.tiers.length} options up to ${money(Math.max(...s.tiers.map(t=>t.price)))}`:"1 option"}</span>`}</a>`).join("")}</div>` : "";
   shell(`
     <div class="rhead"><h1>${esc(first)}, here are your prices</h1>
-      <p class="lede">${r.posNote}. ${multi?"Compare the systems below and pick what fits.":"Pick the option that fits."} Your final price is confirmed after a free visit or photo review.</p>
-      <div class="meta"><span>Estimate ${est}</span><span>Valid through ${fmt(until)}</span><span>ZIP ${esc(S.zip)}</span></div></div>
+      <p class="lede">${multi?"Compare the options and pick what fits.":"Pick the option that fits."}</p></div>
+    ${stepCard(1, "pick-h", "Choose your option", multi?"Compare the options and tap \"Choose this option\" on the one you like.":"Tap \"Choose this option\" on the one you like.", `
     ${glance}
-    <div class="row"><div class="plans" role="group" aria-label="Monthly payment options"><span class="plans-l">Monthly payments:</span>${PLANS.map(p=>`<button class="plan" data-plan="${p.id}" aria-pressed="${plan().id===p.id}">${p.short}${p.apr?` · ${p.apr}%`:""}</button>`).join("")}</div></div>
     ${r.systems.map(s=>`<section class="sys" id="sys-${s.id}">
       <div class="syshead"><div><h2>${s.title}</h2><p class="muted">${s.note}</p></div>
-        ${s.id==="furnace"?`<div class="toggle" role="group" aria-label="Furnace efficiency"><button data-eff="80" aria-pressed="${s.eff===80}">80% standard</button><button data-eff="95" aria-pressed="${s.eff===95}">95% high efficiency</button></div>`:""}</div>
-      ${s.pending?`<p class="note">We'll price this one at your free visit.</p>`:tierCards(s, S.a.priority)}
+        ${s.toggle?`<div class="toggle" role="group" aria-label="Furnace option"><button data-eff="80" data-for="${s.id}" aria-pressed="${s.eff===80}">80% swap</button><button data-eff="95" data-for="${s.id}" aria-pressed="${s.eff===95}">Upgrade to 95%</button></div>`:""}</div>
+      ${s.pending?`<p class="note">${s.custNote||"We'll price this one at your free visit."}</p>`:tierCards(s)}
     </section>`).join("")}
-    <p class="disc">These are estimated prices based on your answers, not a final quote. Your final price is confirmed after a free visit or photo review.</p>
-    ${r.cross?`<p class="note">${r.cross}</p>`:""}
+    <p class="disc">Estimated prices based on your answers, not a final quote. Your final price is confirmed after a free visit or photo review.<span class="meta">${r.posNote?`<span>${r.posNote}</span>`:""}<span>Estimate ${est}</span><span>Valid through ${fmt(until)}</span><span>ZIP ${esc(S.zip)}</span></span></p>
+    ${r.cross?`<p class="note">${r.cross}</p>`:""}`)}
+    ${stepCard(2, "fin-h", "Pay over time", "Pick a plan and the monthly payments in step 1 update, or choose no financing if you'd rather pay in full. Financing is on approved credit.", `
+      <div class="plans" role="group" aria-label="Monthly payment options">${PLANS.map(p=>`<button class="plan" data-plan="${p.id}" aria-pressed="${plan().id===p.id}">${p.short}${p.apr?` · ${p.apr}%`:""}</button>`).join("")}</div>`)}
+    ${nextSteps(r)}
+    <h2 class="more-h">Good to know</h2>
     <div class="cols">
-      <div class="box"><h3>Every option includes</h3><ul>
-        <li>Removal and haul-away of your old equipment</li><li>New equipment set and connected to your ducts</li>
-        ${has("hp","fac","dual")?"<li>Outdoor pad or wall brackets and a line hide cover</li><li>Refrigerant line set, pressure tested and evacuated</li>":""}
-        ${has("furnace","fac","dual")?"<li>Gas connection with shutoff and sediment trap, plus flue or vent connection</li>":""}
-        <li>Condensate drain with safety float switch</li><li>Electrical disconnect and control wiring</li><li>Startup, testing, and a walkthrough with you</li></ul></div>
+      <div class="box"><h3>Every option includes</h3><ul>${includesList().map(x=>`<li>${x}</li>`).join("")}</ul></div>
       <div class="box"><h3>What could change your price</h3>${r.flags.length?`<ul>${r.flags.map(f=>`<li>${f}</li>`).join("")}</ul>`:`<p class="fine">Nothing flagged. Your answers were clear, so these prices should hold.</p>`}
         <p class="fine">See "About this estimate" below for what's not included.</p></div>
-      <div class="box"><h3>Popular add-ons</h3><p class="fine">Tick any you'd like included in your prices above.</p>${r.addons.map(x=>`<label class="addon pickadd" for="ad-${x.id}"><input type="checkbox" id="ad-${x.id}" data-add="${x.id}" ${S.addons.includes(x.id)?"checked":""}><span>${x.label}${x.note?`<span class="add-note">${x.note}</span>`:""}${S.showTpl?`<span class="tpl-inline">HCP: ${x.hcp}</span>`:""}</span><strong>+${money(x.price)}</strong></label>`).join("")}</div>
+      ${r.addons.length?`<div class="box"><h3>Popular upgrades</h3><p class="fine">Tick any you'd like included in your prices above. All upgrades are subject to compatibility with your equipment and install conditions, confirmed at your free visit.</p>${r.addons.map(x=>`<label class="addon pickadd" for="ad-${x.id}"><input type="checkbox" id="ad-${x.id}" data-add="${x.id}" ${S.addons.includes(x.id)?"checked":""}><span>${x.label}${x.select?` <select class="tsel" data-tstat aria-label="Thermostat model">${TSTATS.map(m=>`<option value="${m.k}" ${m.k===S.tstatModel?"selected":""}>${esc(m.name.replace("Ecobee Smart Thermostat","Ecobee").replace(" (4th Gen)",""))} (${money(m.price)})</option>`).join("")}</select>`:""}${x.note?`<span class="add-note">${x.note}</span>`:""}</span><strong>${x.priceText || "+"+money(x.price)}</strong></label>`).join("")}</div>`:""}
     </div>
-    <div class="cta"><button class="btn" id="bk">${S.booked?"Visit requested":"Book a free in-home visit"}</button><span class="phone">or call <strong>(707) 988-5858</strong></span></div>
-    <p class="note" id="bkn" ${S.booked?"":"hidden"}>Thanks! We have your estimate. Pick a time in the booking page that just opened, or call us at (707) 988-5858. <button class="link" id="rebook">Open booking again</button></p>
     <section class="about" aria-labelledby="abt">
       <h3 id="abt">About this estimate</h3>
       <p>This online estimate is based on the information you provided and standard installation conditions. It is not a final quote or a guaranteed price. Your final price will be confirmed in writing after a free in-home visit or photo review.</p>
-      <p>Estimated prices include the equipment shown, a standard installation, removal of old equipment, and startup. They assume up to 50 feet of refrigerant line set and that existing control wiring, ductwork, and electrical service can be reused.</p>
+      <p>Estimated prices include the equipment shown, a standard installation, removal of old equipment, and startup. Heating and cooling prices assume up to 50 feet of refrigerant line set and that existing control wiring, ductwork, and electrical service can be reused. Water heater prices assume the new unit goes in the same spot as the old one. Upgrades are subject to compatibility with your equipment and install conditions.</p>
       <p>Not included unless shown on your final quote:</p>
-      <ul><li>Ductwork repair, modification, or replacement</li><li>Electrical work, including new circuits, panel upgrades, or service changes</li><li>Line sets longer than 50 feet</li><li>Control (thermostat) wiring repair or replacement</li><li>Changes needed to fit equipment in the available space or meet clearances</li><li>Limited or difficult access to attics, crawlspaces, roofs, or equipment locations</li><li>Crane or lift fees</li><li>Permit fees and any required inspections</li><li>Conditions we can't see or confirm online, including code corrections, damage, or hazardous materials</li></ul>
+      <ul><li>Ductwork repair, modification, or replacement</li><li>Electrical work, including new circuits, outlets, panel upgrades, or service changes</li><li>Line sets longer than 50 feet</li><li>Control (thermostat) wiring repair or replacement</li><li>Changes needed to fit equipment in the available space or meet clearances</li><li>Limited or difficult access to attics, crawlspaces, roofs, or equipment locations</li><li>Crane or lift fees</li><li>Permit fees and any required inspections</li><li>Conditions we can't see or confirm online, including code corrections, damage, or hazardous materials</li></ul>
       <p>Estimate valid for 14 days. *Financing is subject to credit approval; monthly payments are estimates only.</p>
     </section>`, true);
-  document.querySelectorAll("[data-eff]").forEach(b => b.onclick = () => { S.eff=+b.dataset.eff; renderResult(); });
-  if(!S.leadMeta){ S.leadMeta = {est, until: fmt(until)}; S.leadTimer = setTimeout(flushLead, 120000); }
+  document.querySelectorAll("[data-eff]").forEach(b => b.onclick = () => { S.effs[b.dataset.for]=+b.dataset.eff; const y=window.scrollY; renderResult(); window.scrollTo({top:y}); });
+  if(!S.leadMeta){ S.leadMeta = {est, until: fmt(until)}; S.leadTimer = setTimeout(flushLead, 120000); notifyLead(r); }
+  document.querySelectorAll("[data-tstat]").forEach(s => { s.onclick = e => e.stopPropagation(); s.onchange = () => { S.tstatModel = s.value; const y=window.scrollY; renderResult(); window.scrollTo({top:y}); }; });
   document.querySelectorAll("[data-add]").forEach(c => c.onchange = () => { const id=c.dataset.add; S.addons = c.checked ? [...S.addons, id] : S.addons.filter(x=>x!==id); const y=window.scrollY; renderResult(); window.scrollTo({top:y}); });
   document.querySelectorAll("[data-plan]").forEach(b => b.onclick = () => { S.plan=b.dataset.plan; S.planTouched=true; const y=window.scrollY; renderResult(); window.scrollTo({top:y}); });
-  $("#bk").onclick = () => { openBooking(); S.booked=true; renderResult(); flushLead(); };
-  const rb=$("#rebook"); if(rb) rb.onclick = openBooking;
+  document.querySelectorAll("[data-choose]").forEach(btn => btn.onclick = () => { const [sys,k] = btn.dataset.choose.split("|"); S.choice = {sys,k}; S.choiceMade = true; renderKeep(); });
+  document.querySelectorAll("[data-follow]").forEach(btn => btn.onclick = () => { if(S.bookedInfo) return; S.follow = btn.dataset.follow; S.slotPick = null; S.booking = null; loadSlots(S.follow); });
+  document.querySelectorAll("[data-slot]").forEach(btn => btn.onclick = () => { const s = S.slots.list[+btn.dataset.slot]; S.slotPick = s; S.booking = null; renderKeep(); });
+  const cb = $("#confirmBook"); if(cb) cb.onclick = confirmBooking;
+  document.querySelectorAll("[data-photo]").forEach(inp => inp.onchange = () => { const k = inp.dataset.photo; S.photos[k] = [...(S.photos[k]||[]), ...inp.files].slice(0,4); S.photoState = null; renderKeep(); });
+  document.querySelectorAll("[data-unphoto]").forEach(x => x.onclick = () => { delete S.photos[x.dataset.unphoto]; renderKeep(); });
+  const sp = $("#sendPhotos"); if(sp) sp.onclick = sendPhotos;
+  const st = $("#showTimes"); if(st) st.onclick = () => { S.showDays = (S.showDays||4) + 4; renderKeep(); };
 }
 
 render();
@@ -543,7 +1011,7 @@ render();
 (function(){
   if(window.parent===window) return;
   let last=0;
-  const send=()=>{ const h=Math.ceil(document.documentElement.scrollHeight); if(h!==last){ last=h; window.parent.postMessage({type:"gc-estimator-height", height:h}, "*"); } };
+  const send=()=>{ const b=document.body, cs=getComputedStyle(b); const h=Math.ceil(b.getBoundingClientRect().height + parseFloat(cs.marginTop) + parseFloat(cs.marginBottom)); if(h!==last){ last=h; window.parent.postMessage({type:"gc-estimator-height", height:h}, "*"); } };
   new ResizeObserver(send).observe(document.body); window.addEventListener("load", send); send();
 })();
 </script>

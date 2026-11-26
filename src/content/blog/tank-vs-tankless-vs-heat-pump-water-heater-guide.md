@@ -23,7 +23,7 @@ If your water heater just quit, you probably don't want a lecture. So here's the
 
 | | Tank (gas or electric) | Tankless (gas) | Heat pump water heater |
 |---|---|---|---|
-| Up-front cost | Lowest. Starts at $2,850 with Green Core | Higher, priced to your home | Higher, priced to your home |
+| Up-front cost | Lowest | Higher | Higher |
 | Running cost | Moderate (electric tanks are the highest) | Moderate | Lowest |
 | Hot water supply | Limited to the tank, then recovers | Endless, up to its flow rate | Stored tank, sized to your household |
 | Rebates | Rarely | Rarely | Often, depending on program funding |
@@ -31,7 +31,7 @@ If your water heater just quit, you probably don't want a lecture. So here's the
 | Install needs | Usually a like-for-like swap | Gas line sizing and venting | Dedicated electrical circuit |
 | Fuel | Gas or electric | Gas | Electric |
 
-That $2,850 starting price is for a standard gas or electric tank replacement. Tankless and heat pump systems depend more on your home, so we price those after a quick look at your space, panel, gas line, and venting.
+You can see real prices for all three in our [online estimate](/instant-estimate). Tankless and heat pump systems depend more on your home, so we confirm those after a quick look at your space, panel, gas line, and venting.
 
 ## Which water heater fits your household?
 
@@ -73,7 +73,7 @@ Tank and tankless water heaters rarely qualify for rebates. Heat pump water heat
 
 ### Which water heater is cheapest to install?
 
-A standard gas or electric tank. With Green Core, tank replacements start at $2,850. Tankless and heat pump water heaters cost more up front and are priced to your home.
+A standard gas or electric tank. Tankless and heat pump water heaters cost more up front. Our [online estimate](/instant-estimate) shows real prices for your home.
 
 ### Which water heater is cheapest to run?
 

@@ -7,7 +7,7 @@ image: /images/services/water-heaters.jpg
 imageAlt: Green Core technician installing a water heater in a North Bay home
 related: water-heaters, gas-water-heaters, heat-pump-water-heaters
 ---
-**Short answer:** a water heater replacement in Napa is more than swapping one tank for another. The new unit has to be braced with seismic straps, connected and vented to current code, and permitted through the City of Napa or Napa County. Green Core handles all of it, and standard gas or electric tank replacement starts at $2,850.
+**Short answer:** a water heater replacement in Napa is more than swapping one tank for another. The new unit has to be braced with seismic straps, connected and vented to current code, and permitted through the City of Napa or Napa County. Green Core handles all of it.
 
 Napa knows earthquakes better than most of the North Bay. After the 2014 South Napa earthquake, a lot of homeowners took a harder look at what was holding their water heater to the wall. Here's what a proper replacement covers, and why the old setup often doesn't make the cut.
 
@@ -79,6 +79,6 @@ Because the old setup may not meet current code. The permit inspection checks th
 
 ### What does a water heater replacement cost in Napa?
 
-Standard gas or electric tank replacement starts at $2,850. Heat pump and [tankless water heaters](/services/tankless-water-heaters) are priced to your home after a free in-home estimate.
+Our [online estimate](/instant-estimate) shows real prices for gas and electric tank, heat pump and [tankless water heaters](/services/tankless-water-heaters).
 
 Need a water heater replaced or checked in [Napa](/service-areas/napa)? Call Green Core at (707) 988-5858 or [request a free estimate](/contact).

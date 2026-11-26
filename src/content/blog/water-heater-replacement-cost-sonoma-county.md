@@ -7,7 +7,7 @@ image: /images/services/gas-water-heaters.jpg
 imageAlt: Green Core technician replacing a gas water heater in a hall closet
 related: water-heaters, gas-water-heaters, heat-pump-water-heaters
 ---
-**Short answer:** at Green Core Heating & Air, a standard gas or [electric tank water heater](/services/electric-water-heaters) replacement starts at **$2,850**. Heat pump and [tankless water heaters](/services/tankless-water-heaters) cost more up front and are priced to your home, though heat pump models often qualify for rebates that bring the cost down.
+**Short answer:** at Green Core Heating & Air, a standard gas or [electric tank water heater](/services/electric-water-heaters) is the lowest-cost replacement, and our [online estimate](/instant-estimate) shows the real price for your home in about two minutes. Heat pump and [tankless water heaters](/services/tankless-water-heaters) cost more up front and are priced to your home, though heat pump models often qualify for rebates that bring the cost down.
 
 The exact number depends on what kind of water heater you choose and what your home needs to install it safely and to code. Here's how it breaks down.
 
@@ -15,8 +15,8 @@ The exact number depends on what kind of water heater you choose and what your h
 
 | Type | Up-front cost | Running cost | Typical lifespan | Rebates |
 |---|---|---|---|---|
-| Gas tank | Lowest (from $2,850) | Moderate | About 8 to 12 years | Rarely |
-| Electric tank | Lowest (from $2,850) | Highest | About 10 to 15 years | Rarely |
+| Gas tank | Lowest | Moderate | About 8 to 12 years | Rarely |
+| Electric tank | Lowest | Highest | About 10 to 15 years | Rarely |
 | Tankless (gas) | Higher | Moderate | 15 to 20 years with yearly maintenance | Rarely |
 | Heat pump | Higher | Lowest | About 10 to 15 years | Often |
 
@@ -54,7 +54,7 @@ If your water heater just failed, call us at (707) 988-5858. We offer same-day w
 
 ### Does the price include installation?
 
-Our $2,850 starting price is for an installed gas or electric tank water heater. Your written quote lists everything included for your home.
+Tank prices in our online estimate are for an installed gas or electric tank water heater. Your written quote lists everything included for your home.
 
 ### How long does a water heater replacement take?
 

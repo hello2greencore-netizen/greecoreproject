@@ -62,6 +62,6 @@ Yes. We work throughout Sonoma Valley, including the unincorporated areas around
 
 ### What does it cost?
 
-Heat pump systems are priced to your home after a free in-home estimate. The one price we publish is that standard gas or [electric tank water heater](/services/electric-water-heaters) replacement starts at $2,850.
+Heat pump systems are priced to your home after a free in-home estimate. For a quick number first, our [online estimate](/instant-estimate) shows real prices for your home in about two minutes.
 
 Thinking about going all-electric in Sonoma Valley? Call Green Core at (707) 988-5858 or [request a free estimate](/contact).

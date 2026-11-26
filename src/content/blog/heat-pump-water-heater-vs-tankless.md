@@ -47,7 +47,7 @@ Our mild North Bay climate is a good match. Heat pump water heaters work best in
 
 ## What about cost?
 
-Both cost more up front than a standard tank, which starts at $2,850 with Green Core. Heat pump water heaters often close that gap with rebates and lower monthly bills. Tankless costs depend heavily on whether your gas line or venting needs upgrades. We'll give you a written price for each option so you can compare.
+Both cost more up front than a standard tank, and our [online estimate](/instant-estimate) shows real prices for all three. Heat pump water heaters often close that gap with rebates and lower monthly bills. Tankless costs depend heavily on whether your gas line or venting needs upgrades. We'll give you a written price for each option so you can compare.
 
 ## Still deciding?
 

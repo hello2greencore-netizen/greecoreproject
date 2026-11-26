@@ -6,9 +6,9 @@ import { siteConfig } from "@/data/site";
 import EstimatorFrame from "./EstimatorFrame";
 
 export const metadata = buildMetadata({
-  title: "Online HVAC Estimate: Instant Furnace & Heat Pump Prices",
+  title: "Instant HVAC & Water Heater Prices Online",
   description:
-    "Get a free online estimate in about two minutes. See real Green Core prices for a new gas furnace or heat pump system. Serving Sonoma, Marin, Napa, Solano and San Francisco.",
+    "See real Green Core prices in about 2 minutes for furnaces, AC, heat pumps, ductless, water heaters and whole house fans. Serving Sonoma, Marin, Napa and Solano.",
   path: "/instant-estimate",
 });
 
@@ -16,7 +16,7 @@ const estimateFaqs = [
   {
     question: "Can I get an HVAC estimate online?",
     answer:
-      "Yes. Green Core's free online estimate shows real prices for a new gas furnace or heat pump system for your home in about two minutes. Answer a few questions about your home, then see your options and prices.",
+      "Yes. Green Core's free online estimate shows real prices for a new furnace, AC, heat pump, ductless mini split, water heater or whole house fan for your home in about two minutes. Answer a few questions about your home, then see your options and prices.",
   },
   {
     question: "What does the online estimate cover?",
@@ -53,11 +53,12 @@ export default function InstantEstimatePage() {
         <Container size="lg" className="py-10 sm:py-12">
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-700">Free online estimate · Sonoma, Marin, Napa &amp; Solano</p>
           <h1 className="mt-2 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Get an online estimate for a new furnace or heat pump
+            Get real prices online for heating, cooling and water heaters
           </h1>
           <p className="mt-3 max-w-3xl text-base leading-relaxed text-muted sm:text-lg">
-            Answer a few quick questions about your home and get real Green Core prices in about two minutes. Your final
-            price is confirmed in writing after a free visit or photo review.
+            Furnaces, AC, heat pumps, ductless, water heaters and whole house fans. Answer a few quick questions and see
+            real Green Core prices in about two minutes. Your final price is confirmed in writing after a free visit or
+            photo review.
           </p>
         </Container>
       </section>

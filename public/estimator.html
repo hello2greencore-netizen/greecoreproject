@@ -321,6 +321,16 @@ const sourceLine = () => ATTR.channel==="meta"
   : ATTR.channel==="google"
   ? `Came from: Google ads${ATTR.utm_campaign?` - campaign ${ATTR.utm_campaign}`:""}${ATTR.utm_term?` - keyword ${ATTR.utm_term}`:""}${ATTR.lp?` - page ${ATTR.lp}`:""}`
   : `Came from: Website${ATTR.utm_source?` (${ATTR.utm_source}${ATTR.utm_campaign?`, ${ATTR.utm_campaign}`:""})`:""}`;
+// Ask our server for the counted estimate number (once). Falls back to the local number after 4 seconds.
+async function getEstimateNumber(){
+  if (S.estNo || !SUBMIT_URL) return;
+  try {
+    const res = await fetch(SUBMIT_URL + "/estimate-number", {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({zip:S.zip}), signal:AbortSignal.timeout(4000)});
+    const j = await res.json();
+    if (j && j.estimate_number) { S.estNo = j.estimate_number; if (S.leadMeta) S.leadMeta.est = S.estNo; }
+  } catch(e) {}
+  S.estPending = false; if (S.step==="result") renderKeep();
+}
 // Tell the website page a lead happened (it passes this on to Google Tag Manager / the Meta Pixel).
 function notifyLead(r){
   if(window.parent===window) return;
@@ -968,7 +978,10 @@ function renderResult(){
   const r = quoteAll();
   const today = new Date(), until = new Date(today.getTime()+14*864e5);
   const fmt = d => d.toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"});
-  const est = "GC-" + today.getFullYear() + String(today.getMonth()+1).padStart(2,"0") + String(today.getDate()).padStart(2,"0") + "-" + (S.zip.slice(-2)||"00") + "7";
+  // Estimate number: GC-<date>-<last 2 of ZIP><count that day>, counted by our server (e.g. GC-20261128-541, then -542).
+  // If the server can't be reached, a random 3-digit ending keeps the number unique.
+  const est = S.estNo || S.estFallback || (S.estFallback = "GC-" + today.getFullYear() + String(today.getMonth()+1).padStart(2,"0") + String(today.getDate()).padStart(2,"0") + "-" + (S.zip.slice(-2)||"00").padStart(2,"0") + "-" + String(Math.floor(100 + Math.random()*900)));
+  if (!S.leadMeta && !S.estNo && SUBMIT_URL) S.estPending = true;
   const first = (S.c.name||"there").split(" ")[0];
   const multi = r.systems.length > 1;
   const glance = multi ? `<div class="glance">${r.systems.map(s=>`<a class="gl" href="#sys-${s.id}"><span class="gl-t">${s.title}</span>${s.pending?`<span class="gl-p muted">Priced at your visit</span>`:`<span class="gl-p">from ${money(Math.min(...s.tiers.map(t=>t.price)))}</span><span class="gl-s">${s.tiers.length>1?`${s.tiers.length} options up to ${money(Math.max(...s.tiers.map(t=>t.price)))}`:"1 option"}</span>`}</a>`).join("")}</div>` : "";
@@ -982,7 +995,7 @@ function renderResult(){
         ${s.toggle?`<div class="toggle" role="group" aria-label="Furnace option"><button data-eff="80" data-for="${s.id}" aria-pressed="${s.eff===80}">80% swap</button><button data-eff="95" data-for="${s.id}" aria-pressed="${s.eff===95}">Upgrade to 95%</button></div>`:""}</div>
       ${s.pending?`<p class="note">${s.custNote||"We'll price this one at your free visit."}</p>`:tierCards(s)}
     </section>`).join("")}
-    <p class="disc">Estimated prices based on your answers, not a final quote. Your final price is confirmed after a free visit or photo review.<span class="meta">${r.posNote?`<span>${r.posNote}</span>`:""}<span>Estimate ${est}</span><span>Valid through ${fmt(until)}</span><span>ZIP ${esc(S.zip)}</span></span></p>
+    <p class="disc">Estimated prices based on your answers, not a final quote. Your final price is confirmed after a free visit or photo review.<span class="meta">${r.posNote?`<span>${r.posNote}</span>`:""}<span>Estimate ${S.estPending ? "number coming up" : est}</span><span>Valid through ${fmt(until)}</span><span>ZIP ${esc(S.zip)}</span></span></p>
     ${r.cross?`<p class="note">${r.cross}</p>`:""}`)}
     ${stepCard(2, "fin-h", "Pay over time", "Pick a plan and the monthly payments in step 1 update, or choose no financing if you'd rather pay in full. Financing is on approved credit.", `
       <div class="plans" role="group" aria-label="Monthly payment options">${PLANS.map(p=>`<button class="plan" data-plan="${p.id}" aria-pressed="${plan().id===p.id}">${p.short}${p.apr?` · ${p.apr}%`:""}</button>`).join("")}</div>`)}
@@ -1003,7 +1016,7 @@ function renderResult(){
       <p>Estimate valid for 14 days. *Financing is subject to credit approval; monthly payments are estimates only.</p>
     </section>`, true);
   document.querySelectorAll("[data-eff]").forEach(b => b.onclick = () => { S.effs[b.dataset.for]=+b.dataset.eff; const y=window.scrollY; renderResult(); window.scrollTo({top:y}); });
-  if(!S.leadMeta){ S.leadMeta = {est, until: fmt(until)}; S.leadTimer = setTimeout(flushLead, 120000); notifyLead(r); }
+  if(!S.leadMeta){ S.leadMeta = {est, until: fmt(until)}; S.leadTimer = setTimeout(flushLead, 120000); getEstimateNumber().then(() => notifyLead(r)); }
   document.querySelectorAll("[data-tstat]").forEach(s => { s.onclick = e => e.stopPropagation(); s.onchange = () => { S.tstatModel = s.value; const y=window.scrollY; renderResult(); window.scrollTo({top:y}); }; });
   document.querySelectorAll("[data-add]").forEach(c => c.onchange = () => { const id=c.dataset.add; S.addons = c.checked ? [...S.addons, id] : S.addons.filter(x=>x!==id); const y=window.scrollY; renderResult(); window.scrollTo({top:y}); });
   document.querySelectorAll("[data-plan]").forEach(b => b.onclick = () => { S.plan=b.dataset.plan; S.planTouched=true; const y=window.scrollY; renderResult(); window.scrollTo({top:y}); });

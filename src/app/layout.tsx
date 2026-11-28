@@ -10,6 +10,7 @@ import { StickyMobileCTA } from "@/components/layout/StickyMobileCTA";
 import { FAQChatbot } from "@/components/chatbot/FAQChatbot";
 import { HideOnPaths } from "@/components/layout/HideOnPaths";
 import { AttributionCapture } from "@/components/tracking/AttributionCapture";
+import { MetaPixel } from "@/components/tracking/MetaPixel";
 import { FallingLeaves, LeafPile, WalkingTurkey, ThanksgivingStyles } from "@/components/seasonal/ThanksgivingDecor";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 import { LocalBusinessSchema } from "@/components/seo/LocalBusinessSchema";
@@ -77,6 +78,8 @@ export default function RootLayout({
             Skip to content
           </a>
           <AttributionCapture />
+          {/* Meta Pixel for our Meta ads partner; loads only with marketing-cookie consent. */}
+          <MetaPixel />
           {/* The /instant-pricing ad landing page has no site header, menu, chat or booking bar, so visitors stay on the estimator. */}
           <HideOnPaths paths={["/instant-pricing"]}>
             <AnnouncementBar />
